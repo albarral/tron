@@ -192,4 +192,17 @@ Concept* SlangTalker::getTopicConcept(int conceptId)
     }            
 }        
 
+std::string SlangTalker::showKnowledge()
+{
+    std::string text = "SlangTalker knowledge ... \n"; 
+            
+    // for each concept
+    for (auto& x: mapConcepts) 
+    {
+        text += x.second.toString() + "\n";
+    }    
+
+    return text;
+}
+
 }

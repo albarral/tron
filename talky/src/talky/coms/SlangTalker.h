@@ -52,6 +52,9 @@ public:
     // checks if given concept is understood by this slang interpreter
     bool understandsConcept(std::string conceptName);    
     
+    // show all concepts known by the slang talker
+    std::string showKnowledge();
+    
 private:
     // get concept id for given name
     int getConceptNumber(std::string conceptName);

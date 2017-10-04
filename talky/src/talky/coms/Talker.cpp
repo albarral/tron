@@ -162,4 +162,25 @@ SlangTalker* Talker::getCategorySlangTalker(int categoryId)
     }            
 }        
 
+std::string Talker::showKnowledge()
+{
+    std::string text = "Talker knowledge ... \n"; 
+            
+    // for each category show slang talker knowledge
+    for (auto& x: mapCategoryNames) 
+    {
+        text += "- category: " + x.second + "\n";
+        int categoryId = x.first;
+        // get slang talker 
+        SlangTalker* pSlangTalker = getCategorySlangTalker(categoryId);
+        if (pSlangTalker != 0)
+            text += pSlangTalker->showKnowledge();               
+        // missing talker
+        else
+            text += " no slang talker \n";
+    }    
+
+    return text;
+}
+
 }

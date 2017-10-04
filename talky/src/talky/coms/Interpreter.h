@@ -25,9 +25,9 @@ class Interpreter
 {    
 private:
     static log4cxx::LoggerPtr logger;
-    std::map<std::string, int> mapTopicNumbers;   /*! map of topic numbers */    
-    std::map<int, std::string> mapTopicNames;      /*! map of topic names */    
-    std::map<int, Talker> mapTalkers;                   /*! map of topic talkers */    
+    std::map<std::string, int> mapTopicNumbers;   /*! map of topic numbers <topic_name, topicId>*/    
+    std::map<int, std::string> mapTopicNames;      /*! map of topic names <topicId, topic_name>*/    
+    std::map<int, Talker> mapTalkers;                   /*! map of topic talkers <topicId, topic Talker>*/    
     Message oMessage;                                       /*! processed message */
     Command oCommand;                                    /*! interpreted command */   
     
@@ -54,6 +54,9 @@ public:
 
     // checks if given topic is understood by this interpreter
     bool understandsLanguage(std::string topicName);    
+    
+    // show all languages known by the interpreter
+    void showKnowledge();
     
 private: 
     // check if Message object has all required fields

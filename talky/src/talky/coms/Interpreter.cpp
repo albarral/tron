@@ -207,4 +207,25 @@ Talker* Interpreter::getTopicTalker(int topicId)
     }            
 }        
 
+void Interpreter::showKnowledge()
+{
+    LOG4CXX_INFO(logger, "Interpreter knowledge ..."); 
+    
+    // for each topic show talker knowledge
+    for (auto& x: mapTopicNames) 
+    {
+        std::string text = "- topic: " + x.second + "\n";
+        int topicId = x.first;
+        Talker* pTalker = getTopicTalker(topicId);
+        if (pTalker != 0)
+            text += pTalker->showKnowledge();        
+        // missing talker
+        else
+            text += " no talker";
+        
+        LOG4CXX_INFO(logger, text);
+    }    
+    
+}
+
 }

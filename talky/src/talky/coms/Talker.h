@@ -55,6 +55,9 @@ public:
     // checks if given category is understood by this topic interpreter
     bool understandsSlang(std::string categoryName);    
     
+    // show all categories known by the talker
+    std::string showKnowledge();
+
 private:
     // get category id for given name
     int getCategoryNumber(std::string categoryName);
