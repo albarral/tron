@@ -5,6 +5,7 @@
 
 #include "talky/coms/Message.h"
 #include "talky/coms/StringUtil.h"
+#include "talky/Topics.h"
 
 namespace talky
 {
@@ -53,9 +54,9 @@ void Message::setValue(std::string word)
 
 void Message::composeMessage()
 {
-    rawText = topic + FIELD_SEPARATOR +
-            category + FIELD_SEPARATOR +
-            concept + FIELD_SEPARATOR +
+    rawText = topic + Topics::FIELD_SEPARATOR +
+            category + Topics::FIELD_SEPARATOR +
+            concept + Topics::FIELD_SEPARATOR +
             value; 
 }
 
@@ -66,29 +67,31 @@ void Message::splitMessage(std::string text)
     rawText = text;    
     
     // split raw text in tokens 
-    std::vector<std::string> listTokens = StringUtil::split(text, FIELD_SEPARATOR); 
+    std::vector<std::string> listTokens = StringUtil::split(text, Topics::FIELD_SEPARATOR); 
     int numFields = listTokens.size();
 
     // get topic field 
-    if (numFields > ePOS_TOPIC)
-        setTopic(listTokens.at(ePOS_TOPIC));            
+    if (numFields > eMSG_TOPIC)
+        setTopic(listTokens.at(eMSG_TOPIC));            
     
     // get category field 
-    if (numFields > ePOS_CATEGORY)
-        setCategory(listTokens.at(ePOS_CATEGORY));
+    if (numFields > eMSG_CATEGORY)
+        setCategory(listTokens.at(eMSG_CATEGORY));
         
     // get concept field 
-    if (numFields > ePOS_CONCEPT)
-        setConcept(listTokens.at(ePOS_CONCEPT));
+    if (numFields > eMSG_CONCEPT)
+        setConcept(listTokens.at(eMSG_CONCEPT));
 
     // get value field 
-    if (numFields > ePOS_VALUE)
-        setValue(listTokens.at(ePOS_VALUE));
+    if (numFields > eMSG_VALUE)
+        setValue(listTokens.at(eMSG_VALUE));
 }
 
-//void Message::toString()
-//{
-//    return "[Message] " + name + ", topic: " + std::to_string(topic) + ", category: " + std::to_string(category) + 
-//            ", meaning: " + std::to_string(value) + ", needs value: " + std::to_string(bneedsValue);
-//}    
+std::string Message::toString()
+{
+    std::string desc = "[Message] topic: " + topic + ", category: " + category + 
+            ", concept: " + concept + ", value: " + value + ", raw text: " + rawText;
+    
+    return desc;
+}    
 }

@@ -3,9 +3,9 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "talky/language/ArmLanguage.h"
-#include "talky/language/Slang.h"
-#include "talky/concept/ArmTopic.h"
+#include "talky/languages/ArmLanguage.h"
+#include "talky/base/Slang.h"
+#include "talky/topics/ArmTopic.h"
 #include "talky/Topics.h"
 
 namespace talky

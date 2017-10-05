@@ -36,20 +36,20 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/talky/Topics.o \
+	${OBJECTDIR}/src/talky/base/Category.o \
+	${OBJECTDIR}/src/talky/base/Concept.o \
+	${OBJECTDIR}/src/talky/base/Language.o \
+	${OBJECTDIR}/src/talky/base/Slang.o \
+	${OBJECTDIR}/src/talky/base/Topic.o \
 	${OBJECTDIR}/src/talky/coms/Command.o \
-	${OBJECTDIR}/src/talky/coms/Interpreter.o \
 	${OBJECTDIR}/src/talky/coms/Message.o \
-	${OBJECTDIR}/src/talky/coms/SlangTalker.o \
 	${OBJECTDIR}/src/talky/coms/StringUtil.o \
-	${OBJECTDIR}/src/talky/coms/Talker.o \
-	${OBJECTDIR}/src/talky/concept/ArmTopic.o \
-	${OBJECTDIR}/src/talky/concept/Topic.o \
-	${OBJECTDIR}/src/talky/language/ArmLanguage.o \
-	${OBJECTDIR}/src/talky/language/Language.o \
-	${OBJECTDIR}/src/talky/language/Slang.o \
-	${OBJECTDIR}/src/talky/talk/Category.o \
-	${OBJECTDIR}/src/talky/talk/Concept.o \
-	${OBJECTDIR}/src/talky/talk/TalkTopic.o
+	${OBJECTDIR}/src/talky/languages/ArmLanguage.o \
+	${OBJECTDIR}/src/talky/talk/Interpreter.o \
+	${OBJECTDIR}/src/talky/talk/SlangTalker.o \
+	${OBJECTDIR}/src/talky/talk/TalkTopic.o \
+	${OBJECTDIR}/src/talky/talk/Talker.o \
+	${OBJECTDIR}/src/talky/topics/ArmTopic.o
 
 
 # C Compiler Flags
@@ -81,75 +81,75 @@ ${OBJECTDIR}/src/talky/Topics.o: src/talky/Topics.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/Topics.o src/talky/Topics.cpp
 
+${OBJECTDIR}/src/talky/base/Category.o: src/talky/base/Category.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/base
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/base/Category.o src/talky/base/Category.cpp
+
+${OBJECTDIR}/src/talky/base/Concept.o: src/talky/base/Concept.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/base
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/base/Concept.o src/talky/base/Concept.cpp
+
+${OBJECTDIR}/src/talky/base/Language.o: src/talky/base/Language.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/base
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/base/Language.o src/talky/base/Language.cpp
+
+${OBJECTDIR}/src/talky/base/Slang.o: src/talky/base/Slang.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/base
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/base/Slang.o src/talky/base/Slang.cpp
+
+${OBJECTDIR}/src/talky/base/Topic.o: src/talky/base/Topic.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/base
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/base/Topic.o src/talky/base/Topic.cpp
+
 ${OBJECTDIR}/src/talky/coms/Command.o: src/talky/coms/Command.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/Command.o src/talky/coms/Command.cpp
-
-${OBJECTDIR}/src/talky/coms/Interpreter.o: src/talky/coms/Interpreter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/Interpreter.o src/talky/coms/Interpreter.cpp
 
 ${OBJECTDIR}/src/talky/coms/Message.o: src/talky/coms/Message.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/Message.o src/talky/coms/Message.cpp
 
-${OBJECTDIR}/src/talky/coms/SlangTalker.o: src/talky/coms/SlangTalker.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/SlangTalker.o src/talky/coms/SlangTalker.cpp
-
 ${OBJECTDIR}/src/talky/coms/StringUtil.o: src/talky/coms/StringUtil.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/StringUtil.o src/talky/coms/StringUtil.cpp
 
-${OBJECTDIR}/src/talky/coms/Talker.o: src/talky/coms/Talker.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
+${OBJECTDIR}/src/talky/languages/ArmLanguage.o: src/talky/languages/ArmLanguage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/languages
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/Talker.o src/talky/coms/Talker.cpp
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/languages/ArmLanguage.o src/talky/languages/ArmLanguage.cpp
 
-${OBJECTDIR}/src/talky/concept/ArmTopic.o: src/talky/concept/ArmTopic.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/concept
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/concept/ArmTopic.o src/talky/concept/ArmTopic.cpp
-
-${OBJECTDIR}/src/talky/concept/Topic.o: src/talky/concept/Topic.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/concept
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/concept/Topic.o src/talky/concept/Topic.cpp
-
-${OBJECTDIR}/src/talky/language/ArmLanguage.o: src/talky/language/ArmLanguage.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/language
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/language/ArmLanguage.o src/talky/language/ArmLanguage.cpp
-
-${OBJECTDIR}/src/talky/language/Language.o: src/talky/language/Language.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/language
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/language/Language.o src/talky/language/Language.cpp
-
-${OBJECTDIR}/src/talky/language/Slang.o: src/talky/language/Slang.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/language
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/language/Slang.o src/talky/language/Slang.cpp
-
-${OBJECTDIR}/src/talky/talk/Category.o: src/talky/talk/Category.cpp 
+${OBJECTDIR}/src/talky/talk/Interpreter.o: src/talky/talk/Interpreter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/Category.o src/talky/talk/Category.cpp
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/Interpreter.o src/talky/talk/Interpreter.cpp
 
-${OBJECTDIR}/src/talky/talk/Concept.o: src/talky/talk/Concept.cpp 
+${OBJECTDIR}/src/talky/talk/SlangTalker.o: src/talky/talk/SlangTalker.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/Concept.o src/talky/talk/Concept.cpp
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/SlangTalker.o src/talky/talk/SlangTalker.cpp
 
 ${OBJECTDIR}/src/talky/talk/TalkTopic.o: src/talky/talk/TalkTopic.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/TalkTopic.o src/talky/talk/TalkTopic.cpp
+
+${OBJECTDIR}/src/talky/talk/Talker.o: src/talky/talk/Talker.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/Talker.o src/talky/talk/Talker.cpp
+
+${OBJECTDIR}/src/talky/topics/ArmTopic.o: src/talky/topics/ArmTopic.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/ArmTopic.o src/talky/topics/ArmTopic.cpp
 
 # Subprojects
 .build-subprojects:

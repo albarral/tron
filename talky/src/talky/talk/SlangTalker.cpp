@@ -5,7 +5,7 @@
 
 #include <stdexcept>      // std::out_of_range
 
-#include "talky/coms/SlangTalker.h"
+#include "talky/talk/SlangTalker.h"
 #include "talky/coms/StringUtil.h"
 #include "talky/Topics.h"
 
@@ -92,7 +92,7 @@ bool SlangTalker::processMessage(Message& oMessage, Command& oCommand)
             else
                 bprocessed = true;                
 
-            LOG4CXX_INFO(logger, "SlangTalker: message processed " << oMessage.getRawText());      
+            //LOG4CXX_INFO(logger, "SlangTalker: message read ok ");      
         }
         // missing concept
         else
@@ -194,7 +194,7 @@ Concept* SlangTalker::getTopicConcept(int conceptId)
 
 std::string SlangTalker::showKnowledge()
 {
-    std::string text = "SlangTalker knowledge ... \n"; 
+    std::string text;
             
     // for each concept
     for (auto& x: mapConcepts) 

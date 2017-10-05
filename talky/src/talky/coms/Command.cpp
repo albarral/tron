@@ -51,9 +51,11 @@ void Command::setValue(int val)
         bhasValue = (val != INVALID_VALUE);
 }    
 
-//void Command::toString()
-//{
-//    return "[Command] " + name + ", topic: " + std::to_string(topic) + ", category: " + std::to_string(category) + 
-//            ", meaning: " + std::to_string(value) + ", needs value: " + std::to_string(bneedsValue);
-//}    
+std::string Command::toString()
+{
+    std::string desc = "[Command] topic: " + std::to_string(topic) + ", category: " + std::to_string(category) + 
+            ", concept: " + std::to_string(concept) + ", value: " + std::to_string(value);
+
+    return desc;
+}    
 }

@@ -10,14 +10,7 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>src/talky/topic</sourceRootElem>
-                <sourceRootElem>src/talky/defs</sourceRootElem>
-                <sourceRootElem>src/talky/topics</sourceRootElem>
-                <sourceRootElem>src/talky/languages</sourceRootElem>
-                <sourceRootElem>src/talky/language</sourceRootElem>
-                <sourceRootElem>src/talky/concept</sourceRootElem>
-                <sourceRootElem>src/talky/talk</sourceRootElem>
-                <sourceRootElem>src/talky/coms</sourceRootElem>
+                <sourceRootElem>src/talky</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

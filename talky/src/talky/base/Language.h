@@ -9,7 +9,7 @@
 #include <map>
 #include <string>
 
-#include "talky/language/Slang.h"
+#include "talky/base/Slang.h"
 
 namespace talky
 {

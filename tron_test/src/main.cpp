@@ -4,16 +4,12 @@
  ***************************************************************************/
 
 
-#include <string>
 #include <unistd.h> // for sleep() 
 
 #include <log4cxx/logger.h>
 #include <log4cxx/xml/domconfigurator.h>
 
-#include "talky/Topics.h"
-#include "talky/coms/Interpreter.h"
-
-using namespace talky;
+#include "TestTalky.h"
 
 log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("tron"));
 
@@ -24,13 +20,10 @@ int main(int argc, char** argv)
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
 
-    // test talky interpreter
-    Interpreter oInterpreter;
-    // prepare for arm topic
-    oInterpreter.addLanguage(Topics::eTOPIC_ARM);
-    
-    oInterpreter.showKnowledge();
-
+    // test talky lib
+    TestTalky oTestTalky;
+    oTestTalky.makeTest();
+        
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     
     return 0;

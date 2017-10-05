@@ -9,9 +9,9 @@
 #include <vector>
 #include <string>
 
-#include "talky/talk/Category.h"
-#include "talky/concept/Topic.h"
-#include "talky/language/Language.h"
+#include "talky/base/Category.h"
+#include "talky/base/Topic.h"
+#include "talky/base/Language.h"
 
 namespace talky
 {

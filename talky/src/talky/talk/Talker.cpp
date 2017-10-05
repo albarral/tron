@@ -5,7 +5,7 @@
 
 #include <stdexcept>      // std::out_of_range
 
-#include "talky/coms/Talker.h"
+#include "talky/talk/Talker.h"
 #include "talky/Topics.h"
 
 using namespace log4cxx;
@@ -164,12 +164,12 @@ SlangTalker* Talker::getCategorySlangTalker(int categoryId)
 
 std::string Talker::showKnowledge()
 {
-    std::string text = "Talker knowledge ... \n"; 
+    std::string text;
             
     // for each category show slang talker knowledge
     for (auto& x: mapCategoryNames) 
     {
-        text += "- category: " + x.second + "\n";
+        text += "\n- " + x.second + " category: \n";
         int categoryId = x.first;
         // get slang talker 
         SlangTalker* pSlangTalker = getCategorySlangTalker(categoryId);

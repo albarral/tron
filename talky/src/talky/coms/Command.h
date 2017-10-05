@@ -6,6 +6,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <string>
 
 namespace talky
 {
@@ -45,6 +46,8 @@ public:
     void setCategory(int val);
     void setConcept(int val);
     void setValue(int val);                
+    
+    std::string toString();
 };
 }
 #endif

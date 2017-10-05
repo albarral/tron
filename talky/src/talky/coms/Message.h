@@ -17,12 +17,12 @@ class Message
 {
 private:    
     // field positions in message
-    enum ePosFields {
-        ePOS_TOPIC, 
-        ePOS_CATEGORY,
-        ePOS_CONCEPT, 
-        ePOS_VALUE,
-        ePOS_DIM};
+    enum eMsgFields {
+        eMSG_TOPIC, 
+        eMSG_CATEGORY,
+        eMSG_CONCEPT, 
+        eMSG_VALUE,
+        eMSG_DIM};
     
     std::string rawText;                 /*! raw text of message */
     std::string topic;                      /*! topic  */
@@ -33,8 +33,6 @@ private:
     bool bhasCategory;                  /*! flag indicating the message has a category field  */
     bool bhasConcept;                   /*! flag indicating the message has a concept field  */
     bool bhasValue;                       /*! flag indicating the message has a value field  */  
-    // constants
-    const std::string FIELD_SEPARATOR = "*";      /*! special character used to separate fields in the message */
 
         
 public:
@@ -62,6 +60,8 @@ public:
     void composeMessage();
     // extract fields from given raw text
     void splitMessage(std::string text);
+    
+    std::string toString();
 };
 }
 #endif

@@ -11,10 +11,10 @@
 #include <map>
 #include <string>
 
-#include "talky/coms/SlangTalker.h"
+#include "talky/talk/SlangTalker.h"
 #include "talky/coms/Message.h"
 #include "talky/coms/Command.h"
-#include "talky/talk/Category.h"
+#include "talky/base/Category.h"
 #include "talky/talk/TalkTopic.h"
 
 

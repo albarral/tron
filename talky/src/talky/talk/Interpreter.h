@@ -11,7 +11,7 @@
 #include <map>
 #include <string>
 
-#include "talky/coms/Talker.h"
+#include "talky/talk/Talker.h"
 #include "talky/coms/Message.h"
 #include "talky/coms/Command.h"
 

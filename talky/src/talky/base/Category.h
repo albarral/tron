@@ -9,9 +9,9 @@
 #include <vector>
 #include <string>
 
-#include "talky/talk/Concept.h"
-#include "talky/concept/ConceptInfo.h"
-#include "talky/language/Slang.h"
+#include "talky/base/Concept.h"
+#include "talky/base/ConceptInfo.h"
+#include "talky/base/Slang.h"
 
 namespace talky
 {

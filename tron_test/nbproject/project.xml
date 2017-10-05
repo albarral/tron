@@ -6,7 +6,7 @@
             <name>tron_test</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../talky</make-dep-project>

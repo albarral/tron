@@ -13,8 +13,8 @@
 
 #include "talky/coms/Message.h"
 #include "talky/coms/Command.h"
-#include "talky/talk/Category.h"
-#include "talky/talk/Concept.h"
+#include "talky/base/Category.h"
+#include "talky/base/Concept.h"
 
 namespace talky
 {

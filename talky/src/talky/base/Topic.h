@@ -9,7 +9,7 @@
 #include <map>
 #include <vector>
 
-#include "talky/concept/ConceptInfo.h"
+#include "talky/base/ConceptInfo.h"
 
 namespace talky
 {

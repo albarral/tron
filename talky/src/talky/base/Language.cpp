@@ -5,7 +5,7 @@
 
 #include <stdexcept>      // std::out_of_range
 
-#include "talky/language/Language.h"
+#include "talky/base/Language.h"
 
 namespace talky
 {

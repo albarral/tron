@@ -6,7 +6,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "talky/language/Language.h"
+#include "talky/base/Language.h"
 
 namespace talky
 {

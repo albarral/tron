@@ -5,9 +5,9 @@
 
 #include <stdexcept>      // std::out_of_range
 
-#include "talky/coms/Interpreter.h"
-#include "talky/concept/ArmTopic.h"
-#include "talky/language/ArmLanguage.h"
+#include "talky/talk/Interpreter.h"
+#include "talky/topics/ArmTopic.h"
+#include "talky/languages/ArmLanguage.h"
 #include "talky/talk/TalkTopic.h"
 #include "talky/Topics.h"
 
@@ -214,7 +214,7 @@ void Interpreter::showKnowledge()
     // for each topic show talker knowledge
     for (auto& x: mapTopicNames) 
     {
-        std::string text = "- topic: " + x.second + "\n";
+        std::string text = "\n* " + x.second + " topic *\n";
         int topicId = x.first;
         Talker* pTalker = getTopicTalker(topicId);
         if (pTalker != 0)

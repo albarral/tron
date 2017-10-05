@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "talky/concept/Topic.h"
+#include "talky/base/Topic.h"
 
 namespace talky
 {
