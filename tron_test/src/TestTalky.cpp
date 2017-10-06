@@ -32,8 +32,8 @@ void TestTalky::makeTest()
     
     // test message
     std::string sep = talky::Topics::FIELD_SEPARATOR;
-    std::string msg = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
-    //std::string msg = "arm" + sep + "cyclic" + sep + "move";  // incomplete!!??
+    //std::string msg = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
+    std::string msg = "arm" + sep + "cyclic" + sep + "move"; 
     LOG4CXX_INFO(logger, modName + ": msg > " + msg);
 
     // interpret test message
@@ -45,7 +45,7 @@ void TestTalky::makeTest()
         LOG4CXX_INFO(logger, modName + ": " + oCommand.toString());        
     }
     else
-        LOG4CXX_WARN(logger, modName + ": msg processing failed!");        
-    
+        LOG4CXX_WARN(logger, modName + ": msg processing failed! " + std::to_string(oInterpreter.getMessage().getStatus()));        
+        
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };

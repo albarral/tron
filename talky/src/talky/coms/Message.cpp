@@ -14,18 +14,33 @@ Message::Message()
     resetFields();
 }
 
-Message::Message(std::string topic, std::string category, std::string concept, std::string value)
+// mandatory fields constructor
+Message::Message(std::string topic, std::string category, std::string concept) 
 {
+    status = Message::eSTATE_INCOMPLETE;
     setTopic(topic);
     setCategory(category); 
     setConcept(concept);
+    
+    // all mandatory fields set
+    if (bhasTopic && bhasCategory && bhasConcept)
+        status = Message::eSTATE_COMPLETE_SIMPLE;
+}
+
+Message::Message(std::string topic, std::string category, std::string concept, std::string value) : Message(topic, category, concept) 
+{
     setValue(value);
+
+    // all fields set
+    if (bhasValue)
+        status = Message::eSTATE_COMPLETE_EXTENDED;
 }
 
 void Message::resetFields()
 {
     topic = category = concept = value = "";    
     bhasTopic = bhasCategory = bhasConcept = bhasValue = false;
+    status = Message::eSTATE_INCOMPLETE;
 }
 
 void Message::setTopic(std::string word)
@@ -80,11 +95,33 @@ void Message::splitMessage(std::string text)
         
     // get concept field 
     if (numFields > eMSG_CONCEPT)
+    {
         setConcept(listTokens.at(eMSG_CONCEPT));
+        // all mandatory fields set
+        if (bhasTopic && bhasCategory && bhasConcept)
+            status = Message::eSTATE_COMPLETE_SIMPLE;
+    }
 
     // get value field 
     if (numFields > eMSG_VALUE)
+    {
         setValue(listTokens.at(eMSG_VALUE));
+        // all fields set
+        if (bhasValue)
+            status = Message::eSTATE_COMPLETE_EXTENDED;
+    }
+}
+
+bool Message::checkMessageComplete()
+{
+    // message is considered complete if it has at least the mandatory fields
+    return (status == Message::eSTATE_COMPLETE_SIMPLE || 
+            status == Message::eSTATE_COMPLETE_EXTENDED);
+}
+
+bool Message::checkMessageInterpreted()
+{
+    return (status == Message::eSTATE_INTERPRETED_OK);
 }
 
 std::string Message::toString()

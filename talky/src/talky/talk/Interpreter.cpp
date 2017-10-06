@@ -80,7 +80,6 @@ bool Interpreter::understandsLanguage(std::string topicName)
 
 bool Interpreter::processMessage(std::string text)
 {
-    bool bprocessed = false;
     // reset command
     oCommand.resetFields();
  
@@ -88,7 +87,7 @@ bool Interpreter::processMessage(std::string text)
     oMessage.splitMessage(text);
 
     // if message complete
-    if (checkMessageComplete())
+    if (oMessage.checkMessageComplete())
     {
         // interpret topic 
         int topicId = getTopicNumber(oMessage.getTopic());
@@ -105,28 +104,28 @@ bool Interpreter::processMessage(std::string text)
                 // inform command topic
                 oCommand.setTopic(topicId);
 
-                bprocessed = pTalker->processMessage(oMessage, oCommand);        
+                int result = pTalker->processMessage(oMessage, oCommand);     
+                oMessage.setStatus(result);
             }
             // missing talker
             else
+            {
+                oMessage.setStatus(Message::eSTATE_INTERPRETED_KO);
                 LOG4CXX_WARN(logger, "Interpreter: missing talker for topic " << oMessage.getTopic());
+            }
         }
         // unknown topic
         else
+        {
+            oMessage.setStatus(Message::eSTATE_INTERPRETED_KO);
             LOG4CXX_WARN(logger, "Interpreter: unknown topic " << oMessage.getTopic());
+        }
     }   
     // incomplete message
     else
         LOG4CXX_WARN(logger, "Interpreter: incomplete message " << text);          
     
-    return bprocessed;
-}
-
-
-bool Interpreter::checkMessageComplete()
-{
-    // checks that message has all fields
-    return (oMessage.hasTopic() && oMessage.hasCategory() && oMessage.hasConcept() && oMessage.hasValue());
+    return oMessage.checkMessageInterpreted();
 }
 
 

@@ -45,8 +45,8 @@ public:
     void build(TalkTopic& oTalkTopic);
     
     // interprets given message, converting it to a standard command
-    // returns true if interpretation was ok
-    bool processMessage(Message& oMessage, Command& oCommand);    
+    // returns message processing result
+    int processMessage(Message& oMessage, Command& oCommand);    
     
     // converts given command in a communication's message
     // returns true if conversion was ok

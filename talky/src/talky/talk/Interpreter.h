@@ -41,7 +41,7 @@ public:
     void addLanguage(int topicId);
     
     // interprets given message, converting it to a standard command
-    // returns true if interpretation was ok
+    // returns true if message processed ok
     bool processMessage(std::string text);    
     // gets interpreted command
     Command& getCommand() {return oCommand;};
@@ -59,8 +59,6 @@ public:
     void showKnowledge();
     
 private: 
-    // check if Message object has all required fields
-    bool checkMessageComplete();
     // get topic id for given name
     int getTopicNumber(std::string topicName);
     // get topic name for given id

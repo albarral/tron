@@ -52,9 +52,9 @@ bool SlangTalker::understandsConcept(std::string conceptName)
     return (mapConceptNumbers.find(conceptName) != mapConceptNumbers.end());
 }
 
-bool SlangTalker::processMessage(Message& oMessage, Command& oCommand)
+int SlangTalker::processMessage(Message& oMessage, Command& oCommand)
 {
-    bool bprocessed = false;
+    int result; 
 
     // interpret concept 
     int conceptId = getConceptNumber(oMessage.getConcept());
@@ -82,27 +82,34 @@ bool SlangTalker::processMessage(Message& oMessage, Command& oCommand)
                     // inform command value
                     oCommand.setValue(value);
                     // message processed ok
-                    bprocessed = true;
+                    result = Message::eSTATE_INTERPRETED_OK;
                 }
                 // invalid value
                 else
+                {
+                    result = Message::eSTATE_INTERPRETED_KO;
                     LOG4CXX_WARN(logger, "SlangTalker: invalid value " << oMessage.getValue());          
+                }
             }
             // if no extra value needed, message processed ok
             else
-                bprocessed = true;                
-
-            //LOG4CXX_INFO(logger, "SlangTalker: message read ok ");      
+                result = Message::eSTATE_INTERPRETED_OK;
         }
         // missing concept
         else
+        {
+            result = Message::eSTATE_INTERPRETED_KO;
             LOG4CXX_WARN(logger, "SlangTalker: missing concept for " << oMessage.getConcept());
+        }
     }
     // unknown concept 
     else
+    {
+        result = Message::eSTATE_INTERPRETED_KO;
         LOG4CXX_WARN(logger, "SlangTalker: unknown concept " << oMessage.getConcept());          
+    }
 
-    return bprocessed;
+    return result;
 }
 
 
