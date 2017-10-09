@@ -6,8 +6,8 @@
 
 #include "TestTalky.h"
 #include "talky/Topics.h"
-#include "talky/talk/Interpreter.h"
 #include "talky/coms/Command.h"
+#include "talky/topics/ArmTopic.h"
 
 using namespace log4cxx;
 
@@ -29,11 +29,20 @@ void TestTalky::makeTest()
     oInterpreter.addLanguage(talky::Topics::eTOPIC_ARM);
     // show known languages
     //oInterpreter.showKnowledge();
-    
+
+    testMessageReception(oInterpreter);        
+        
+    LOG4CXX_INFO(logger, modName + ": test end \n");
+};
+
+void TestTalky::testMessageReception(talky::Interpreter& oInterpreter)
+{
+    LOG4CXX_INFO(logger, modName + ": testMessageReception ...");
+
     // test message
     std::string sep = talky::Topics::FIELD_SEPARATOR;
     //std::string msg = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
-    std::string msg = "arm" + sep + "cyclic" + sep + "move"; 
+    std::string msg = "arm" + sep + "cyclic" + sep + "move";
     LOG4CXX_INFO(logger, modName + ": msg > " + msg);
 
     // interpret test message
@@ -45,7 +54,20 @@ void TestTalky::makeTest()
         LOG4CXX_INFO(logger, modName + ": " + oCommand.toString());        
     }
     else
-        LOG4CXX_WARN(logger, modName + ": msg processing failed! " + std::to_string(oInterpreter.getMessage().getStatus()));        
-        
-    LOG4CXX_INFO(logger, modName + ": test end \n");
-};
+    {
+        LOG4CXX_WARN(logger, modName + ": msg processing failed!");            
+        LOG4CXX_WARN(logger, modName + oInterpreter.getMessage().toStringValidity());            
+    }
+}
+
+void TestTalky::testMessageSending(talky::Interpreter& oInterpreter)
+{
+    talky::Command oCommand;
+    oCommand.setTopic(talky::Topics::eTOPIC_ARM);
+    oCommand.setCategory(talky::ArmTopic::eCAT_ARM_JOINT);
+    oCommand.setConcept(talky::ArmTopic::eJOINT_HS_POS);
+    oCommand.setValue(10);
+    
+    oInterpreter.buildMessage(oCommand);
+    
+}

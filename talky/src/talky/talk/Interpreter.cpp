@@ -84,10 +84,10 @@ bool Interpreter::processMessage(std::string text)
     oCommand.resetFields();
  
     // analyze message (obtain fields)
-    oMessage.splitMessage(text);
+    oMessage.splitFields(text);
 
     // if message complete
-    if (oMessage.checkMessageComplete())
+    if (oMessage.isComplete())
     {
         // interpret topic 
         int topicId = getTopicNumber(oMessage.getTopic());
@@ -103,21 +103,19 @@ bool Interpreter::processMessage(std::string text)
             {
                 // inform command topic
                 oCommand.setTopic(topicId);
+                oMessage.setTopicValidity(true);
 
-                int result = pTalker->processMessage(oMessage, oCommand);     
-                oMessage.setStatus(result);
+                pTalker->processMessage(oMessage, oCommand);     
             }
             // missing talker
             else
             {
-                oMessage.setStatus(Message::eSTATE_INTERPRETED_KO);
                 LOG4CXX_WARN(logger, "Interpreter: missing talker for topic " << oMessage.getTopic());
             }
         }
         // unknown topic
         else
         {
-            oMessage.setStatus(Message::eSTATE_INTERPRETED_KO);
             LOG4CXX_WARN(logger, "Interpreter: unknown topic " << oMessage.getTopic());
         }
     }   
@@ -125,7 +123,7 @@ bool Interpreter::processMessage(std::string text)
     else
         LOG4CXX_WARN(logger, "Interpreter: incomplete message " << text);          
     
-    return oMessage.checkMessageInterpreted();
+    return oMessage.isInterpreted();
 }
 
 

@@ -52,10 +52,8 @@ bool SlangTalker::understandsConcept(std::string conceptName)
     return (mapConceptNumbers.find(conceptName) != mapConceptNumbers.end());
 }
 
-int SlangTalker::processMessage(Message& oMessage, Command& oCommand)
+void SlangTalker::processMessage(Message& oMessage, Command& oCommand)
 {
-    int result; 
-
     // interpret concept 
     int conceptId = getConceptNumber(oMessage.getConcept());
 
@@ -70,6 +68,7 @@ int SlangTalker::processMessage(Message& oMessage, Command& oCommand)
         {
             // inform command concept
             oCommand.setConcept(conceptId);
+            oMessage.setConceptValidity(true);
 
             // if extra value needed, process value
             if (pConcept->needsValue())
@@ -81,35 +80,27 @@ int SlangTalker::processMessage(Message& oMessage, Command& oCommand)
                 {
                     // inform command value
                     oCommand.setValue(value);
-                    // message processed ok
-                    result = Message::eSTATE_INTERPRETED_OK;
+                    oMessage.setValueValidity(true);
                 }
                 // invalid value
                 else
                 {
-                    result = Message::eSTATE_INTERPRETED_KO;
+                    oMessage.setValueValidity(false);
                     LOG4CXX_WARN(logger, "SlangTalker: invalid value " << oMessage.getValue());          
                 }
             }
-            // if no extra value needed, message processed ok
-            else
-                result = Message::eSTATE_INTERPRETED_OK;
         }
         // missing concept
         else
         {
-            result = Message::eSTATE_INTERPRETED_KO;
             LOG4CXX_WARN(logger, "SlangTalker: missing concept for " << oMessage.getConcept());
         }
     }
     // unknown concept 
     else
     {
-        result = Message::eSTATE_INTERPRETED_KO;
         LOG4CXX_WARN(logger, "SlangTalker: unknown concept " << oMessage.getConcept());          
     }
-
-    return result;
 }
 
 

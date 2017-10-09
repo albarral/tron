@@ -55,10 +55,8 @@ bool Talker::understandsSlang(std::string categoryName)
     return (mapCategoryNumbers.find(categoryName) != mapCategoryNumbers.end());
 }
 
-int Talker::processMessage(Message& oMessage, Command& oCommand)
+void Talker::processMessage(Message& oMessage, Command& oCommand)
 {
-    int result; 
-
     // interpret category 
     int categoryId = getCategoryNumber(oMessage.getCategory());
 
@@ -73,24 +71,21 @@ int Talker::processMessage(Message& oMessage, Command& oCommand)
         {
             // inform command category
             oCommand.setCategory(categoryId);
+            oMessage.setCategoryValidity(true);
             
-            result = pSlangTalker->processMessage(oMessage, oCommand);        
+            pSlangTalker->processMessage(oMessage, oCommand);        
         }
         // missing slang talker
         else
         {
-            result = Message::eSTATE_INTERPRETED_KO;
             LOG4CXX_WARN(logger, "Talker: missing slang talker for category " << oMessage.getCategory());
         }
     }
     // unknown category
     else
     {
-        result = Message::eSTATE_INTERPRETED_KO;
         LOG4CXX_WARN(logger, "Talker: unknown category " << oMessage.getCategory());
     }
-
-    return result;
 }
 
 

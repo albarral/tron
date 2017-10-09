@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/base/Slang.o \
 	${OBJECTDIR}/src/talky/base/Topic.o \
 	${OBJECTDIR}/src/talky/coms/Command.o \
+	${OBJECTDIR}/src/talky/coms/Conversion.o \
 	${OBJECTDIR}/src/talky/coms/Message.o \
 	${OBJECTDIR}/src/talky/coms/StringUtil.o \
 	${OBJECTDIR}/src/talky/languages/ArmLanguage.o \
@@ -110,6 +111,11 @@ ${OBJECTDIR}/src/talky/coms/Command.o: src/talky/coms/Command.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/Command.o src/talky/coms/Command.cpp
+
+${OBJECTDIR}/src/talky/coms/Conversion.o: src/talky/coms/Conversion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/Conversion.o src/talky/coms/Conversion.cpp
 
 ${OBJECTDIR}/src/talky/coms/Message.o: src/talky/coms/Message.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms

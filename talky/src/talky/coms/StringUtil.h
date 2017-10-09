@@ -26,6 +26,8 @@ public:
         // converts a numeric string to its float value
         // if conversion fails (not a float number), false is returned
         static bool convert2Float(std::string number, float& value);
+        
+        static std::string getBooleanValue(bool bvalue);
 };
 
 }    

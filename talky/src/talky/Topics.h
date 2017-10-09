@@ -35,6 +35,8 @@ namespace talky
     static const std::string WHEELS_TOPIC;    /*! wheels topic name */
     // auxiliary values
     static const int INVALID_VALUE = -1;
+    static const int MIN_COMMAND_FIELDS = 3;     /*! minimum number of fields in valid command/message */   
+    static const int MAX_COMMAND_FIELDS = 4;    /*! maximum number of fields in valid command/message */
     static const std::string EMPTY_VALUE;  
     static const std::string FIELD_SEPARATOR;      /*! character used to separate fields in messages */
 

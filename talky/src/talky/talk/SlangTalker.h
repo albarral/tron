@@ -42,8 +42,7 @@ public:
     void build(Category& oCategory);
     
     // interprets given message, converting it to a standard command
-    // returns message processing result
-    int processMessage(Message& oMessage, Command& oCommand);    
+    void processMessage(Message& oMessage, Command& oCommand);    
     
     // converts given command in a communication's message
     // returns true if conversion was ok

@@ -68,4 +68,9 @@ bool StringUtil::convert2Float(std::string number, float& value)
     }
 }
 
+std::string StringUtil::getBooleanValue(bool bvalue)
+{
+    return  (bvalue ? "y" : "n");
+}
+
 }
