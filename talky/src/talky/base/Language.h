@@ -41,7 +41,7 @@ public:
     // get name of given category
     std::string getCategoryName(int category);   
     // get slang of given category
-    Slang& getCategorySlang(int category);
+    Slang* getCategorySlang(int category);
     
     // build language
     virtual void build() = 0;

@@ -10,7 +10,6 @@
 #include <string>
 
 #include "talky/base/Concept.h"
-#include "talky/base/ConceptInfo.h"
 #include "talky/base/Slang.h"
 
 namespace talky
@@ -22,22 +21,27 @@ class Category
 {    
 protected:
     int topic;                /*! category's topic  */
-    int categoryId;       /*! category id */
+    int id;                    /*! category id */
     std::string name;    /*! category name */    
     std::vector<Concept> listConcepts;      /*! list of concepts of the category */
     
 public:
-    Category(int topic, int id, std::string name);              	
     ~Category();
 
-    int getTopic() {return topic;};
-    int getId() {return categoryId;};
+    void setTopicId(int value) {topic = value;};
+    void setId(int value) {id = value;};
+    void setName(std::string value) {name = value;};
+    
+    int getTopic() {return topic;};    
+    int getId() {return id;};
     std::string getName() {return name;};
+    
+    void addConcept(Concept& oConcept);
     std::vector<Concept>& getListConcepts() {return listConcepts;};
         
-    // builds a category using the given list of concepts and its associated slang
-    void build(std::vector<ConceptInfo>& listConceptsInfo, Slang& oSlang);
-
+    // apply the given slang to the category (setting all concept names)
+    void applySlang(Slang& oSlang);
+    
     std::string toString();
 };
 }

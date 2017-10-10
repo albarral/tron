@@ -48,7 +48,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/languages/ArmLanguage.o \
 	${OBJECTDIR}/src/talky/talk/Interpreter.o \
 	${OBJECTDIR}/src/talky/talk/SlangTalker.o \
-	${OBJECTDIR}/src/talky/talk/TalkTopic.o \
 	${OBJECTDIR}/src/talky/talk/Talker.o \
 	${OBJECTDIR}/src/talky/topics/ArmTopic.o
 
@@ -141,11 +140,6 @@ ${OBJECTDIR}/src/talky/talk/SlangTalker.o: src/talky/talk/SlangTalker.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/SlangTalker.o src/talky/talk/SlangTalker.cpp
-
-${OBJECTDIR}/src/talky/talk/TalkTopic.o: src/talky/talk/TalkTopic.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/talk/TalkTopic.o src/talky/talk/TalkTopic.cpp
 
 ${OBJECTDIR}/src/talky/talk/Talker.o: src/talky/talk/Talker.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk

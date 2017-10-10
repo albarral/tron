@@ -16,7 +16,6 @@
           <itemPath>src/talky/base/Category.h</itemPath>
           <itemPath>src/talky/base/Concept.cpp</itemPath>
           <itemPath>src/talky/base/Concept.h</itemPath>
-          <itemPath>src/talky/base/ConceptInfo.h</itemPath>
           <itemPath>src/talky/base/Language.cpp</itemPath>
           <itemPath>src/talky/base/Language.h</itemPath>
           <itemPath>src/talky/base/Slang.cpp</itemPath>
@@ -43,8 +42,6 @@
           <itemPath>src/talky/talk/Interpreter.h</itemPath>
           <itemPath>src/talky/talk/SlangTalker.cpp</itemPath>
           <itemPath>src/talky/talk/SlangTalker.h</itemPath>
-          <itemPath>src/talky/talk/TalkTopic.cpp</itemPath>
-          <itemPath>src/talky/talk/TalkTopic.h</itemPath>
           <itemPath>src/talky/talk/Talker.cpp</itemPath>
           <itemPath>src/talky/talk/Talker.h</itemPath>
         </logicalFolder>
@@ -99,8 +96,6 @@
       </item>
       <item path="src/talky/base/Concept.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/talky/base/ConceptInfo.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/talky/base/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/base/Language.h" ex="false" tool="3" flavor2="0">
@@ -143,10 +138,6 @@
       <item path="src/talky/talk/SlangTalker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/talk/SlangTalker.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/talky/talk/TalkTopic.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/talky/talk/TalkTopic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/talky/talk/Talker.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -189,8 +180,6 @@
       </item>
       <item path="src/talky/base/Concept.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/talky/base/ConceptInfo.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/talky/base/Language.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/base/Language.h" ex="false" tool="3" flavor2="0">
@@ -233,10 +222,6 @@
       <item path="src/talky/talk/SlangTalker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/talk/SlangTalker.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/talky/talk/TalkTopic.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/talky/talk/TalkTopic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/talky/talk/Talker.cpp" ex="false" tool="1" flavor2="0">
       </item>

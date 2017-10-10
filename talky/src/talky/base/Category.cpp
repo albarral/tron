@@ -7,31 +7,33 @@
 
 namespace talky
 {
-Category::Category(int topic, int id, std::string name)
-{
-    this->topic = topic;
-    this->categoryId = id;
-    this->name = name;
-}
 
 Category::~Category()
 {
     listConcepts.clear();
 }
 
-void Category::build(std::vector<ConceptInfo>& listConceptsInfo, Slang& oSlang)
+void Category::addConcept(Concept& oConcept)
+{
+    oConcept.setTopicId(topic);
+    oConcept.setCategory(id);
+    
+    listConcepts.push_back(oConcept);    
+}
+
+
+void Category::applySlang(Slang& oSlang)
 {
     std::string conceptName;
-    // for each concept info
-    for (ConceptInfo conceptInfo : listConceptsInfo)
+    // for each concept 
+    for (Concept& oConcept : listConcepts)
     {
-        // get the concept name (from the slang)
-        conceptName = oSlang.getConceptName(conceptInfo.id);
-        // if exists, create concept object and add to category
+        // search its name (from the slang)
+        conceptName = oSlang.getConceptName(oConcept.getMeaning());
+        // if found, assign name to concept
         if (!conceptName.empty())
         {
-            Concept oConcept(topic, categoryId, conceptInfo.id, conceptName, conceptInfo.bneedsQuantity);
-            listConcepts.push_back(oConcept);
+            oConcept.setName(conceptName);
         }
     }    
 }
@@ -39,7 +41,7 @@ void Category::build(std::vector<ConceptInfo>& listConceptsInfo, Slang& oSlang)
 
 std::string Category::toString()
 {
-    std::string text = "[Category] " + name + ", topic: " + std::to_string(topic) + ", id: " + std::to_string(categoryId) + "\n"; 
+    std::string text = "[Category] " + name + ", topic: " + std::to_string(topic) + ", id: " + std::to_string(id) + "\n"; 
     // and show all concepts
     for (Concept& oConcept : listConcepts) 
        text += oConcept.toString() + "\n";

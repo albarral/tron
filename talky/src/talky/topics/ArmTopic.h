@@ -87,6 +87,7 @@ public:
     void createAxisCategory();
     void createCyclicCategory();
     void createExtraCategory();    
+
 };
 }
 #endif

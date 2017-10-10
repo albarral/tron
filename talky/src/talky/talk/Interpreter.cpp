@@ -8,7 +8,6 @@
 #include "talky/talk/Interpreter.h"
 #include "talky/topics/ArmTopic.h"
 #include "talky/languages/ArmLanguage.h"
-#include "talky/talk/TalkTopic.h"
 #include "talky/Topics.h"
 
 using namespace log4cxx;
@@ -35,12 +34,11 @@ void Interpreter::reset()
 
 void Interpreter::addLanguage(int topicId)
 {
-    bool bvalidTopic = false;
-    
+    bool bvalidTopic = false;    
     // get topic name 
     std::string topicName = Topics::getTopicName(topicId);
-    // and create an empty talk topic 
-    TalkTopic oTalkTopic(topicId, topicName);
+    // create talker for topic
+    Talker oTalker;
     
     // tune the talk topic for the specified topic and language 
     switch (topicId)
@@ -52,18 +50,17 @@ void Interpreter::addLanguage(int topicId)
             // build arm language
             ArmLanguage oArmLanguage;            
             oArmLanguage.build();
-            // join both to form the arm talk topic
-            oTalkTopic.build(oArmTopic, oArmLanguage);            
+            // apply language to topic
+            oArmTopic.applyLanguage(oArmLanguage);            
+            // apply topic to talker
+            oTalker.build(oArmTopic);
             bvalidTopic = true;
             break;            
     }
     
     // if talk topic created
     if (bvalidTopic)
-    {
-        // create talker for topic
-        Talker oTalker;
-        oTalker.build(oTalkTopic);
+    {        
         // add topic to maps
         mapTopicNumbers.emplace(topicName, topicId);    
         mapTopicNames.emplace(topicId, topicName);    

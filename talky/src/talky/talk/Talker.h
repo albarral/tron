@@ -15,8 +15,7 @@
 #include "talky/coms/Message.h"
 #include "talky/coms/Command.h"
 #include "talky/base/Category.h"
-#include "talky/talk/TalkTopic.h"
-
+#include "talky/base/Topic.h"
 
 namespace talky
 {
@@ -42,9 +41,8 @@ public:
     int getTopic() {return topic;};    
 
     // builds talker for given topic
-    void build(TalkTopic& oTalkTopic);
+    void build(Topic& oTopic);
     
-
     // converts given communication message in a command 
     // elements processed: category 
     // uses proper slang talker to interpret elements of the category

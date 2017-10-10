@@ -9,7 +9,8 @@
 #include <map>
 #include <vector>
 
-#include "talky/base/ConceptInfo.h"
+#include "talky/base/Category.h"
+#include "talky/base/Language.h"
 
 namespace talky
 {
@@ -21,8 +22,7 @@ class Topic
 {    
 protected:
     int topic;                                      /*! topic identifier */        
-    std::vector<int> listCategories;     /*! list of categories */    
-    std::map<int, std::vector<ConceptInfo>> mapConcepts;     /*! map of concepts divided by categories */
+    std::vector<Category> listCategories;     /*! list of categories */        
     
 public:
     Topic();              	
@@ -30,18 +30,15 @@ public:
 
     void reset();    
     // set represented topic
-    void setTopic(int topic);
+    void setTopicId(int value) {topic = value;};
     int getTopic() {return topic;}; 
     
-    std::vector<int>& getListCategories() {return listCategories;};
-    std::map<int, std::vector<ConceptInfo>>& getMapConcepts() {return mapConcepts;};
-    
-    //get concepts of given category
-    std::vector<ConceptInfo>& getCategoryConcepts(int category);
-    
-protected:
     // add category to topic
-    void addCategory(int category, std::vector<ConceptInfo>& listConcepts);    
+    void addCategory(Category& oCategory);    
+    std::vector<Category>& getListCategories() {return listCategories;};
+
+    // apply the given language to the topic (applying slangs to all categories)    
+    void applyLanguage(Language& oLanguage);
 };
 }
 #endif

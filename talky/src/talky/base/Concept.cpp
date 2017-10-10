@@ -7,15 +7,6 @@
 
 namespace talky
 {
-Concept::Concept(int topic, int category, int meaning, std::string name, bool bneedsQuantity)
-{
-    this->topic = topic;
-    this->category = category; 
-    this->meaning = meaning;
-    this->name = name;
-    this->bneedsQuantity = bneedsQuantity;
-}
-
 std::string Concept::toString()
 {
     return "[Concept] " + name + ", topic: " + std::to_string(topic) + ", category: " + std::to_string(category) + 

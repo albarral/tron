@@ -43,18 +43,16 @@ std::string Language::getCategoryName(int category)
     }
 }
 
-Slang& Language::getCategorySlang(int category)
+Slang* Language::getCategorySlang(int category)
 {
     try 
     {
-        return (mapSlangs.at(category));
+        return &(mapSlangs.at(category));
     }
-    // if key not found, return dummy slang 
+    // if key not found, return 0
     catch (const std::out_of_range& oor) 
     {
-        // dummy slang creation in heap
-        Slang* pDummySlang = new Slang();
-        return *pDummySlang;
+        return 0;
     }        
 }
 

@@ -20,34 +20,34 @@ void Topic::reset()
 {
     topic = -1;
     listCategories.clear();
-    mapConcepts.clear();    
 }
 
-void Topic::setTopic(int topic)
+void Topic::addCategory(Category& oCategory)
 {
-    this->topic = topic;    
+    oCategory.setTopicId(topic);
+    
+    listCategories.push_back(oCategory);    
 }
 
-void Topic::addCategory(int category, std::vector<ConceptInfo>& listConcepts)
-{    
-    // add category
-    listCategories.push_back(category);
-    // add category concepts
-    mapConcepts.emplace(category, listConcepts);
+void Topic::applyLanguage(Language& oLanguage)
+{        
+    std::string categoryName;
+    // for each topic category
+    for (Category& oCategory : listCategories)
+    {        
+        // get its associated slang
+        Slang* pSlang = oLanguage.getCategorySlang(oCategory.getId());
+        // and its category name 
+        categoryName = oLanguage.getCategoryName(oCategory.getId());
+        // if both exist
+        if (pSlang != 0 && !categoryName.empty())
+        {
+            // set category name
+            oCategory.setName(categoryName);
+            // and apply the slang to the category 
+            oCategory.applySlang(*pSlang);
+        }
+    }    
 }
 
-std::vector<ConceptInfo>& Topic::getCategoryConcepts(int category)
-{
-    try 
-    {
-        return (mapConcepts.at(category));
-    }
-    // if key not found, return dummy slang 
-    catch (const std::out_of_range& oor) 
-    {
-        // dummy list of concepts
-        std::vector<ConceptInfo>* pDummyList = new std::vector<ConceptInfo>();
-        return *pDummyList;
-    }            
-}
 }

@@ -23,8 +23,11 @@ private:
     bool bneedsQuantity;     /*! concept needs a quantity (numeric measure) */   
     
 public:
-    //Concept();        
-    Concept(int topic, int category, int meaning, std::string name, bool bneedsQuantity);
+    void setTopicId(int value) {topic = value;};
+    void setCategory(int value) {category = value;};
+    void setMeaning(int value) {meaning = value;};
+    void setName(std::string value) {name = value;};
+    void setNeedsQuantity(bool bvalue) {bneedsQuantity = bvalue;};
 
     int getTopic() {return topic;};
     int getCategory() {return category;};

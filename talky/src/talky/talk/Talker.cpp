@@ -31,13 +31,13 @@ void Talker::reset()
     mapSlangTalkers.clear();
 }
 
-void Talker::build(TalkTopic& oTalkTopic)
+void Talker::build(Topic& oTopic)
 {
-    setTopic(oTalkTopic.getTopicId());
+    setTopic(oTopic.getTopic());
 
     SlangTalker oSlangTalker;   
     // for each topic category
-    for (Category& oCategory : oTalkTopic.getListCategories())
+    for (Category& oCategory : oTopic.getListCategories())
     {        
         // create a slang talker 
         oSlangTalker.reset();
