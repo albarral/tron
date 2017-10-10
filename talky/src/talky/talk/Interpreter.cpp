@@ -81,10 +81,11 @@ bool Interpreter::understandsLanguage(std::string topicName)
 bool Interpreter::processMessage(std::string text)
 {
     // reset command
-    oCommand.resetFields();
+    oCommand.reset();
  
-    // analyze message (obtain fields)
-    oMessage.splitFields(text);
+    // set raw message text and analyze its structure
+    oMessage.setRawText(text);
+    oMessage.digestMessage();
 
     // if message complete
     if (oMessage.isComplete())
@@ -129,36 +130,48 @@ bool Interpreter::processMessage(std::string text)
 
 bool Interpreter::buildMessage(Command& oCommandOut)
 {
-    bool bcomposed = false;
-    // reset message
-    oMessage.resetFields();
+    // reset message    
+    oMessage.reset();
     
-    // get topic name 
-    std::string topicName = getTopicName(oCommandOut.getTopic());
-
-    // if known topic
-    if (!topicName.empty())
+    // and reset command validity
+    oCommandOut.resetValidityFlags();
+            
+    // if command complete
+    if (oCommandOut.isComplete())
     {
-        // get topic talker 
-        Talker* pTalker = getTopicTalker(oCommandOut.getTopic());
+        // get topic name 
+        std::string topicName = getTopicName(oCommandOut.getTopic());
 
-        // if talker found, compose rest of message                 
-        if (pTalker != 0)
+        // if known topic
+        if (!topicName.empty())
         {
-            // inform message topic
-            oMessage.setTopic(topicName);
+            // get topic talker 
+            Talker* pTalker = getTopicTalker(oCommandOut.getTopic());
 
-            bcomposed = pTalker->buildMessage(oCommandOut, oMessage);        
+            // if talker found, compose rest of message                 
+            if (pTalker != 0)
+            {
+                // inform message topic
+                oMessage.setTopic(topicName);
+                oCommandOut.setTopicValidity(true);
+
+                pTalker->buildMessage(oCommandOut, oMessage);        
+                // compose message
+                oMessage.composeMessage();
+            }
+            // missing talker
+            else
+                LOG4CXX_WARN(logger, "Interpreter: missing talker for topic " << topicName);        
         }
-        // missing talker
+        // unknown topic
         else
-            LOG4CXX_WARN(logger, "Interpreter: missing talker for topic " << topicName);        
-    }
-    // unknown topic
+            LOG4CXX_WARN(logger, "Interpreter: unknown topic " << oCommandOut.getTopic());                
+    }   
+    // incomplete command
     else
-        LOG4CXX_WARN(logger, "Interpreter: unknown topic " << oCommandOut.getTopic());
+        LOG4CXX_WARN(logger, "Interpreter: incomplete command " << oCommandOut.toString());          
 
-    return bcomposed;
+    return oCommandOut.isInterpreted();
 }
 
 

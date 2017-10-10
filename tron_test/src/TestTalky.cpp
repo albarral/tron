@@ -30,7 +30,8 @@ void TestTalky::makeTest()
     // show known languages
     //oInterpreter.showKnowledge();
 
-    testMessageReception(oInterpreter);        
+    //testMessageReception(oInterpreter);        
+    testMessageSending(oInterpreter);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -41,8 +42,8 @@ void TestTalky::testMessageReception(talky::Interpreter& oInterpreter)
 
     // test message
     std::string sep = talky::Topics::FIELD_SEPARATOR;
-    //std::string msg = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
-    std::string msg = "arm" + sep + "cyclic" + sep + "move";
+    std::string msg = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
+    //std::string msg = "arm" + sep + "cyclic" + sep + "move";
     LOG4CXX_INFO(logger, modName + ": msg > " + msg);
 
     // interpret test message
@@ -56,18 +57,32 @@ void TestTalky::testMessageReception(talky::Interpreter& oInterpreter)
     else
     {
         LOG4CXX_WARN(logger, modName + ": msg processing failed!");            
-        LOG4CXX_WARN(logger, modName + oInterpreter.getMessage().toStringValidity());            
+        LOG4CXX_WARN(logger, modName + ": " + oInterpreter.getMessage().toStringValidity());            
     }
 }
 
 void TestTalky::testMessageSending(talky::Interpreter& oInterpreter)
 {
+    LOG4CXX_INFO(logger, modName + ": testMessageSending ...");
+
     talky::Command oCommand;
     oCommand.setTopic(talky::Topics::eTOPIC_ARM);
     oCommand.setCategory(talky::ArmTopic::eCAT_ARM_JOINT);
     oCommand.setConcept(talky::ArmTopic::eJOINT_HS_POS);
-    oCommand.setValue(10);
+    oCommand.setQuantity(10);
+    LOG4CXX_INFO(logger, modName + ": command > " + oCommand.toString());
     
-    oInterpreter.buildMessage(oCommand);
+    if (oInterpreter.buildMessage(oCommand))
+    {
+        // show obtained command
+        talky::Message& oMessage = oInterpreter.getMessage();
+        LOG4CXX_INFO(logger, modName + ": command processed ok");        
+        LOG4CXX_INFO(logger, modName + ": " + oMessage.toString());                
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, modName + ": command processing failed!");            
+        LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
+    }
     
 }

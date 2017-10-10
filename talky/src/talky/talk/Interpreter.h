@@ -41,14 +41,16 @@ public:
     void addLanguage(int topicId);
     
     // interprets given message, converting it to a standard command
+    // uses proper talker to interpret elements of the topic
     // returns true if message processed ok
-    bool processMessage(std::string text);    
-    // gets interpreted command
-    Command& getCommand() {return oCommand;};
+    bool processMessage(std::string text);
     
     // converts given command in a communication message
     // returns true if conversion was ok
     bool buildMessage(Command& oCommandOut);
+
+    // gets interpreted command
+    Command& getCommand() {return oCommand;};
     // gets composed message
     Message& getMessage() {return oMessage;};
 

@@ -17,21 +17,26 @@ Message::Message()
 // mandatory fields constructor
 Message::Message(std::string topic, std::string category, std::string concept) 
 {
-    resetFields();
     setTopic(topic);
     setCategory(category); 
     setConcept(concept);
 }
 
-Message::Message(std::string topic, std::string category, std::string concept, std::string value) : Message(topic, category, concept) 
+Message::Message(std::string topic, std::string category, std::string concept, std::string quantity) : Message(topic, category, concept) 
 {
-    setValue(value);
+    setQuantity(quantity);
+}
+
+void Message::reset()
+{
+    resetFields();
+    resetFlags();    
 }
 
 void Message::resetFields()
 {
-    topic = category = concept = value = "";   
-    resetPresenceFlags();
+    // not the raw text
+    topic = category = concept = quantity = "";   
 }
 
 void Message::setTopic(std::string word)
@@ -52,10 +57,10 @@ void Message::setConcept(std::string word)
     setConceptPresence(!word.empty());
 }    
 
-void Message::setValue(std::string word)
+void Message::setQuantity(std::string word)
 {
-    value = word;
-    setValuePresence(!word.empty());
+    quantity = word;
+    setQuantityPresence(!word.empty());
 }    
 
 
@@ -64,18 +69,16 @@ void Message::composeMessage()
     rawText = topic + Topics::FIELD_SEPARATOR +
             category + Topics::FIELD_SEPARATOR +
             concept + Topics::FIELD_SEPARATOR +
-            value; 
+            quantity; 
 }
 
-void Message::splitFields(std::string text)
+void Message::digestMessage()
 {
-    resetFields();
-    resetValidityFlags();
-    
-    rawText = text;    
-    
+    // first we reset the message (fields and flags)
+    reset();
+        
     // split raw text in tokens 
-    std::vector<std::string> listTokens = StringUtil::split(text, Topics::FIELD_SEPARATOR); 
+    std::vector<std::string> listTokens = StringUtil::split(rawText, Topics::FIELD_SEPARATOR); 
     int numTokens = listTokens.size();
 
     // get topic field 
@@ -91,14 +94,14 @@ void Message::splitFields(std::string text)
         setConcept(listTokens.at(eFIELD_CONCEPT));
 
     // get value field 
-    if (numTokens > eFIELD_VALUE)
-        setValue(listTokens.at(eFIELD_VALUE));
+    if (numTokens > eFIELD_QUANTITY)
+        setQuantity(listTokens.at(eFIELD_QUANTITY));
 }
 
 std::string Message::toString()
 {
     std::string desc = "[Message] topic: " + topic + ", category: " + category + 
-            ", concept: " + concept + ", value: " + value + ", raw text: " + rawText;
+            ", concept: " + concept + ", quantity: " + quantity + ", raw text: " + rawText;
     
     return desc;
 }    

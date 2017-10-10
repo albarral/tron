@@ -13,8 +13,8 @@ namespace talky
  * Structure used to represent a concept
  */
 struct ConceptInfo {
-    int conceptId;                  // concept's id
-    bool bneedsValue;           // flag indicating the concept is measurable (requires measure value when controlled, gives measure value when sensed)
+    int id;                  // concept's id
+    bool bneedsQuantity;       // flag indicating the concept is measurable (needs quantity for being controlled & gives quantity when sensed)
 };
 }
 #endif

@@ -16,42 +16,47 @@ namespace talky
 class Conversion
 {
 protected:    
+    // presence flags
     bool bhasTopic;                       /*! flag indicating the message has a topic field  */
     bool bhasCategory;                  /*! flag indicating the message has a category field  */
     bool bhasConcept;                   /*! flag indicating the message has a concept field  */
-    bool bhasValue;                       /*! flag indicating the message has a value field  */  
-    int numFieldsPresent;
-    // interpretation
+    bool bhasQuantity;                   /*! flag indicating the message has a quantity field  */  
+    int numFieldsPresent;               /*! number of fields present in message */      
+    bool bmissingFields;                /*! flag indicating the message has missing fields */
+    // validity flags
     bool bvalidTopic;                       /*! flag indicating the topic field was interpreted  */
     bool bvalidCategory;                  /*! flag indicating the category field was interpreted */
     bool bvalidConcept;                   /*! flag indicating the concept field was interpreted */
-    bool bvalidValue;                       /*! flag indicating the value field was interpreted */  
-    int numFieldsInterpreted;
-    int numFieldsMissing;
+    bool bvalidQuantity;                   /*! flag indicating the quantity field was interpreted */  
+    int numFieldsInterpreted;            /*! number of fields interpreted in message */
         
 public:
     Conversion();    
     
+    void resetFlags();
     void resetPresenceFlags();
     void resetValidityFlags();
 
-    void setTopicPresence(bool val);
-    void setCategoryPresence(bool val);
-    void setConceptPresence(bool val);
-    void setValuePresence(bool val);      
+    void setTopicPresence(bool value);
+    void setCategoryPresence(bool value);
+    void setConceptPresence(bool value);
+    void setQuantityPresence(bool value);      
     bool hasTopic() {return bhasTopic;};
     bool hasCategory() {return bhasCategory;};
     bool hasConcept() {return bhasConcept;};
-    bool hasValue() {return bhasValue;};
+    bool hasQuantity() {return bhasQuantity;};
 
-    void setTopicValidity(bool val);
-    void setCategoryValidity(bool val);
-    void setConceptValidity(bool val);
-    void setValueValidity(bool val);      
+    void setTopicValidity(bool value);
+    void setCategoryValidity(bool value);
+    void setConceptValidity(bool value);
+    void setQuantityValidity(bool value);      
     bool isValidTopic() {return bvalidTopic;};
     bool isValidCategory() {return bvalidCategory;};
     bool isValidConcept() {return bvalidConcept;};
-    bool isValidValue() {return bvalidValue;};
+    bool isValidQuantity() {return bvalidQuantity;};
+    
+    void setMissingFields() {bmissingFields = true;};
+    bool hasMissingFields() {return bmissingFields;};
     
     // check if conversion has all required fields
     bool isComplete();

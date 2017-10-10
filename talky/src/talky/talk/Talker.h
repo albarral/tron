@@ -44,12 +44,14 @@ public:
     // builds talker for given topic
     void build(TalkTopic& oTalkTopic);
     
-    // interprets given message, converting it to a standard command
+
+    // converts given communication message in a command 
+    // elements processed: category 
+    // uses proper slang talker to interpret elements of the category
     void processMessage(Message& oMessage, Command& oCommand);    
     
-    // converts given command in a communication's message
-    // returns true if conversion was ok
-    bool buildMessage(Command& oCommand, Message& oMessage);
+    // converts given command in a communication message
+    void buildMessage(Command& oCommand, Message& oMessage);
 
     // checks if given category is understood by this topic interpreter
     bool understandsSlang(std::string categoryName);    

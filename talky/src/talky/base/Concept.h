@@ -16,21 +16,21 @@ namespace talky
 class Concept
 {
 private:    
-    int topic;          /*! concept's topic  */
-    int category;   /*! concept's category  */
-    int meaning;       /*! concept's meaning */
+    int topic;                  /*! concept's topic  */
+    int category;            /*! concept's category  */
+    int meaning;            /*! concept's meaning */
     std::string name;      /*! concept's name */    
-    bool bneedsValue;     /*! concept needs a value (a measure) */   
+    bool bneedsQuantity;     /*! concept needs a quantity (numeric measure) */   
     
 public:
     //Concept();        
-    Concept(int topic, int category, int meaning, std::string name, bool bneedsValue);
+    Concept(int topic, int category, int meaning, std::string name, bool bneedsQuantity);
 
     int getTopic() {return topic;};
     int getCategory() {return category;};
     int getMeaning() {return meaning;};
     std::string getName() {return name;};
-    bool needsValue() {return bneedsValue;}; 
+    bool needsQuantity() {return bneedsQuantity;}; 
         
     std::string toString();
 };

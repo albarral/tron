@@ -89,10 +89,8 @@ void Talker::processMessage(Message& oMessage, Command& oCommand)
 }
 
 
-bool Talker::buildMessage(Command& oCommand, Message& oMessage)
+void Talker::buildMessage(Command& oCommand, Message& oMessage)
 {
-    bool bcomposed = false;
-    
     // get category name 
     std::string categoryName = getCategoryName(oCommand.getCategory());
 
@@ -107,8 +105,9 @@ bool Talker::buildMessage(Command& oCommand, Message& oMessage)
         {
             // inform message category
             oMessage.setCategory(categoryName);
+            oCommand.setCategoryValidity(true);
             
-            bcomposed = pSlangTalker->buildMessage(oCommand, oMessage);        
+            pSlangTalker->buildMessage(oCommand, oMessage);        
         }
         // missing slang talker
         else
@@ -117,9 +116,8 @@ bool Talker::buildMessage(Command& oCommand, Message& oMessage)
     // unknown category
     else
         LOG4CXX_WARN(logger, "Talker: unknown category " << oCommand.getCategory());
-    
-    return bcomposed;
 }
+
 
 int Talker::getCategoryNumber(std::string categoryName)
 {

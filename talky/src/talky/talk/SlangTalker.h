@@ -41,12 +41,13 @@ public:
     // builds slang talker for given category
     void build(Category& oCategory);
     
-    // interprets given message, converting it to a standard command
-    void processMessage(Message& oMessage, Command& oCommand);    
+    // converts given communication message in a command 
+    // elements processed: concept and quantity
+    void processMessage(Message& oMessage, Command& oCommand);        
     
-    // converts given command in a communication's message
-    // returns true if conversion was ok
-    bool buildMessage(Command& oCommand, Message& oMessage);
+    // converts given command in a communication message
+    // elements processed: concept and quantity
+    void buildMessage(Command& oCommand, Message& oMessage);
 
     // checks if given concept is understood by this slang interpreter
     bool understandsConcept(std::string conceptName);    
@@ -55,6 +56,13 @@ public:
     std::string showKnowledge();
     
 private:
+    // interprets quantity of given message
+    // it informs the given command
+    void processQuantity(Message& oMessage, Command& oCommand);    
+    // builds quantity of given command
+    // it informs the given command
+    void buildQuantity(Command& oCommand, Message& oMessage);    
+
     // get concept id for given name
     int getConceptNumber(std::string conceptName);
     // get concept name for given id

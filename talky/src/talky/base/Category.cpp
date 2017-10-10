@@ -26,11 +26,11 @@ void Category::build(std::vector<ConceptInfo>& listConceptsInfo, Slang& oSlang)
     for (ConceptInfo conceptInfo : listConceptsInfo)
     {
         // get the concept name (from the slang)
-        conceptName = oSlang.getConceptName(conceptInfo.conceptId);
+        conceptName = oSlang.getConceptName(conceptInfo.id);
         // if exists, create concept object and add to category
         if (!conceptName.empty())
         {
-            Concept oConcept(topic, categoryId, conceptInfo.conceptId, conceptName, conceptInfo.bneedsValue);
+            Concept oConcept(topic, categoryId, conceptInfo.id, conceptName, conceptInfo.bneedsQuantity);
             listConcepts.push_back(oConcept);
         }
     }    

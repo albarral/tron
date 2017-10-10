@@ -70,25 +70,9 @@ void SlangTalker::processMessage(Message& oMessage, Command& oCommand)
             oCommand.setConcept(conceptId);
             oMessage.setConceptValidity(true);
 
-            // if extra value needed, process value
-            if (pConcept->needsValue())
-            {
-                float value;
-                
-                // if value is valid
-                if (StringUtil::convert2Float(oMessage.getValue(), value))
-                {
-                    // inform command value
-                    oCommand.setValue(value);
-                    oMessage.setValueValidity(true);
-                }
-                // invalid value
-                else
-                {
-                    oMessage.setValueValidity(false);
-                    LOG4CXX_WARN(logger, "SlangTalker: invalid value " << oMessage.getValue());          
-                }
-            }
+            // if quantity needed, process quantity
+            if (pConcept->needsQuantity())
+                processQuantity(oMessage, oCommand);
         }
         // missing concept
         else
@@ -104,10 +88,8 @@ void SlangTalker::processMessage(Message& oMessage, Command& oCommand)
 }
 
 
-bool SlangTalker::buildMessage(Command& oCommand, Message& oMessage)
+void SlangTalker::buildMessage(Command& oCommand, Message& oMessage)
 {
-    bool bcomposed = false;
-    
     // get concept name 
     std::string conceptName = getConceptName(oCommand.getConcept());
 
@@ -121,21 +103,12 @@ bool SlangTalker::buildMessage(Command& oCommand, Message& oMessage)
         if (pConcept != 0)
         {
             // inform message concept
-            oMessage.setConcept(conceptName);            
+            oMessage.setConcept(conceptName);         
+            oCommand.setConceptValidity(true);
                     
-            // if extra value needed
-            if (pConcept->needsValue())
-            {
-                std::string value = std::to_string(oCommand.getValue());
-
-                // inform message value
-                oMessage.setValue(value);
-                // message composed ok           
-                bcomposed = true;
-            }
-            // if no extra value needed, message composed ok            
-            else
-                bcomposed = true;
+            // if quantity needed
+            if (pConcept->needsQuantity())
+                buildQuantity(oCommand, oMessage);
         }
         // missing concept
         else
@@ -144,9 +117,53 @@ bool SlangTalker::buildMessage(Command& oCommand, Message& oMessage)
     // unknown concept
     else
         LOG4CXX_WARN(logger, "SlangTalker: unknown concept " << oCommand.getConcept());
-    
-    return bcomposed;    
 }
+
+void SlangTalker::processQuantity(Message& oMessage, Command& oCommand)
+{
+    // if message has quantity, interpret it
+    if (oMessage.hasQuantity())
+    {
+        float quantity;
+
+        // if quantity valid
+        if (StringUtil::convert2Float(oMessage.getQuantity(), quantity))
+        {
+            // inform command quantity
+            oCommand.setQuantity(quantity);
+            oMessage.setQuantityValidity(true);
+        }
+        // invalid quantity
+        else
+            LOG4CXX_WARN(logger, "SlangTalker: invalid quantity " << oMessage.getQuantity());          
+    }
+    // missing quantity
+    else
+    {
+        oMessage.setMissingFields();
+        LOG4CXX_WARN(logger, "SlangTalker: missing quantity in message");
+    }
+}
+
+void SlangTalker::buildQuantity(Command& oCommand, Message& oMessage)
+{
+    // if command has quantity
+    if (oCommand.hasQuantity())
+    {
+        std::string quantity = std::to_string(oCommand.getQuantity());
+
+        // inform message quantity (all values accepted)
+        oMessage.setQuantity(quantity);
+        oCommand.setQuantityValidity(true);
+    }
+    // missing quantity
+    else
+    {
+        oCommand.setMissingFields();
+        LOG4CXX_WARN(logger, "SlangTalker: missing quantity in command");
+    }    
+}
+
 
 int SlangTalker::getConceptNumber(std::string conceptName)
 {

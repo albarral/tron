@@ -11,97 +11,98 @@ namespace talky
 {
 Conversion::Conversion()
 {
+    resetFlags();
+}
+
+void Conversion::resetFlags()
+{
     resetPresenceFlags();
-    resetValidityFlags();
+    resetValidityFlags();    
 }
 
 void Conversion::resetPresenceFlags()
 {
-    bhasTopic = bhasCategory = bhasConcept = bhasValue = false;
+    bhasTopic = bhasCategory = bhasConcept = bhasQuantity = false;
     numFieldsPresent = 0;
+    bmissingFields = false;
 }
 
 void Conversion::resetValidityFlags()
 {
-    bvalidTopic = bvalidCategory = bvalidConcept = bvalidValue = false;
-    numFieldsInterpreted = numFieldsMissing = 0;
+    bvalidTopic = bvalidCategory = bvalidConcept = bvalidQuantity = false;
+    numFieldsInterpreted = 0;
 }
 
-void Conversion::setTopicPresence(bool val)
+void Conversion::setTopicPresence(bool value)
 {
-    // control present fields
-    if (!bhasTopic && val)
+    // update present fields counter
+    if (!bhasTopic && value)
         numFieldsPresent++;
 
-    bhasTopic = val;
+    bhasTopic = value;
 }    
 
-void Conversion::setCategoryPresence(bool val)
+void Conversion::setCategoryPresence(bool value)
 {
-    // control present fields
-    if (!bhasCategory && val)
+    // update present fields counter
+    if (!bhasCategory && value)
         numFieldsPresent++;
 
-    bhasCategory = val;
+    bhasCategory = value;
 }    
 
-void Conversion::setConceptPresence(bool val)
+void Conversion::setConceptPresence(bool value)
 {
-    // control present fields
-    if (!bhasConcept && val)
+    // update present fields counter
+    if (!bhasConcept && value)
         numFieldsPresent++;
 
-    bhasConcept = val;
+    bhasConcept = value;
 }    
 
-void Conversion::setValuePresence(bool val)
+void Conversion::setQuantityPresence(bool value)
 {
-    // control present fields
-    if (!bhasValue && val)
+    // update present fields counter
+    if (!bhasQuantity && value)
         numFieldsPresent++;
 
-    bhasValue = val;
+    bhasQuantity = value;
 }    
 
-void Conversion::setTopicValidity(bool val)
+void Conversion::setTopicValidity(bool value)
 {
-    // control interpreted fields
-    if (!bvalidTopic && val)
+    // update interpreted fields counter
+    if (!bvalidTopic && value)
         numFieldsInterpreted++;
         
-    bvalidTopic = val;        
+    bvalidTopic = value;        
 }    
 
-void Conversion::setCategoryValidity(bool val)
+void Conversion::setCategoryValidity(bool value)
 {
-    // control interpreted fields
-    if (!bvalidCategory && val)
+    // update interpreted fields counter
+    if (!bvalidCategory && value)
         numFieldsInterpreted++;
         
-    bvalidCategory = val;        
+    bvalidCategory = value;        
 }    
 
-void Conversion::setConceptValidity(bool val)
+void Conversion::setConceptValidity(bool value)
 {
-    // control interpreted fields
-    if (!bvalidConcept && val)
+    // update interpreted fields counter
+    if (!bvalidConcept && value)
         numFieldsInterpreted++;
         
-    bvalidConcept = val;        
+    bvalidConcept = value;        
 }    
 
-void Conversion::setValueValidity(bool val)
+void Conversion::setQuantityValidity(bool value)
 {
-    // control interpreted fields
-    if (!bvalidValue)
-    { 
-        if (val)
-            numFieldsInterpreted++;
-        else
-            numFieldsMissing++;
-    }
+    // update interpreted fields counter
+    if (!bvalidQuantity && value)
+        numFieldsInterpreted++;
         
-    bvalidValue = val;        
+    bvalidQuantity = value;        
 }    
 
 
@@ -114,13 +115,14 @@ bool Conversion::isComplete()
 
 bool Conversion::isInterpreted()
 {
-    return (isComplete() && numFieldsInterpreted == numFieldsPresent && numFieldsMissing == 0);
+    // message is considered interpreted if all present fields have been interpreted and there are no missing fields
+    return (isComplete() && numFieldsInterpreted == numFieldsPresent && !bmissingFields);
 }
 
 std::string Conversion::toStringValidity()
 {
     std::string desc = "[Conversion validity] topic: " + StringUtil::getBooleanValue(bvalidTopic) + ", category: " + StringUtil::getBooleanValue(bvalidCategory) + 
-            ", concept: " + StringUtil::getBooleanValue(bvalidConcept) + ", value: " + StringUtil::getBooleanValue(bvalidValue);
+            ", concept: " + StringUtil::getBooleanValue(bvalidConcept) + ", quantity: " + StringUtil::getBooleanValue(bvalidQuantity);
     
     return desc;
 }    
