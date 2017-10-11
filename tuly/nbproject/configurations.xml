@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="tuly" displayName="tuly" projectFiles="true">
+        <logicalFolder name="control" displayName="control" projectFiles="true">
+          <logicalFolder name="brooks" displayName="brooks" projectFiles="true">
+            <itemPath>src/tuly/control/brooks/control.cpp</itemPath>
+            <itemPath>src/tuly/control/brooks/control.h</itemPath>
+            <itemPath>src/tuly/control/brooks/controlT.h</itemPath>
+            <itemPath>src/tuly/control/brooks/inhibition.cpp</itemPath>
+            <itemPath>src/tuly/control/brooks/inhibition.h</itemPath>
+            <itemPath>src/tuly/control/brooks/sensor.h</itemPath>
+            <itemPath>src/tuly/control/brooks/sensorT.h</itemPath>
+          </logicalFolder>
+          <itemPath>src/tuly/control/module.cpp</itemPath>
+          <itemPath>src/tuly/control/module.h</itemPath>
+          <itemPath>src/tuly/control/module2.cpp</itemPath>
+          <itemPath>src/tuly/control/module2.h</itemPath>
+          <itemPath>src/tuly/control/module3.cpp</itemPath>
+          <itemPath>src/tuly/control/module3.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="utils" displayName="utils" projectFiles="true">
+          <itemPath>src/tuly/utils/Console.cpp</itemPath>
+          <itemPath>src/tuly/utils/Console.h</itemPath>
+          <itemPath>src/tuly/utils/File.cpp</itemPath>
+          <itemPath>src/tuly/utils/File.h</itemPath>
+          <itemPath>src/tuly/utils/FileReader.cpp</itemPath>
+          <itemPath>src/tuly/utils/FileReader.h</itemPath>
+          <itemPath>src/tuly/utils/FileWriter.cpp</itemPath>
+          <itemPath>src/tuly/utils/FileWriter.h</itemPath>
+          <itemPath>src/tuly/utils/StringUtil.cpp</itemPath>
+          <itemPath>src/tuly/utils/StringUtil.h</itemPath>
+          <itemPath>src/tuly/utils/UtilsTest.cpp</itemPath>
+          <itemPath>src/tuly/utils/UtilsTest.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src/tuly</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}</output>
+        </linkerTool>
+      </compileType>
+      <item path="src/tuly/control/brooks/control.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/control.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/controlT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/inhibition.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/inhibition.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/sensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/sensorT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/Console.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/Console.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/File.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/File.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/StringUtil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/StringUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/UtilsTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/UtilsTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/tuly/control/brooks/control.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/control.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/controlT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/inhibition.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/inhibition.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/sensor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/brooks/sensorT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/module3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/Console.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/Console.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/File.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/File.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileReader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/FileWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/StringUtil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/StringUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/UtilsTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/UtilsTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
