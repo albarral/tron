@@ -32,5 +32,10 @@
         <appender-ref ref="consoleAppender"/>
         <appender-ref ref="dailyAppender"/>
   </category>
+  <category name="comy" >
+        <priority value ="info" />
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="dailyAppender"/>
+  </category>
   
  </log4j:configuration>

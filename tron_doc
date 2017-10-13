@@ -1,0 +1,62 @@
+
+*** TRON PROJECTS ***
+
+This document lists all projects inside the tron repository.
+For each project the following structure is shown: 
+
+> project 
+
+library or executable 
+
+- dependencies
+
+* brief description
+* ...
+
+-------------------------------------------------------------------------------------
+
+> talky
+
+libtron_talky.so		
+
+- log4cxx
+
+* Library defining a standard language for communication between robotic control nodes. 
+* The language is divided in topics, categories and concepts.
+
+-------------------------------------------------------------------------------------
+
+> tuly  
+
+libtron_tuly.so 		
+
+- libtron_tuly
+
+* Utility library with multiple auxiliary classes:
+* string utilities, file utilities ...
+* thread utilities, brooks control utilities ...
+
+-------------------------------------------------------------------------------------
+
+> comy  
+
+libtron_comy.so 		
+
+- log4cxx,  libtron_tralky
+
+* Library used for inter process communication.
+* It's based on the ZeroMQ library.
+
+-------------------------------------------------------------------------------------
+
+> tron_test
+
+tron_test 		
+
+- log4cxx + all libtron_libs
+
+* Program used for testing all other tron projects.
+
+-------------------------------------------------------------------------------------
+
+
