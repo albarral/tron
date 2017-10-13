@@ -8,13 +8,13 @@
 
 namespace comy
 {
-log4cxx::LoggerPtr ComyFilePublisher::logger(log4cxx::Logger::getLogger("comy.publisher"));
+log4cxx::LoggerPtr ComyFilePublisher::logger(log4cxx::Logger::getLogger("comy"));
 
 ComyFilePublisher::ComyFilePublisher()
 {    
-    // get coms file name
+    // get coms file path
     ComyConfig oComyConfig;    
-    filename = oComyConfig.getComsFilename2();
+    filePathPS = oComyConfig.getComsPathPS();
 }
 
 ComyFilePublisher::~ComyFilePublisher()
@@ -25,9 +25,9 @@ ComyFilePublisher::~ComyFilePublisher()
 void ComyFilePublisher::init()
 {
     // open coms file for writing
-    if (!filename.empty())
+    if (!filePathPS.empty())
     {
-        if (oFileWriter.open(filename))
+        if (oFileWriter.open(filePathPS))
             benabled = true;        
     }    
 }

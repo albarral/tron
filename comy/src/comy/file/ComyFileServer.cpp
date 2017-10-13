@@ -12,7 +12,7 @@
 
 namespace comy
 {
-//log4cxx::LoggerPtr ComyFileServer::logger(log4cxx::Logger::getLogger("comy.server"));
+//log4cxx::LoggerPtr ComyFileServer::logger(log4cxx::Logger::getLogger("comy"));
 
 ComyFileServer::ComyFileServer()
 {    
@@ -20,21 +20,31 @@ ComyFileServer::ComyFileServer()
     ComyConfig oComyConfig;    
 
     // create coms folder (if it doesn't exist)
-    mkdir(oComyConfig.getComsFolder().c_str(), 0777);
+    mkdir(oComyConfig.getComsPath().c_str(), 0777);
 
-    filename = oComyConfig.getComsFilename1();
-    // open coms file for reading & writing
-    if (!filename.empty())
-    {
-        oFileReader.open(filename);   
-        oFileWriter.open(filename);   
-    }
+    filePathCS = oComyConfig.getComsPathCS();
 }
 
 ComyFileServer::~ComyFileServer()
 {
-    oFileReader.close();
-    oFileWriter.close();    
+    if (oFileReader.isOpen())
+        oFileReader.close();
+    
+    if (oFileWriter.isOpen())
+        oFileWriter.close();    
+}
+
+void ComyFileServer::connect()
+{
+    // open coms file for reading & writing
+    if (!filePathCS.empty())
+    {
+        bool bconnected1 = oFileReader.open(filePathCS);   
+        bool bconnected2 = oFileWriter.open(filePathCS);   
+        bconnected = bconnected1 && bconnected2;
+    }
+    else
+        bconnected = false;    
 }
 
 bool ComyFileServer::readMessage()

@@ -20,10 +20,10 @@ public:
     ComyClient();
 
     bool isConnected() {return bconnected;};
-    //virtual void connect() = 0;
+    virtual void connect() = 0;
 
-    // send message to server (specific for each ComyClient implementation)
-    virtual void sendMessage(std::string text) = 0;
+    // send message to server, returns false if nothing sent
+    virtual bool sendMessage(std::string text) = 0;
 };
 }
 #endif

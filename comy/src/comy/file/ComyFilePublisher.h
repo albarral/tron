@@ -19,7 +19,7 @@ class ComyFilePublisher : public ComyPublisher
 {    
 private:
     static log4cxx::LoggerPtr logger;    
-    std::string filename;       // file for broadcasting the info
+    std::string filePathPS;       // file for broadcasting the info
     tuly::FileWriter oFileWriter;
     
 public:
@@ -27,7 +27,7 @@ public:
     ~ComyFilePublisher();
 
     virtual void init();
-    std::string getFilename() {return filename;};
+    std::string getFilename() {return filePathPS;};
         
 private:
    // info publishing method (writes data in file)

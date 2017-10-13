@@ -12,17 +12,22 @@ namespace comy
 {
 class ComyConfig 
 {
-    private:                
-        std::string comsFilename1;     // name of file used for client-server communications
-        std::string comsFilename2;     // name of file used for publish-subscribe communications
+public: 
+        static const std::string comsFolder;   // folder for all communication files
+        static const std::string comsFilenameCS;     // name of file used for client-server communications
+        static const std::string comsFilenamePS;     // name of file used for publish-subscribe communications
+
+private:                
+        std::string comsPathCS;     // file path used for client-server communications
+        std::string comsPathPS;     // file path used for publish-subscribe communications
         
     public:
         ComyConfig();
         //~ComyConfig();
                 
-        std::string getComsFolder();
-        std::string getComsFilename1() {return comsFilename1;}        
-        std::string getComsFilename2() {return comsFilename2;}        
+        std::string getComsPath();
+        std::string getComsPathCS() {return comsPathCS;}        
+        std::string getComsPathPS() {return comsPathPS;}        
 };
 
 }

@@ -20,13 +20,12 @@ protected:
 public:
     ComyServer();
 
-   bool isConnected() {return bconnected;};
-   virtual void connect() = 0;
-               
+   bool isConnected() {return bconnected;};               
    // return obtained text
     std::string getRawMessage() {return rawMessage;};
 
-   // read message from client
+   virtual void connect() = 0;
+   // read message from client, returns false if nothing read
     virtual bool readMessage() = 0; 
 };
 }

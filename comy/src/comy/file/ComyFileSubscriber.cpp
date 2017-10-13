@@ -10,13 +10,13 @@
 
 namespace comy
 {
-log4cxx::LoggerPtr ComyFileSubscriber::logger(log4cxx::Logger::getLogger("comy.subscriber"));
+log4cxx::LoggerPtr ComyFileSubscriber::logger(log4cxx::Logger::getLogger("comy"));
 
 ComyFileSubscriber::ComyFileSubscriber()
 {    
-    // get coms file name
+    // get coms file path 
     ComyConfig oComyConfig;    
-    filename = oComyConfig.getComsFilename2();
+    filePathPS = oComyConfig.getComsPathPS();
 }
 
 ComyFileSubscriber::~ComyFileSubscriber()
@@ -27,9 +27,9 @@ ComyFileSubscriber::~ComyFileSubscriber()
 void ComyFileSubscriber::init()
 {
     // open coms file for reading 
-    if (!filename.empty())
+    if (!filePathPS.empty())
     {
-        if (oFileReader.open(filename))
+        if (oFileReader.open(filePathPS))
             benabled = true;        
     }    
 }
@@ -51,7 +51,7 @@ bool ComyFileSubscriber::readInfo()
     }
     else
     {
-        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << filename);
+        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << filePathPS);
     }
     
     return brequest;

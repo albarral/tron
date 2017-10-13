@@ -8,26 +8,33 @@
 
 namespace comy
 {
-log4cxx::LoggerPtr ComyFileClient::logger(log4cxx::Logger::getLogger("comy.client"));
+log4cxx::LoggerPtr ComyFileClient::logger(log4cxx::Logger::getLogger("comy"));
 
 ComyFileClient::ComyFileClient()
 {    
     // get coms file name
     ComyConfig oComyConfig;    
-    filename = oComyConfig.getComsFilename1();
-    // open coms file for writing
-    if (!filename.empty())
-    {
-        oFileWriter.open(filename);  
-    }
+    filePathCS = oComyConfig.getComsPathCS();
 }
 
 ComyFileClient::~ComyFileClient()
 {
-    oFileWriter.close();    
+    if (oFileWriter.isOpen())                   
+        oFileWriter.close();    
 }
 
-void ComyFileClient::sendMessage(std::string text)
+void ComyFileClient::connect()
+{
+    // open coms file for writing
+    if (!filePathCS.empty())
+    {        
+        bconnected = oFileWriter.open(filePathCS);  
+    }
+    else
+        bconnected = false;    
+}
+
+bool ComyFileClient::sendMessage(std::string text)
 {
     if (oFileWriter.isOpen())        
     {
@@ -37,9 +44,13 @@ void ComyFileClient::sendMessage(std::string text)
         oFileWriter.writeFromTop();
         oFileWriter.writeFlush(output);
         LOG4CXX_INFO(logger, "ComyFileClient: command sent");        
+        return true;
     }
     else
+    {
         LOG4CXX_ERROR(logger, "ComyFileClient: send failed! coms file not open");                
+        return false;
+    }
 }
 
 

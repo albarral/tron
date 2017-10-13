@@ -18,7 +18,7 @@ class ComyFileSubscriber : public ComySubscriber
 {    
 private:
     static log4cxx::LoggerPtr logger;
-    std::string filename;       // name of file used for coms
+    std::string filePathPS;       // name of file used for coms
     tuly::FileReader oFileReader;     // file reader
     
 public:
@@ -27,7 +27,7 @@ public:
 
     virtual void init();
     
-    std::string getFilename() {return filename;};
+    std::string getFilename() {return filePathPS;};
 
 private:
    // info reading method (read data from file)
