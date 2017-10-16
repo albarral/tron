@@ -15,7 +15,7 @@ class ComyServer
 {    
 protected:
     bool bconnected;        // connected to client
-    std::string rawMessage;
+    std::string rawMessage;     // received message
     
 public:
     ComyServer();

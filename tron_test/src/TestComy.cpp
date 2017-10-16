@@ -7,6 +7,8 @@
 
 #include "TestComy.h"
 #include "comy/file/ComyFileClient.h"
+#include "comy/file/ComyFilePublisher.h"
+#include "comy/file/ComyFileSubscriber.h"
 
 using namespace log4cxx;
 
@@ -22,8 +24,8 @@ void TestComy::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testComsClientServer();
-    //testComsPublishSubscribe();        
+    //testComsClientServer();
+    testComsPublishSubscribe();        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -62,10 +64,42 @@ void TestComy::testComsClientServer()
     readByServer(oComyServer);
 }
 
+
 void TestComy::testComsPublishSubscribe()
 {
-    LOG4CXX_INFO(logger, modName + ": testComsPublishSubscribe ... TO DO");
+    LOG4CXX_INFO(logger, modName + ": testComsPublishSubscribe ...");
+       
+    comy::ComyFilePublisher oComyPublisher;
+    comy::ComyFileSubscriber oComySubscriber;
+    
+    // connection
+    oComyPublisher.connect();
+    oComySubscriber.connect();
+    
+    if (!oComyPublisher.isConnected() || !oComySubscriber.isConnected())
+    {
+        LOG4CXX_ERROR(logger, modName + ": client or server not connected. Exit test!");                        
+        return;
+    }
+    
+    // send message 1
+    std::string msg = "hola, hay alguien?";            
+    oComyPublisher.publishMessage(msg);
+    LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
 
+    // receive message
+    bool bmsgReceived = false;
+    while (!bmsgReceived)
+    {
+        if (oComySubscriber.readMessage())
+        {
+            bmsgReceived = true;
+            LOG4CXX_INFO(logger, modName + ": message received ... " + oComySubscriber.getRawMessage());                
+        }            
+        usleep(100000); // period = 100ms
+    }    
+
+    
 }
 
 void TestComy::readByServer(comy::ComyFileServer& oComyServer)

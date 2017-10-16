@@ -4,6 +4,7 @@
  ***************************************************************************/
 
 #include <string>
+#include <sys/stat.h>
 
 #include "comy/file/ComyFileSubscriber.h"
 #include "comy/ComyConfig.h"
@@ -16,25 +17,30 @@ ComyFileSubscriber::ComyFileSubscriber()
 {    
     // get coms file path 
     ComyConfig oComyConfig;    
-    filePathPS = oComyConfig.getComsPathPS();
+    
+    // create coms base folder (if it doesn't exist)
+    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
+    
+    pathPubSubFile = oComyConfig.getPubSubComsPath();
 }
 
 ComyFileSubscriber::~ComyFileSubscriber()
 {
-    oFileReader.close();
+    if (oFileReader.isOpen())
+        oFileReader.close();
 }
 
-void ComyFileSubscriber::init()
+void ComyFileSubscriber::connect()
 {
     // open coms file for reading 
-    if (!filePathPS.empty())
+    if (!pathPubSubFile.empty())
     {
-        if (oFileReader.open(filePathPS))
-            benabled = true;        
+        if (oFileReader.open(pathPubSubFile))
+            bconnected = true;        
     }    
 }
 
-bool ComyFileSubscriber::readInfo()
+bool ComyFileSubscriber::readMessage()
 {
     bool brequest = false;  // default no request received
 
@@ -51,7 +57,7 @@ bool ComyFileSubscriber::readInfo()
     }
     else
     {
-        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << filePathPS);
+        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << pathPubSubFile);
     }
     
     return brequest;

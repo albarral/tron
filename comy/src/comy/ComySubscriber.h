@@ -14,17 +14,20 @@ namespace comy
 class ComySubscriber
 {    
 protected:
-    bool benabled;    
-    std::string rawMessage;
+    bool bconnected;              // connected to channel
+    std::string rawMessage;     // received message
         
 public:
     ComySubscriber();
 
-   virtual void init() = 0;
-   bool isEnabled() {return benabled;};
+   bool isConnected() {return bconnected;};
+    // return obtained text
+    std::string getRawMessage() {return rawMessage;};
+
        
+   virtual void connect() = 0;
    // info reading method 
-    virtual bool readInfo() = 0;
+    virtual bool readMessage() = 0;
 };
 }
 #endif

@@ -13,7 +13,7 @@ namespace comy
 class ComyConfig 
 {
 public: 
-        static const std::string comsFolder;   // folder for all communication files
+        static const std::string comsBaseFolder;      // base folder for all communication files
         static const std::string comsFilenameCS;     // name of file used for client-server communications
         static const std::string comsFilenamePS;     // name of file used for publish-subscribe communications
 
@@ -25,9 +25,9 @@ private:
         ComyConfig();
         //~ComyConfig();
                 
-        std::string getComsPath();
-        std::string getComsPathCS() {return comsPathCS;}        
-        std::string getComsPathPS() {return comsPathPS;}        
+        std::string getComsBasePath();
+        std::string getClientServerComsPath() {return comsPathCS;}        
+        std::string getPubSubComsPath() {return comsPathPS;}        
 };
 
 }

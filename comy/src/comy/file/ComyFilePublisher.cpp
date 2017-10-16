@@ -3,6 +3,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <sys/stat.h>
+
 #include "comy/file/ComyFilePublisher.h"
 #include "comy/ComyConfig.h"
 
@@ -14,7 +16,11 @@ ComyFilePublisher::ComyFilePublisher()
 {    
     // get coms file path
     ComyConfig oComyConfig;    
-    filePathPS = oComyConfig.getComsPathPS();
+    
+    // create coms base folder (if it doesn't exist)
+    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
+    
+    pathPubSubFile = oComyConfig.getPubSubComsPath();
 }
 
 ComyFilePublisher::~ComyFilePublisher()
@@ -22,17 +28,17 @@ ComyFilePublisher::~ComyFilePublisher()
     oFileWriter.close();    
 }
 
-void ComyFilePublisher::init()
+void ComyFilePublisher::connect()
 {
     // open coms file for writing
-    if (!filePathPS.empty())
+    if (!pathPubSubFile.empty())
     {
-        if (oFileWriter.open(filePathPS))
-            benabled = true;        
+        if (oFileWriter.open(pathPubSubFile))
+            bconnected = true;        
     }    
 }
 
-void ComyFilePublisher::publishInfo(std::string rawMessage)
+bool ComyFilePublisher::publishMessage(std::string rawMessage)
 {
     if (oFileWriter.isOpen())        
     {
@@ -40,9 +46,13 @@ void ComyFilePublisher::publishInfo(std::string rawMessage)
         oFileWriter.writeFromTop();
         oFileWriter.writeFlush(rawMessage);
         //LOG4CXX_INFO(logger, "ComyFilePublisher: > " << sollMessage);        
+        return true;
     }
     else
+    {
         LOG4CXX_ERROR(logger, "ComyFilePublisher: can't publish info, coms file not open");                
+        return false;
+    }
 }
 
 

@@ -14,16 +14,16 @@ namespace comy
 class ComyPublisher
 {    
 protected:
-    bool benabled;        // connected to amy interface
+    bool bconnected;        // connected to amy interface
         
 public:
     ComyPublisher();
 
-    virtual void init() = 0;
-    bool isEnabled() {return benabled;};
+    bool isConnected() {return bconnected;};
    
+    virtual void connect() = 0;
    // info publishing method (specific for each ComyPublisher implementation)
-    virtual void publishInfo(std::string rawMessage) = 0;
+    virtual bool publishMessage(std::string rawMessage) = 0;
 };
 }
 #endif

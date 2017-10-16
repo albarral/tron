@@ -10,7 +10,7 @@ namespace comy
 
 ComySubscriber::ComySubscriber()
 {    
-    benabled = false;
+    bconnected = false;
 }
 
 

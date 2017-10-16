@@ -9,14 +9,14 @@
 
 namespace comy
 {    
-const std::string ComyConfig::comsFolder = "/coms";   
+const std::string ComyConfig::comsBaseFolder = "/coms";   
 const std::string ComyConfig::comsFilenameCS = "channel_CS.txt";
 const std::string ComyConfig::comsFilenamePS = "channel_PS.txt";
 
 // Constructor
 ComyConfig::ComyConfig()
 {    
-    std::string comsPath = getComsPath();
+    std::string comsPath = getComsBasePath();
     if (!comsPath.empty())
     {
         // path for client server communications        
@@ -31,14 +31,14 @@ ComyConfig::ComyConfig()
     }
 }
 
-std::string ComyConfig::getComsPath()
+std::string ComyConfig::getComsBasePath()
 {
     // coms file located in home folder
     char* pVar = getenv("HOME");    
     if (pVar != NULL)
     {
         std::string home(pVar);
-        return home + comsFolder;
+        return home + comsBaseFolder;
     }
     else
         return "";

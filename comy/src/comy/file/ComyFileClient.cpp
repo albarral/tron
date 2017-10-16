@@ -3,6 +3,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <sys/stat.h>
+
 #include "comy/file/ComyFileClient.h"
 #include "comy/ComyConfig.h"
 
@@ -12,9 +14,13 @@ log4cxx::LoggerPtr ComyFileClient::logger(log4cxx::Logger::getLogger("comy"));
 
 ComyFileClient::ComyFileClient()
 {    
-    // get coms file name
+    // get coms configuration
     ComyConfig oComyConfig;    
-    filePathCS = oComyConfig.getComsPathCS();
+    
+    // create coms base folder (if it doesn't exist)
+    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
+
+    pathClientServerFile = oComyConfig.getClientServerComsPath();
 }
 
 ComyFileClient::~ComyFileClient()
@@ -26,9 +32,9 @@ ComyFileClient::~ComyFileClient()
 void ComyFileClient::connect()
 {
     // open coms file for writing
-    if (!filePathCS.empty())
+    if (!pathClientServerFile.empty())
     {        
-        bconnected = oFileWriter.open(filePathCS);  
+        bconnected = oFileWriter.open(pathClientServerFile);  
     }
     else
         bconnected = false;    

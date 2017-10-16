@@ -10,7 +10,7 @@ namespace comy
 
 ComyPublisher::ComyPublisher()
 {    
-    benabled = false;
+    bconnected = false;
 }
 
 }

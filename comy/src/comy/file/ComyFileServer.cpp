@@ -16,13 +16,13 @@ namespace comy
 
 ComyFileServer::ComyFileServer()
 {    
-    // get coms file name
+    // get coms configuration
     ComyConfig oComyConfig;    
 
-    // create coms folder (if it doesn't exist)
-    mkdir(oComyConfig.getComsPath().c_str(), 0777);
+    // create coms base folder (if it doesn't exist)
+    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
 
-    filePathCS = oComyConfig.getComsPathCS();
+    pathClientServerFile = oComyConfig.getClientServerComsPath();
 }
 
 ComyFileServer::~ComyFileServer()
@@ -37,10 +37,10 @@ ComyFileServer::~ComyFileServer()
 void ComyFileServer::connect()
 {
     // open coms file for reading & writing
-    if (!filePathCS.empty())
+    if (!pathClientServerFile.empty())
     {
-        bool bconnected1 = oFileReader.open(filePathCS);   
-        bool bconnected2 = oFileWriter.open(filePathCS);   
+        bool bconnected1 = oFileReader.open(pathClientServerFile);   
+        bool bconnected2 = oFileWriter.open(pathClientServerFile);   
         bconnected = bconnected1 && bconnected2;
     }
     else
