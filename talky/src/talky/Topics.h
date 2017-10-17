@@ -39,6 +39,8 @@ namespace talky
     static const int MAX_COMMAND_FIELDS = 4;    /*! maximum number of fields in valid command/message */
     static const std::string EMPTY_VALUE;  
     static const std::string FIELD_SEPARATOR;      /*! character used to separate fields in messages */
+    static const std::string MSG_SEPARATOR;      /*! character used to separate simple messages in a message block */
+    static const std::string BLOCK_HEADER;         /*! header used in message blocks to easily differentiate them from simple messages */
 
     static std::string getTopicName(int topicId);
 };

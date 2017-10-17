@@ -16,6 +16,8 @@ const std::string Topics::WHEELS_TOPIC = "wheels";
 // auxiliary values
 const std::string Topics::EMPTY_VALUE = "";        
 const std::string Topics::FIELD_SEPARATOR = "*";
+const std::string Topics::MSG_SEPARATOR = "#";
+const std::string Topics::BLOCK_HEADER = "BLOCK";
 
 std::string Topics::getTopicName(int topicId)
 {

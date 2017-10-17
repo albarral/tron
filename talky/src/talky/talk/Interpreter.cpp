@@ -30,6 +30,7 @@ void Interpreter::reset()
     mapTopicNumbers.clear();
     mapTopicNames.clear();
     mapTalkers.clear();
+    blockProcessing = false;
 }
 
 void Interpreter::addLanguage(int topicId)
@@ -74,14 +75,32 @@ bool Interpreter::understandsLanguage(std::string topicName)
     return (mapTopicNumbers.find(topicName) != mapTopicNumbers.end());
 }
 
-
 bool Interpreter::processMessage(std::string text)
+{
+    std::string header = text.substr(0, Topics::BLOCK_HEADER.size());
+    blockProcessing = (header.compare(Topics::BLOCK_HEADER) == 0);
+    
+    if (!blockProcessing)
+    {
+        Message oMessage;
+        oMessage.setRawText(text);
+        return processSimpleMessage(oMessage, oCommand);
+    }
+    else
+    {
+        MessageBlock oMessageBlock;       
+        oMessageBlock.setRawText(text);
+        return processMessageBlock(oMessageBlock, oCommandBlock);
+    }
+}
+
+// process the message using a talker suitable for the message's topic
+bool Interpreter::processSimpleMessage(Message& oMessage, Command& oCommand)
 {
     // reset command
     oCommand.reset();
  
-    // set raw message text and analyze its structure
-    oMessage.setRawText(text);
+    // digest simple message
     oMessage.digestMessage();
 
     // if message complete
@@ -119,40 +138,71 @@ bool Interpreter::processMessage(std::string text)
     }   
     // incomplete message
     else
-        LOG4CXX_WARN(logger, "Interpreter: incomplete message " << text);          
+        LOG4CXX_WARN(logger, "Interpreter: incomplete message " << oMessage.getRawText());          
     
     return oMessage.isInterpreted();
 }
 
 
-bool Interpreter::buildMessage(Command& oCommandOut)
+bool Interpreter::processMessageBlock(MessageBlock& oMessageBlock, CommandBlock& oCommandBlock)
+{        
+    // reset command block
+    oCommandBlock.reset();
+ 
+    // digest message block
+    oMessageBlock.digestBlock();
+
+    // if message block filled
+    if (oMessageBlock.getListMessages().size() > 0)
+    {
+        // for each simple message
+        for (Message& oMessage : oMessageBlock.getListMessages())
+        {
+            // create simple command
+            Command oCommand;
+            // if well interpreted, add command to block
+            if (processSimpleMessage(oMessage, oCommand))
+            {
+                oCommandBlock.addCommand(oCommand);
+            }
+        }
+    }   
+    // incomplete message
+    else
+        LOG4CXX_WARN(logger, "Interpreter: incomplete message block " << oMessageBlock.getRawText());          
+    
+    return oMessageBlock.isInterpreted();
+}
+
+
+bool Interpreter::buildSimpleMessage(Command& oCommand, Message& oMessage)
 {
     // reset message    
     oMessage.reset();
     
     // and reset command validity
-    oCommandOut.resetValidityFlags();
+    oCommand.resetValidityFlags();
             
     // if command complete
-    if (oCommandOut.isComplete())
+    if (oCommand.isComplete())
     {
         // get topic name 
-        std::string topicName = getTopicName(oCommandOut.getTopic());
+        std::string topicName = getTopicName(oCommand.getTopic());
 
         // if known topic
         if (!topicName.empty())
         {
             // get topic talker 
-            Talker* pTalker = getTopicTalker(oCommandOut.getTopic());
+            Talker* pTalker = getTopicTalker(oCommand.getTopic());
 
             // if talker found, compose rest of message                 
             if (pTalker != 0)
             {
                 // inform message topic
                 oMessage.setTopic(topicName);
-                oCommandOut.setTopicValidity(true);
+                oCommand.setTopicValidity(true);
 
-                pTalker->buildMessage(oCommandOut, oMessage);        
+                pTalker->buildMessage(oCommand, oMessage);        
                 // compose message
                 oMessage.composeMessage();
             }
@@ -162,13 +212,37 @@ bool Interpreter::buildMessage(Command& oCommandOut)
         }
         // unknown topic
         else
-            LOG4CXX_WARN(logger, "Interpreter: unknown topic " << oCommandOut.getTopic());                
+            LOG4CXX_WARN(logger, "Interpreter: unknown topic " << oCommand.getTopic());                
     }   
     // incomplete command
     else
-        LOG4CXX_WARN(logger, "Interpreter: incomplete command " << oCommandOut.toString());          
+        LOG4CXX_WARN(logger, "Interpreter: incomplete command " << oCommand.toString());          
 
-    return oCommandOut.isInterpreted();
+    return oCommand.isInterpreted();
+}
+
+
+bool Interpreter::buildMessageBlock(CommandBlock& oCommandBlock, MessageBlock& oMessageBlock)
+{        
+    // reset message block    
+    oMessageBlock.reset();
+        
+    // for each simple command
+    for (Command& oCommand : oCommandBlock.getListCommands())
+    {
+        // create simple message
+        Message oMessage;
+        // if well interpreted, add message to block
+        if (buildSimpleMessage(oCommand, oMessage))
+        {
+            oMessageBlock.addMessage(oMessage);            
+        }
+    }
+
+    // compose message block
+    oMessageBlock.composeBlock();
+
+    return oCommandBlock.isInterpreted();
 }
 
 

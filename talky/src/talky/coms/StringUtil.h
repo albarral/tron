@@ -8,6 +8,7 @@
 
 #include <string>
 #include <vector>
+#include <deque>
 
 namespace talky
 {
@@ -18,6 +19,8 @@ public:
         // splits a text into a list of string elements using the specified separator
         // if separator not found, a single element list (with the whole string) is returned
         static std::vector<std::string> split(std::string text, std::string separator);
+        // same split operation but returning deque (fifo & lifo) instead of vector (just lifo) 
+        static std::deque<std::string> split2(std::string text, std::string separator);
 
         // converts a numeric string to its integer value
         // if conversion fails (not an integer number), false is returned

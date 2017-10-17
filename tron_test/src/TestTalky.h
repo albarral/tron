@@ -25,7 +25,8 @@ public:
     void makeTest();      
     
 private:
-    void testMessageReception(talky::Interpreter& oInterpreter);                
-    void testMessageSending(talky::Interpreter& oInterpreter);
+    void testMessageInterpretation(talky::Interpreter& oInterpreter);                
+    void testCommandInterpretation1(talky::Interpreter& oInterpreter);
+    void testCommandInterpretation2(talky::Interpreter& oInterpreter);
 };
 #endif

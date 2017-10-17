@@ -22,11 +22,12 @@ int main(int argc, char** argv)
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
 
     // test talky lib
-//    TestTalky oTestTalky;
-//    oTestTalky.makeTest();
+    TestTalky oTestTalky;
+    oTestTalky.makeTest();
+
     // test comy lib
-    TestComy oTestComy;
-    oTestComy.makeTest();
+//    TestComy oTestComy;
+//    oTestComy.makeTest();
         
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     

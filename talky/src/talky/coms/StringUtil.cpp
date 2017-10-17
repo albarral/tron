@@ -38,6 +38,35 @@ std::vector<std::string> StringUtil::split(std::string text, std::string separat
     return listTokens;
 }
 
+std::deque<std::string> StringUtil::split2(std::string text, std::string separator)
+{
+    std::deque<std::string> seqTokens; 
+
+    // split text in tokens (separated by separator)
+    std::string::size_type orig = 0;
+    std::string::size_type pos;
+    bool bdone = false;    
+    while (!bdone)
+    {
+        // search separator
+        pos = text.find_first_of(separator, orig);
+
+         // if found, get token
+        if (pos != std::string::npos)
+            seqTokens.push_back(text.substr(orig, pos-orig));
+        // otherwise, get the last token
+        else
+        {
+            seqTokens.push_back(text.substr(orig));
+            bdone = true; 
+        }
+
+        orig = pos+1;
+    }
+    
+    return seqTokens;    
+}
+
 bool StringUtil::convert2Integer(std::string number, int& value)
 {        
     try
