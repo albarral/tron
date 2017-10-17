@@ -4,58 +4,51 @@
 This document lists all projects inside the tron repository.
 For each project the following structure is shown: 
 
-> project 
+> project - library or executable 
 
-library or executable 
+- dependency 1
+- dependency 2 
+...
 
-- dependencies
-
-* brief description
+* lib description
 * ...
 
 -------------------------------------------------------------------------------------
 
-> talky
-
-libtron_talky.so		
+> talky - libtron_talky.so		
 
 - log4cxx
 
-* Library defining a standard language for communication between robotic control nodes. 
-* The language is divided in topics, categories and concepts.
+* Defines a standard language for communication between robotic control processes. 
+* Language divided in topics, categories and concepts.
 
 -------------------------------------------------------------------------------------
 
-> tuly  
+> tuly - libtron_tuly.so 		
 
-libtron_tuly.so 		
+* Library for utilities:
+* string handling, file handling, thread management, brooks control classes ...
+
+-------------------------------------------------------------------------------------
+
+> comy - libtron_comy.so 		
 
 - libtron_tuly
+- log4cxx
 
-* Utility library with multiple auxiliary classes:
-* string utilities, file utilities ...
-* thread utilities, brooks control utilities ...
-
--------------------------------------------------------------------------------------
-
-> comy  
-
-libtron_comy.so 		
-
-- log4cxx,  libtron_tralky
-
-* Library used for inter process communication.
-* It's based on the ZeroMQ library.
+* Library for inter process communication.
+* Should be extended with ZeroMQ library.
 
 -------------------------------------------------------------------------------------
 
-> tron_test
+> tron_test - tron_test 		
 
-tron_test 		
+- libtron_talky
+- libtron_tuly
+- libtron_comy
+- log4cxx
 
-- log4cxx + all libtron_libs
-
-* Program used for testing all other tron projects.
+* Program used for testing all tron libs.
 
 -------------------------------------------------------------------------------------
 
