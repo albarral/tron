@@ -77,15 +77,18 @@ bool Interpreter::understandsLanguage(std::string topicName)
 
 bool Interpreter::processMessage(std::string text)
 {
+    // check message header to see if it's simple or a block
     std::string header = text.substr(0, Topics::BLOCK_HEADER.size());
     blockProcessing = (header.compare(Topics::BLOCK_HEADER) == 0);
     
+    // process simple message
     if (!blockProcessing)
     {
         Message oMessage;
         oMessage.setRawText(text);
         return processSimpleMessage(oMessage, oCommand);
     }
+    // process message block
     else
     {
         MessageBlock oMessageBlock;       
@@ -144,6 +147,7 @@ bool Interpreter::processSimpleMessage(Message& oMessage, Command& oCommand)
 }
 
 
+// process the given message block iterating through each forming simple message 
 bool Interpreter::processMessageBlock(MessageBlock& oMessageBlock, CommandBlock& oCommandBlock)
 {        
     // reset command block
@@ -160,14 +164,15 @@ bool Interpreter::processMessageBlock(MessageBlock& oMessageBlock, CommandBlock&
         {
             // create simple command
             Command oCommand;
-            // if well interpreted, add command to block
+            // interpret message 
             if (processSimpleMessage(oMessage, oCommand))
             {
+                // if well interpreted add obtained command to resulting commands block
                 oCommandBlock.addCommand(oCommand);
             }
         }
     }   
-    // incomplete message
+    // empty message block
     else
         LOG4CXX_WARN(logger, "Interpreter: incomplete message block " << oMessageBlock.getRawText());          
     
@@ -195,7 +200,7 @@ bool Interpreter::buildSimpleMessage(Command& oCommand, Message& oMessage)
             // get topic talker 
             Talker* pTalker = getTopicTalker(oCommand.getTopic());
 
-            // if talker found, compose rest of message                 
+            // if talker found, build rest of message                 
             if (pTalker != 0)
             {
                 // inform message topic
@@ -203,7 +208,7 @@ bool Interpreter::buildSimpleMessage(Command& oCommand, Message& oMessage)
                 oCommand.setTopicValidity(true);
 
                 pTalker->buildMessage(oCommand, oMessage);        
-                // compose message
+                // compose message raw text
                 oMessage.composeMessage();
             }
             // missing talker
@@ -222,6 +227,7 @@ bool Interpreter::buildSimpleMessage(Command& oCommand, Message& oMessage)
 }
 
 
+// build message block from given command block, iterating through each forming command
 bool Interpreter::buildMessageBlock(CommandBlock& oCommandBlock, MessageBlock& oMessageBlock)
 {        
     // reset message block    
@@ -232,14 +238,15 @@ bool Interpreter::buildMessageBlock(CommandBlock& oCommandBlock, MessageBlock& o
     {
         // create simple message
         Message oMessage;
-        // if well interpreted, add message to block
+        // build message from command
         if (buildSimpleMessage(oCommand, oMessage))
         {
+            // if well built add obtained message to resulting message block
             oMessageBlock.addMessage(oMessage);            
         }
     }
 
-    // compose message block
+    // compose message block raw text
     oMessageBlock.composeBlock();
 
     return oCommandBlock.isInterpreted();
