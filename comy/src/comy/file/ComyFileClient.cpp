@@ -49,7 +49,7 @@ bool ComyFileClient::sendMessage(std::string text)
         // overwriting any previous command
         oFileWriter.writeFromTop();
         oFileWriter.writeFlush(output);
-        LOG4CXX_INFO(logger, "ComyFileClient: command sent");        
+        //LOG4CXX_INFO(logger, "ComyFileClient: command sent");        
         return true;
     }
     else

@@ -87,6 +87,9 @@
             <pElem>src</pElem>
           </incDir>
         </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}</output>
+        </linkerTool>
       </compileType>
       <item path="src/talky/Topics.cpp" ex="false" tool="1" flavor2="0">
       </item>
