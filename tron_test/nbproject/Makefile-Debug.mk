@@ -54,13 +54,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-llog4cxx -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltalky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly
+LDLIBSOPTIONS=-llog4cxx -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../talky/dist/Debug/GNU-Linux/libtalky.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../talky/dist/Debug/GNU-Linux/libtron_talky.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../comy/dist/Debug/GNU-Linux/libtron_comy.so
 
