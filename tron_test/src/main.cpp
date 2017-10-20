@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-
+#include <cstdlib>  // for getenv
 #include <unistd.h> // for sleep() 
 
 #include <log4cxx/logger.h>
@@ -12,12 +12,17 @@
 #include "TestTalky.h"
 #include "TestComy.h"
 
+// obtains user's home path
+std::string getHomePath();
+
 log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("tron"));
 
 // main program
 int main(int argc, char** argv) 
 {
-    log4cxx::xml::DOMConfigurator::configure("log4cxx_config.xml");
+    std::string home = getHomePath();
+    std::string configFile = home + "/.tron/log4cxx_config_trontest.xml";
+    log4cxx::xml::DOMConfigurator::configure(configFile);    
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
 
@@ -32,4 +37,18 @@ int main(int argc, char** argv)
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     
     return 0;
+}
+
+std::string getHomePath()
+{    
+    // obtain value of HOME environment variable
+    char* pVar = getenv("HOME");    
+    if (pVar!=NULL)
+    {
+        // transform it in a string
+        std::string home(pVar);
+        return home;
+    }
+    else
+        return "";
 }
