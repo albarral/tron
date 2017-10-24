@@ -34,27 +34,25 @@ void TestTalky::makeTest()
     // show known languages
     //oInterpreter.showKnowledge();
 
-    testMessageInterpretation(oInterpreter);        
+    std::string msg;
+//    LOG4CXX_INFO(logger, "\n");
+//    msg = testWriteMessage(oInterpreter);        
+//    testReadMessage(oInterpreter, msg);        
+
     LOG4CXX_INFO(logger, "\n");
-    testCommandInterpretation(oInterpreter);        
-    LOG4CXX_INFO(logger, "\n");
-    testCommandBlockInterpretation(oInterpreter);        
-    LOG4CXX_INFO(logger, "\n");
-    testArmJointAnglesBlockInterpretation(oInterpreter);
+    msg = testWriteMessageBlock(oInterpreter);        
+    testReadMessage(oInterpreter, msg);        
+
+//    LOG4CXX_INFO(logger, "\n");
+//    msg = testWriteMessageArmAngles(oInterpreter);
+//    testReadMessage(oInterpreter, msg);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTalky::testMessageInterpretation(talky::Interpreter& oInterpreter)
+void TestTalky::testReadMessage(talky::Interpreter& oInterpreter, std::string msg)
 {
-    LOG4CXX_INFO(logger, modName + ": testMessageInterpretation ...");
-
-    // test message
-    std::string sep = talky::Topics::FIELD_SEPARATOR;
-    std::string sep2 = talky::Topics::MSG_SEPARATOR;
-    std::string msg1 = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
-    std::string msg2 = "arm" + sep + "cyclic" + sep + "move";
-    std::string msg = talky::Topics::BLOCK_HEADER + sep2 + msg1 + sep2 + msg2;
+    LOG4CXX_INFO(logger, modName + ": testReadMessage ...");
     LOG4CXX_INFO(logger, modName + ": msg > " + msg);
 
     // interpret test message
@@ -81,23 +79,27 @@ void TestTalky::testMessageInterpretation(talky::Interpreter& oInterpreter)
     }
 }
 
-void TestTalky::testCommandInterpretation(talky::Interpreter& oInterpreter)
+std::string TestTalky::testWriteMessage(talky::Interpreter& oInterpreter)
 {
-    LOG4CXX_INFO(logger, modName + ": testCommandInterpretation ...");
+    LOG4CXX_INFO(logger, modName + ": testWriteMessage ...");
+
+    std::string rawMessage = "";
 
     talky::Command oCommand;
     oCommand.setTopic(talky::Topics::eTOPIC_ARM);
     oCommand.setCategory(talky::ArmTopic::eCAT_ARM_JOINT);
     oCommand.setConcept(talky::ArmTopic::eJOINT_HS_POS);
     oCommand.setQuantity(10);
-    LOG4CXX_INFO(logger, modName + ": command1 > " + oCommand.toString());
+    LOG4CXX_INFO(logger, modName + ": command > " + oCommand.toString());
     
     talky::Message oMessage;
     if (oInterpreter.buildSimpleMessage(oCommand, oMessage))
     {
         // show obtained command
         LOG4CXX_INFO(logger, modName + ": command processed ok");        
-        LOG4CXX_INFO(logger, modName + ": " + oMessage.toString());                
+        LOG4CXX_INFO(logger, modName + ": " + oMessage.toString());        
+
+        rawMessage = oMessage.getRawText();        
     }
     else
     {
@@ -105,12 +107,15 @@ void TestTalky::testCommandInterpretation(talky::Interpreter& oInterpreter)
         LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
     }
     
+    return rawMessage;    
 }
 
-void TestTalky::testCommandBlockInterpretation(talky::Interpreter& oInterpreter)
+std::string TestTalky::testWriteMessageBlock(talky::Interpreter& oInterpreter)
 {
-    LOG4CXX_INFO(logger, modName + ": testCommandBlockInterpretation ...");
+    LOG4CXX_INFO(logger, modName + ": testWriteMessageBlock ...");
 
+    std::string rawMessage = "";
+    
     talky::Command oCommand1;
     oCommand1.setTopic(talky::Topics::eTOPIC_ARM);
     oCommand1.setCategory(talky::ArmTopic::eCAT_ARM_JOINT);
@@ -133,19 +138,24 @@ void TestTalky::testCommandBlockInterpretation(talky::Interpreter& oInterpreter)
         // show obtained command
         LOG4CXX_INFO(logger, modName + ": command block processed ok");        
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.toString());                
-        LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());                
+        LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());
+        rawMessage = oMessageBlock.getRawText();
     }
     else
     {
         LOG4CXX_WARN(logger, modName + ": command processing failed!");    
         for (talky::Command& oCommand : oCommandBlock.getListCommands())
-            LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
-    }    
+            LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());   
+    }
+
+    return rawMessage;    
 }
 
-void TestTalky::testArmJointAnglesBlockInterpretation(talky::Interpreter& oInterpreter)
+std::string TestTalky::testWriteMessageArmAngles(talky::Interpreter& oInterpreter)
 {
-    LOG4CXX_INFO(logger, modName + ": testArmJointAnglesBlockInterpretation ...");
+    LOG4CXX_INFO(logger, modName + ": testWriteMessageArmAngles ...");
+
+    std::string rawMessage = "";
 
     talky2::ArmJointAngles oArmJointAngles;     // talky2 object for arm position info
     
@@ -166,6 +176,7 @@ void TestTalky::testArmJointAnglesBlockInterpretation(talky::Interpreter& oInter
         LOG4CXX_INFO(logger, modName + ": command block processed ok");        
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.toString());                
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());                
+        rawMessage = oMessageBlock.getRawText();
     }
     else
     {
@@ -174,4 +185,5 @@ void TestTalky::testArmJointAnglesBlockInterpretation(talky::Interpreter& oInter
             LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
     }
     
+    return rawMessage;        
 }

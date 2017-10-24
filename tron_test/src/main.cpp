@@ -4,13 +4,13 @@
  ***************************************************************************/
 
 #include <cstdlib>  // for getenv
-#include <unistd.h> // for sleep() 
 
 #include <log4cxx/logger.h>
 #include <log4cxx/xml/domconfigurator.h>
 
 #include "TestTalky.h"
 #include "TestComy.h"
+#include "Listener.h"
 
 // obtains user's home path
 std::string getHomePath();
@@ -33,6 +33,9 @@ int main(int argc, char** argv)
     // test comy lib
 //    TestComy oTestComy;
 //    oTestComy.makeTest();
+    
+//    tron::Listener oListener;
+//    oListener.run(10);
         
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     

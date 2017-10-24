@@ -25,9 +25,9 @@ public:
     void makeTest();      
     
 private:
-    void testMessageInterpretation(talky::Interpreter& oInterpreter);                
-    void testCommandInterpretation(talky::Interpreter& oInterpreter);
-    void testCommandBlockInterpretation(talky::Interpreter& oInterpreter);
-    void testArmJointAnglesBlockInterpretation(talky::Interpreter& oInterpreter);
+    void testReadMessage(talky::Interpreter& oInterpreter, std::string msg);                
+    std::string testWriteMessage(talky::Interpreter& oInterpreter);
+    std::string testWriteMessageBlock(talky::Interpreter& oInterpreter);
+    std::string testWriteMessageArmAngles(talky::Interpreter& oInterpreter);
 };
 #endif

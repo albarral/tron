@@ -13,6 +13,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/Listener.cpp</itemPath>
+        <itemPath>src/Listener.h</itemPath>
         <itemPath>src/TestComy.cpp</itemPath>
         <itemPath>src/TestComy.h</itemPath>
         <itemPath>src/TestTalky.cpp</itemPath>
@@ -96,6 +98,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/Listener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Listener.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestComy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestComy.h" ex="false" tool="3" flavor2="0">
@@ -127,6 +133,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/Listener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Listener.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestComy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestComy.h" ex="false" tool="3" flavor2="0">
