@@ -5,7 +5,7 @@ log4cxx configuration files must be located in a .tron folder in user's HOME dir
 
 Steps to follow:
 - create a .tron folder in the home directory
-- copy all xml files from this logging directory to that .tron folder.
+- copy all xml files from this logging directory to that folder.
 
 > 
 cd 

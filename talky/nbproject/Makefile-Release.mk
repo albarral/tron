@@ -51,7 +51,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/talk/Interpreter.o \
 	${OBJECTDIR}/src/talky/talk/SlangTalker.o \
 	${OBJECTDIR}/src/talky/talk/Talker.o \
-	${OBJECTDIR}/src/talky/topics/ArmTopic.o
+	${OBJECTDIR}/src/talky/topics/ArmTopic.o \
+	${OBJECTDIR}/src/talky2/arm/ArmJointAngles.o
 
 
 # C Compiler Flags
@@ -162,6 +163,11 @@ ${OBJECTDIR}/src/talky/topics/ArmTopic.o: src/talky/topics/ArmTopic.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/ArmTopic.o src/talky/topics/ArmTopic.cpp
+
+${OBJECTDIR}/src/talky2/arm/ArmJointAngles.o: src/talky2/arm/ArmJointAngles.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky2/arm/ArmJointAngles.o src/talky2/arm/ArmJointAngles.cpp
 
 # Subprojects
 .build-subprojects:

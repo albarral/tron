@@ -26,7 +26,8 @@ public:
     
 private:
     void testMessageInterpretation(talky::Interpreter& oInterpreter);                
-    void testCommandInterpretation1(talky::Interpreter& oInterpreter);
-    void testCommandInterpretation2(talky::Interpreter& oInterpreter);
+    void testCommandInterpretation(talky::Interpreter& oInterpreter);
+    void testCommandBlockInterpretation(talky::Interpreter& oInterpreter);
+    void testArmJointAnglesBlockInterpretation(talky::Interpreter& oInterpreter);
 };
 #endif

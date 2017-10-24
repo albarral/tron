@@ -11,6 +11,7 @@
 #include "talky/coms/Message.h"
 #include "talky/coms/MessageBlock.h"
 #include "talky/topics/ArmTopic.h"
+#include "talky2/arm/ArmJointAngles.h"
 
 using namespace log4cxx;
 
@@ -34,8 +35,12 @@ void TestTalky::makeTest()
     //oInterpreter.showKnowledge();
 
     testMessageInterpretation(oInterpreter);        
-    testCommandInterpretation1(oInterpreter);        
-    testCommandInterpretation2(oInterpreter);        
+    LOG4CXX_INFO(logger, "\n");
+    testCommandInterpretation(oInterpreter);        
+    LOG4CXX_INFO(logger, "\n");
+    testCommandBlockInterpretation(oInterpreter);        
+    LOG4CXX_INFO(logger, "\n");
+    testArmJointAnglesBlockInterpretation(oInterpreter);
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -76,9 +81,9 @@ void TestTalky::testMessageInterpretation(talky::Interpreter& oInterpreter)
     }
 }
 
-void TestTalky::testCommandInterpretation1(talky::Interpreter& oInterpreter)
+void TestTalky::testCommandInterpretation(talky::Interpreter& oInterpreter)
 {
-    LOG4CXX_INFO(logger, modName + ": testCommandInterpretation 1 ...");
+    LOG4CXX_INFO(logger, modName + ": testCommandInterpretation ...");
 
     talky::Command oCommand;
     oCommand.setTopic(talky::Topics::eTOPIC_ARM);
@@ -102,9 +107,9 @@ void TestTalky::testCommandInterpretation1(talky::Interpreter& oInterpreter)
     
 }
 
-void TestTalky::testCommandInterpretation2(talky::Interpreter& oInterpreter)
+void TestTalky::testCommandBlockInterpretation(talky::Interpreter& oInterpreter)
 {
-    LOG4CXX_INFO(logger, modName + ": testCommandInterpretation 2 ...");
+    LOG4CXX_INFO(logger, modName + ": testCommandBlockInterpretation ...");
 
     talky::Command oCommand1;
     oCommand1.setTopic(talky::Topics::eTOPIC_ARM);
@@ -120,6 +125,38 @@ void TestTalky::testCommandInterpretation2(talky::Interpreter& oInterpreter)
     talky::CommandBlock oCommandBlock;
     oCommandBlock.addCommand(oCommand1);
     oCommandBlock.addCommand(oCommand2);
+    LOG4CXX_INFO(logger, modName + ": commandBlock > " + oCommandBlock.toString());
+    
+    talky::MessageBlock oMessageBlock;
+    if (oInterpreter.buildMessageBlock(oCommandBlock, oMessageBlock))
+    {
+        // show obtained command
+        LOG4CXX_INFO(logger, modName + ": command block processed ok");        
+        LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.toString());                
+        LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());                
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, modName + ": command processing failed!");    
+        for (talky::Command& oCommand : oCommandBlock.getListCommands())
+            LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
+    }    
+}
+
+void TestTalky::testArmJointAnglesBlockInterpretation(talky::Interpreter& oInterpreter)
+{
+    LOG4CXX_INFO(logger, modName + ": testArmJointAnglesBlockInterpretation ...");
+
+    talky2::ArmJointAngles oArmJointAngles;     // talky2 object for arm position info
+    
+    oArmJointAngles.setPosHS(10.0);
+    oArmJointAngles.setPosVS(11.0);
+    oArmJointAngles.setPosEL(12.0);
+    oArmJointAngles.setPosHW(13.0);
+    oArmJointAngles.setPosVW(14.0);
+    
+    talky::CommandBlock oCommandBlock;
+    oArmJointAngles.writeJointPositions(oCommandBlock);
     LOG4CXX_INFO(logger, modName + ": commandBlock > " + oCommandBlock.toString());
     
     talky::MessageBlock oMessageBlock;

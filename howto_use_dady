@@ -1,0 +1,46 @@
+
+*** HOW TO INSTALL & USE DADY
+
+(JL ALbarral, 23/10/2017)
+
+> INTRODUCTION
+
+dady is a program that allows users to control robotic nodes (amy, goon, willy, ...) through CLI.
+
+It uses tron libraries:
+- libtron_talky for robotic language interpretation.
+- libtron_comy for IPC communication.
+- libtron_tuly for utilities.
+
+
+> USAGE
+
+usage: dady <talky message>
+
+note: use dady without params to get the list of topics, categories and concepts available for communication.
+
+
+> INSTALLATION
+
+
+1. Download tron
+
+git clone https://github.com/albarral/tron.git
+
+
+2. Build dady project (in Netbeans)
+
+
+3. Install tron libs
+
+follow instructions in howto_install_tron file
+
+
+4. Create link to dady executable in user's home folder:
+ 
+cd
+ln -s /path_to_tron/dady/dist/Debug/GNU-Linux/dady dady
+(note: path_to_tron = tron installation path)
+
+
+

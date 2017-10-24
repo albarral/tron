@@ -11,6 +11,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>src/talky</sourceRootElem>
+                <sourceRootElem>src/talky2</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

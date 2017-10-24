@@ -1,0 +1,49 @@
+
+*** HOW TO INSTALL TRON LIBS
+
+> INTRODUCTION
+
+This document explains how to install tron libs for robotic control.
+
+Software requirements:
+- Linux environment
+- Netbeans 8.1 for C++
+- git
+
+Components to be installed:
+- libtron_talky.so	(standard language for communication between robotic control processes)
+- libtron_comy.so	(library for inter process communication)
+- libtron_tuly.so	(library for utilities)
+
+
+> INSTALLATION
+
+
+1. Download tron
+
+git clone https://github.com/albarral/tron.git
+
+
+2. Build tron_test project (in Netbeans)
+
+
+3. Prepare to load required tron libs from everywhere:
+
+touch tron_dady.conf
+echo /path_to_tron/talky/dist/Debug/GNU-Linux > tron_dady.conf
+echo /path_to_tron/comy/dist/Debug/GNU-Linux >> tron_dady.conf
+echo /path_to_tron/tuly/dist/Debug/GNU-Linux >> tron_dady.conf
+sudo mv tron_dady.conf /etc/ld.so.conf.d
+sudo /sbin/ldconfig
+(note: path_to_tron = tron installation path)
+
+
+4. Prepare config files for tron logging:
+
+see instructions in path_to_tron/logging/README_tron_logging file
+(note: path_to_tron = tron installation path)
+
+
+
+
+
