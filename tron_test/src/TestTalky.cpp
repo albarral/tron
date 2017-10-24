@@ -39,13 +39,13 @@ void TestTalky::makeTest()
 //    msg = testWriteMessage(oInterpreter);        
 //    testReadMessage(oInterpreter, msg);        
 
-    LOG4CXX_INFO(logger, "\n");
-    msg = testWriteMessageBlock(oInterpreter);        
-    testReadMessage(oInterpreter, msg);        
-
 //    LOG4CXX_INFO(logger, "\n");
-//    msg = testWriteMessageArmAngles(oInterpreter);
+//    msg = testWriteMessageBlock(oInterpreter);        
 //    testReadMessage(oInterpreter, msg);        
+
+    LOG4CXX_INFO(logger, "\n");
+    msg = testWriteMessageArmAngles(oInterpreter);
+    testReadMessage(oInterpreter, msg);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -96,14 +96,14 @@ std::string TestTalky::testWriteMessage(talky::Interpreter& oInterpreter)
     if (oInterpreter.buildSimpleMessage(oCommand, oMessage))
     {
         // show obtained command
-        LOG4CXX_INFO(logger, modName + ": command processed ok");        
+        LOG4CXX_INFO(logger, modName + ": message built ok");        
         LOG4CXX_INFO(logger, modName + ": " + oMessage.toString());        
 
         rawMessage = oMessage.getRawText();        
     }
     else
     {
-        LOG4CXX_WARN(logger, modName + ": command processing failed!");            
+        LOG4CXX_WARN(logger, modName + ": message building failed!");            
         LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
     }
     
@@ -136,14 +136,14 @@ std::string TestTalky::testWriteMessageBlock(talky::Interpreter& oInterpreter)
     if (oInterpreter.buildMessageBlock(oCommandBlock, oMessageBlock))
     {
         // show obtained command
-        LOG4CXX_INFO(logger, modName + ": command block processed ok");        
+        LOG4CXX_INFO(logger, modName + ": message block built ok");        
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.toString());                
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());
         rawMessage = oMessageBlock.getRawText();
     }
     else
     {
-        LOG4CXX_WARN(logger, modName + ": command processing failed!");    
+        LOG4CXX_WARN(logger, modName + ": message block building failed!");            
         for (talky::Command& oCommand : oCommandBlock.getListCommands())
             LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());   
     }
@@ -173,14 +173,14 @@ std::string TestTalky::testWriteMessageArmAngles(talky::Interpreter& oInterprete
     if (oInterpreter.buildMessageBlock(oCommandBlock, oMessageBlock))
     {
         // show obtained command
-        LOG4CXX_INFO(logger, modName + ": command block processed ok");        
+        LOG4CXX_INFO(logger, modName + ": message block built ok");        
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.toString());                
         LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());                
         rawMessage = oMessageBlock.getRawText();
     }
     else
     {
-        LOG4CXX_WARN(logger, modName + ": command processing failed!");    
+        LOG4CXX_WARN(logger, modName + ": message block building failed!");            
         for (talky::Command& oCommand : oCommandBlock.getListCommands())
             LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
     }

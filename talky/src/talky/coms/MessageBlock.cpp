@@ -29,10 +29,10 @@ void MessageBlock::addMessage(Message& oMessage)
 
 void MessageBlock::composeBlock()
 {
-    rawText = Topics::BLOCK_HEADER + Topics::MSG_SEPARATOR;
+    rawText = Topics::BLOCK_HEADER;
     for (Message& oMessage : listMessages)
     {
-        rawText += oMessage.getRawText() + Topics::MSG_SEPARATOR;
+        rawText += Topics::MSG_SEPARATOR + oMessage.getRawText();
     }
 }
 

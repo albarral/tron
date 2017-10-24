@@ -27,15 +27,15 @@ int main(int argc, char** argv)
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
 
     // test talky lib
-    TestTalky oTestTalky;
-    oTestTalky.makeTest();
+//    TestTalky oTestTalky;
+//    oTestTalky.makeTest();
 
     // test comy lib
 //    TestComy oTestComy;
 //    oTestComy.makeTest();
     
-//    tron::Listener oListener;
-//    oListener.run(10);
+    tron::Listener oListener;
+    oListener.run(10);
         
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     
