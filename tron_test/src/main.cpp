@@ -10,6 +10,7 @@
 
 #include "TestTalky.h"
 #include "TestComy.h"
+#include "TestTivy.h"
 #include "Listener.h"
 
 // obtains user's home path
@@ -34,9 +35,14 @@ int main(int argc, char** argv)
 //    TestComy oTestComy;
 //    oTestComy.makeTest();
     
-    tron::Listener oListener;
-    oListener.run(10);
-        
+//    tron::Listener oListener;
+//    oListener.run(10);
+
+    // test tivy lib
+    TestTivy oTestTivy;
+    oTestTivy.makeTest();
+    
+    
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     
     return 0;

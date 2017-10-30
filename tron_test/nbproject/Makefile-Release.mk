@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/Listener.o \
 	${OBJECTDIR}/src/TestComy.o \
+	${OBJECTDIR}/src/TestPlot.o \
 	${OBJECTDIR}/src/TestTalky.o \
+	${OBJECTDIR}/src/TestTivy.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -75,10 +77,20 @@ ${OBJECTDIR}/src/TestComy.o: src/TestComy.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestComy.o src/TestComy.cpp
 
+${OBJECTDIR}/src/TestPlot.o: src/TestPlot.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestPlot.o src/TestPlot.cpp
+
 ${OBJECTDIR}/src/TestTalky.o: src/TestTalky.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky.o src/TestTalky.cpp
+
+${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

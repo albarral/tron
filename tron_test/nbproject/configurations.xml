@@ -17,8 +17,12 @@
         <itemPath>src/Listener.h</itemPath>
         <itemPath>src/TestComy.cpp</itemPath>
         <itemPath>src/TestComy.h</itemPath>
+        <itemPath>src/TestPlot.cpp</itemPath>
+        <itemPath>src/TestPlot.h</itemPath>
         <itemPath>src/TestTalky.cpp</itemPath>
         <itemPath>src/TestTalky.h</itemPath>
+        <itemPath>src/TestTivy.cpp</itemPath>
+        <itemPath>src/TestTivy.h</itemPath>
         <itemPath>src/main.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -53,6 +57,7 @@
             <pElem>../talky/src</pElem>
             <pElem>../comy/src</pElem>
             <pElem>../tuly/src</pElem>
+            <pElem>../tivy/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -95,6 +100,20 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tivy"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tivy"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tivy.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>opencv_core</linkerLibLibItem>
+            <linkerLibLibItem>opencv_highgui</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -106,9 +125,17 @@
       </item>
       <item path="src/TestComy.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestPlot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestPlot.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestTalky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTalky.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTivy.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -141,9 +168,17 @@
       </item>
       <item path="src/TestComy.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestPlot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestPlot.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestTalky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTalky.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTivy.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/Listener.o \
 	${OBJECTDIR}/src/TestComy.o \
+	${OBJECTDIR}/src/TestPlot.o \
 	${OBJECTDIR}/src/TestTalky.o \
+	${OBJECTDIR}/src/TestTivy.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -55,7 +57,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-llog4cxx -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly
+LDLIBSOPTIONS=-llog4cxx -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -Wl,-rpath,../tivy/dist/Debug/GNU-Linux -L../tivy/dist/Debug/GNU-Linux -ltron_tivy -lopencv_core -lopencv_highgui
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -67,6 +69,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../comy/dist/Debug/GNU-Lin
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tuly/dist/Debug/GNU-Linux/libtron_tuly.so
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tivy/dist/Debug/GNU-Linux/libtron_tivy.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
@@ -74,28 +78,39 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 ${OBJECTDIR}/src/Listener.o: src/Listener.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Listener.o src/Listener.cpp
+	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Listener.o src/Listener.cpp
 
 ${OBJECTDIR}/src/TestComy.o: src/TestComy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestComy.o src/TestComy.cpp
+	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestComy.o src/TestComy.cpp
+
+${OBJECTDIR}/src/TestPlot.o: src/TestPlot.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestPlot.o src/TestPlot.cpp
 
 ${OBJECTDIR}/src/TestTalky.o: src/TestTalky.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky.o src/TestTalky.cpp
+	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky.o src/TestTalky.cpp
+
+${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Isrc -I../talky/src -I../comy/src -I../tuly/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../talky && ${MAKE}  -f Makefile CONF=Debug
 	cd ../comy && ${MAKE}  -f Makefile CONF=Debug
 	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -107,6 +122,7 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	cd ../talky && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../comy && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
