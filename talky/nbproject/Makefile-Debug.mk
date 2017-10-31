@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/talky/DataBlock.o \
 	${OBJECTDIR}/src/talky/Topics.o \
 	${OBJECTDIR}/src/talky/base/Category.o \
 	${OBJECTDIR}/src/talky/base/Concept.o \
@@ -51,8 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/talk/Interpreter.o \
 	${OBJECTDIR}/src/talky/talk/SlangTalker.o \
 	${OBJECTDIR}/src/talky/talk/Talker.o \
-	${OBJECTDIR}/src/talky/topics/ArmTopic.o \
-	${OBJECTDIR}/src/talky2/arm/ArmJointAngles.o
+	${OBJECTDIR}/src/talky/topics/ArmTopic.o
 
 
 # C Compiler Flags
@@ -78,6 +78,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/talky/DataBlock.o: src/talky/DataBlock.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/DataBlock.o src/talky/DataBlock.cpp
 
 ${OBJECTDIR}/src/talky/Topics.o: src/talky/Topics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky
@@ -163,11 +168,6 @@ ${OBJECTDIR}/src/talky/topics/ArmTopic.o: src/talky/topics/ArmTopic.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/ArmTopic.o src/talky/topics/ArmTopic.cpp
-
-${OBJECTDIR}/src/talky2/arm/ArmJointAngles.o: src/talky2/arm/ArmJointAngles.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/talky2/arm
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky2/arm/ArmJointAngles.o src/talky2/arm/ArmJointAngles.cpp
 
 # Subprojects
 .build-subprojects:

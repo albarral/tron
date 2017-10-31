@@ -41,6 +41,11 @@ void ArmLanguage::defineJointCategory()
     oSlang.addWord(ArmTopic::eJOINT_ELB_POS, JOINT_ELB_POS);                      
     oSlang.addWord(ArmTopic::eJOINT_HWRI_POS, JOINT_HWRI_POS);                   
     oSlang.addWord(ArmTopic::eJOINT_VWRI_POS, JOINT_VWRI_POS);                        
+    oSlang.addWord(ArmTopic::eJOINT_HS_STATE, JOINT_HS_STATE);
+    oSlang.addWord(ArmTopic::eJOINT_VS_STATE, JOINT_VS_STATE);                         
+    oSlang.addWord(ArmTopic::eJOINT_ELB_STATE, JOINT_ELB_STATE);                      
+    oSlang.addWord(ArmTopic::eJOINT_HWRI_STATE, JOINT_HWRI_STATE);                   
+    oSlang.addWord(ArmTopic::eJOINT_VWRI_STATE, JOINT_VWRI_STATE);                        
     addSlang(category, oSlang);    
 }
 

@@ -33,6 +33,11 @@ public:
          eJOINT_ELB_POS,                        /*! elbow position (degrees) */
          eJOINT_HWRI_POS,                      /*! horizontal wrist position (degrees) */
          eJOINT_VWRI_POS,                      /*! vertical wrist position (degrees) */
+         eJOINT_HS_STATE,                      /*! horizontal shoulder state*/
+         eJOINT_VS_STATE,                      /*! vertical shoulder state */
+         eJOINT_ELB_STATE,                    /*! elbow state */
+         eJOINT_HWRI_STATE,                   /*! horizontal wrist state */
+         eJOINT_VWRI_STATE,                   /*! vertical wrist state */
          eJOINT_DIM
     };
 
