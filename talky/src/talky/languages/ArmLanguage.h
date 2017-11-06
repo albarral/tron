@@ -25,6 +25,11 @@ namespace talky
     const std::string JOINT_ELB_POS = "elb";        /*! elbow position  */
     const std::string JOINT_HWRI_POS = "hwri";     /*! horizontal wrist position */
     const std::string JOINT_VWRI_POS = "vwri";      /*! vertical wrist  position */
+    const std::string JOINT_HS_STATE = "hs_state";          /*! horizontal shoulder state */
+    const std::string JOINT_VS_STATE = "vs_state";          /*! vertical shoulder state  */
+    const std::string JOINT_ELB_STATE = "elb_state";        /*! elbow state  */
+    const std::string JOINT_HWRI_STATE = "hwri_state";     /*! horizontal wrist state */
+    const std::string JOINT_VWRI_STATE = "vwri_state";      /*! vertical wrist state */
     /*! axis category names */
     const std::string AXIS_PAN_POS = "pan";                 /*! pan position (degrees) */
     const std::string AXIS_TILT_POS = "tilt";                   /*! tilt position (degrees) */
