@@ -19,6 +19,7 @@ class ComyFilePublisher : public ComyPublisher
 {    
 private:
     static log4cxx::LoggerPtr logger;    
+    std::string comsBasePath;
     std::string pathPubSubFile;       // file for broadcasting the info
     tuly::FileWriter oFileWriter;
     

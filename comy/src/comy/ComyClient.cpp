@@ -10,7 +10,10 @@ namespace comy
 
 ComyClient::ComyClient()
 {    
-    bconnected = false;
 }
 
+void ComyClient::setChannel(std::string topic, std::string category)
+{
+    oChannel.setChannel(Channel::eCHANNEL_SERVED, topic, category);
+}
 }

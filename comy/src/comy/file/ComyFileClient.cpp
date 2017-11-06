@@ -16,11 +16,11 @@ ComyFileClient::ComyFileClient()
 {    
     // get coms configuration
     ComyConfig oComyConfig;    
+    comsBasePath = oComyConfig.getComsBasePath();
     
     // create coms base folder (if it doesn't exist)
-    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
-
-    pathClientServerFile = oComyConfig.getClientServerComsPath();
+    if (!comsBasePath.empty())
+        mkdir(comsBasePath.c_str(), 0777);
 }
 
 ComyFileClient::~ComyFileClient()
@@ -31,13 +31,23 @@ ComyFileClient::~ComyFileClient()
 
 void ComyFileClient::connect()
 {
-    // open coms file for writing
-    if (!pathClientServerFile.empty())
-    {        
-        bconnected = oFileWriter.open(pathClientServerFile);  
+    if (oChannel.isInformed())
+    {
+        // open coms file for writing
+        if (!comsBasePath.empty())
+        {        
+
+            pathClientServerFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            bconnected = oFileWriter.open(pathClientServerFile);  
+        }
+        else
+            bconnected = false;    
     }
     else
-        bconnected = false;    
+    {
+        bconnected = false;        
+        LOG4CXX_WARN(logger, "ComyFileClient: connection failed, coms channel needs to be defined");                        
+    }
 }
 
 bool ComyFileClient::sendMessage(std::string text)

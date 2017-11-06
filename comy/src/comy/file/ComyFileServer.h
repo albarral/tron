@@ -7,7 +7,7 @@
  ***************************************************************************/
 
 #include <string>
-//#include <log4cxx/logger.h>
+#include <log4cxx/logger.h>
 
 #include "comy/ComyServer.h"
 #include "tuly/utils/FileReader.h"
@@ -20,7 +20,8 @@ namespace comy
 class ComyFileServer : public ComyServer
 {    
 private:
-//    static log4cxx::LoggerPtr logger;
+    static log4cxx::LoggerPtr logger;
+    std::string comsBasePath;
     std::string pathClientServerFile;       // name of file used for coms
     tuly::FileReader oFileReader;     // file reader
     tuly::FileWriter oFileWriter;        // file writer

@@ -18,6 +18,7 @@ class ComyFileClient : public ComyClient
 {    
 private:
     static log4cxx::LoggerPtr logger;    
+    std::string comsBasePath;
     std::string pathClientServerFile;
     tuly::FileWriter oFileWriter;
     

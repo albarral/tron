@@ -12,17 +12,17 @@
 
 namespace comy
 {
-//log4cxx::LoggerPtr ComyFileServer::logger(log4cxx::Logger::getLogger("comy"));
+log4cxx::LoggerPtr ComyFileServer::logger(log4cxx::Logger::getLogger("comy"));
 
 ComyFileServer::ComyFileServer()
 {    
     // get coms configuration
     ComyConfig oComyConfig;    
+    comsBasePath = oComyConfig.getComsBasePath();
 
     // create coms base folder (if it doesn't exist)
-    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
-
-    pathClientServerFile = oComyConfig.getClientServerComsPath();
+    if (!comsBasePath.empty())
+        mkdir(comsBasePath.c_str(), 0777);
 }
 
 ComyFileServer::~ComyFileServer()
@@ -36,15 +36,25 @@ ComyFileServer::~ComyFileServer()
 
 void ComyFileServer::connect()
 {
-    // open coms file for reading & writing
-    if (!pathClientServerFile.empty())
+    if (oChannel.isInformed())
     {
-        bool bconnected1 = oFileReader.open(pathClientServerFile);   
-        bool bconnected2 = oFileWriter.open(pathClientServerFile);   
-        bconnected = bconnected1 && bconnected2;
+        // open coms file for reading & writing
+        if (!comsBasePath.empty())
+        {        
+
+            pathClientServerFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            bool bconnected1 = oFileReader.open(pathClientServerFile);   
+            bool bconnected2 = oFileWriter.open(pathClientServerFile);   
+            bconnected = bconnected1 && bconnected2;
+        }
+        else
+            bconnected = false;    
     }
     else
-        bconnected = false;    
+    {
+        bconnected = false;        
+        LOG4CXX_WARN(logger, "ComyFileServer: connection failed, coms channel needs to be defined");                        
+    }        
 }
 
 bool ComyFileServer::readMessage()

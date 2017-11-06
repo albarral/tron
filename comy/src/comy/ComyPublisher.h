@@ -8,19 +8,18 @@
 
 #include <string>
 
+#include "comy/ComyNode.h"
+
 namespace comy
 {
 // Base class used to publish communication messages
-class ComyPublisher
-{    
-protected:
-    bool bconnected;        // connected to amy interface
-        
+class ComyPublisher : public ComyNode
+{            
 public:
     ComyPublisher();
-
-    bool isConnected() {return bconnected;};
    
+    // sets communications channel
+    virtual void setChannel(std::string topic, std::string category);
     virtual void connect() = 0;
    // info publishing method (specific for each ComyPublisher implementation)
     virtual bool publishMessage(std::string rawMessage) = 0;

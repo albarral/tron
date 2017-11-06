@@ -8,24 +8,27 @@
 
 #include <string>
 
+#include "comy/ComyNode.h"
+
 namespace comy
 {
 // Base class used to listen to messages from clients.
-class ComyServer
+class ComyServer : public ComyNode
 {    
 protected:
-    bool bconnected;        // connected to client
     std::string rawMessage;     // received message
     
 public:
     ComyServer();
 
-   bool isConnected() {return bconnected;};               
+    
    // return obtained text
     std::string getRawMessage() {return rawMessage;};
 
-   virtual void connect() = 0;
-   // read message from client, returns false if nothing read
+    // sets communications channel
+    virtual void setChannel(std::string topic, std::string category);
+    virtual void connect() = 0;
+    // read message from client, returns false if nothing read
     virtual bool readMessage() = 0; 
 };
 }

@@ -17,11 +17,11 @@ ComyFileSubscriber::ComyFileSubscriber()
 {    
     // get coms file path 
     ComyConfig oComyConfig;    
+    comsBasePath = oComyConfig.getComsBasePath();
     
     // create coms base folder (if it doesn't exist)
-    mkdir(oComyConfig.getComsBasePath().c_str(), 0777);
-    
-    pathPubSubFile = oComyConfig.getPubSubComsPath();
+    if (!comsBasePath.empty())
+        mkdir(comsBasePath.c_str(), 0777);
 }
 
 ComyFileSubscriber::~ComyFileSubscriber()
@@ -32,12 +32,24 @@ ComyFileSubscriber::~ComyFileSubscriber()
 
 void ComyFileSubscriber::connect()
 {
-    // open coms file for reading 
-    if (!pathPubSubFile.empty())
+    if (oChannel.isInformed())
     {
-        if (oFileReader.open(pathPubSubFile))
-            bconnected = true;        
-    }    
+        // open coms file for reading
+        if (!comsBasePath.empty())
+        {        
+
+            pathPubSubFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            bconnected = oFileReader.open(pathPubSubFile);   
+        }
+        else
+            bconnected = false;    
+    }
+    else
+    {
+        bconnected = false;        
+        LOG4CXX_WARN(logger, "ComyFileSubscriber: connection failed, coms channel needs to be defined");                        
+    }        
+    
 }
 
 bool ComyFileSubscriber::readMessage()

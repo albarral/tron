@@ -10,7 +10,11 @@ namespace comy
 
 ComyPublisher::ComyPublisher()
 {    
-    bconnected = false;
+}
+
+void ComyPublisher::setChannel(std::string topic, std::string category)
+{
+    oChannel.setChannel(Channel::eCHANNEL_BROADCAST, topic, category);
 }
 
 }

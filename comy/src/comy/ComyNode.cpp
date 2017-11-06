@@ -3,17 +3,14 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "comy/ComySubscriber.h"
+#include "comy/ComyNode.h"
 
 namespace comy
 {
 
-ComySubscriber::ComySubscriber()
+ComyNode::ComyNode()
 {    
+    bconnected = false;
 }
 
-void ComySubscriber::setChannel(std::string topic, std::string category)
-{
-    oChannel.setChannel(Channel::eCHANNEL_BROADCAST, topic, category);
-}
 }

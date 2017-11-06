@@ -10,38 +10,25 @@
 namespace comy
 {    
 const std::string ComyConfig::comsBaseFolder = "/coms";   
-const std::string ComyConfig::comsFilenameCS = "channel_CS.txt";
-const std::string ComyConfig::comsFilenamePS = "channel_PS.txt";
+const std::string ComyConfig::comsFileExtension = ".txt";
 
 // Constructor
 ComyConfig::ComyConfig()
 {    
-    std::string comsPath = getComsBasePath();
-    if (!comsPath.empty())
-    {
-        // path for client server communications        
-        comsPathCS = comsPath + "/" + comsFilenameCS;
-        // path for publish subscribe communications
-        comsPathPS = comsPath + "/" + comsFilenamePS;
-    }
-    else
-    {
-        comsPathCS = "";
-        comsPathPS = "";        
-    }
+    setComsBasePath();
 }
 
-std::string ComyConfig::getComsBasePath()
+void ComyConfig::setComsBasePath()
 {
     // coms file located in home folder
     char* pVar = getenv("HOME");    
     if (pVar != NULL)
     {
         std::string home(pVar);
-        return home + comsBaseFolder;
+        comsBasePath = home + comsBaseFolder;
     }
     else
-        return "";
+        comsBasePath = "";
 }
 
 }

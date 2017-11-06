@@ -35,8 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/comy/Channel.o \
 	${OBJECTDIR}/src/comy/ComyClient.o \
 	${OBJECTDIR}/src/comy/ComyConfig.o \
+	${OBJECTDIR}/src/comy/ComyNode.o \
 	${OBJECTDIR}/src/comy/ComyPublisher.o \
 	${OBJECTDIR}/src/comy/ComyServer.o \
 	${OBJECTDIR}/src/comy/ComySubscriber.o \
@@ -72,6 +74,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_comy.${CND_DLIB_EXT}: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	gcc -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_comy.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
+${OBJECTDIR}/src/comy/Channel.o: src/comy/Channel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/comy
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/Channel.o src/comy/Channel.cpp
+
 ${OBJECTDIR}/src/comy/ComyClient.o: src/comy/ComyClient.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/comy
 	${RM} "$@.d"
@@ -81,6 +88,11 @@ ${OBJECTDIR}/src/comy/ComyConfig.o: src/comy/ComyConfig.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/comy
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/ComyConfig.o src/comy/ComyConfig.cpp
+
+${OBJECTDIR}/src/comy/ComyNode.o: src/comy/ComyNode.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/comy
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/ComyNode.o src/comy/ComyNode.cpp
 
 ${OBJECTDIR}/src/comy/ComyPublisher.o: src/comy/ComyPublisher.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/comy
