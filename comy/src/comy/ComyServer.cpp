@@ -11,11 +11,6 @@ namespace comy
 
 ComyServer::ComyServer()
 {    
+    channelType = Channel::eCHANNEL_SERVED;
 }
-
-void ComyServer::setChannel(std::string topic, std::string category)
-{
-    oChannel.setChannel(Channel::eCHANNEL_SERVED, topic, category);
-}
-
 }

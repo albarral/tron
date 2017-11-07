@@ -16,18 +16,15 @@ namespace comy
 class ComyServer : public ComyNode
 {    
 protected:
+    int channelType; 
     std::string rawMessage;     // received message
     
 public:
     ComyServer();
-
     
    // return obtained text
     std::string getRawMessage() {return rawMessage;};
 
-    // sets communications channel
-    virtual void setChannel(std::string topic, std::string category);
-    virtual void connect() = 0;
     // read message from client, returns false if nothing read
     virtual bool readMessage() = 0; 
 };

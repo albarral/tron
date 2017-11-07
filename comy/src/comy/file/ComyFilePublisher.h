@@ -20,16 +20,16 @@ class ComyFilePublisher : public ComyPublisher
 private:
     static log4cxx::LoggerPtr logger;    
     std::string comsBasePath;
-    std::string pathPubSubFile;       // file for broadcasting the info
+    std::string pathComsFile;       // file for broadcasting the info
     tuly::FileWriter oFileWriter;
     
 public:
     ComyFilePublisher();
     ~ComyFilePublisher();
 
-    std::string getPubSubComsFile() {return pathPubSubFile;};
+    std::string getPubSubComsFile() {return pathComsFile;};
         
-    virtual void connect();
+    virtual void connect(std::string topic, std::string category);
    // info publishing method (writes data in file)
     virtual bool publishMessage(std::string rawMessage);
 };

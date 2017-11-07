@@ -29,16 +29,19 @@ ComyFileClient::~ComyFileClient()
         oFileWriter.close();    
 }
 
-void ComyFileClient::connect()
+void ComyFileClient::connect(std::string topic, std::string category)
 {
+    // set communications channel
+    setChannel(channelType, topic, category);
+
     if (oChannel.isInformed())
     {
         // open coms file for writing
         if (!comsBasePath.empty())
         {        
 
-            pathClientServerFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bconnected = oFileWriter.open(pathClientServerFile);  
+            pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            bconnected = oFileWriter.open(pathComsFile);  
         }
         else
             bconnected = false;    

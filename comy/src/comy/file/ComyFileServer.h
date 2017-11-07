@@ -22,7 +22,7 @@ class ComyFileServer : public ComyServer
 private:
     static log4cxx::LoggerPtr logger;
     std::string comsBasePath;
-    std::string pathClientServerFile;       // name of file used for coms
+    std::string pathComsFile;       // name of file used for coms
     tuly::FileReader oFileReader;     // file reader
     tuly::FileWriter oFileWriter;        // file writer
     
@@ -30,9 +30,9 @@ public:
     ComyFileServer();
     ~ComyFileServer();
 
-    std::string getClientServerComsFile() {return pathClientServerFile;};
+    std::string getClientServerComsFile() {return pathComsFile;};
                
-    virtual void connect();
+    virtual void connect(std::string topic, std::string category);
    // read message from client, returns false if nothing read
     virtual bool readMessage();
         

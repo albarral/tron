@@ -15,13 +15,12 @@ namespace comy
 // Base class used to transmit messages to a server.
 class ComyClient : public ComyNode
 {        
+protected: 
+    int channelType; 
+    
 public:
     ComyClient();
-
-    // sets communications channel
-    virtual void setChannel(std::string topic, std::string category);
-    virtual void connect() = 0;
-
+   
     // send message to server, returns false if nothing sent
     virtual bool sendMessage(std::string text) = 0;
 };

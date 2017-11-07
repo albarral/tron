@@ -30,16 +30,19 @@ ComyFileSubscriber::~ComyFileSubscriber()
         oFileReader.close();
 }
 
-void ComyFileSubscriber::connect()
+void ComyFileSubscriber::connect(std::string topic, std::string category)
 {
+    // set communications channel
+    setChannel(channelType, topic, category);
+
     if (oChannel.isInformed())
     {
         // open coms file for reading
         if (!comsBasePath.empty())
         {        
 
-            pathPubSubFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bconnected = oFileReader.open(pathPubSubFile);   
+            pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            bconnected = oFileReader.open(pathComsFile);   
         }
         else
             bconnected = false;    
@@ -69,7 +72,7 @@ bool ComyFileSubscriber::readMessage()
     }
     else
     {
-        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << pathPubSubFile);
+        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << pathComsFile);
     }
     
     return brequest;

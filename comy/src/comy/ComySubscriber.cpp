@@ -9,11 +9,7 @@ namespace comy
 {
 
 ComySubscriber::ComySubscriber()
-{    
-}
-
-void ComySubscriber::setChannel(std::string topic, std::string category)
 {
-    oChannel.setChannel(Channel::eCHANNEL_BROADCAST, topic, category);
+    channelType = Channel::eCHANNEL_BROADCAST;    
 }
 }

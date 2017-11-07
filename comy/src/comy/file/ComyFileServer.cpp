@@ -34,17 +34,19 @@ ComyFileServer::~ComyFileServer()
         oFileWriter.close();    
 }
 
-void ComyFileServer::connect()
+void ComyFileServer::connect(std::string topic, std::string category)
 {
+    // set communications channel
+    setChannel(channelType, topic, category);
+    
     if (oChannel.isInformed())
     {
         // open coms file for reading & writing
         if (!comsBasePath.empty())
         {        
-
-            pathClientServerFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bool bconnected1 = oFileReader.open(pathClientServerFile);   
-            bool bconnected2 = oFileWriter.open(pathClientServerFile);   
+            pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            bool bconnected1 = oFileWriter.open(pathComsFile);   
+            bool bconnected2 = oFileReader.open(pathComsFile);   
             bconnected = bconnected1 && bconnected2;
         }
         else

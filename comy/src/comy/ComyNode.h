@@ -24,11 +24,13 @@ public:
     ComyNode();
     
     // sets communications channel
-    virtual void setChannel(std::string topic, std::string category) = 0;
+    virtual void connect(std::string topic, std::string category) = 0;
     Channel& getChannel() {return oChannel;};
-
     bool isConnected() {return bconnected;};
-    virtual void connect() = 0;
+
+protected:
+    void setChannel(int type, std::string topic, std::string category);
+
 };
 }
 #endif

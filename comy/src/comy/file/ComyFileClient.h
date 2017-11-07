@@ -19,16 +19,16 @@ class ComyFileClient : public ComyClient
 private:
     static log4cxx::LoggerPtr logger;    
     std::string comsBasePath;
-    std::string pathClientServerFile;
+    std::string pathComsFile;
     tuly::FileWriter oFileWriter;
     
 public:
     ComyFileClient();
     ~ComyFileClient();
 
-    std::string getClientServerComsFile() {return pathClientServerFile;};
+    std::string getClientServerComsFile() {return pathComsFile;};
         
-    virtual void connect();
+    virtual void connect(std::string topic, std::string category);
    // send message to server, returns false if nothing sent
     virtual bool sendMessage(std::string text);
 };

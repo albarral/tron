@@ -16,6 +16,7 @@ namespace comy
 class ComySubscriber : public ComyNode
 {    
 protected:
+    int channelType; 
     std::string rawMessage;     // received message
         
 public:
@@ -23,11 +24,7 @@ public:
 
     // return obtained text
     std::string getRawMessage() {return rawMessage;};
-
        
-    // sets communications channel
-    virtual void setChannel(std::string topic, std::string category);
-    virtual void connect() = 0;
     // info reading method 
     virtual bool readMessage() = 0;
 };
