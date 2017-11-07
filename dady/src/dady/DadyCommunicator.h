@@ -18,7 +18,10 @@ class DadyCommunicator
 {
 private:
     static log4cxx::LoggerPtr logger;
-    comy::ComyFileClient oComyClient;   // comy communications client
+    comy::ComyFileClient oComyClientJoints;   // communications client for joint category
+    comy::ComyFileClient oComyClientAxis;   // communications client for axis category
+    comy::ComyFileClient oComyClientCyclic;   // communications client for cyclic category
+    comy::ComyFileClient oComyClientExtra;   // communications client for extra category
 
 public:
     DadyCommunicator();
@@ -27,7 +30,11 @@ public:
     // connect to amy process
     bool connect2Amy();                
     // sends command to amy process
-    bool sendCommand(std::string message);    
+    bool sendCommand(std::string message, int topic, int category);    
+    
+private:
+    //  sends command through specified channel
+    bool sendCommand2Channel(comy::ComyFileClient& oComyClient, std::string message);
         
 };
 }		

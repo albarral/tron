@@ -28,9 +28,26 @@ bool DadyCommander::checkValidCommand(std::string entry)
     {
         bvalid = true;
         //LOG4CXX_INFO(logger, "DadyCommander: msg processed ok");        
+
+        // if simple command
+        if (!oInterpreter.isBlockProcessed())
+        {
+            msgTopic = oInterpreter.getCommand().getTopic();
+            msgCategory = oInterpreter.getCommand().getCategory();
+        }
+        // if command block
+        else
+        {
+            msgTopic = oInterpreter.getCommandBlock().getListCommands().at(0).getTopic();
+            msgCategory = oInterpreter.getCommandBlock().getListCommands().at(0).getCategory();
+        }            
     }
     else
+    {
         bvalid = false;
+        msgTopic = -1; 
+        msgCategory = -1;
+    }
     
     // anyway, show interpreted or misinterpreted command 
     // simple command
