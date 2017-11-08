@@ -13,7 +13,7 @@ namespace talky
 // Class defining the language for the arm topic.
  class ArmLanguage: public Language
 {
- private:
+ public:
     /*! arm topic categories (names) */
     const std::string CAT_ARM_JOINT = "joint";
     const std::string CAT_ARM_AXIS = "axis";

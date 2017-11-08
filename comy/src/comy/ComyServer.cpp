@@ -11,7 +11,6 @@ namespace comy
 
 ComyServer::ComyServer()
 {    
-    bconnected = false;
+    channelType = Channel::eCHANNEL_SERVED;
 }
-
 }

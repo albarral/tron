@@ -9,9 +9,7 @@ namespace comy
 {
 
 ComySubscriber::ComySubscriber()
-{    
-    bconnected = false;
+{
+    channelType = Channel::eCHANNEL_BROADCAST;    
 }
-
-
 }

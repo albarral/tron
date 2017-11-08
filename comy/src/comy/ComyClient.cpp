@@ -10,7 +10,6 @@ namespace comy
 
 ComyClient::ComyClient()
 {    
-    bconnected = false;
+    channelType = Channel::eCHANNEL_SERVED;
 }
-
 }

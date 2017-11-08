@@ -3,14 +3,18 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "comy/ComyPublisher.h"
+#include "comy/ComyNode.h"
 
 namespace comy
 {
 
-ComyPublisher::ComyPublisher()
+ComyNode::ComyNode()
 {    
-    channelType = Channel::eCHANNEL_BROADCAST;    
+    bconnected = false;
 }
 
+void ComyNode::setChannel(int type, std::string topic, std::string category)
+{
+    oChannel.setChannel(type, topic, category);
+}
 }

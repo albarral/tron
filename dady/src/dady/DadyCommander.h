@@ -19,12 +19,16 @@ class DadyCommander
 private:
     static log4cxx::LoggerPtr logger;    
     talky::Interpreter oInterpreter;        // interpreter for talky communications
+    int msgTopic;                               // topic of interpreted message
+    int msgCategory;                          // category of interpreted message
 
 public:
     DadyCommander();
     //~DadyCommander();
     
     bool checkValidCommand(std::string entry);
+    int getInterpretedTopic() {return msgTopic;};
+    int getInterpretedCategory() {return msgCategory;};
 
     void showAvailableCommands();
 };

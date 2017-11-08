@@ -50,7 +50,7 @@ int main(int argc, char** argv)
     if (oDadyCommander.checkValidCommand(userCommand))
     {
         if (oDadyCommunicator.connect2Amy())
-            bsent = oDadyCommunicator.sendCommand(userCommand);
+            bsent = oDadyCommunicator.sendCommand(userCommand, oDadyCommander.getInterpretedTopic(), oDadyCommander.getInterpretedCategory());
     }
     
     if (bsent)

@@ -23,10 +23,14 @@
           <itemPath>src/comy/file/ComyFileSubscriber.cpp</itemPath>
           <itemPath>src/comy/file/ComyFileSubscriber.h</itemPath>
         </logicalFolder>
+        <itemPath>src/comy/Channel.cpp</itemPath>
+        <itemPath>src/comy/Channel.h</itemPath>
         <itemPath>src/comy/ComyClient.cpp</itemPath>
         <itemPath>src/comy/ComyClient.h</itemPath>
         <itemPath>src/comy/ComyConfig.cpp</itemPath>
         <itemPath>src/comy/ComyConfig.h</itemPath>
+        <itemPath>src/comy/ComyNode.cpp</itemPath>
+        <itemPath>src/comy/ComyNode.h</itemPath>
         <itemPath>src/comy/ComyPublisher.cpp</itemPath>
         <itemPath>src/comy/ComyPublisher.h</itemPath>
         <itemPath>src/comy/ComyServer.cpp</itemPath>
@@ -85,6 +89,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/comy/Channel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/comy/Channel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/comy/ComyClient.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/comy/ComyClient.h" ex="false" tool="3" flavor2="0">
@@ -92,6 +100,10 @@
       <item path="src/comy/ComyConfig.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/comy/ComyConfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/comy/ComyNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/comy/ComyNode.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/ComyPublisher.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -148,6 +160,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/comy/Channel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/comy/Channel.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/comy/ComyClient.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/comy/ComyClient.h" ex="false" tool="3" flavor2="0">
@@ -155,6 +171,10 @@
       <item path="src/comy/ComyConfig.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/comy/ComyConfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/comy/ComyNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/comy/ComyNode.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/ComyPublisher.cpp" ex="false" tool="1" flavor2="0">
       </item>

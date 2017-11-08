@@ -8,20 +8,19 @@
 
 #include <string>
 
+#include "comy/ComyNode.h"
+
 namespace comy
 {
 // Base class used to transmit messages to a server.
-class ComyClient
+class ComyClient : public ComyNode
 {        
-protected:
-    bool bconnected;        // connected to server
+protected: 
+    int channelType; 
     
 public:
     ComyClient();
-
-    bool isConnected() {return bconnected;};
-    virtual void connect() = 0;
-
+   
     // send message to server, returns false if nothing sent
     virtual bool sendMessage(std::string text) = 0;
 };
