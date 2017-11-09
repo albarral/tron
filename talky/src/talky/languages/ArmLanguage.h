@@ -39,18 +39,14 @@ namespace talky
     const std::string AXIS_RAD_SPEED = "vrad";             /*! radial speed (cm/s) */
     /*! cyclic category names */
     // FRONTAL CYCLER
-    const std::string CYCLIC_FRONT_FREQ = "freq1";      /*! frequency of frontal cycler (Hz) */
-    const std::string CYCLIC_FRONT_AMP = "amp1";        /*! amplitude of frontal cycler (degrees) */
-    const std::string CYCLIC_FRONT_ANGLE = "ang1";      /*! orientation of frontal cycler (degrees) */
-    const std::string CYCLIC_FRONT_START = "go1";       /*! start frontal cycler movement */
-    const std::string CYCLIC_FRONT_STOP = "end1";       /*! stop frontal cycler movement */
-    // ARM MOVER
-    const std::string CYCLIC_MOVER_TURN = "turn";           /*! turns cyclic movement (degrees) */
-    const std::string CYCLIC_MOVER_WIDER = "wider";         /*! makes cyclic movement wider (1) or narrower (0) */
-    const std::string CYCLIC_MOVER_TALLER = "taller";       /*! makes cyclic movement taller (1) or shorter (0) */  
-    const std::string CYCLIC_MOVER_FASTER = "faster";       /*! makes cyclic movement faster (1) or slower (0) */
-    const std::string CYCLIC_MOVER_LAUNCH = "move";      /*! launch specified movement (type) */
-    const std::string CYCLIC_MOVER_STOP = "stop";           /*! stop cyclic movement */
+    const std::string CYCLIC_FRONT1_FREQ = "freq1";      /*! frequency of frontal cycler component 1 (Hz) */
+    const std::string CYCLIC_FRONT1_AMP = "amp1";        /*! amplitude of frontal cycler component 1 (degrees) */
+    const std::string CYCLIC_FRONT1_ANGLE = "ang1";      /*! orientation of frontal cycler component 1 (degrees) */
+    const std::string CYCLIC_FRONT2_FREQ = "freq2";      /*! frequency of frontal cycler component 2 (Hz) */
+    const std::string CYCLIC_FRONT2_AMP = "amp2";        /*! amplitude of frontal cycler component 2 (degrees) */
+    const std::string CYCLIC_FRONT2_ANGLE = "ang2";      /*! orientation of frontal cycler component 2 (degrees) */
+    const std::string CYCLIC_FRONT_START = "go";          /*! start frontal cycler movement */
+    const std::string CYCLIC_FRONT_STOP = "end";           /*! stop frontal cycler movement */
     /*! extra category names */
     const std::string EXTRA_ARM_STOP = "stop";                  /*! stop arm */
     const std::string EXTRA_KEEP_TILT = "keep";                   /*! keep the tilt position */

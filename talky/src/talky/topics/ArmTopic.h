@@ -57,18 +57,14 @@ public:
     enum eCyclicCat
     {
          // FRONTAL CYCLER
-         eCYCLIC_FRONT_FREQ,            /*! frequency of frontal cycler (Hz) */
-         eCYCLIC_FRONT_AMP,             /*! amplitude of frontal cycler (degrees) */
-         eCYCLIC_FRONT_ANGLE,          /*! orientation of frontal cycler (degrees) */
+         eCYCLIC_FRONT1_FREQ,            /*! frequency of frontal cycler component 1 (Hz) */
+         eCYCLIC_FRONT1_AMP,             /*! amplitude of frontal cycler component 1 (degrees) */
+         eCYCLIC_FRONT1_ANGLE,          /*! orientation of frontal cycler component 1 (degrees) */
+         eCYCLIC_FRONT2_FREQ,            /*! frequency of frontal cycler component 2 (Hz) */
+         eCYCLIC_FRONT2_AMP,             /*! amplitude of frontal cycler component 2 (degrees) */
+         eCYCLIC_FRONT2_ANGLE,          /*! orientation of frontal cycler component 2 (degrees) */
          eCYCLIC_FRONT_START,          /*! start frontal cycler movement */
          eCYCLIC_FRONT_STOP,           /*! stop frontal cycler movement */
-         // ARM MOVER
-         eCYCLIC_MOVER_TURN,         /*! turns cyclic movement (degrees) */
-         eCYCLIC_MOVER_WIDER,        /*! makes cyclic movement wider (1) or narrower (0) */
-         eCYCLIC_MOVER_TALLER,      /*! makes cyclic movement taller (1) or shorter (0) */     
-         eCYCLIC_MOVER_FASTER,      /*! makes cyclic movement faster (1) or slower (0) */
-         eCYCLIC_MOVER_LAUNCH,      /*! launch specified movement (type) */
-         eCYCLIC_MOVER_STOP,         /*! stop cyclic movement */
          eCYCLIC_DIM
     };
       

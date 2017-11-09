@@ -75,18 +75,14 @@ void ArmLanguage::defineCyclicCategory()
     Slang oSlang;    
     oSlang.setCategory(category);
     // FRONTAL CYCLER
-    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_FREQ, CYCLIC_FRONT_FREQ);
-    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_AMP, CYCLIC_FRONT_AMP);                         
-    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_ANGLE, CYCLIC_FRONT_ANGLE);                      
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT1_FREQ, CYCLIC_FRONT1_FREQ);
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT1_AMP, CYCLIC_FRONT1_AMP);                         
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT1_ANGLE, CYCLIC_FRONT1_ANGLE);                      
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT2_FREQ, CYCLIC_FRONT2_FREQ);
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT2_AMP, CYCLIC_FRONT2_AMP);                         
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT2_ANGLE, CYCLIC_FRONT2_ANGLE);                      
     oSlang.addWord(ArmTopic::eCYCLIC_FRONT_START, CYCLIC_FRONT_START);                   
     oSlang.addWord(ArmTopic::eCYCLIC_FRONT_STOP, CYCLIC_FRONT_STOP);                        
-    // ARM MOVER
-    oSlang.addWord(ArmTopic::eCYCLIC_MOVER_TURN, CYCLIC_MOVER_TURN);                        
-    oSlang.addWord(ArmTopic::eCYCLIC_MOVER_WIDER, CYCLIC_MOVER_WIDER);                        
-    oSlang.addWord(ArmTopic::eCYCLIC_MOVER_TALLER, CYCLIC_MOVER_TALLER);                        
-    oSlang.addWord(ArmTopic::eCYCLIC_MOVER_FASTER, CYCLIC_MOVER_FASTER);                        
-    oSlang.addWord(ArmTopic::eCYCLIC_MOVER_LAUNCH, CYCLIC_MOVER_LAUNCH);                        
-    oSlang.addWord(ArmTopic::eCYCLIC_MOVER_STOP, CYCLIC_MOVER_STOP);                        
     addSlang(category, oSlang);    
 }
 

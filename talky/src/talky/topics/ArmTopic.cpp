@@ -74,13 +74,11 @@ void ArmTopic::createCyclicCategory()
     // list of special concepts, those who don't need a quantity
     std::vector<int> listSpecialConcepts{
         eCYCLIC_FRONT_START, 
-        eCYCLIC_FRONT_STOP,   
-        eCYCLIC_MOVER_LAUNCH, 
-        eCYCLIC_MOVER_STOP};
+        eCYCLIC_FRONT_STOP};
     
     Concept oConcept;
         
-    for (int id=eCYCLIC_FRONT_FREQ; id<eCYCLIC_DIM; id++)
+    for (int id=eCYCLIC_FRONT1_FREQ; id<eCYCLIC_DIM; id++)
     {
         oConcept.setMeaning(id);
         
