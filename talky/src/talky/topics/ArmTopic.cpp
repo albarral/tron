@@ -6,6 +6,7 @@
 #include <algorithm>
 
 #include "talky/topics/ArmTopic.h"
+#include "talky/languages/ArmLanguage.h"
 #include "talky/Topics.h"
 
 namespace talky
@@ -25,19 +26,24 @@ void ArmTopic::build()
     createAxisCategory();
     createCyclicCategory();
     createExtraCategory();
+    
+    // build arm language and apply it to this topic
+    ArmLanguage oArmLanguage;            
+    oArmLanguage.build();
+    applyLanguage(oArmLanguage);                
 }
 
 // create concepts of joint category
 void ArmTopic::createJointCategory()
 {
     Category oCategory;
-    oCategory.setId(eCAT_ARM_JOINT);
+    oCategory.setId(ArmTopic::eCAT_ARM_JOINT);
 
     Concept oConcept;
     // all concepts in this category need a quantity
     oConcept.setNeedsQuantity(true);
         
-    for (int id=eJOINT_HS_POS; id<eJOINT_DIM; id++)
+    for (int id=0; id<ArmTopic::eJOINT_DIM; id++)
     {
         oConcept.setMeaning(id);
         oCategory.addConcept(oConcept);
@@ -50,13 +56,13 @@ void ArmTopic::createJointCategory()
 void ArmTopic::createAxisCategory()
 {
     Category oCategory;
-    oCategory.setId(eCAT_ARM_AXIS);
+    oCategory.setId(ArmTopic::eCAT_ARM_AXIS);
 
     Concept oConcept;
     // all concepts in this category need a quantity
     oConcept.setNeedsQuantity(true);
         
-    for (int id=eAXIS_PAN_POS; id<eAXIS_DIM; id++)
+    for (int id=0; id<ArmTopic::eAXIS_DIM; id++)
     {
         oConcept.setMeaning(id);
         oCategory.addConcept(oConcept);
@@ -69,16 +75,16 @@ void ArmTopic::createAxisCategory()
 void ArmTopic::createCyclicCategory() 
 {
     Category oCategory;
-    oCategory.setId(eCAT_ARM_CYCLIC);
+    oCategory.setId(ArmTopic::eCAT_ARM_CYCLIC);
 
     // list of special concepts, those who don't need a quantity
     std::vector<int> listSpecialConcepts{
-        eCYCLIC_FRONT_START, 
-        eCYCLIC_FRONT_STOP};
+        ArmTopic::eCYCLIC_FRONT_START, 
+        ArmTopic::eCYCLIC_FRONT_STOP};
     
     Concept oConcept;
         
-    for (int id=eCYCLIC_FRONT1_FREQ; id<eCYCLIC_DIM; id++)
+    for (int id=0; id<ArmTopic::eCYCLIC_DIM; id++)
     {
         oConcept.setMeaning(id);
         
@@ -99,13 +105,13 @@ void ArmTopic::createCyclicCategory()
 void ArmTopic::createExtraCategory()
 {
     Category oCategory;
-    oCategory.setId(eCAT_ARM_EXTRA);
+    oCategory.setId(ArmTopic::eCAT_ARM_EXTRA);
 
     Concept oConcept;
     // all concepts in this category don't need a quantity
     oConcept.setNeedsQuantity(false);
         
-    for (int id=eEXTRA_ARM_STOP; id<eEXTRA_DIM; id++)
+    for (int id=0; id<ArmTopic::eEXTRA_DIM; id++)
     {
         oConcept.setMeaning(id);
         oCategory.addConcept(oConcept);

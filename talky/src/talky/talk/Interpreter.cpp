@@ -7,7 +7,7 @@
 
 #include "talky/talk/Interpreter.h"
 #include "talky/topics/ArmTopic.h"
-#include "talky/languages/ArmLanguage.h"
+#include "talky/topics/BodyTopic.h"
 #include "talky/Topics.h"
 
 using namespace log4cxx;
@@ -45,18 +45,26 @@ void Interpreter::addLanguage(int topicId)
     switch (topicId)
     {
         case Topics::eTOPIC_ARM:
+        {
             // build arm topic
             ArmTopic oArmTopic;
             oArmTopic.build();
-            // build arm language
-            ArmLanguage oArmLanguage;            
-            oArmLanguage.build();
-            // apply language to topic
-            oArmTopic.applyLanguage(oArmLanguage);            
-            // apply topic to talker
+            // and apply it to talker
             oTalker.build(oArmTopic);
             bvalidTopic = true;
             break;            
+        }
+
+        case Topics::eTOPIC_BODYROLE:
+        {
+            // build body role topic
+            BodyTopic oBodyTopic;
+            oBodyTopic.build();
+            // and apply it to talker
+            oTalker.build(oBodyTopic);
+            bvalidTopic = true;
+            break;            
+        }
     }
     
     // if talk topic created

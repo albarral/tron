@@ -24,6 +24,7 @@ namespace talky
         eTOPIC_VISION,              /*! vision topic id */
         eTOPIC_HEAD,                /*! head topic id */
         eTOPIC_WHEELS,            /*! wheels topic id */  
+        eTOPIC_BODYROLE,        /*! body role topic id */  
         eTOPIC_DIM
     };
      
@@ -33,6 +34,7 @@ namespace talky
     static const std::string VISION_TOPIC;      /*! vision topic name */
     static const std::string HEAD_TOPIC;        /*! head topic name */
     static const std::string WHEELS_TOPIC;    /*! wheels topic name */
+    static const std::string BODYROLE_TOPIC;    /*! body role topic name */
     // auxiliary values
     static const int INVALID_VALUE = -1;
     static const int MIN_COMMAND_FIELDS = 3;     /*! minimum number of fields in valid command/message */   

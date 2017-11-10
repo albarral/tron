@@ -21,7 +21,7 @@ void ArmLanguage::build()
 
     // set arm topic
     setTopic(Topics::eTOPIC_ARM);
-    // define all arm topic categories
+    // define topic categories
     defineJointCategory();
     defineAxisCategory();
     defineCyclicCategory();
@@ -32,7 +32,7 @@ void ArmLanguage::build()
 void ArmLanguage::defineJointCategory()
 {
     int category = ArmTopic::eCAT_ARM_JOINT;
-    addCategory(category, CAT_ARM_JOINT);
+    addCategory(category, ArmLanguage::CAT_ARM_JOINT);
 
     Slang oSlang;    
     oSlang.setCategory(category);
@@ -53,7 +53,7 @@ void ArmLanguage::defineJointCategory()
 void ArmLanguage::defineAxisCategory()
 {
     int category = ArmTopic::eCAT_ARM_AXIS;
-    addCategory(category, CAT_ARM_AXIS);
+    addCategory(category, ArmLanguage::CAT_ARM_AXIS);
 
     Slang oSlang;    
     oSlang.setCategory(category);
@@ -70,7 +70,7 @@ void ArmLanguage::defineAxisCategory()
 void ArmLanguage::defineCyclicCategory() 
 {
     int category = ArmTopic::eCAT_ARM_CYCLIC;
-    addCategory(category, CAT_ARM_CYCLIC);
+    addCategory(category, ArmLanguage::CAT_ARM_CYCLIC);
 
     Slang oSlang;    
     oSlang.setCategory(category);
@@ -90,7 +90,7 @@ void ArmLanguage::defineCyclicCategory()
 void ArmLanguage::defineExtraCategory()
 {
     int category = ArmTopic::eCAT_ARM_EXTRA;
-    addCategory(category, CAT_ARM_EXTRA);
+    addCategory(category, ArmLanguage::CAT_ARM_EXTRA);
 
     Slang oSlang;    
     oSlang.setCategory(category);
