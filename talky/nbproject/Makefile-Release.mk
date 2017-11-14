@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/talky/DataBlock.o \
+	${OBJECTDIR}/src/talky/Talk2Target.o \
 	${OBJECTDIR}/src/talky/Topics.o \
 	${OBJECTDIR}/src/talky/base/Category.o \
 	${OBJECTDIR}/src/talky/base/Concept.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/src/talky/DataBlock.o: src/talky/DataBlock.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/DataBlock.o src/talky/DataBlock.cpp
+
+${OBJECTDIR}/src/talky/Talk2Target.o: src/talky/Talk2Target.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/Talk2Target.o src/talky/Talk2Target.cpp
 
 ${OBJECTDIR}/src/talky/Topics.o: src/talky/Topics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky

@@ -44,6 +44,10 @@ public:
 
     // adds language capability for the given topic
     void addLanguage(int topicId);
+    // checks if interpreter knows given topic
+    bool knowsTopic(int topicId);    
+    // check if interpreter knows given topic category
+    bool knowsTopicCategory(int topicId, int categoryId);
     
     // interprets given message/message block converting it to a simple command/command block
     // returns true if processed ok
@@ -63,10 +67,7 @@ public:
     Command& getCommand() {return oCommand;};
     // gets composed message
     CommandBlock& getCommandBlock() {return oCommandBlock;};
-    
-    // checks if given topic is understood by this interpreter
-    bool understandsLanguage(std::string topicName);    
-    
+        
     // show all languages known by the interpreter
     void showKnowledge();
     

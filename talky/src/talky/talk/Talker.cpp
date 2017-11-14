@@ -50,9 +50,10 @@ void Talker::build(Topic& oTopic)
     }
 }
 
-bool Talker::understandsSlang(std::string categoryName)
+bool Talker::knowsCategory(int categoryId)
 {
-    return (mapCategoryNumbers.find(categoryName) != mapCategoryNumbers.end());
+    // category is known if there's a slang talker for it
+    return (mapSlangTalkers.find(categoryId) != mapSlangTalkers.end());
 }
 
 void Talker::processMessage(Message& oMessage, Command& oCommand)

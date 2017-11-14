@@ -51,8 +51,8 @@ public:
     // converts given command in a communication message
     void buildMessage(Command& oCommand, Message& oMessage);
 
-    // checks if given category is understood by this topic interpreter
-    bool understandsSlang(std::string categoryName);    
+    // checks if talker knows given category
+    bool knowsCategory(int categoryId);    
     
     // show all categories known by the talker
     std::string showKnowledge();

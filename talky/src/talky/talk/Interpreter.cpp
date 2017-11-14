@@ -78,9 +78,23 @@ void Interpreter::addLanguage(int topicId)
     }
 }
 
-bool Interpreter::understandsLanguage(std::string topicName)
+bool Interpreter::knowsTopic(int topicId)
 {
-    return (mapTopicNumbers.find(topicName) != mapTopicNumbers.end());
+    // topic is known if there's a talker for it
+    return (mapTalkers.find(topicId) != mapTalkers.end());
+}
+
+bool Interpreter::knowsTopicCategory(int topicId, int categoryId)
+{
+    bool bknown = false;
+    // get topic talker 
+    Talker* pTalker = getTopicTalker(topicId);
+    
+    // if talker found, check if it knows the category
+    if (pTalker != 0)
+        bknown = pTalker->knowsCategory(categoryId);
+
+    return bknown;
 }
 
 bool Interpreter::processMessage(std::string text)
