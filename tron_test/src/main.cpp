@@ -10,8 +10,8 @@
 
 #include "TestTalky.h"
 #include "TestComy.h"
+#include "TestMaty.h"
 #include "TestTivy.h"
-#include "Listener.h"
 
 // obtains user's home path
 std::string getHomePath();
@@ -38,9 +38,13 @@ int main(int argc, char** argv)
 //    tron::Listener oListener;
 //    oListener.run(10);
 
+     // test maty lib
+    TestMaty oTestMaty;
+    oTestMaty.makeTest();
+
     // test tivy lib
-    TestTivy oTestTivy;
-    oTestTivy.makeTest();
+//    TestTivy oTestTivy;
+//    oTestTivy.makeTest();
     
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");

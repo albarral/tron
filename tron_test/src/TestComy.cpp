@@ -33,13 +33,16 @@ void TestComy::makeTest()
 void TestComy::testComsClientServer()
 {
     LOG4CXX_INFO(logger, modName + ": testComsClientServer ...");
-
+    
     comy::ComyFileClient oComyClient;
     comy::ComyFileServer oComyServer;
     
     // connection
-    oComyClient.connect();
-    oComyServer.connect();
+    // multichannel communication
+    std::string topic = "topic";
+    std::string category = "cat";
+    oComyClient.connect(topic, category);
+    oComyServer.connect(topic, category);
     
     if (!oComyClient.isConnected() || !oComyServer.isConnected())
     {
@@ -73,8 +76,11 @@ void TestComy::testComsPublishSubscribe()
     comy::ComyFileSubscriber oComySubscriber;
     
     // connection
-    oComyPublisher.connect();
-    oComySubscriber.connect();
+    // multichannel communication
+    std::string topic = "topic";
+    std::string category = "cat";
+    oComyPublisher.connect(topic, category);
+    oComySubscriber.connect(topic, category);
     
     if (!oComyPublisher.isConnected() || !oComySubscriber.isConnected())
     {

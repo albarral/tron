@@ -1,5 +1,5 @@
-#ifndef __TRON_TESTTALKY_H
-#define __TRON_TESTTALKY_H
+#ifndef __TRON_TESTMATY_H
+#define __TRON_TESTMATY_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
@@ -9,24 +9,20 @@
 #include <string>
 #include <log4cxx/logger.h>
 
-#include "talky/talk/Interpreter.h"
-
-// Class used to test talky lib.
-class TestTalky
+// Class used to test maty lib.
+class TestMaty
 {
 private:
     static log4cxx::LoggerPtr logger;
     std::string modName;          // module name
 
 public:
-    TestTalky();
-    //~TestTalky();
+    TestMaty();
+    //~TestMaty();
 
     void makeTest();      
     
 private:
-    void testReadMessage(talky::Interpreter& oInterpreter, std::string msg);                
-    std::string testWriteMessage(talky::Interpreter& oInterpreter);
-    std::string testWriteMessageBlock(talky::Interpreter& oInterpreter);
+    void testArmMath();
 };
 #endif

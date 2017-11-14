@@ -13,6 +13,7 @@
                 <make-dep-project>../talky</make-dep-project>
                 <make-dep-project>../tuly</make-dep-project>
                 <make-dep-project>../tivy</make-dep-project>
+                <make-dep-project>../maty</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
