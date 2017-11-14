@@ -1,12 +1,12 @@
-#ifndef __AMY_MATH_ARMMATH_H
-#define __AMY_MATH_ARMMATH_H
+#ifndef __MATY_MATH_ARMMATH_H
+#define __MATY_MATH_ARMMATH_H
 
 /***************************************************************************
  *   Copyright (C) 2016 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-namespace amy
+namespace maty
 {
 // Class used to perform mathematic computations on a 2 segments arm.
 // Converts from joint angles to polar coordinates (tilt & radius) and viceversa.

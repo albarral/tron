@@ -3,9 +3,9 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/Angle.h"
+#include "maty/math/Angle.h"
 
-namespace amy
+namespace maty
 {
 float Angle::inLimits(float angle)
 {

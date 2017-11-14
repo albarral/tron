@@ -3,9 +3,9 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/ArmPolar.h"
+#include "maty/math/ArmPolar.h"
 
-namespace amy
+namespace maty
 {
 ArmPolar::ArmPolar()
 {

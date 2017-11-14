@@ -5,10 +5,10 @@
 
 #include <cmath>
 
-#include "amy/math/Vector.h"
-#include "amy/math/MathDefines.h"
+#include "maty/math/Vector.h"
+#include "maty/math/MathDefines.h"
 
-namespace amy
+namespace maty
 {
 Vector::Vector()
 {

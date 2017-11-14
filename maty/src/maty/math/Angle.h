@@ -1,12 +1,12 @@
-#ifndef __AMY_MATH_ANGLE_H
-#define __AMY_MATH_ANGLE_H
+#ifndef __MATY_MATH_ANGLE_H
+#define __MATY_MATH_ANGLE_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
  
-namespace amy
+namespace maty
 {
 // Class used to treat angles.
 class Angle

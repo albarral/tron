@@ -1,5 +1,5 @@
-#ifndef __AMY_MATH_MATHDEFS_H
-#define __AMY_MATH_MATHDEFS_H
+#ifndef __MATY_MATH_MATHDEFS_H
+#define __MATY_MATH_MATHDEFS_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *

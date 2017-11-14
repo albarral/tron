@@ -3,9 +3,9 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/Click.h"
+#include "maty/math/Click.h"
 
-namespace amy 
+namespace maty 
 {
 Click::Click()
 {

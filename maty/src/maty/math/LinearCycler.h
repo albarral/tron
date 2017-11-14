@@ -1,15 +1,15 @@
-#ifndef __AMY_MATH_LINEARCYCLER_H
-#define __AMY_MATH_LINEARCYCLER_H
+#ifndef __MATY_MATH_LINEARCYCLER_H
+#define __MATY_MATH_LINEARCYCLER_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/TriangularSignal.h"
-#include "amy/math/Vector.h"
+#include "maty/math/TriangularSignal.h"
+#include "maty/math/Vector.h"
 
-namespace amy
+namespace maty
 {
 // Class used to perform cyclic linear movements.
 // The class inputs are: the frequency, the movement amplitude and the orientation angle.

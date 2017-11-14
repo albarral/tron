@@ -3,9 +3,9 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/PIDControl.h"
+#include "maty/math/PIDControl.h"
 
-namespace amy
+namespace maty
 {
 PIDControl::PIDControl()
 {

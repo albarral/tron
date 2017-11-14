@@ -3,10 +3,10 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/LinearCycler.h"
+#include "maty/math/LinearCycler.h"
 
 
-namespace amy
+namespace maty
 {
 LinearCycler::LinearCycler()
 {

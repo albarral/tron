@@ -5,10 +5,10 @@
 
 #include <cmath>
 
-#include "amy/math/ArmMath.h"
-#include "amy/math/MathDefines.h"
+#include "maty/math/ArmMath.h"
+#include "maty/math/MathDefines.h"
 
-namespace amy
+namespace maty
 {
 // computes all the move steps in a movement
 ArmMath::ArmMath()

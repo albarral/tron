@@ -5,9 +5,9 @@
 
 #include <cmath>
 
-#include "amy/math/TriangularSignal.h"
+#include "maty/math/TriangularSignal.h"
 
-namespace amy
+namespace maty
 {
 TriangularSignal::TriangularSignal()
 {    

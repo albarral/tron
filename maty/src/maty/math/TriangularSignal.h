@@ -1,14 +1,14 @@
-#ifndef __AMY_MATH_TRIANGULAR_SIGNAL_H
-#define __AMY_MATH_TRIANGULAR_SIGNAL_H
+#ifndef __MATY_MATH_TRIANGULAR_SIGNAL_H
+#define __MATY_MATH_TRIANGULAR_SIGNAL_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/Click.h"
+#include "maty/math/Click.h"
 
-namespace amy
+namespace maty
 {
 // Class that produces a periodic triangular signal between -1 and 1 at a requested frequency.
 // On start the signal is reset to 0 & the periodic cycle started.

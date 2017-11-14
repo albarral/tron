@@ -1,14 +1,14 @@
-#ifndef __AMY_MATH_ARMPOLAR_H
-#define __AMY_MATH_ARMPOLAR_H
+#ifndef __MATY_MATH_ARMPOLAR_H
+#define __MATY_MATH_ARMPOLAR_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "amy/math/ArmMath.h"
+#include "maty/math/ArmMath.h"
 
-namespace amy
+namespace maty
 {
 // Class used to compute an arm's polar positions (pan, tilt and radius).
 // It must be tuned to the arm before using it.

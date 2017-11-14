@@ -1,5 +1,5 @@
-#ifndef _AMY_MATH_CLICK_H
-#define _AMY_MATH_CLICK_H
+#ifndef _MATY_MATH_CLICK_H
+#define _MATY_MATH_CLICK_H
 
 /***************************************************************************
  *   Copyright (C) 2014 by Migtron Robotics   *
@@ -9,7 +9,7 @@
 
 #include <chrono>
 
-namespace amy 
+namespace maty 
 {
 // Utility class for computing time intervals.
 // Set the time start point with start()
