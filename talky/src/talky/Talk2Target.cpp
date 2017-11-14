@@ -56,6 +56,18 @@ void Talk2Target::addCommand(int concept, float quantity)
     listCommands.push_back(oCommand);
 }
 
+void Talk2Target::addCommand(int concept)
+{  
+    std::lock_guard<std::mutex> locker(mutex);
+    
+    Command oCommand;
+    oCommand.setTopic(topic);
+    oCommand.setCategory(category);
+    oCommand.setConcept(concept);
+    
+    listCommands.push_back(oCommand);
+}
+
 bool Talk2Target::isArmed()
 {
     std::lock_guard<std::mutex> locker(mutex);

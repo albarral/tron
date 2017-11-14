@@ -39,8 +39,10 @@ public:
     bool isEnabled() {return benabled;};   
     void init(int topic, int category);
 
-    // add command to pending list
-    void addCommand(int concept, float quantity = 0.0);   
+    // add full command to pending list
+    void addCommand(int concept, float quantity);   
+    // add short command (no quantity) to pending list
+    void addCommand(int concept);   
     // checks if there are pending commands to process
     bool isArmed(); 
     // converts first pending command into message (the older in list)

@@ -60,7 +60,7 @@ bool ComyFileClient::sendMessage(std::string text)
         // write command in coms file (newline added)
         std::string output = text + "\n";
         // overwriting any previous command
-        oFileWriter.writeFromTop();
+        //oFileWriter.writeFromTop();
         oFileWriter.writeFlush(output);
         //LOG4CXX_INFO(logger, "ComyFileClient: command sent");        
         return true;
