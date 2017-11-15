@@ -9,24 +9,33 @@
 #include <string>
 
 #include "comy/ComyNode.h"
+#include "tuly/utils/MessageQueue.h"
 
 namespace comy
 {
-// Base class used to listen to messages from clients.
+// Base class used to read communication messages sent by comy clients.
+// It works with a message queue to be consumed on demand.
 class ComyServer : public ComyNode
 {    
 protected:
-    int channelType; 
-    std::string rawMessage;     // received message
+    tuly::MessageQueue oMessageQueue;       // messages queue
     
 public:
     ComyServer();
+    //~ComyFileServer();
     
-   // return obtained text
-    std::string getRawMessage() {return rawMessage;};
-
-    // read message from client, returns false if nothing read
-    virtual bool readMessage() = 0; 
+    // read messages from client and puts them in the queue, returns false if nothing read
+    bool readMessages();
+    // checks if queue has pending messages
+    bool hasMessages();
+    // fetches first message in the queue
+    std::string getMessage();
+    
+protected:    
+    // read message from client, returns empty if nothing read
+    virtual std::string readMessage() = 0; 
+    // informs the read messages call has finished 
+    //virtual void readFinished() = 0;
 };
 }
 #endif

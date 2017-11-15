@@ -15,9 +15,6 @@ namespace comy
 // Base class used to publish communication messages
 class ComyPublisher : public ComyNode
 {            
-protected: 
-    int channelType; 
-
 public:
     ComyPublisher();
    

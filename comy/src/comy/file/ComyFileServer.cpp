@@ -46,7 +46,9 @@ void ComyFileServer::connect(std::string topic, std::string category)
         {        
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
             bool bconnected1 = oFileWriter.open(pathComsFile);   
-            bool bconnected2 = oFileReader.open(pathComsFile);   
+            bool bconnected2 = oFileReader.open(pathComsFile); 
+            if (bconnected2)
+                oFileReader.readFromTop();
             bconnected = bconnected1 && bconnected2;
         }
         else
@@ -59,31 +61,27 @@ void ComyFileServer::connect(std::string topic, std::string category)
     }        
 }
 
-bool ComyFileServer::readMessage()
+std::string ComyFileServer::readMessage()
 {
-    bool brequest = false;  // default no request received
+    std::string rawMessage = "";
 
     if (oFileReader.isOpen())        
     {
-        // read file from top
-        oFileReader.readFromTop();
+        // read file from top (NO!)
+        //oFileReader.readFromTop();
         //LOG4CXX_INFO(logger, "ComyFileServer: read pos " << oFileReader.getPos());
         rawMessage = oFileReader.readLine();
         
-        // and clear it
-        oFileWriter.writeFromTop();
-        oFileWriter.writeFlush("\n");
-
-        // if request received, interpret it
-        if (!rawMessage.empty())
-            brequest = true;
+        // and clear it (NO!)
+        //oFileWriter.writeFromTop();
+        //oFileWriter.writeFlush("\n");
     }
     else
     {
-        //LOG4CXX_ERROR(logger, "ComyFileServer: could not open coms file " << filename);
+        LOG4CXX_ERROR(logger, "ComyFileServer: can't read message, file reader not open ");
     }
     
-    return brequest;
+    return rawMessage;
 }
 
 

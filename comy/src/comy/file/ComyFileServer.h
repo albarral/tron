@@ -30,11 +30,11 @@ public:
     ComyFileServer();
     ~ComyFileServer();
 
-    std::string getClientServerComsFile() {return pathComsFile;};
+    std::string getComsFile() {return pathComsFile;};
                
     virtual void connect(std::string topic, std::string category);
-   // read message from client, returns false if nothing read
-    virtual bool readMessage();
+   // read message from client, returns empty if nothing read
+    virtual std::string readMessage();    
         
 };
 }

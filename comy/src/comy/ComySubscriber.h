@@ -16,7 +16,6 @@ namespace comy
 class ComySubscriber : public ComyNode
 {    
 protected:
-    int channelType; 
     std::string rawMessage;     // received message
         
 public:
