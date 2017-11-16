@@ -31,6 +31,8 @@ public:
     std::string fetch();
     // checks if queue is filled
     bool isFilled(); 
+    // get number of messages in the queue
+    int getSize();
     // clean queue of messages
     void clean();
 };

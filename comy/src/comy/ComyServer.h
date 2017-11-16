@@ -1,5 +1,5 @@
-#ifndef __COMY_SERVER_H
-#define __COMY_SERVER_H
+#ifndef __COMY_COMYSERVER_H
+#define __COMY_COMYSERVER_H
 
 /***************************************************************************
  *   Copyright (C) 2016 by Migtron Robotics   *
@@ -28,6 +28,8 @@ public:
     bool readMessages();
     // checks if queue has pending messages
     bool hasMessages();
+    // returns number of messages in queue
+    int getQueueSize();
     // fetches first message in the queue
     std::string getMessage();
     

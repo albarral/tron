@@ -42,6 +42,11 @@ bool ComyServer::hasMessages()
     oMessageQueue.isFilled();
 }
 
+int ComyServer::getQueueSize()
+{
+    oMessageQueue.getSize();    
+}
+
 std::string ComyServer::getMessage()
 {
     return oMessageQueue.fetch();

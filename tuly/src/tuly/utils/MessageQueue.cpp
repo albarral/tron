@@ -49,4 +49,9 @@ bool MessageQueue::isFilled()
     return (!listMessages.empty());    
 }
 
+int MessageQueue::getSize()
+{
+    std::lock_guard<std::mutex> locker(mutex);    
+    return listMessages.size();
+}
 }

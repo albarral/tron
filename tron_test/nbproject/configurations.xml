@@ -23,6 +23,8 @@
         <itemPath>src/TestTalky.h</itemPath>
         <itemPath>src/TestTivy.cpp</itemPath>
         <itemPath>src/TestTivy.h</itemPath>
+        <itemPath>src/TestTuly.cpp</itemPath>
+        <itemPath>src/TestTuly.h</itemPath>
         <itemPath>src/main.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -150,6 +152,10 @@
       </item>
       <item path="src/TestTivy.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestTuly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTuly.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -192,6 +198,10 @@
       <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTivy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTuly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTuly.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
