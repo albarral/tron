@@ -14,6 +14,8 @@ namespace tuly
 // Derives from base class File    
 class FileReader : public File
 {    
+private:
+    int nowPos;    // next read position
 public:
     //FileReader();
     //~FileReader();
@@ -22,14 +24,20 @@ public:
     virtual bool open(std::string name);
     // reads next line from file
     std::string readLine();
+    // reads next line from file, keeping position if end of file reached
+    std::string readLineSafe();
     // move reader pointer to file's beginning
-    void readFromTop();
+    void goTop();
+    // clear file stream
+    void clearStream();
     // get reader position in file
     int getPos();
     // checks if end of file was reached
     bool isEndReached();
     // checks if stream is in ok state
-    bool isStreamOk();
+    bool isFailed();
+    // checks if next read position is safe
+    bool safeAhead();
     
 };
 

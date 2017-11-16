@@ -18,6 +18,7 @@ class ComyFileClient : public ComyClient
 {    
 private:
     static log4cxx::LoggerPtr logger;    
+    const char delimiter = '\n'; // newline used as delimiter for strings (default used by std::getline())
     std::string comsBasePath;
     std::string pathComsFile;
     tuly::FileWriter oFileWriter;

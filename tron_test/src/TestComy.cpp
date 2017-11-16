@@ -24,8 +24,8 @@ void TestComy::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    //testComsClientServer();
-    testComsPublishSubscribe();        
+    testComsClientServer();
+    //testComsPublishSubscribe();        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -110,15 +110,14 @@ void TestComy::testComsPublishSubscribe()
 
 void TestComy::readByServer(comy::ComyFileServer& oComyServer)
 {
-    // receive message
-    bool bmsgReceived = false;
-    while (!bmsgReceived)
+    oComyServer.readMessages();
+    LOG4CXX_INFO(logger, "server has messages " + std::to_string(oComyServer.getQueueSize()));                
+    while (oComyServer.hasMessages())
     {
-        if (oComyServer.readMessage())
+        std::string message = oComyServer.getMessage();
+        if (!message.empty())
         {
-            bmsgReceived = true;
-            LOG4CXX_INFO(logger, modName + ": message received ... " + oComyServer.getRawMessage());                
+            LOG4CXX_INFO(logger, modName + ": message received ... " + message);                
         }            
-        usleep(100000); // period = 100ms
-    }    
+    }
 }

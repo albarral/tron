@@ -58,8 +58,8 @@ bool ComyFileClient::sendMessage(std::string text)
 {
     if (oFileWriter.isOpen())        
     {
-        // write command in coms file (newline added)
-        std::string output = text + "\n";
+        // write text in coms file with default string delimiter
+        std::string output = text + delimiter;
         // overwriting any previous command (NO!)
         //oFileWriter.writeFromTop();
         oFileWriter.writeFlush(output);

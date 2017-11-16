@@ -62,7 +62,7 @@ bool ComyFileSubscriber::readMessage()
     if (oFileReader.isOpen())        
     {
         // read file from top
-        oFileReader.readFromTop();
+        oFileReader.goTop();
         // read message in file
         rawMessage = oFileReader.readLine();      
 

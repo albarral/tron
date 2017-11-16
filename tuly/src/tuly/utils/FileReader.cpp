@@ -18,6 +18,7 @@ bool FileReader::open(std::string name)
         if (file.is_open())
         {
             filename = name;
+            nowPos = 0;
             bok = true;
         }
     }
@@ -35,20 +36,48 @@ std::string FileReader::readLine()
     return line;
 }
 
-void FileReader::readFromTop()
+std::string FileReader::readLineSafe()
+{  
+    if (safeAhead())
+    {
+        std::string line;    
+        std::getline(file, line);
+        nowPos = file.tellg();        
+        return line;
+    }
+    else
+        return "";
+}
+
+bool FileReader::safeAhead()
 {
-    // reset stream if something failed
-    if (!isStreamOk())
-        file.clear();
-    
-    // then point to file beginning
+    file.seekg(nowPos, std::fstream::beg);        
+    if (file.fail())
+        return false;
+    else
+    {
+        if (file.peek() == EOF)
+            return false;
+        else
+            return true;
+    }
+}
+
+void FileReader::goTop()
+{
+    // point reader to file beginning
     file.seekg(0, std::fstream::beg);
+}
+
+void FileReader::clearStream()
+{
+    // reset stream 
+    file.clear();
 }
 
 int FileReader::getPos()
 {
-    int pos = file.tellg();
-    return pos;
+    return file.tellg();
 }
 
 bool FileReader::isEndReached() 
@@ -56,9 +85,8 @@ bool FileReader::isEndReached()
     return file.eof();
 }
 
-bool FileReader::isStreamOk()
+bool FileReader::isFailed()
 {
-    return (file.fail() == false);
-    
+    return file.fail();    
 }
 }

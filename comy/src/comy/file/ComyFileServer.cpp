@@ -48,7 +48,7 @@ void ComyFileServer::connect(std::string topic, std::string category)
             bool bconnected1 = oFileWriter.open(pathComsFile);   
             bool bconnected2 = oFileReader.open(pathComsFile); 
             if (bconnected2)
-                oFileReader.readFromTop();
+                oFileReader.goTop();
             bconnected = bconnected1 && bconnected2;
         }
         else
@@ -69,8 +69,14 @@ std::string ComyFileServer::readMessage()
     {
         // read file from top (NO!)
         //oFileReader.readFromTop();
-        //LOG4CXX_INFO(logger, "ComyFileServer: read pos " << oFileReader.getPos());
-        rawMessage = oFileReader.readLine();
+        LOG4CXX_INFO(logger, "ComyFileServer: read pos1 " << oFileReader.getPos());
+        rawMessage = oFileReader.readLineSafe();
+        if (oFileReader.isFailed())
+            LOG4CXX_WARN(logger, "ComyFileServer: read failed");
+        if (oFileReader.isEndReached())
+            LOG4CXX_WARN(logger, "ComyFileServer: end reached");
+            
+        LOG4CXX_INFO(logger, "ComyFileServer: read pos2 " << oFileReader.getPos());
         
         // and clear it (NO!)
         //oFileWriter.writeFromTop();
