@@ -6,6 +6,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+
+#include <fstream>  // TEST FILE READING
 #include <string>
 #include <log4cxx/logger.h>
 
@@ -28,7 +30,12 @@ public:
 private:
     void testComsClientServer();                
     void testComsPublishSubscribe();
-    
     void readByServer(comy::ComyFileServer& oComyServer);
+    
+    void testFileReading();
+    void testFileReading2();
+    bool safeRead(std::fstream& file, int readPos);
+    void refreshWhenEOF(std::ifstream& file);
+    
 };
 #endif
