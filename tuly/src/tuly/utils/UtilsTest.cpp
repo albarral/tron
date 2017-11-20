@@ -20,20 +20,20 @@ LoggerPtr UtilsTest::logger(Logger::getLogger("amy.utils"));
 
 void UtilsTest::testFileReader(std::string name)
 {
-    FileReader oFile;
+    FileReader oFileReader;
     
-    if (oFile.open(name))        
+    if (oFileReader.open(name))        
     {
          LOG4CXX_INFO(logger, "Read start");
          std::string line;
          do 
          {
-             line = oFile.readLine();
+             line = oFileReader.readLine();
              LOG4CXX_INFO(logger, line);             
          }
          while (!line.empty());         
 
-         oFile.close();
+         oFileReader.close();
          LOG4CXX_INFO(logger, "Read end");
     }
     else
@@ -50,27 +50,26 @@ void UtilsTest::testFileWriter()
 //    std::string name(pVar);
 //    name = name + "/TESTS/testFile.txt";
     
-    FileWriter oFile;
-    oFile.setAppendMode(true);
+    FileWriter oFileWriter;
     std::string name = "test.txt";
     testFileReader(name);
-    if (oFile.open(name))        
+    if (oFileWriter.open(name, true))        
     {
          LOG4CXX_INFO(logger, "write start")                 
         std::string line = " frase de prueba\n";
-        oFile.writeFlush(line);
+        oFileWriter.writeFlush(line);
         testFileReader(name);
 
         //oFile.goTop();
         std::string line2 = " frase de prueba2\n";
-        oFile.writeFlush(line2);
+        oFileWriter.writeFlush(line2);
         testFileReader(name);
 
         std::string line3 = " frase de prueba3\n";
-        oFile.writeFlush(line3);
+        oFileWriter.writeFlush(line3);
         testFileReader(name);
         LOG4CXX_INFO(logger, "write end");
-        oFile.close();
+        oFileWriter.close();
     }
     else
      LOG4CXX_ERROR(logger, "Test failed: unable to open file " << name);

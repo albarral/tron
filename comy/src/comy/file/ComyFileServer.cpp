@@ -29,9 +29,6 @@ ComyFileServer::~ComyFileServer()
 {
     if (oFileReader.isOpen())
         oFileReader.close();
-    
-    if (oFileWriter.isOpen())
-        oFileWriter.close();    
 }
 
 void ComyFileServer::connect(std::string topic, std::string category)
@@ -45,11 +42,9 @@ void ComyFileServer::connect(std::string topic, std::string category)
         if (!comsBasePath.empty())
         {        
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bool bconnected1 = oFileWriter.open(pathComsFile);   
-            bool bconnected2 = oFileReader.open(pathComsFile); 
-            if (bconnected2)
+            bconnected = oFileReader.open(pathComsFile); 
+            if (bconnected)
                 oFileReader.goTop();
-            bconnected = bconnected1 && bconnected2;
         }
         else
             bconnected = false;    
@@ -68,9 +63,8 @@ std::string ComyFileServer::readMessage()
     if (oFileReader.isOpen())        
     {
         // read file from top (NO!)
-        //oFileReader.readFromTop();
         LOG4CXX_INFO(logger, "ComyFileServer: read pos1 " << oFileReader.getPos());
-        rawMessage = oFileReader.readLineSafe();
+        rawMessage = oFileReader.readLine();
         if (oFileReader.isFailed())
             LOG4CXX_WARN(logger, "ComyFileServer: read failed");
         if (oFileReader.isEndReached())

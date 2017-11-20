@@ -6,31 +6,34 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tuly/utils/File.h"
+#include <fstream>
+#include <string>
 
 namespace tuly 
 {
 // Utility class used for file writing
-// Derives from base class File    
-class FileWriter : public File
+class FileWriter
 {
 private:
-    bool bappend;   // append flag (to write from the last line)
+    std::string filename;
+    std::ofstream outfile;     
     
 public:
     FileWriter();
-    //~FileWriter();
+    ~FileWriter();
 
-    // set flag for appending mode (write at the end)
-    void setAppendMode(bool value) {bappend = value;};
-    // open file with write permissions
-    virtual bool open(std::string name);
+    // open file with write permissions (append mode by default)
+    bool open(std::string name, bool bappend = true);
+    bool isOpen();
+    std::string getName() {return filename;}
+    bool close();
+
     // writes the given string into the file (delayed writing, done at file closing)
     void writeLine(std::string);
     // writes the given string into the file (immediate writing, done now)
     void writeFlush(std::string);
     // move writer pointer to file's beginning
-    void writeFromTop();
+    void goTop();
 };
 
 }		

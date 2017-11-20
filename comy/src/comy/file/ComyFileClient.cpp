@@ -41,8 +41,7 @@ void ComyFileClient::connect(std::string topic, std::string category)
         {        
 
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            oFileWriter.setAppendMode(true);
-            bconnected = oFileWriter.open(pathComsFile);  
+            bconnected = oFileWriter.open(pathComsFile, true);  
         }
         else
             bconnected = false;    

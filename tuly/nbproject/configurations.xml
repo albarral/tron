@@ -33,8 +33,6 @@
         <logicalFolder name="utils" displayName="utils" projectFiles="true">
           <itemPath>src/tuly/utils/Console.cpp</itemPath>
           <itemPath>src/tuly/utils/Console.h</itemPath>
-          <itemPath>src/tuly/utils/File.cpp</itemPath>
-          <itemPath>src/tuly/utils/File.h</itemPath>
           <itemPath>src/tuly/utils/FileReader.cpp</itemPath>
           <itemPath>src/tuly/utils/FileReader.h</itemPath>
           <itemPath>src/tuly/utils/FileWriter.cpp</itemPath>
@@ -121,10 +119,6 @@
       </item>
       <item path="src/tuly/utils/Console.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tuly/utils/File.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tuly/utils/File.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tuly/utils/FileReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tuly/utils/FileReader.h" ex="false" tool="3" flavor2="0">
@@ -204,10 +198,6 @@
       <item path="src/tuly/utils/Console.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tuly/utils/Console.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tuly/utils/File.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tuly/utils/File.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tuly/utils/FileReader.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -7,86 +7,107 @@
 
 namespace tuly 
 {
-bool FileReader::open(std::string name)
+FileReader::FileReader()
 {
-    bool bok = false;
-    // proceed if not open yet
-    if (!file.is_open())
-    {        
-        file.open(name, std::fstream::in);
-        
-        if (file.is_open())
-        {
-            filename = name;
-            nowPos = 0;
-            bok = true;
-        }
-    }
-    else 
-        bok = true;
-
-    return bok;
+    filename = "";        
 }
-        
+
+FileReader::~FileReader()
+{
+    close();
+}
+
+bool FileReader::open(std::string name)
+{    
+    // preventive close
+    close();
+
+    infile.open(name, std::fstream::in);
+
+    if (infile.is_open())
+    {
+        filename = name;
+        return true;
+    }
+
+    return false;
+}
+
+bool FileReader::isOpen()
+{
+    return (infile.is_open());
+}
+
+bool FileReader::close()
+{
+    // proceed if open 
+    if (infile.is_open())
+    {        
+        infile.close();
+        return true;
+    }
+
+    return false;
+}
+
 std::string FileReader::readLine()
 {
     std::string line;    
-    std::getline(file, line);
+    std::getline(infile, line);
 
     return line;
 }
 
-std::string FileReader::readLineSafe()
-{  
-    if (safeAhead())
+bool FileReader::readLines(std::vector<std::string>& listLines)
+{          
+    // clear output list
+    listLines.clear();
+
+    std::string line;    
+    while (std::getline(infile, line))
     {
-        std::string line;    
-        std::getline(file, line);
-        nowPos = file.tellg();        
-        return line;
+        listLines.push_back(line);
     }
-    else
-        return "";
+    // refresh as eof is reached
+    refresh();
+    
+    return (!listLines.empty());
 }
 
-bool FileReader::safeAhead()
+void FileReader::refresh()
 {
-    file.seekg(nowPos, std::fstream::beg);        
-    if (file.fail())
-        return false;
-    else
-    {
-        if (file.peek() == EOF)
-            return false;
-        else
-            return true;
-    }
+    // if eof reached, clear flags
+    if (infile.eof())
+        infile.clear();    
+}
+
+void FileReader::cleanFile()
+{
+    // open and close file with truncate option
+    std::ofstream outfile;
+    outfile.open(filename, std::fstream::out | std::fstream::trunc);
+    if (outfile.is_open())
+        outfile.close();               
 }
 
 void FileReader::goTop()
 {
     // point reader to file beginning
-    file.seekg(0, std::fstream::beg);
-}
-
-void FileReader::clearStream()
-{
-    // reset stream 
-    file.clear();
+    infile.seekg(0, std::fstream::beg);
 }
 
 int FileReader::getPos()
 {
-    return file.tellg();
+    return infile.tellg();
 }
 
 bool FileReader::isEndReached() 
 {
-    return file.eof();
+    return infile.eof();
 }
 
 bool FileReader::isFailed()
 {
-    return file.fail();    
+    return infile.fail();    
 }
 }

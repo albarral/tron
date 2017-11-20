@@ -57,7 +57,7 @@ bool ComyFilePublisher::publishMessage(std::string rawMessage)
     if (oFileWriter.isOpen())        
     {
         // overwrite any previous info
-        oFileWriter.writeFromTop();
+        oFileWriter.goTop();
         oFileWriter.writeFlush(rawMessage);
         //LOG4CXX_INFO(logger, "ComyFilePublisher: > " << sollMessage);        
         return true;

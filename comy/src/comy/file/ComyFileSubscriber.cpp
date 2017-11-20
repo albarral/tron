@@ -43,6 +43,9 @@ void ComyFileSubscriber::connect(std::string topic, std::string category)
 
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
             bconnected = oFileReader.open(pathComsFile);   
+            // first clean file
+            if (bconnected)
+                oFileReader.cleanFile();
         }
         else
             bconnected = false;    

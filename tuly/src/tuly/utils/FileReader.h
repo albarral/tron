@@ -6,38 +6,47 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tuly/utils/File.h"
+#include <fstream>
+#include <string>
+#include <vector>
 
 namespace tuly 
 {
 // Utility class used for file reading
-// Derives from base class File    
-class FileReader : public File
+class FileReader
 {    
 private:
-    int nowPos;    // next read position
+    std::string filename;
+    std::ifstream infile;     
+    
 public:
-    //FileReader();
-    //~FileReader();
+    FileReader();
+    ~FileReader();
 
     // open file with read permissions
-    virtual bool open(std::string name);
+    bool open(std::string name);
+    bool isOpen();
+    std::string getName() {return filename;}
+    bool close();
+    
     // reads next line from file
     std::string readLine();
-    // reads next line from file, keeping position if end of file reached
-    std::string readLineSafe();
+    // reads all lines in file, keeping position if end of file reached
+    bool readLines(std::vector<std::string>& listLines);
+    // clear flags if eof reached
+    void refresh();
+    
+    // clean file contents
+    void cleanFile();
+    
     // move reader pointer to file's beginning
     void goTop();
-    // clear file stream
-    void clearStream();
     // get reader position in file
     int getPos();
     // checks if end of file was reached
     bool isEndReached();
     // checks if stream is in ok state
     bool isFailed();
-    // checks if next read position is safe
-    bool safeAhead();
     
 };
 

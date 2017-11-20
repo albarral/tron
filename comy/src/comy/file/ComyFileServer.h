@@ -11,7 +11,6 @@
 
 #include "comy/ComyServer.h"
 #include "tuly/utils/FileReader.h"
-#include "tuly/utils/FileWriter.h"
 
 namespace comy
 {
@@ -24,7 +23,6 @@ private:
     std::string comsBasePath;
     std::string pathComsFile;       // name of file used for coms
     tuly::FileReader oFileReader;     // file reader
-    tuly::FileWriter oFileWriter;        // file writer
     
 public:
     ComyFileServer();
