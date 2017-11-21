@@ -20,7 +20,7 @@ Command::Command(int topic, int category, int concept)
     setConcept(concept);
 }
 
-Command::Command(int topic, int category, int concept, int quantity) : Command(topic, category, concept) 
+Command::Command(int topic, int category, int concept, float quantity) : Command(topic, category, concept) 
 {
     setQuantity(quantity);
 }
@@ -54,7 +54,7 @@ void Command::setConcept(int value)
     setConceptPresence(value != Topics::INVALID_VALUE);
 }    
 
-void Command::setQuantity(int value)
+void Command::setQuantity(float value)
 { 
     quantity = value;  
     setQuantityPresence(true); // quantity field must accept any value 
