@@ -40,7 +40,8 @@ void ComyFilePublisher::connect(std::string topic, std::string category)
         {        
 
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bconnected = oFileWriter.open(pathComsFile);  
+            // writer opened not in append mode            
+            bconnected = oFileWriter.open(pathComsFile, false);  
         }
         else
             bconnected = false;    
