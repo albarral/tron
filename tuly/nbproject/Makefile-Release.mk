@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tuly/utils/Console.o \
 	${OBJECTDIR}/src/tuly/utils/FileReader.o \
 	${OBJECTDIR}/src/tuly/utils/FileWriter.o \
+	${OBJECTDIR}/src/tuly/utils/IntegerQueue.o \
 	${OBJECTDIR}/src/tuly/utils/MessageQueue.o \
 	${OBJECTDIR}/src/tuly/utils/StringUtil.o \
 	${OBJECTDIR}/src/tuly/utils/UtilsTest.o
@@ -111,6 +112,11 @@ ${OBJECTDIR}/src/tuly/utils/FileWriter.o: src/tuly/utils/FileWriter.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/utils/FileWriter.o src/tuly/utils/FileWriter.cpp
+
+${OBJECTDIR}/src/tuly/utils/IntegerQueue.o: src/tuly/utils/IntegerQueue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/utils/IntegerQueue.o src/tuly/utils/IntegerQueue.cpp
 
 ${OBJECTDIR}/src/tuly/utils/MessageQueue.o: src/tuly/utils/MessageQueue.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
