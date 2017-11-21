@@ -24,15 +24,15 @@ void TestComy::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testComsClientServer();
-    //testComsPublishSubscribe();       
+    testClientServerComs();
+    //testPublishSubscribeComs();       
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestComy::testComsClientServer()
+void TestComy::testClientServerComs()
 {
-    LOG4CXX_INFO(logger, modName + ": testComsClientServer ...");
+    LOG4CXX_INFO(logger, modName + ": testClientServerComs ...");
     
     comy::ComyFileClient oComyClient;
     comy::ComyFileServer oComyServer;
@@ -55,9 +55,6 @@ void TestComy::testComsClientServer()
     oComyClient.sendMessage(msg);
     LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
 
-    // receive message
-    readByServer(oComyServer);
-
     // send message 2
     msg = "yo muy bien";            
     oComyClient.sendMessage(msg);
@@ -65,11 +62,14 @@ void TestComy::testComsClientServer()
 
     // receive message
     readByServer(oComyServer);
+
+    // receive message
+    readByServer(oComyServer);
 }
 
-void TestComy::testComsPublishSubscribe()
+void TestComy::testPublishSubscribeComs()
 {
-    LOG4CXX_INFO(logger, modName + ": testComsPublishSubscribe ...");
+    LOG4CXX_INFO(logger, modName + ": testPublishSubscribeComs ...");
        
     comy::ComyFilePublisher oComyPublisher;
     comy::ComyFileSubscriber oComySubscriber;

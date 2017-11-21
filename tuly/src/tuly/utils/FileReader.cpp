@@ -58,7 +58,7 @@ std::string FileReader::readLine()
     return line;
 }
 
-bool FileReader::readLines(std::vector<std::string>& listLines)
+bool FileReader::readAllLines(std::vector<std::string>& listLines)
 {          
     // clear output list
     listLines.clear();

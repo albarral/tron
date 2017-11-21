@@ -41,6 +41,7 @@ void ComyFileClient::connect(std::string topic, std::string category)
         {        
 
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
+            // important: file writer opened in append mode (all messages will be added to the file)
             bconnected = oFileWriter.open(pathComsFile, true);  
         }
         else
@@ -59,10 +60,7 @@ bool ComyFileClient::sendMessage(std::string text)
     {
         // write text in coms file with default string delimiter
         std::string output = text + delimiter;
-        // overwriting any previous command (NO!)
-        //oFileWriter.writeFromTop();
         oFileWriter.writeFlush(output);
-        //LOG4CXX_INFO(logger, "ComyFileClient: command sent");        
         return true;
     }
     else

@@ -33,8 +33,8 @@ int main(int argc, char** argv)
 //    oTestTalky.makeTest();
 
     // test comy lib
-//    TestComy oTestComy;
-//    oTestComy.makeTest();
+    TestComy oTestComy;
+    oTestComy.makeTest();
     
      // test maty lib
 //    TestMaty oTestMaty;
@@ -45,8 +45,8 @@ int main(int argc, char** argv)
 //    oTestTivy.makeTest();
     
      // test tuly lib
-    TestTuly oTestTuly;
-    oTestTuly.makeTest();
+//    TestTuly oTestTuly;
+//    oTestTuly.makeTest();
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     

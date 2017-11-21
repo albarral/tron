@@ -27,8 +27,8 @@ public:
     void makeTest();      
     
 private:
-    void testComsClientServer();                
-    void testComsPublishSubscribe();
+    void testClientServerComs();                
+    void testPublishSubscribeComs();
     void readByServer(comy::ComyFileServer& oComyServer);
     
 };

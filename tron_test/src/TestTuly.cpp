@@ -180,7 +180,7 @@ void TestTuly::readLines(tuly::FileReader& oFileReader)
     LOG4CXX_INFO(logger, "read lines");    
     std::vector<std::string> listLines;
             
-    if (oFileReader.readLines(listLines))
+    if (oFileReader.readAllLines(listLines))
     {
         for (std::string line : listLines)
         {

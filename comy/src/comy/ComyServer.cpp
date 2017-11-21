@@ -15,26 +15,23 @@ ComyServer::ComyServer()
 }
 
 bool ComyServer::readMessages()
-{
-    bool bend = false;
-    int reads = 0;
-    // read messages iteratively putting them in the queue 
-    while (!bend)
+{        
+    std::vector<std::string> listMessages;
+            
+    // read new messages and put them in the queue
+    if (getNewMessages(listMessages))
     {
-        std::string message = readMessage();
-        if (!message.empty())
-        {
+        for (std::string message : listMessages)
             oMessageQueue.add(message);
-            reads++;
-        }
-        else
-            bend = true;
     }
-    
-    // informs the read has finished
-    //readFinished();
-    
-    return (reads > 0);
+
+    if (!listMessages.empty())
+    {
+        listMessages.clear();
+        return true;        
+    }
+    else 
+        return false;
 }
 
 bool ComyServer::hasMessages()

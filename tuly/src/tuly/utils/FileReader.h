@@ -32,7 +32,7 @@ public:
     // reads next line from file
     std::string readLine();
     // reads all lines in file, keeping position if end of file reached
-    bool readLines(std::vector<std::string>& listLines);
+    bool readAllLines(std::vector<std::string>& listLines);
     // clear flags if eof reached
     void refresh();
     

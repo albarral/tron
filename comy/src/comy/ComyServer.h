@@ -7,6 +7,7 @@
  ***************************************************************************/
 
 #include <string>
+#include <vector>
 
 #include "comy/ComyNode.h"
 #include "tuly/utils/MessageQueue.h"
@@ -35,9 +36,9 @@ public:
     
 protected:    
     // read message from client, returns empty if nothing read
-    virtual std::string readMessage() = 0; 
-    // informs the read messages call has finished 
-    //virtual void readFinished() = 0;
+    virtual std::string readSingleMessage() = 0; 
+    // get all new messages received
+    virtual bool getNewMessages(std::vector<std::string>& listMessages) = 0; 
 };
 }
 #endif
