@@ -53,14 +53,28 @@ void ComyFilePublisher::connect(std::string topic, std::string category)
     }    
 }
 
-bool ComyFilePublisher::publishMessage(std::string rawMessage)
+bool ComyFilePublisher::newPublishing()
 {
     if (oFileWriter.isOpen())        
     {
         // overwrite any previous info
         oFileWriter.goTop();
-        oFileWriter.writeFlush(rawMessage);
-        //LOG4CXX_INFO(logger, "ComyFilePublisher: > " << sollMessage);        
+        return true;
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "ComyFilePublisher: can't publish info, coms file not open");                
+        return false;
+    }   
+}
+
+bool ComyFilePublisher::publishMessage(std::string text)
+{
+    if (oFileWriter.isOpen())        
+    {
+        // write text in coms file with default string delimiter
+        std::string output = text + delimiter;        
+        oFileWriter.writeFlush(output);
         return true;
     }
     else
