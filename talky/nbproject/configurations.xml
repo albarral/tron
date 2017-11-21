@@ -28,6 +28,8 @@
           <itemPath>src/talky/coms/Command.h</itemPath>
           <itemPath>src/talky/coms/CommandBlock.cpp</itemPath>
           <itemPath>src/talky/coms/CommandBlock.h</itemPath>
+          <itemPath>src/talky/coms/CommandQueue.cpp</itemPath>
+          <itemPath>src/talky/coms/CommandQueue.h</itemPath>
           <itemPath>src/talky/coms/Conversion.cpp</itemPath>
           <itemPath>src/talky/coms/Conversion.h</itemPath>
           <itemPath>src/talky/coms/Message.cpp</itemPath>
@@ -140,6 +142,10 @@
       </item>
       <item path="src/talky/coms/CommandBlock.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/talky/coms/CommandQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/talky/coms/CommandQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/talky/coms/Conversion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/coms/Conversion.h" ex="false" tool="3" flavor2="0">
@@ -250,6 +256,10 @@
       <item path="src/talky/coms/CommandBlock.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/coms/CommandBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/talky/coms/CommandQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/talky/coms/CommandQueue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/talky/coms/Conversion.cpp" ex="false" tool="1" flavor2="0">
       </item>

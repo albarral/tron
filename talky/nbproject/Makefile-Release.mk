@@ -45,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/base/Topic.o \
 	${OBJECTDIR}/src/talky/coms/Command.o \
 	${OBJECTDIR}/src/talky/coms/CommandBlock.o \
+	${OBJECTDIR}/src/talky/coms/CommandQueue.o \
 	${OBJECTDIR}/src/talky/coms/Conversion.o \
 	${OBJECTDIR}/src/talky/coms/Message.o \
 	${OBJECTDIR}/src/talky/coms/MessageBlock.o \
@@ -131,6 +132,11 @@ ${OBJECTDIR}/src/talky/coms/CommandBlock.o: src/talky/coms/CommandBlock.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/CommandBlock.o src/talky/coms/CommandBlock.cpp
+
+${OBJECTDIR}/src/talky/coms/CommandQueue.o: src/talky/coms/CommandQueue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/CommandQueue.o src/talky/coms/CommandQueue.cpp
 
 ${OBJECTDIR}/src/talky/coms/Conversion.o: src/talky/coms/Conversion.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
