@@ -35,7 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/nety/NetNode.o
+	${OBJECTDIR}/src/nety/NetNode.o \
+	${OBJECTDIR}/src/nety/NetNodeClient.o \
+	${OBJECTDIR}/src/nety/NetNodePublisher.o \
+	${OBJECTDIR}/src/nety/NetNodeServer.o \
+	${OBJECTDIR}/src/nety/NetNodeSubscriber.o
 
 
 # C Compiler Flags
@@ -72,6 +76,26 @@ ${OBJECTDIR}/src/nety/NetNode.o: src/nety/NetNode.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/nety
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/nety/NetNode.o src/nety/NetNode.cpp
+
+${OBJECTDIR}/src/nety/NetNodeClient.o: src/nety/NetNodeClient.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/nety
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/nety/NetNodeClient.o src/nety/NetNodeClient.cpp
+
+${OBJECTDIR}/src/nety/NetNodePublisher.o: src/nety/NetNodePublisher.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/nety
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/nety/NetNodePublisher.o src/nety/NetNodePublisher.cpp
+
+${OBJECTDIR}/src/nety/NetNodeServer.o: src/nety/NetNodeServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/nety
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/nety/NetNodeServer.o src/nety/NetNodeServer.cpp
+
+${OBJECTDIR}/src/nety/NetNodeSubscriber.o: src/nety/NetNodeSubscriber.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/nety
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/nety/NetNodeSubscriber.o src/nety/NetNodeSubscriber.cpp
 
 # Subprojects
 .build-subprojects:

@@ -15,6 +15,14 @@
       <logicalFolder name="nety" displayName="nety" projectFiles="true">
         <itemPath>src/nety/NetNode.cpp</itemPath>
         <itemPath>src/nety/NetNode.h</itemPath>
+        <itemPath>src/nety/NetNodeClient.cpp</itemPath>
+        <itemPath>src/nety/NetNodeClient.h</itemPath>
+        <itemPath>src/nety/NetNodePublisher.cpp</itemPath>
+        <itemPath>src/nety/NetNodePublisher.h</itemPath>
+        <itemPath>src/nety/NetNodeServer.cpp</itemPath>
+        <itemPath>src/nety/NetNodeServer.h</itemPath>
+        <itemPath>src/nety/NetNodeSubscriber.cpp</itemPath>
+        <itemPath>src/nety/NetNodeSubscriber.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -96,6 +104,22 @@
       </item>
       <item path="src/nety/NetNode.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/nety/NetNodeClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodePublisher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodePublisher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeSubscriber.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -120,6 +144,22 @@
       <item path="src/nety/NetNode.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/nety/NetNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodePublisher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodePublisher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nety/NetNodeSubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

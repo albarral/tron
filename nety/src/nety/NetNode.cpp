@@ -98,21 +98,23 @@ void NetNode::clean()
     oMessageQueue.clean();    
 }
     
-void NetNode::processCommandsQueue() 
+bool NetNode::process()
 {
-    // not allowed for input nodes
-    if (!btypeOut)
-    {
-        LOG4CXX_WARN(logger, "NetNode: can't process commands queue, not an output node");           
-        return;
-    }
-    
-    // skip if no commands to process
+    if (btypeOut)
+        return processCommandsQueue();
+    else
+        return processMessagesQueue();
+}
+
+bool NetNode::processCommandsQueue() 
+{
+    // if no commands to process, return all ok
     if (!oCommandQueue.isFilled())
-        return;
+        return true;
     
     talky::Command oCommand;        
-    talky::Message oMessage;
+    talky::Message oMessage;    
+    int failed = 0;
     
     // consume the whole commands queue
     while (oCommandQueue.fetch(oCommand))
@@ -121,26 +123,29 @@ void NetNode::processCommandsQueue()
         if (oInterpreter.buildSimpleMessage(oCommand, oMessage))
             oMessageQueue.add(oMessage.getRawText());      
         else
-        {                
-            LOG4CXX_WARN(logger, "NetNode.processCommandsQueue: command not interpreted, discarded - " + oCommand.toString());                                                                                   
+        {      
+            failed++;
+            LOG4CXX_WARN(logger, "NetNode: command processing failed, not interpreted - " + oCommand.toString());                                                                                   
         }
     }
+
+    if (failed != 0)
+    {
+        LOG4CXX_WARN(logger, "NetNode: commands processing failed " << failed);
+    }        
+    
+    // return true if all commands processed ok
+    return (failed == 0);
 }
 
-void NetNode::processMessagesQueue() 
+bool NetNode::processMessagesQueue() 
 {
-    // not allowed for output nodes
-    if (btypeOut)
-    {
-        LOG4CXX_WARN(logger, "NetNode: can't process messages queue, not an input node");           
-        return;
-    }
-    
-    // skip if no messages to process
+    // if no messages to process, return all ok
     if (!oMessageQueue.isFilled())
-        return;
+        return true;
     
     std::string message;
+    int failed = 0;
 
     // consume the whole messages queue
     while (oMessageQueue.isFilled())
@@ -156,15 +161,25 @@ void NetNode::processMessagesQueue()
                     oCommandQueue.add(oInterpreter.getCommand());                
                 else
                 {
-                    LOG4CXX_WARN(logger, "NetNode.processMessagesQueue: message block received, discarded - " + message);                                                       
+                    failed++;
+                    LOG4CXX_WARN(logger, "NetNode: message processing failed, block interpreted - " + message);                                                       
                 }                    
             }
             else
             {
-                LOG4CXX_WARN(logger, "NetNode.processMessagesQueue: message misinterpreted, discarded - " + message);                                                                       
+                failed++;
+                LOG4CXX_WARN(logger, "NetNode: message processing failed, not interpreted - " + message);                                                                       
             }                
         }
-    }                
+    }
+    
+    if (failed != 0)
+    {
+        LOG4CXX_WARN(logger, "NetNode: messages processing failed " << failed);
+    }        
+    
+    // return true if all messages processed ok
+    return (failed == 0);
 }
 
 }

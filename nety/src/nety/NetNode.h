@@ -63,16 +63,18 @@ public:
     // clean queues
     void clean();
     
+    // process queues (commands queue for output nodes, and messages queue for input nodes)
+    bool process();
     // sends info out to network (OUTPUT NODE)
     virtual bool flush() = 0;
     // absorb info from network (INPUT NODE)
     virtual bool absorb() = 0;
 
-protected:  
+private:  
     // OUTPUT NODE: transforms commands to messages (cleaning commands queue)
-    void processCommandsQueue();
+    bool processCommandsQueue();
     // INPUT NODE: transforms messages to commands (cleaning messages queue)
-    void processMessagesQueue();    
+    bool processMessagesQueue();    
     
 };
 
