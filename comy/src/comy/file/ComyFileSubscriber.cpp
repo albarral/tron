@@ -58,27 +58,39 @@ void ComyFileSubscriber::connect(std::string topic, std::string category)
     
 }
 
-bool ComyFileSubscriber::readMessage()
+std::string ComyFileSubscriber::readSingleMessage()
 {
-    bool brequest = false;  // default no request received
+    std::string rawMessage = "";
 
     if (oFileReader.isOpen())        
     {
         // read file from top
         oFileReader.goTop();
-        // read message in file
-        rawMessage = oFileReader.readLine();      
-
-        // if request received, interpret it
-        if (!rawMessage.empty())
-            brequest = true;
+        rawMessage = oFileReader.readLine();            
     }
     else
     {
-        LOG4CXX_ERROR(logger, "ComyFileSubscriber: could not open coms file " << pathComsFile);
+        LOG4CXX_ERROR(logger, "ComyFileSubscriber: can't read message, file reader not open ");
     }
     
-    return brequest;
+    return rawMessage;
+}
+
+bool ComyFileSubscriber::getNewMessages(std::vector<std::string>& listMessages)
+{
+    bool bread = false;
+    if (oFileReader.isOpen())   
+    {
+        // read file from top
+        oFileReader.goTop();
+        bread = oFileReader.readAllLines(listMessages);
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "ComyFileSubscriber: can't read messages, file reader not open ");
+    }
+    
+    return bread;
 }
 
 }

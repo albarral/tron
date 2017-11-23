@@ -8,7 +8,6 @@
 #include "TestComy.h"
 #include "comy/file/ComyFileClient.h"
 #include "comy/file/ComyFilePublisher.h"
-#include "comy/file/ComyFileSubscriber.h"
 
 using namespace log4cxx;
 
@@ -24,8 +23,8 @@ void TestComy::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testClientServerComs();
-    //testPublishSubscribeComs();       
+    //testClientServerComs();
+    testPublishSubscribeComs();       
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -92,19 +91,17 @@ void TestComy::testPublishSubscribeComs()
     oComyPublisher.publishMessage(msg);
     LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
 
-    // receive message
-    bool bmsgReceived = false;
-    while (!bmsgReceived)
-    {
-        if (oComySubscriber.readMessage())
-        {
-            bmsgReceived = true;
-            LOG4CXX_INFO(logger, modName + ": message received ... " + oComySubscriber.getRawMessage());                
-        }            
-        usleep(100000); // period = 100ms
-    }    
+    readBySubscriber(oComySubscriber);   
 
+    // start new publishing (overwrite previous published info)
+    oComyPublisher.newPublishing();
+
+    // send message 2
+    msg = "pero hay alguien?";            
+    oComyPublisher.publishMessage(msg);
+    LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
     
+    readBySubscriber(oComySubscriber);   
 }
 
 void TestComy::readByServer(comy::ComyFileServer& oComyServer)
@@ -113,10 +110,24 @@ void TestComy::readByServer(comy::ComyFileServer& oComyServer)
     LOG4CXX_INFO(logger, "server has messages " + std::to_string(oComyServer.getQueueSize()));                
     while (oComyServer.hasMessages())
     {
-        std::string message = oComyServer.getMessage();
+        std::string message = oComyServer.fetchMessage();
         if (!message.empty())
         {
             LOG4CXX_INFO(logger, modName + ": message received ... " + message);                
         }            
     }
+}
+
+void TestComy::readBySubscriber(comy::ComyFileSubscriber& oComySubscriber)
+{
+    oComySubscriber.readMessages();
+    LOG4CXX_INFO(logger, "susbscriber has messages " + std::to_string(oComySubscriber.getQueueSize()));                
+    while (oComySubscriber.hasMessages())
+    {
+        std::string message = oComySubscriber.fetchMessage();
+        if (!message.empty())
+        {
+            LOG4CXX_INFO(logger, modName + ": message received ... " + message);                
+        }            
+    }    
 }

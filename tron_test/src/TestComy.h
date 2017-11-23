@@ -11,6 +11,7 @@
 #include <log4cxx/logger.h>
 
 #include "comy/file/ComyFileServer.h"
+#include "comy/file/ComyFileSubscriber.h"
 
 
 // Class used to test comy lib.
@@ -30,6 +31,7 @@ private:
     void testClientServerComs();                
     void testPublishSubscribeComs();
     void readByServer(comy::ComyFileServer& oComyServer);
+    void readBySubscriber(comy::ComyFileSubscriber& oComySubscriber);
     
 };
 #endif

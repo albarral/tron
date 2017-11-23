@@ -26,11 +26,13 @@ public:
     ComyFileSubscriber();
     ~ComyFileSubscriber();
 
-    std::string getPubSubComsFile() {return pathComsFile;};
+    std::string getComsFile() {return pathComsFile;};
 
     virtual void connect(std::string topic, std::string category);    
-   // info reading method (read data from file)
-    virtual bool readMessage();    
+   // read message from client, returns empty if nothing read
+    virtual std::string readSingleMessage();    
+    // get all new messages received
+    virtual bool getNewMessages(std::vector<std::string>& listMessages); 
 };
 }
 #endif

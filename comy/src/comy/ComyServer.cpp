@@ -14,6 +14,10 @@ ComyServer::ComyServer()
     channelType = Channel::eCHANNEL_SERVED;
 }
 
+//ComyServer::~ComyServer()
+//{
+//}
+
 bool ComyServer::readMessages()
 {        
     std::vector<std::string> listMessages;
@@ -44,7 +48,7 @@ int ComyServer::getQueueSize()
     oMessageQueue.getSize();    
 }
 
-std::string ComyServer::getMessage()
+std::string ComyServer::fetchMessage()
 {
     return oMessageQueue.fetch();
 }

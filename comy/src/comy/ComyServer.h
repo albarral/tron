@@ -23,7 +23,7 @@ protected:
     
 public:
     ComyServer();
-    //~ComyFileServer();
+    //~ComyServer();
     
     // read messages from client and puts them in the queue, returns false if nothing read
     bool readMessages();
@@ -32,7 +32,7 @@ public:
     // returns number of messages in queue
     int getQueueSize();
     // fetches first message in the queue
-    std::string getMessage();
+    std::string fetchMessage();
     
 protected:    
     // read message from client, returns empty if nothing read
