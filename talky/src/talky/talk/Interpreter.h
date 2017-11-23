@@ -48,6 +48,10 @@ public:
     bool knowsTopic(int topicId);    
     // check if interpreter knows given topic category
     bool knowsTopicCategory(int topicId, int categoryId);
+    // get topic name for given id
+    std::string getTopicName(int topicId);
+   // gets name of given topic category (returns empty if unknown)
+    std::string getCategoryName(int topicId, int categoryId);
     
     // interprets given message/message block converting it to a simple command/command block
     // returns true if processed ok
@@ -82,8 +86,6 @@ private:
     
     // get topic id for given name
     int getTopicNumber(std::string topicName);
-    // get topic name for given id
-    std::string getTopicName(int topicId);
     // get the talker associated to the given topic id
     Talker* getTopicTalker(int topicId);
 };

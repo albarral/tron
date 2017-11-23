@@ -97,6 +97,19 @@ bool Interpreter::knowsTopicCategory(int topicId, int categoryId)
     return bknown;
 }
 
+std::string Interpreter::getCategoryName(int topicId, int categoryId)
+{
+    // get talker for given topic
+    Talker* pTalker = getTopicTalker(topicId);
+    
+    // if talker found, get name of given category
+    if (pTalker != 0)
+        return pTalker->getCategoryName(categoryId);
+    // if unknown topic, return empty name
+    else
+        return Topics::EMPTY_VALUE;    
+}
+
 bool Interpreter::processMessage(std::string text)
 {
     // check message header to see if it's simple or a block

@@ -53,6 +53,8 @@ public:
 
     // checks if talker knows given category
     bool knowsCategory(int categoryId);    
+    // get category name for given id
+    std::string getCategoryName(int categoryId);    
     
     // show all categories known by the talker
     std::string showKnowledge();
@@ -60,8 +62,6 @@ public:
 private:
     // get category id for given name
     int getCategoryNumber(std::string categoryName);
-    // get category name for given id
-    std::string getCategoryName(int categoryId);    
     // get the slang talker associated to the given category
     SlangTalker* getCategorySlangTalker(int categoryId);
 
