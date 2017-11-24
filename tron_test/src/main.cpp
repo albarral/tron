@@ -11,6 +11,7 @@
 #include "TestTalky.h"
 #include "TestComy.h"
 #include "TestMaty.h"
+#include "TestNety.h"
 #include "TestTivy.h"
 #include "TestTuly.h"
 
@@ -33,12 +34,16 @@ int main(int argc, char** argv)
 //    oTestTalky.makeTest();
 
     // test comy lib
-    TestComy oTestComy;
-    oTestComy.makeTest();
+//    TestComy oTestComy;
+//    oTestComy.makeTest();
     
      // test maty lib
 //    TestMaty oTestMaty;
 //    oTestMaty.makeTest();
+
+    // test nety llib
+    TestNety oTestNety;
+    oTestNety.makeTest();
 
     // test tivy lib
 //    TestTivy oTestTivy;

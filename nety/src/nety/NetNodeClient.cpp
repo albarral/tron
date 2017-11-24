@@ -29,18 +29,18 @@ void NetNodeClient::connect()
     
     std::string topicName = oInterpreter.getTopicName(topic);
     std::string categoryName = oInterpreter.getCategoryName(topic, category);
-    
-    if (topicName.empty() && categoryName.empty())
+    // connect if valid topic-category names
+    if (!topicName.empty() && !categoryName.empty())
         oComyClient.connect(topicName, categoryName);        
 
     // if client connected
     if (oComyClient.isConnected())
     {
         bconnected = true;
-        LOG4CXX_INFO(logger, "NetNodeClient connected");                                
+        LOG4CXX_INFO(logger, "Nety Client connected - " + topicName + ":" + categoryName);                                
     }
     else
-        LOG4CXX_ERROR(logger, "NetNodeClient NOT connected!");       
+        LOG4CXX_ERROR(logger, "Nety Client NOT connected - " + topicName + ":" + categoryName);       
 }
 
 
@@ -63,7 +63,7 @@ bool NetNodeClient::flush()
    
     if (failed != 0)
     {
-        LOG4CXX_WARN(logger, "NetNodeClient: messages sending failed " << failed);
+        LOG4CXX_WARN(logger, "NetNodeClient: flush failed, messages not sent = " << failed);
     }        
     
     // return true if all messages could be sent

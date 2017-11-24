@@ -17,6 +17,8 @@
         <itemPath>src/TestComy.h</itemPath>
         <itemPath>src/TestMaty.cpp</itemPath>
         <itemPath>src/TestMaty.h</itemPath>
+        <itemPath>src/TestNety.cpp</itemPath>
+        <itemPath>src/TestNety.h</itemPath>
         <itemPath>src/TestPlot.cpp</itemPath>
         <itemPath>src/TestPlot.h</itemPath>
         <itemPath>src/TestTalky.cpp</itemPath>
@@ -60,6 +62,7 @@
             <pElem>../talky/src</pElem>
             <pElem>../comy/src</pElem>
             <pElem>../maty/src</pElem>
+            <pElem>../nety/src</pElem>
             <pElem>../tivy/src</pElem>
           </incDir>
         </ccTool>
@@ -115,6 +118,18 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
+              <makeArtifact PL="../nety"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../nety"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_nety.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
               <makeArtifact PL="../tivy"
                             CT="2"
                             CN="Debug"
@@ -139,6 +154,10 @@
       <item path="src/TestMaty.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestMaty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestNety.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestNety.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestPlot.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -186,6 +205,10 @@
       <item path="src/TestMaty.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestMaty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestNety.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestNety.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestPlot.cpp" ex="false" tool="1" flavor2="0">
       </item>

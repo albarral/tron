@@ -47,11 +47,11 @@ public:
 
     // tune node to given topic-category
     void init(int topic, int category);   
-    // connect node to proper link
-    virtual void connect() = 0;
 
     bool hasCommands();
     bool hasMessages();
+    int getSizeCommandsQueue();
+    int getSizeMessagesQueue();
 
     // add command to commands queue with predefined topic-category (OUTPUT NODE)
     void addCommand(int concept, float quantity);   
@@ -70,6 +70,10 @@ public:
     // absorb info from network (INPUT NODE)
     virtual bool absorb() = 0;
 
+protected:  
+    // connect node to proper link
+    virtual void connect() = 0;
+    
 private:  
     // OUTPUT NODE: transforms commands to messages (cleaning commands queue)
     bool processCommandsQueue();

@@ -30,17 +30,18 @@ void NetNodePublisher::connect()
     std::string topicName = oInterpreter.getTopicName(topic);
     std::string categoryName = oInterpreter.getCategoryName(topic, category);
     
-    if (topicName.empty() && categoryName.empty())
+    // connect if valid topic-category names
+    if (!topicName.empty() && !categoryName.empty())
         oComyPublisher.connect(topicName, categoryName);        
 
     // if client connected
     if (oComyPublisher.isConnected())
     {
         bconnected = true;
-        LOG4CXX_INFO(logger, "NetNodePublisher connected");                                
+        LOG4CXX_INFO(logger, "Nety Publisher connected - " + topicName + ":" + categoryName);                                
     }
     else
-        LOG4CXX_ERROR(logger, "NetNodePublisher NOT connected!");       
+        LOG4CXX_ERROR(logger, "Nety Publisher NOT connected - " + topicName + ":" + categoryName);       
 }
 
 
@@ -65,7 +66,7 @@ bool NetNodePublisher::flush()
    
     if (failed != 0)
     {
-        LOG4CXX_WARN(logger, "NetNodePublisher: messages publishing failed " << failed);
+        LOG4CXX_ERROR(logger, "NetNodePublisher: flush failed, messages not sent = " << failed);
     }        
     
     // return true if all messages could be sent

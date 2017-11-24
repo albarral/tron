@@ -82,7 +82,7 @@ void TestComy::testPublishSubscribeComs()
     
     if (!oComyPublisher.isConnected() || !oComySubscriber.isConnected())
     {
-        LOG4CXX_ERROR(logger, modName + ": client or server not connected. Exit test!");                        
+        LOG4CXX_ERROR(logger, modName + ": publisher or subscriber not connected. Exit test!");                        
         return;
     }
     

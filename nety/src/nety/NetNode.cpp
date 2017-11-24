@@ -41,6 +41,8 @@ void NetNode::init(int topic, int category)
         this->topic = topic;
         this->category = category;
         btuned = true;
+        // if tuned, connect to proper link
+        connect();
     }
 }
 
@@ -53,6 +55,16 @@ bool NetNode::hasMessages()
 {
     return oMessageQueue.isFilled();
 }  
+
+int NetNode::getSizeCommandsQueue()
+{
+    return oCommandQueue.getSize();
+}
+
+int NetNode::getSizeMessagesQueue()
+{
+    return oMessageQueue.getSize();    
+}
 
 void NetNode::addCommand(int concept, float quantity)
 {  

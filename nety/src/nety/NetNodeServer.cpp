@@ -30,17 +30,18 @@ void NetNodeServer::connect()
     std::string topicName = oInterpreter.getTopicName(topic);
     std::string categoryName = oInterpreter.getCategoryName(topic, category);
     
-    if (topicName.empty() && categoryName.empty())
+    // connect if valid topic-category names
+    if (!topicName.empty() && !categoryName.empty())
         oComyServer.connect(topicName, categoryName);        
 
     // if client connected
     if (oComyServer.isConnected())
     {
         bconnected = true;
-        LOG4CXX_INFO(logger, "NetNodeServer connected");                                
+        LOG4CXX_INFO(logger, "Nety Server connected - " + topicName + ":" + categoryName);                                
     }
     else
-        LOG4CXX_ERROR(logger, "NetNodeServer NOT connected!");       
+        LOG4CXX_ERROR(logger, "Nety Server NOT connected - " + topicName + ":" + categoryName);       
 }
 
 
@@ -67,7 +68,7 @@ bool NetNodeServer::absorb()
         count++;
     }            
       
-    LOG4CXX_INFO(logger, "NetNodeServer: absorbed messages " << count);
+    //LOG4CXX_INFO(logger, "NetNodeServer: absorbed messages " << count);
     
     // return true if some messages read
     return (count > 0);
