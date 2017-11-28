@@ -9,45 +9,64 @@ namespace tuly
 {
 FileWriter::FileWriter()
 {
-    bappend = false;    // not append by default
+    filename = "";        
 }
 
-bool FileWriter::open(std::string name)
+FileWriter::~FileWriter()
 {
-    bool bok = false;
-    // proceed if not open yet
-    if (!file.is_open())
-    {        
-        if (bappend)
-            file.open(name, std::fstream::out | std::fstream::app);
-        else
-            file.open(name, std::fstream::out);
-        
-        if (file.is_open())
-        {
-            filename = name;
-            bok = true;
-        }
-    }
-    else 
-        bok = true;
+    close();
+}
 
-    return bok;
+bool FileWriter::open(std::string name, bool bappend)
+{
+    // preventive close
+    close();
+
+    if (bappend)
+        outfile.open(name, std::fstream::out | std::fstream::app);
+    else
+        outfile.open(name, std::fstream::out);
+
+    if (outfile.is_open())
+    {
+        filename = name;
+        return true;
+    }
+
+    return false;
+}
+
+bool FileWriter::isOpen()
+{
+    return (outfile.is_open());
+}
+
+bool FileWriter::close()
+{
+    // proceed if open 
+    if (outfile.is_open())
+    {        
+        outfile.close();
+        return true;
+    }
+
+    return false;
 }
 
 void FileWriter::writeLine(std::string line)
 {
-    file << line;
+    outfile << line;
 }
 
 void FileWriter::writeFlush(std::string line)
 {
-    file << line;
-    file.flush();
+    outfile << line;
+    outfile.flush();
 }
 
-void FileWriter::writeFromTop()
+void FileWriter::goTop()
 {
-    file.seekp(0, std::fstream::beg);
+    // point writer to file beginning    
+    outfile.seekp(0, std::fstream::beg);
 }
 }

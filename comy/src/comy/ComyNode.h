@@ -17,6 +17,7 @@ namespace comy
 class ComyNode
 {        
 protected:
+    int channelType; 
     Channel oChannel;         // comunications channel  
     bool bconnected;            // connected node
     

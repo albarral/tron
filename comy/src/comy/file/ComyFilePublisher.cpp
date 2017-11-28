@@ -40,7 +40,8 @@ void ComyFilePublisher::connect(std::string topic, std::string category)
         {        
 
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bconnected = oFileWriter.open(pathComsFile);  
+            // writer opened not in append mode            
+            bconnected = oFileWriter.open(pathComsFile, false);  
         }
         else
             bconnected = false;    
@@ -52,14 +53,28 @@ void ComyFilePublisher::connect(std::string topic, std::string category)
     }    
 }
 
-bool ComyFilePublisher::publishMessage(std::string rawMessage)
+bool ComyFilePublisher::newPublishing()
 {
     if (oFileWriter.isOpen())        
     {
         // overwrite any previous info
-        oFileWriter.writeFromTop();
-        oFileWriter.writeFlush(rawMessage);
-        //LOG4CXX_INFO(logger, "ComyFilePublisher: > " << sollMessage);        
+        oFileWriter.goTop();
+        return true;
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "ComyFilePublisher: can't publish info, coms file not open");                
+        return false;
+    }   
+}
+
+bool ComyFilePublisher::publishMessage(std::string text)
+{
+    if (oFileWriter.isOpen())        
+    {
+        // write text in coms file with default string delimiter
+        std::string output = text + delimiter;        
+        oFileWriter.writeFlush(output);
         return true;
     }
     else

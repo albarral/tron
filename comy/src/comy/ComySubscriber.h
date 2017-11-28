@@ -9,24 +9,34 @@
 #include <string>
 
 #include "comy/ComyNode.h"
+#include "tuly/utils/MessageQueue.h"
 
 namespace comy
 {
 // Base class used to subscribe to communication messages.
+// It works with a message queue to be consumed on demand.
 class ComySubscriber : public ComyNode
 {    
 protected:
-    int channelType; 
-    std::string rawMessage;     // received message
+    tuly::MessageQueue oMessageQueue;       // messages queue
         
 public:
     ComySubscriber();
 
-    // return obtained text
-    std::string getRawMessage() {return rawMessage;};
+    // read messages from publishers and puts them in the queue, returns false if nothing read
+    bool readMessages();
+    // checks if queue has pending messages
+    bool hasMessages();
+    // returns number of messages in queue
+    int getQueueSize();
+    // fetches first message in the queue
+    std::string fetchMessage();
        
-    // info reading method 
-    virtual bool readMessage() = 0;
+protected:    
+    // read message from publishers, returns empty if nothing read
+    virtual std::string readSingleMessage() = 0; 
+    // get all new messages received
+    virtual bool getNewMessages(std::vector<std::string>& listMessages) = 0; 
 };
 }
 #endif

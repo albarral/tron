@@ -1,5 +1,5 @@
-#ifndef __AMY_CONSOLE_DADYCOMMANDER_H
-#define __AMY_CONSOLE_DADYCOMMANDER_H
+#ifndef __DADY_COMMANDER_H
+#define __DADY_COMMANDER_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
@@ -29,6 +29,9 @@ public:
     bool checkValidCommand(std::string entry);
     int getInterpretedTopic() {return msgTopic;};
     int getInterpretedCategory() {return msgCategory;};
+
+    // sends message to proper server node (for specified topic-category)
+    bool sendMessage(std::string message, int topic, int category);        
 
     void showAvailableCommands();
 };

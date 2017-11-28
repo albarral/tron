@@ -1,7 +1,6 @@
 
-*** HOW TO INSTALL & USE DADY
+*** HOW TO USE TRON LIBS (DADY PROGRAM)
 
-(JL ALbarral, 23/10/2017)
 
 > INTRODUCTION
 
@@ -23,24 +22,17 @@ note: use dady without params to get the list of topics, categories and concepts
 > INSTALLATION
 
 
-1. Download tron
+1. Install tron libs
 
-git clone https://github.com/albarral/tron.git
+follow instructions in file howto_install_tron
 
 
 2. Build dady project (in Netbeans)
 
-
-3. Install tron libs
-
-follow instructions in howto_install_tron file
-
-
-4. Create link to dady executable in user's home folder:
+3. Create link to dady executable:
  
-cd
-ln -s /path_to_tron/dady/dist/Debug/GNU-Linux/dady dady
-(note: path_to_tron = tron installation path)
+cd <desired_folder>
+ln -s <tron_installation_path>/dady/dist/Debug/GNU-Linux/dady dady
 
 
 

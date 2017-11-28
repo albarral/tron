@@ -33,12 +33,14 @@
         <logicalFolder name="utils" displayName="utils" projectFiles="true">
           <itemPath>src/tuly/utils/Console.cpp</itemPath>
           <itemPath>src/tuly/utils/Console.h</itemPath>
-          <itemPath>src/tuly/utils/File.cpp</itemPath>
-          <itemPath>src/tuly/utils/File.h</itemPath>
           <itemPath>src/tuly/utils/FileReader.cpp</itemPath>
           <itemPath>src/tuly/utils/FileReader.h</itemPath>
           <itemPath>src/tuly/utils/FileWriter.cpp</itemPath>
           <itemPath>src/tuly/utils/FileWriter.h</itemPath>
+          <itemPath>src/tuly/utils/IntegerQueue.cpp</itemPath>
+          <itemPath>src/tuly/utils/IntegerQueue.h</itemPath>
+          <itemPath>src/tuly/utils/MessageQueue.cpp</itemPath>
+          <itemPath>src/tuly/utils/MessageQueue.h</itemPath>
           <itemPath>src/tuly/utils/StringUtil.cpp</itemPath>
           <itemPath>src/tuly/utils/StringUtil.h</itemPath>
           <itemPath>src/tuly/utils/UtilsTest.cpp</itemPath>
@@ -119,10 +121,6 @@
       </item>
       <item path="src/tuly/utils/Console.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tuly/utils/File.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tuly/utils/File.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tuly/utils/FileReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tuly/utils/FileReader.h" ex="false" tool="3" flavor2="0">
@@ -130,6 +128,14 @@
       <item path="src/tuly/utils/FileWriter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tuly/utils/FileWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/IntegerQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/IntegerQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/MessageQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/MessageQueue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tuly/utils/StringUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -199,10 +205,6 @@
       </item>
       <item path="src/tuly/utils/Console.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tuly/utils/File.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tuly/utils/File.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tuly/utils/FileReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tuly/utils/FileReader.h" ex="false" tool="3" flavor2="0">
@@ -210,6 +212,14 @@
       <item path="src/tuly/utils/FileWriter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tuly/utils/FileWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/IntegerQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/IntegerQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/MessageQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/utils/MessageQueue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tuly/utils/StringUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>

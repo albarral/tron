@@ -11,7 +11,7 @@
 #include "talky/coms/Message.h"
 #include "talky/coms/MessageBlock.h"
 #include "talky/topics/ArmTopic.h"
-#include "talky2/arm/ArmJointAngles.h"
+
 
 using namespace log4cxx;
 
@@ -39,12 +39,8 @@ void TestTalky::makeTest()
 //    msg = testWriteMessage(oInterpreter);        
 //    testReadMessage(oInterpreter, msg);        
 
-//    LOG4CXX_INFO(logger, "\n");
-//    msg = testWriteMessageBlock(oInterpreter);        
-//    testReadMessage(oInterpreter, msg);        
-
     LOG4CXX_INFO(logger, "\n");
-    msg = testWriteMessageArmAngles(oInterpreter);
+    msg = testWriteMessageBlock(oInterpreter);        
     testReadMessage(oInterpreter, msg);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
@@ -151,39 +147,3 @@ std::string TestTalky::testWriteMessageBlock(talky::Interpreter& oInterpreter)
     return rawMessage;    
 }
 
-std::string TestTalky::testWriteMessageArmAngles(talky::Interpreter& oInterpreter)
-{
-    LOG4CXX_INFO(logger, modName + ": testWriteMessageArmAngles ...");
-
-    std::string rawMessage = "";
-
-    talky2::ArmJointAngles oArmJointAngles;     // talky2 object for arm position info
-    
-    oArmJointAngles.setPosHS(10.0);
-    oArmJointAngles.setPosVS(11.0);
-    oArmJointAngles.setPosEL(12.0);
-    oArmJointAngles.setPosHW(13.0);
-    oArmJointAngles.setPosVW(14.0);
-    
-    talky::CommandBlock oCommandBlock;
-    oArmJointAngles.writeJointPositions(oCommandBlock);
-    LOG4CXX_INFO(logger, modName + ": commandBlock > " + oCommandBlock.toString());
-    
-    talky::MessageBlock oMessageBlock;
-    if (oInterpreter.buildMessageBlock(oCommandBlock, oMessageBlock))
-    {
-        // show obtained command
-        LOG4CXX_INFO(logger, modName + ": message block built ok");        
-        LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.toString());                
-        LOG4CXX_INFO(logger, modName + ": " + oMessageBlock.getRawText());                
-        rawMessage = oMessageBlock.getRawText();
-    }
-    else
-    {
-        LOG4CXX_WARN(logger, modName + ": message block building failed!");            
-        for (talky::Command& oCommand : oCommandBlock.getListCommands())
-            LOG4CXX_WARN(logger, modName + ": " + oCommand.toStringValidity());                    
-    }
-    
-    return rawMessage;        
-}

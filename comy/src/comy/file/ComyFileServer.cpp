@@ -29,9 +29,6 @@ ComyFileServer::~ComyFileServer()
 {
     if (oFileReader.isOpen())
         oFileReader.close();
-    
-    if (oFileWriter.isOpen())
-        oFileWriter.close();    
 }
 
 void ComyFileServer::connect(std::string topic, std::string category)
@@ -45,9 +42,10 @@ void ComyFileServer::connect(std::string topic, std::string category)
         if (!comsBasePath.empty())
         {        
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-            bool bconnected1 = oFileWriter.open(pathComsFile);   
-            bool bconnected2 = oFileReader.open(pathComsFile);   
-            bconnected = bconnected1 && bconnected2;
+            bconnected = oFileReader.open(pathComsFile); 
+            // first clean file
+            if (bconnected)
+                oFileReader.cleanFile();
         }
         else
             bconnected = false;    
@@ -59,32 +57,31 @@ void ComyFileServer::connect(std::string topic, std::string category)
     }        
 }
 
-bool ComyFileServer::readMessage()
+std::string ComyFileServer::readSingleMessage()
 {
-    bool brequest = false;  // default no request received
+    std::string rawMessage = "";
 
     if (oFileReader.isOpen())        
-    {
-        // read file from top
-        oFileReader.readFromTop();
-        //LOG4CXX_INFO(logger, "ComyFileServer: read pos " << oFileReader.getPos());
-        rawMessage = oFileReader.readLine();
-        
-        // and clear it
-        oFileWriter.writeFromTop();
-        oFileWriter.writeFlush("\n");
-
-        // if request received, interpret it
-        if (!rawMessage.empty())
-            brequest = true;
-    }
+        rawMessage = oFileReader.readLine();            
     else
     {
-        //LOG4CXX_ERROR(logger, "ComyFileServer: could not open coms file " << filename);
+        LOG4CXX_ERROR(logger, "ComyFileServer: can't read message, file reader not open ");
     }
     
-    return brequest;
+    return rawMessage;
 }
 
+bool ComyFileServer::getNewMessages(std::vector<std::string>& listMessages)
+{
+    bool bread = false;
+    if (oFileReader.isOpen())        
+        bread = oFileReader.readAllLines(listMessages);
+    else
+    {
+        LOG4CXX_ERROR(logger, "ComyFileServer: can't read messages, file reader not open ");
+    }
+    
+    return bread;
+}
 
 }

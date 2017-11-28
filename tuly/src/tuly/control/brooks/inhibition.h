@@ -30,6 +30,9 @@ class Inhibition
 
         // Checks if the inhibition is active.
         bool isRequested();
+        
+        // get loops value (for debugging))
+        int getLoops();
 };
 }    
 #endif

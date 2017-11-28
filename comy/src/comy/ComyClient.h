@@ -14,10 +14,7 @@ namespace comy
 {
 // Base class used to transmit messages to a server.
 class ComyClient : public ComyNode
-{        
-protected: 
-    int channelType; 
-    
+{           
 public:
     ComyClient();
    

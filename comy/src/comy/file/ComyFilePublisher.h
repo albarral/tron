@@ -18,7 +18,8 @@ namespace comy
 class ComyFilePublisher : public ComyPublisher
 {    
 private:
-    static log4cxx::LoggerPtr logger;    
+    static log4cxx::LoggerPtr logger;          
+    const char delimiter = '\n'; // newline used as delimiter for strings (default used by std::getline())
     std::string comsBasePath;
     std::string pathComsFile;       // file for broadcasting the info
     tuly::FileWriter oFileWriter;
@@ -27,11 +28,13 @@ public:
     ComyFilePublisher();
     ~ComyFilePublisher();
 
-    std::string getPubSubComsFile() {return pathComsFile;};
+    std::string getComsFile() {return pathComsFile;};
         
     virtual void connect(std::string topic, std::string category);
+    // starts a new publishing iteration
+    virtual bool newPublishing();
    // info publishing method (writes data in file)
-    virtual bool publishMessage(std::string rawMessage);
+    virtual bool publishMessage(std::string text);
 };
 }
 #endif

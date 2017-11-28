@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/talky/DataBlock.o \
+	${OBJECTDIR}/src/talky/Talk2Target.o \
 	${OBJECTDIR}/src/talky/Topics.o \
 	${OBJECTDIR}/src/talky/base/Category.o \
 	${OBJECTDIR}/src/talky/base/Concept.o \
@@ -44,15 +45,18 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/base/Topic.o \
 	${OBJECTDIR}/src/talky/coms/Command.o \
 	${OBJECTDIR}/src/talky/coms/CommandBlock.o \
+	${OBJECTDIR}/src/talky/coms/CommandQueue.o \
 	${OBJECTDIR}/src/talky/coms/Conversion.o \
 	${OBJECTDIR}/src/talky/coms/Message.o \
 	${OBJECTDIR}/src/talky/coms/MessageBlock.o \
 	${OBJECTDIR}/src/talky/coms/StringUtil.o \
 	${OBJECTDIR}/src/talky/languages/ArmLanguage.o \
+	${OBJECTDIR}/src/talky/languages/BodyLanguage.o \
 	${OBJECTDIR}/src/talky/talk/Interpreter.o \
 	${OBJECTDIR}/src/talky/talk/SlangTalker.o \
 	${OBJECTDIR}/src/talky/talk/Talker.o \
-	${OBJECTDIR}/src/talky/topics/ArmTopic.o
+	${OBJECTDIR}/src/talky/topics/ArmTopic.o \
+	${OBJECTDIR}/src/talky/topics/BodyTopic.o
 
 
 # C Compiler Flags
@@ -83,6 +87,11 @@ ${OBJECTDIR}/src/talky/DataBlock.o: src/talky/DataBlock.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/DataBlock.o src/talky/DataBlock.cpp
+
+${OBJECTDIR}/src/talky/Talk2Target.o: src/talky/Talk2Target.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/Talk2Target.o src/talky/Talk2Target.cpp
 
 ${OBJECTDIR}/src/talky/Topics.o: src/talky/Topics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky
@@ -124,6 +133,11 @@ ${OBJECTDIR}/src/talky/coms/CommandBlock.o: src/talky/coms/CommandBlock.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/CommandBlock.o src/talky/coms/CommandBlock.cpp
 
+${OBJECTDIR}/src/talky/coms/CommandQueue.o: src/talky/coms/CommandQueue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/coms/CommandQueue.o src/talky/coms/CommandQueue.cpp
+
 ${OBJECTDIR}/src/talky/coms/Conversion.o: src/talky/coms/Conversion.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/coms
 	${RM} "$@.d"
@@ -149,6 +163,11 @@ ${OBJECTDIR}/src/talky/languages/ArmLanguage.o: src/talky/languages/ArmLanguage.
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/languages/ArmLanguage.o src/talky/languages/ArmLanguage.cpp
 
+${OBJECTDIR}/src/talky/languages/BodyLanguage.o: src/talky/languages/BodyLanguage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/languages
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/languages/BodyLanguage.o src/talky/languages/BodyLanguage.cpp
+
 ${OBJECTDIR}/src/talky/talk/Interpreter.o: src/talky/talk/Interpreter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
 	${RM} "$@.d"
@@ -168,6 +187,11 @@ ${OBJECTDIR}/src/talky/topics/ArmTopic.o: src/talky/topics/ArmTopic.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/ArmTopic.o src/talky/topics/ArmTopic.cpp
+
+${OBJECTDIR}/src/talky/topics/BodyTopic.o: src/talky/topics/BodyTopic.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/BodyTopic.o src/talky/topics/BodyTopic.cpp
 
 # Subprojects
 .build-subprojects:

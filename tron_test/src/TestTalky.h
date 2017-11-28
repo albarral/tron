@@ -28,6 +28,5 @@ private:
     void testReadMessage(talky::Interpreter& oInterpreter, std::string msg);                
     std::string testWriteMessage(talky::Interpreter& oInterpreter);
     std::string testWriteMessageBlock(talky::Interpreter& oInterpreter);
-    std::string testWriteMessageArmAngles(talky::Interpreter& oInterpreter);
 };
 #endif

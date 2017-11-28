@@ -15,8 +15,6 @@
       <logicalFolder name="dady" displayName="dady" projectFiles="true">
         <itemPath>src/dady/DadyCommander.cpp</itemPath>
         <itemPath>src/dady/DadyCommander.h</itemPath>
-        <itemPath>src/dady/DadyCommunicator.cpp</itemPath>
-        <itemPath>src/dady/DadyCommunicator.h</itemPath>
         <itemPath>src/dady/main.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -100,10 +98,6 @@
       </item>
       <item path="src/dady/DadyCommander.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/dady/DadyCommunicator.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/dady/DadyCommunicator.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/dady/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -130,10 +124,6 @@
       <item path="src/dady/DadyCommander.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/dady/DadyCommander.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/dady/DadyCommunicator.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/dady/DadyCommunicator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/dady/main.cpp" ex="false" tool="1" flavor2="0">
       </item>

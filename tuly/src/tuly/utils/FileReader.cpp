@@ -7,58 +7,107 @@
 
 namespace tuly 
 {
-bool FileReader::open(std::string name)
+FileReader::FileReader()
 {
-    bool bok = false;
-    // proceed if not open yet
-    if (!file.is_open())
-    {        
-        file.open(name, std::fstream::in);
-        
-        if (file.is_open())
-        {
-            filename = name;
-            bok = true;
-        }
-    }
-    else 
-        bok = true;
-
-    return bok;
+    filename = "";        
 }
-        
+
+FileReader::~FileReader()
+{
+    close();
+}
+
+bool FileReader::open(std::string name)
+{    
+    // preventive close
+    close();
+
+    infile.open(name, std::fstream::in);
+
+    if (infile.is_open())
+    {
+        filename = name;
+        return true;
+    }
+
+    return false;
+}
+
+bool FileReader::isOpen()
+{
+    return (infile.is_open());
+}
+
+bool FileReader::close()
+{
+    // proceed if open 
+    if (infile.is_open())
+    {        
+        infile.close();
+        return true;
+    }
+
+    return false;
+}
+
 std::string FileReader::readLine()
 {
     std::string line;    
-    std::getline(file, line);
+    std::getline(infile, line);
 
     return line;
 }
 
-void FileReader::readFromTop()
-{
-    // reset stream if something failed
-    if (!isStreamOk())
-        file.clear();
+bool FileReader::readAllLines(std::vector<std::string>& listLines)
+{          
+    // clear output list
+    listLines.clear();
+
+    std::string line;    
+    while (std::getline(infile, line))
+    {
+        listLines.push_back(line);
+    }
+    // refresh as eof is reached
+    refresh();
     
-    // then point to file beginning
-    file.seekg(0, std::fstream::beg);
+    return (!listLines.empty());
+}
+
+void FileReader::refresh()
+{
+    // if eof reached, clear flags
+    if (infile.eof())
+        infile.clear();    
+}
+
+void FileReader::cleanFile()
+{
+    // open and close file with truncate option
+    std::ofstream outfile;
+    outfile.open(filename, std::fstream::out | std::fstream::trunc);
+    if (outfile.is_open())
+        outfile.close();               
+}
+
+void FileReader::goTop()
+{
+    // point reader to file beginning
+    infile.seekg(0, std::fstream::beg);
 }
 
 int FileReader::getPos()
 {
-    int pos = file.tellg();
-    return pos;
+    return infile.tellg();
 }
 
 bool FileReader::isEndReached() 
 {
-    return file.eof();
+    return infile.eof();
 }
 
-bool FileReader::isStreamOk()
+bool FileReader::isFailed()
 {
-    return (file.fail() == false);
-    
+    return infile.fail();    
 }
 }

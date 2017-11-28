@@ -7,7 +7,7 @@
 
 #include "talky/talk/Interpreter.h"
 #include "talky/topics/ArmTopic.h"
-#include "talky/languages/ArmLanguage.h"
+#include "talky/topics/BodyTopic.h"
 #include "talky/Topics.h"
 
 using namespace log4cxx;
@@ -45,18 +45,26 @@ void Interpreter::addLanguage(int topicId)
     switch (topicId)
     {
         case Topics::eTOPIC_ARM:
+        {
             // build arm topic
             ArmTopic oArmTopic;
             oArmTopic.build();
-            // build arm language
-            ArmLanguage oArmLanguage;            
-            oArmLanguage.build();
-            // apply language to topic
-            oArmTopic.applyLanguage(oArmLanguage);            
-            // apply topic to talker
+            // and apply it to talker
             oTalker.build(oArmTopic);
             bvalidTopic = true;
             break;            
+        }
+
+        case Topics::eTOPIC_BODYROLE:
+        {
+            // build body role topic
+            BodyTopic oBodyTopic;
+            oBodyTopic.build();
+            // and apply it to talker
+            oTalker.build(oBodyTopic);
+            bvalidTopic = true;
+            break;            
+        }
     }
     
     // if talk topic created
@@ -70,9 +78,36 @@ void Interpreter::addLanguage(int topicId)
     }
 }
 
-bool Interpreter::understandsLanguage(std::string topicName)
+bool Interpreter::knowsTopic(int topicId)
 {
-    return (mapTopicNumbers.find(topicName) != mapTopicNumbers.end());
+    // topic is known if there's a talker for it
+    return (mapTalkers.find(topicId) != mapTalkers.end());
+}
+
+bool Interpreter::knowsTopicCategory(int topicId, int categoryId)
+{
+    bool bknown = false;
+    // get topic talker 
+    Talker* pTalker = getTopicTalker(topicId);
+    
+    // if talker found, check if it knows the category
+    if (pTalker != 0)
+        bknown = pTalker->knowsCategory(categoryId);
+
+    return bknown;
+}
+
+std::string Interpreter::getCategoryName(int topicId, int categoryId)
+{
+    // get talker for given topic
+    Talker* pTalker = getTopicTalker(topicId);
+    
+    // if talker found, get name of given category
+    if (pTalker != 0)
+        return pTalker->getCategoryName(categoryId);
+    // if unknown topic, return empty name
+    else
+        return Topics::EMPTY_VALUE;    
 }
 
 bool Interpreter::processMessage(std::string text)

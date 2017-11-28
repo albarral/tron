@@ -2,37 +2,12 @@
 *** TRON PROJECTS ***
 
 This document lists all projects inside the tron repository.
-For each project the following structure is shown: 
-
-> project - library or executable 
-
-- dependency 1
-- dependency 2 
-...
-
-* lib description
-* ...
-
--------------------------------------------------------------------------------------
-
-> talky - libtron_talky.so		
-
-- log4cxx
-
-* Defines a standard language for communication between robotic control processes. 
-* Language divided in topics, categories and concepts.
-
--------------------------------------------------------------------------------------
-
-> tuly - libtron_tuly.so 		
-
-* Library for utilities:
-* string handling, file handling, thread management, brooks control classes ...
 
 -------------------------------------------------------------------------------------
 
 > comy - libtron_comy.so 		
 
+depends:
 - libtron_tuly
 - log4cxx
 
@@ -41,14 +16,67 @@ For each project the following structure is shown:
 
 -------------------------------------------------------------------------------------
 
-> tron_test - tron_test 		
+> maty - libtron_maty.so 		
 
+* Library for mathematical utilities.
+
+
+-------------------------------------------------------------------------------------
+
+> nety - libtron_nety.so 		
+
+depends:
+- libtron_comy
 - libtron_talky
 - libtron_tuly
-- libtron_comy
 - log4cxx
 
-* Program used for testing all tron libs.
+* Library for communication nodes. 
+* Nodes working with talky language, comy communication and message queues.
+
+
+-------------------------------------------------------------------------------------
+
+> talky - libtron_talky.so		
+
+depends:
+- log4cxx
+
+* Defines a standard language for communication between robotic control processes. 
+* Language divided in topics, categories and concepts.
+
+-------------------------------------------------------------------------------------
+
+> tivy - libtron_tivy.so		
+
+depends:
+- opencv_core
+- opencv_highgui
+
+* Library for gui development based in OpenCV: cartesian charts, historical charts ...
+
+
+-------------------------------------------------------------------------------------
+
+> tuly - libtron_tuly.so 		
+
+* Library for utilities: string handling, file handling, thread management, brooks control classes ...
+
+
+-------------------------------------------------------------------------------------
+
+> tron_test - tron_test 		
+
+depends:
+- libtron_comy
+- libtron_maty
+- libtron_nety
+- libtron_talky
+- libtron_tivy
+- libtron_tuly
+- log4cxx
+
+* Test program used for showing and testing tron functionalities. Each lib has its own class with sample code.
 
 -------------------------------------------------------------------------------------
 

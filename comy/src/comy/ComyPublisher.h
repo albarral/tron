@@ -15,12 +15,11 @@ namespace comy
 // Base class used to publish communication messages
 class ComyPublisher : public ComyNode
 {            
-protected: 
-    int channelType; 
-
 public:
     ComyPublisher();
    
+    // starts a new publishing iteration
+    virtual bool newPublishing() = 0;
    // info publishing method (specific for each ComyPublisher implementation)
     virtual bool publishMessage(std::string rawMessage) = 0;
 };

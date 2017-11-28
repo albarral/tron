@@ -13,6 +13,7 @@ const std::string Topics::HAND_TOPIC = "hand";
 const std::string Topics::VISION_TOPIC = "vision";    
 const std::string Topics::HEAD_TOPIC = "head";    
 const std::string Topics::WHEELS_TOPIC = "wheels";     
+const std::string Topics::BODYROLE_TOPIC = "body";     
 // auxiliary values
 const std::string Topics::EMPTY_VALUE = "";        
 const std::string Topics::FIELD_SEPARATOR = "*";
@@ -41,6 +42,10 @@ std::string Topics::getTopicName(int topicId)
 
         case eTOPIC_WHEELS:
             return WHEELS_TOPIC;
+            break;
+
+        case eTOPIC_BODYROLE:
+            return BODYROLE_TOPIC;
             break;
 
         default:

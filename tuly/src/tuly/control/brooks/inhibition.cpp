@@ -31,6 +31,13 @@ bool Inhibition::isRequested()
     else         
         return false;
 }
+
+int Inhibition::getLoops()
+{
+    std::lock_guard<std::mutex> locker(mutex);
+    return loops;    
+}
+
 }
 
 

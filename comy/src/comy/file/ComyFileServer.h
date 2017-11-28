@@ -7,11 +7,11 @@
  ***************************************************************************/
 
 #include <string>
+#include <vector>
 #include <log4cxx/logger.h>
 
 #include "comy/ComyServer.h"
 #include "tuly/utils/FileReader.h"
-#include "tuly/utils/FileWriter.h"
 
 namespace comy
 {
@@ -24,17 +24,18 @@ private:
     std::string comsBasePath;
     std::string pathComsFile;       // name of file used for coms
     tuly::FileReader oFileReader;     // file reader
-    tuly::FileWriter oFileWriter;        // file writer
     
 public:
     ComyFileServer();
     ~ComyFileServer();
 
-    std::string getClientServerComsFile() {return pathComsFile;};
+    std::string getComsFile() {return pathComsFile;};
                
     virtual void connect(std::string topic, std::string category);
-   // read message from client, returns false if nothing read
-    virtual bool readMessage();
+   // read message from client, returns empty if nothing read
+    virtual std::string readSingleMessage();    
+    // get all new messages received
+    virtual bool getNewMessages(std::vector<std::string>& listMessages); 
         
 };
 }

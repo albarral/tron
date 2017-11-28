@@ -35,11 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/Listener.o \
 	${OBJECTDIR}/src/TestComy.o \
+	${OBJECTDIR}/src/TestMaty.o \
+	${OBJECTDIR}/src/TestNety.o \
 	${OBJECTDIR}/src/TestPlot.o \
 	${OBJECTDIR}/src/TestTalky.o \
 	${OBJECTDIR}/src/TestTivy.o \
+	${OBJECTDIR}/src/TestTuly.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -67,15 +69,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/src/Listener.o: src/Listener.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Listener.o src/Listener.cpp
-
 ${OBJECTDIR}/src/TestComy.o: src/TestComy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestComy.o src/TestComy.cpp
+
+${OBJECTDIR}/src/TestMaty.o: src/TestMaty.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMaty.o src/TestMaty.cpp
+
+${OBJECTDIR}/src/TestNety.o: src/TestNety.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestNety.o src/TestNety.cpp
 
 ${OBJECTDIR}/src/TestPlot.o: src/TestPlot.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -91,6 +98,11 @@ ${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
+
+${OBJECTDIR}/src/TestTuly.o: src/TestTuly.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTuly.o src/TestTuly.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

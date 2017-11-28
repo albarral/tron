@@ -6,10 +6,12 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+
 #include <string>
 #include <log4cxx/logger.h>
 
 #include "comy/file/ComyFileServer.h"
+#include "comy/file/ComyFileSubscriber.h"
 
 
 // Class used to test comy lib.
@@ -26,9 +28,10 @@ public:
     void makeTest();      
     
 private:
-    void testComsClientServer();                
-    void testComsPublishSubscribe();
-    
+    void testClientServerComs();                
+    void testPublishSubscribeComs();
     void readByServer(comy::ComyFileServer& oComyServer);
+    void readBySubscriber(comy::ComyFileSubscriber& oComySubscriber);
+    
 };
 #endif
