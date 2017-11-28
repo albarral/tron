@@ -18,15 +18,14 @@ Topic::~Topic()
 
 void Topic::reset()
 {
-    topic = -1;
     listCategories.clear();
 }
 
 void Topic::addCategory(Category& oCategory)
 {
-    oCategory.setTopicId(topic);
-    
-    listCategories.push_back(oCategory);    
+    // just add categories of this topic
+    if (oCategory.getTopic() == topic)   
+        listCategories.push_back(oCategory);    
 }
 
 void Topic::applyLanguage(Language& oLanguage)

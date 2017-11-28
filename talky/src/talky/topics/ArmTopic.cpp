@@ -36,7 +36,8 @@ void ArmTopic::build()
 // create concepts of joint category
 void ArmTopic::createJointCategory()
 {
-    Category oCategory;
+    Category oCategory;        
+    oCategory.setTopicId(topic);
     oCategory.setId(ArmTopic::eCAT_ARM_JOINT);
 
     Concept oConcept;
@@ -56,6 +57,7 @@ void ArmTopic::createJointCategory()
 void ArmTopic::createAxisCategory()
 {
     Category oCategory;
+    oCategory.setTopicId(topic);
     oCategory.setId(ArmTopic::eCAT_ARM_AXIS);
 
     Concept oConcept;
@@ -75,6 +77,7 @@ void ArmTopic::createAxisCategory()
 void ArmTopic::createCyclicCategory() 
 {
     Category oCategory;
+    oCategory.setTopicId(topic);
     oCategory.setId(ArmTopic::eCAT_ARM_CYCLIC);
 
     // list of special concepts, those who don't need a quantity
@@ -105,6 +108,7 @@ void ArmTopic::createCyclicCategory()
 void ArmTopic::createExtraCategory()
 {
     Category oCategory;
+    oCategory.setTopicId(topic);
     oCategory.setId(ArmTopic::eCAT_ARM_EXTRA);
 
     Concept oConcept;

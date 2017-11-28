@@ -33,6 +33,7 @@ void BodyTopic::build()
 void BodyTopic::createArmMoverCategory()
 {
     Category oCategory;
+    oCategory.setTopicId(topic);
     oCategory.setId(BodyTopic::eCAT_BODY_ARMMOVER);
 
     Concept oConcept;
@@ -53,6 +54,7 @@ void BodyTopic::createArmMoverCategory()
 void BodyTopic::createExtraCategory()
 {
     Category oCategory;
+    oCategory.setTopicId(topic);
     oCategory.setId(BodyTopic::eCAT_BODY_EXTRA);
 
     Concept oConcept;
