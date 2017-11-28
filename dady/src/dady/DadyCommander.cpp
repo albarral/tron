@@ -4,6 +4,7 @@
  ***************************************************************************/
 
 #include "dady/DadyCommander.h"
+#include "comy/file/ComyFileClient.h"
 #include "talky/Topics.h"
 
 using namespace log4cxx;
@@ -15,8 +16,9 @@ LoggerPtr DadyCommander::logger(Logger::getLogger("dady"));
 // Constructor 
 DadyCommander::DadyCommander()
 {    
-    // prepary talky interpreter for arm topic communications
+    // prepare talky interpreter for all necessary topics 
     oInterpreter.addLanguage(talky::Topics::eTOPIC_ARM);
+    oInterpreter.addLanguage(talky::Topics::eTOPIC_BODYROLE);
 }
 
 bool DadyCommander::checkValidCommand(std::string entry)
@@ -62,6 +64,40 @@ bool DadyCommander::checkValidCommand(std::string entry)
     }            
 
     return bvalid;
+}
+
+bool DadyCommander::sendMessage(std::string message, int topic, int category)
+{
+    // get names of topic & category
+    std::string topicName = oInterpreter.getTopicName(topic);
+    std::string categoryName = oInterpreter.getCategoryName(topic, category);
+    
+    // skip if topic or category unknown
+    if (topicName.empty() || categoryName.empty())
+    {    
+        LOG4CXX_WARN(logger, "DadyCommander: can't send message, unknown topic - category");                        
+        return false;
+    }
+    
+    // create client and connect it to proper node
+    comy::ComyFileClient oComyClient;
+    oComyClient.connect(topicName, categoryName);
+    // skip if client not connected
+    if (!oComyClient.isConnected())
+    {
+        LOG4CXX_WARN(logger, "DadyCommander: can't send message, coms client couldn't connect");                        
+        return false;        
+    }
+    
+    // send message 
+    bool bsent = oComyClient.sendMessage(message);
+    
+    if (!bsent)
+    {
+        LOG4CXX_WARN(logger, "DadyCommander: message not sent");                        
+    }
+
+    return bsent;
 }
 
 void DadyCommander::showAvailableCommands()

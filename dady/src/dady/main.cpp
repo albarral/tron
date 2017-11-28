@@ -11,7 +11,6 @@
 #include <log4cxx/xml/domconfigurator.h>
 
 #include "dady/DadyCommander.h"
-#include "dady/DadyCommunicator.h"
 
 // obtains user's home path
 std::string getHomePath();
@@ -28,7 +27,6 @@ int main(int argc, char** argv)
     const int MAX_PARTS = 2;    // command must have to parts: amy2 + talky message (with no spaces)
     // create commander and communicator
     dady::DadyCommander oDadyCommander;
-    dady::DadyCommunicator oDadyCommunicator;
     
     // if command has wrong number of params, show usage
     if (argc == 1 || argc > MAX_PARTS)
@@ -40,17 +38,14 @@ int main(int argc, char** argv)
     }    
     
     // read command
-    std::string userCommand = argv[1];      // read user talky message
-//    std::string sep = "*";
-//    std::string userCommand = "arm" + sep + "axis" + sep + "tilt" + sep + "10.0";            
+    std::string userMessage = argv[1];      
     
-    // interpret command
-    // if valid, send it to amy
+    // check command validity (if it can be interpreted)
     bool bsent = false;
-    if (oDadyCommander.checkValidCommand(userCommand))
+    if (oDadyCommander.checkValidCommand(userMessage))
     {
-        if (oDadyCommunicator.connect2Amy())
-            bsent = oDadyCommunicator.sendCommand(userCommand, oDadyCommander.getInterpretedTopic(), oDadyCommander.getInterpretedCategory());
+        // if valid, send it to proper node
+        bsent = oDadyCommander.sendMessage(userMessage, oDadyCommander.getInterpretedTopic(), oDadyCommander.getInterpretedCategory());
     }
     
     if (bsent)
