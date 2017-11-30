@@ -11,7 +11,7 @@ namespace comy
 
 ComyServer::ComyServer()
 {    
-    channelType = Channel::eCHANNEL_SERVED;
+    channelType = Channel::eCHANNEL_P2P;
 }
 
 //ComyServer::~ComyServer()

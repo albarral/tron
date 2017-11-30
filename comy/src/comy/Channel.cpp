@@ -28,12 +28,12 @@ void Channel::setChannel(int type, std::string topic, std::string category)
         std::string prefix; 
         switch (type)
         {
-            case Channel::eCHANNEL_SERVED:
-                prefix = "uni";                        
+            case Channel::eCHANNEL_P2P:
+                prefix = "link";                        
                 break;
           
             case Channel::eCHANNEL_BROADCAST:
-                prefix = "broad";                        
+                prefix = "radio";                        
                 break;
         }
         name = prefix + "_" + topic + "_" + category;

@@ -33,6 +33,11 @@ public:
     virtual std::string readSingleMessage();    
     // get all new messages received
     virtual bool getNewMessages(std::vector<std::string>& listMessages); 
+
+private:
+    // force creation of coms file
+    void createComsFile();
+    
 };
 }
 #endif

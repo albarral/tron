@@ -10,6 +10,6 @@ namespace comy
 
 ComyClient::ComyClient()
 {    
-    channelType = Channel::eCHANNEL_SERVED;
+    channelType = Channel::eCHANNEL_P2P;
 }
 }

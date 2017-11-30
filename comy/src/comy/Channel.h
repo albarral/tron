@@ -20,7 +20,7 @@ class Channel
     enum eTypes
     {
         eCHANNEL_UNDEFINED,       
-        eCHANNEL_SERVED,            /*! served point to point channel */
+        eCHANNEL_P2P,                  /*! point to point channel */
         eCHANNEL_BROADCAST,      /*! broadcast channel */
         eCHANNEL_DIM
     };    

@@ -8,6 +8,7 @@
 
 #include "comy/file/ComyFileSubscriber.h"
 #include "comy/ComyConfig.h"
+#include "tuly/utils/FileWriter.h"
 
 namespace comy
 {
@@ -43,6 +44,12 @@ void ComyFileSubscriber::connect(std::string topic, std::string category)
 
             pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
             bconnected = oFileReader.open(pathComsFile);   
+            // if file reader not opened, create the coms file and reopen
+            if (!bconnected)
+            {
+                createComsFile();
+                bconnected = oFileReader.open(pathComsFile); 
+            }
             // first clean file
             if (bconnected)
                 oFileReader.cleanFile();
@@ -91,6 +98,18 @@ bool ComyFileSubscriber::getNewMessages(std::vector<std::string>& listMessages)
     }
     
     return bread;
+}
+
+void ComyFileSubscriber::createComsFile()
+{
+    tuly::FileWriter oFileWriter;
+    oFileWriter.open(pathComsFile, false);  
+    
+    if (oFileWriter.isOpen())                   
+    {
+        LOG4CXX_INFO(logger, "ComyFileServer: coms file created");                        
+        oFileWriter.close();        
+    }        
 }
 
 }
