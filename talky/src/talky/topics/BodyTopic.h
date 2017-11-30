@@ -18,11 +18,20 @@ public:
     /*! categories of body role topic */
     enum eBodyCategories
     {
+        eCAT_BODY_EXPRESSIVE,                /*! expressive category */
         eCAT_BODY_ARMMOVER,                  /*! arm mover category */
         eCAT_BODY_EXTRA,                        /*! extra category */
         eCAT_BODY_DIM
     };
     
+    /*! expressive category  */
+    enum eExpressiveCat
+    {
+        eEXPRESS_FEELING,                   /*! express given feeling */
+        eEXPRESS_HALT,                        /*! halt expressive action */
+        eEXPRESS_DIM
+    };
+
     /*! arm mover category */
     enum eArmMover
     {
@@ -49,6 +58,7 @@ public:
 
  private:    
     // create concept categories
+    void createExpressiveCategory();
     void createArmMoverCategory();
     void createExtraCategory();    
 

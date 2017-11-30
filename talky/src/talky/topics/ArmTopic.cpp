@@ -3,8 +3,6 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <algorithm>
-
 #include "talky/topics/ArmTopic.h"
 #include "talky/languages/ArmLanguage.h"
 #include "talky/Topics.h"
@@ -80,23 +78,22 @@ void ArmTopic::createCyclicCategory()
     oCategory.setTopicId(topic);
     oCategory.setId(ArmTopic::eCAT_ARM_CYCLIC);
 
-    // list of special concepts, those who don't need a quantity
-    std::vector<int> listSpecialConcepts{
+    Concept oConcept;
+    // here the simple concepts that don't need a quantity
+    std::vector<int> listSimpleConcepts{
         ArmTopic::eCYCLIC_FRONT_START, 
         ArmTopic::eCYCLIC_FRONT_STOP};
-    
-    Concept oConcept;
-        
+            
     for (int id=0; id<ArmTopic::eCYCLIC_DIM; id++)
     {
         oConcept.setMeaning(id);
         
-        // check if concept is special, and so doesn't need a quantity
-        auto result = std::find(std::begin(listSpecialConcepts), std::end(listSpecialConcepts), id);
-        if (result == std::end(listSpecialConcepts)) 
-            oConcept.setNeedsQuantity(true);
-        else
+        // simple concept
+        if (Category::findValueInList(id, listSimpleConcepts))
             oConcept.setNeedsQuantity(false);
+        // normal concept
+        else
+            oConcept.setNeedsQuantity(true);
             
         oCategory.addConcept(oConcept);
     }

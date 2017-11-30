@@ -61,8 +61,6 @@
         </logicalFolder>
         <itemPath>src/talky/DataBlock.cpp</itemPath>
         <itemPath>src/talky/DataBlock.h</itemPath>
-        <itemPath>src/talky/Talk2Target.cpp</itemPath>
-        <itemPath>src/talky/Talk2Target.h</itemPath>
         <itemPath>src/talky/Topics.cpp</itemPath>
         <itemPath>src/talky/Topics.h</itemPath>
       </logicalFolder>
@@ -105,10 +103,6 @@
       <item path="src/talky/DataBlock.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/DataBlock.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/talky/Talk2Target.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/talky/Talk2Target.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/talky/Topics.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -220,10 +214,6 @@
       <item path="src/talky/DataBlock.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/talky/DataBlock.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/talky/Talk2Target.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/talky/Talk2Target.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/talky/Topics.cpp" ex="false" tool="1" flavor2="0">
       </item>

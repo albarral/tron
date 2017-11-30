@@ -3,6 +3,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <algorithm>
+
 #include "talky/base/Category.h"
 
 namespace talky
@@ -38,6 +40,17 @@ void Category::applySlang(Slang& oSlang)
     }    
 }
 
+bool Category::findValueInList(int value, std::vector<int>& list)
+{
+    // find value in the list
+    auto result = std::find(std::begin(list), std::end(list), value);
+    // found
+    if (result != std::end(list))
+        return true;
+    // not found
+    else
+        return false;    
+}
 
 std::string Category::toString()
 {

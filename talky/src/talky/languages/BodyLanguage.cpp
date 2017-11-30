@@ -21,9 +21,23 @@ void BodyLanguage::build()
 
     // set body role topic
     setTopic(Topics::eTOPIC_BODYROLE);
-    // define topic categories
+    // define categories
+    defineExpressiveCategory();
     defineArmMoverCategory();
     defineExtraCategory();
+}
+
+// create slang for expressive category
+void BodyLanguage::defineExpressiveCategory()
+{
+    int category = BodyTopic::eCAT_BODY_EXPRESSIVE;
+    addCategory(category, BodyLanguage::CAT_BODY_EXPRESSIVE);
+
+    Slang oSlang;    
+    oSlang.setCategory(category);
+    oSlang.addWord(BodyTopic::eEXPRESS_FEELING, BodyLanguage::EXPRESS_FEELING);                        
+    oSlang.addWord(BodyTopic::eEXPRESS_HALT, BodyLanguage::EXPRESS_HALT);                        
+    addSlang(category, oSlang);    
 }
 
 // create slang for arm mover category

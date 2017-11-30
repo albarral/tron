@@ -42,6 +42,9 @@ public:
     // apply the given slang to the category (setting all concept names)
     void applySlang(Slang& oSlang);
     
+    // utility function to find a value in a list, returns true if found
+    static bool findValueInList(int value, std::vector<int>& list);
+    
     std::string toString();
 };
 }
