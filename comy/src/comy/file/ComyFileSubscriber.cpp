@@ -12,7 +12,7 @@
 
 namespace comy
 {
-log4cxx::LoggerPtr ComyFileSubscriber::logger(log4cxx::Logger::getLogger("comy"));
+log4cxx::LoggerPtr ComyFileSubscriber::logger(log4cxx::Logger::getLogger("tron.comy"));
 
 ComyFileSubscriber::ComyFileSubscriber()
 {    

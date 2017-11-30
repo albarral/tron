@@ -14,7 +14,7 @@ using namespace log4cxx;
 
 namespace talky
 {
-LoggerPtr Interpreter::logger(Logger::getLogger("talky"));
+LoggerPtr Interpreter::logger(Logger::getLogger("tron.talky"));
     
 Interpreter::Interpreter()
 {

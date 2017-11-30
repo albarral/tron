@@ -27,12 +27,7 @@
         <appender-ref ref="consoleAppender"/>
         <appender-ref ref="dailyAppender"/>
   </category>
-  <category name="talky" >
-        <priority value ="info" />
-        <appender-ref ref="consoleAppender"/>
-        <appender-ref ref="dailyAppender"/>
-  </category>
-  <category name="comy" >
+  <category name="tron" >
         <priority value ="info" />
         <appender-ref ref="consoleAppender"/>
         <appender-ref ref="dailyAppender"/>

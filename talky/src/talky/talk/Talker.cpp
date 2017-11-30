@@ -12,7 +12,7 @@ using namespace log4cxx;
 
 namespace talky
 {
-LoggerPtr Talker::logger(Logger::getLogger("talky"));
+LoggerPtr Talker::logger(Logger::getLogger("tron.talky"));
     
 Talker::Talker()
 {

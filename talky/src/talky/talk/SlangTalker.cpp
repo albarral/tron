@@ -13,7 +13,7 @@ using namespace log4cxx;
 
 namespace talky
 {
-LoggerPtr SlangTalker::logger(Logger::getLogger("talky"));
+LoggerPtr SlangTalker::logger(Logger::getLogger("tron.talky"));
     
 SlangTalker::SlangTalker()
 {
