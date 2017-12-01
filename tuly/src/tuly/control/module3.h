@@ -25,7 +25,8 @@ private:
         std::mutex mutex;
         std::thread t;        // module's thread       
         int state;             // module's present state
-        int prevState;       // module's next state
+        int prevState;       // module's previous state
+        bool bstateChanged; // state was changed in last loop
         float frequency;    // required execution frequency
         int period;           // time (microseconds) to be slept between loop executions
         bool boffRequested;    // indicates off has been requested
@@ -76,12 +77,14 @@ protected:
         
         // sets a new state (ignore it if in OFF state)
         void setState(int state);
-        // cheks if state has changed
+        // cheks if state has changed in last loop
         bool isStateChanged();
         
 private:        
-        // stores previous state
-        void storePrevState();
+        // prepare for new loop
+        void preLoop();
+        // check if state changed during last loop
+        void checkStateChanged();
 };
 }    
 #endif

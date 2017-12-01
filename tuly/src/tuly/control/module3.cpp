@@ -81,9 +81,10 @@ void Module3::run ()
     first();
     while (!offRequested())
     {
+        preLoop();
         loop();
-        // store previous value
-        storePrevState();
+        checkStateChanged();
+        
         usleep(period);
     }
     
@@ -112,16 +113,23 @@ void Module3::setState(int state)
         this->state = state;    
 }
 
-void Module3::storePrevState()
+void Module3::preLoop()
 {
     std::lock_guard<std::mutex> locker(mutex);
+    // store prev state
     prevState = state;
+}
+
+void Module3::checkStateChanged()
+{
+    std::lock_guard<std::mutex> locker(mutex);
+    bstateChanged = (state != prevState);        
 }
 
 bool Module3::isStateChanged()
 {
     std::lock_guard<std::mutex> locker(mutex);
-    return (state != prevState);        
+    return bstateChanged;        
 }
 
 }
