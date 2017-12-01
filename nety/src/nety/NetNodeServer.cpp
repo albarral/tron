@@ -10,6 +10,7 @@ namespace nety
 
 NetNodeServer::NetNodeServer()
 {    
+    nodeName = "nety Server";
     // input node
     btypeOut = false;
 }
@@ -23,7 +24,7 @@ void NetNodeServer::connect()
     // if not tuned, can't connect
     if (!btuned)
     {
-        LOG4CXX_WARN(logger, "NetNodeServer: node not tuned, can't connect to link");           
+        LOG4CXX_WARN(logger, nodeName + ": node not tuned, can't connect to link");           
         return;
     }
     
@@ -38,16 +39,16 @@ void NetNodeServer::connect()
     if (oComyServer.isConnected())
     {
         bconnected = true;
-        LOG4CXX_INFO(logger, "Nety Server connected - " + topicName + ":" + categoryName);                                
+        LOG4CXX_INFO(logger, nodeName + " connected - " + topicName + ":" + categoryName);                                
     }
     else
-        LOG4CXX_ERROR(logger, "Nety Server NOT connected - " + topicName + ":" + categoryName);       
+        LOG4CXX_ERROR(logger, nodeName + " NOT connected - " + topicName + ":" + categoryName);       
 }
 
 
 bool NetNodeServer::flush()
 {
-    LOG4CXX_WARN(logger, "NetNodeServer: invalid call to flush(), not an output node");               
+    LOG4CXX_WARN(logger, nodeName + ": invalid call to flush(), not an output node");               
     return false;
 }
 
@@ -68,7 +69,7 @@ bool NetNodeServer::absorb()
         count++;
     }            
       
-    //LOG4CXX_INFO(logger, "NetNodeServer: absorbed messages " << count);
+    //LOG4CXX_INFO(logger, nodeName + ": absorbed messages " << count);
     
     // return true if some messages read
     return (count > 0);

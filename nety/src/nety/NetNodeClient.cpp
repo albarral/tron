@@ -10,6 +10,7 @@ namespace nety
 
 NetNodeClient::NetNodeClient()
 {    
+    nodeName = "nety Client";
     // output node
     btypeOut = true;
 }
@@ -23,7 +24,7 @@ void NetNodeClient::connect()
     // if not tuned, can't connect
     if (!btuned)
     {
-        LOG4CXX_WARN(logger, "NetNodeClient: node not tuned, can't connect to link");           
+        LOG4CXX_WARN(logger, nodeName + ": node not tuned, can't connect to link");           
         return;
     }
     
@@ -37,10 +38,10 @@ void NetNodeClient::connect()
     if (oComyClient.isConnected())
     {
         bconnected = true;
-        LOG4CXX_INFO(logger, "Nety Client connected - " + topicName + ":" + categoryName);                                
+        LOG4CXX_INFO(logger, nodeName + " connected - " + topicName + ":" + categoryName);                                
     }
     else
-        LOG4CXX_ERROR(logger, "Nety Client NOT connected - " + topicName + ":" + categoryName);       
+        LOG4CXX_ERROR(logger, nodeName + " NOT connected - " + topicName + ":" + categoryName);       
 }
 
 
@@ -63,7 +64,7 @@ bool NetNodeClient::flush()
    
     if (failed != 0)
     {
-        LOG4CXX_WARN(logger, "NetNodeClient: flush failed, messages not sent = " << failed);
+        LOG4CXX_WARN(logger, nodeName + ": flush failed, messages not sent = " << failed);
     }        
     
     // return true if all messages could be sent
@@ -72,7 +73,7 @@ bool NetNodeClient::flush()
 
 bool NetNodeClient::absorb()
 {
-    LOG4CXX_WARN(logger, "NetNodeClient: invalid call to absorb(), not an input node");               
+    LOG4CXX_WARN(logger, nodeName + ": invalid call to absorb(), not an input node");               
     return false;
 }
 }

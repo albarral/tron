@@ -10,7 +10,8 @@ namespace nety
 
 NetNodePublisher::NetNodePublisher()
 {    
-   // output node
+  nodeName = "nety Publisher";
+  // output node
    btypeOut = true;
 }
 
@@ -23,7 +24,7 @@ void NetNodePublisher::connect()
     // if not tuned, can't connect
     if (!btuned)
     {
-        LOG4CXX_WARN(logger, "NetNodePublisher: node not tuned, can't connect to link");           
+        LOG4CXX_WARN(logger, nodeName + ": node not tuned, can't connect to link");           
         return;
     }
     
@@ -38,10 +39,10 @@ void NetNodePublisher::connect()
     if (oComyPublisher.isConnected())
     {
         bconnected = true;
-        LOG4CXX_INFO(logger, "Nety Publisher connected - " + topicName + ":" + categoryName);                                
+        LOG4CXX_INFO(logger, nodeName + " connected - " + topicName + ":" + categoryName);                                
     }
     else
-        LOG4CXX_ERROR(logger, "Nety Publisher NOT connected - " + topicName + ":" + categoryName);       
+        LOG4CXX_ERROR(logger, nodeName + " NOT connected - " + topicName + ":" + categoryName);       
 }
 
 
@@ -66,7 +67,7 @@ bool NetNodePublisher::flush()
    
     if (failed != 0)
     {
-        LOG4CXX_ERROR(logger, "NetNodePublisher: flush failed, messages not sent = " << failed);
+        LOG4CXX_ERROR(logger, nodeName + ": flush failed, messages not sent = " << failed);
     }        
     
     // return true if all messages could be sent
@@ -75,7 +76,7 @@ bool NetNodePublisher::flush()
 
 bool NetNodePublisher::absorb()
 {
-    LOG4CXX_WARN(logger, "NetNodePublisher: invalid call to absorb(), not an input node");               
+    LOG4CXX_WARN(logger, nodeName + ": invalid call to absorb(), not an input node");               
     return false;
 }
 }

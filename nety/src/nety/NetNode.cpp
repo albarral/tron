@@ -40,6 +40,8 @@ void NetNode::init(int topic, int category)
     {        
         this->topic = topic;
         this->category = category;
+        // extend nodename with target link
+        nodeName += " " + std::to_string(topic) + "-" + std::to_string(category);
         btuned = true;
         // if tuned, connect to proper link
         connect();
@@ -71,7 +73,7 @@ void NetNode::addCommand(int concept, float quantity)
     // not allowed for input nodes
     if (!btypeOut)
     {
-        LOG4CXX_WARN(logger, "NetNode: can't add command, not an output node");           
+        LOG4CXX_WARN(logger, nodeName + ": can't add command, not an output node");           
         return;
     }
     
@@ -88,7 +90,7 @@ void NetNode::addCommand(int concept)
     // not allowed for input nodes
     if (!btypeOut)
     {
-        LOG4CXX_WARN(logger, "NetNode: can't add command, not an output node");           
+        LOG4CXX_WARN(logger, nodeName + ": can't add command, not an output node");           
         return;
     }
 
@@ -137,14 +139,14 @@ bool NetNode::processCommandsQueue()
         else
         {      
             failed++;
-            LOG4CXX_WARN(logger, "NetNode: command processing failed, not interpreted - " + oCommand.toString());                                                                                   
+            LOG4CXX_WARN(logger, nodeName + ": command processing failed, not interpreted - " + oCommand.toString());                                                                                   
         }
     }
 
-    if (failed != 0)
-    {
-        LOG4CXX_WARN(logger, "NetNode: commands processing failed " << failed);
-    }        
+//    if (failed != 0)
+//    {
+//        LOG4CXX_WARN(logger, nodeName + ": commands processing failed " << failed);
+//    }        
     
     // return true if all commands processed ok
     return (failed == 0);
@@ -174,21 +176,21 @@ bool NetNode::processMessagesQueue()
                 else
                 {
                     failed++;
-                    LOG4CXX_WARN(logger, "NetNode: message processing failed, block interpreted - " + message);                                                       
+                    LOG4CXX_WARN(logger, nodeName + ": message processing failed, block interpreted - " + message);                                                       
                 }                    
             }
             else
             {
                 failed++;
-                LOG4CXX_WARN(logger, "NetNode: message processing failed, not interpreted - " + message);                                                                       
+                LOG4CXX_WARN(logger, nodeName + ": message processing failed, not interpreted - " + message);                                                                       
             }                
         }
     }
     
-    if (failed != 0)
-    {
-        LOG4CXX_WARN(logger, "NetNode: messages processing failed " << failed);
-    }        
+//    if (failed != 0)
+//    {
+//        LOG4CXX_WARN(logger, nodeName + ": messages processing failed " << failed);
+//    }        
     
     // return true if all messages processed ok
     return (failed == 0);

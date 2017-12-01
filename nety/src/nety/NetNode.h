@@ -29,6 +29,7 @@ class NetNode
 {    
 protected:
     static log4cxx::LoggerPtr logger;      
+    std::string nodeName;
     bool btypeOut;           // node type (true means output node, false means input node)
     int topic;
     int category;
