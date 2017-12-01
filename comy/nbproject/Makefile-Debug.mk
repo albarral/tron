@@ -45,7 +45,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/comy/file/ComyFileClient.o \
 	${OBJECTDIR}/src/comy/file/ComyFilePublisher.o \
 	${OBJECTDIR}/src/comy/file/ComyFileServer.o \
-	${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o
+	${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o \
+	${OBJECTDIR}/src/comy/zero/ComyZeroClient.o \
+	${OBJECTDIR}/src/comy/zero/ComyZeroServer.o
 
 
 # C Compiler Flags
@@ -62,7 +64,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly
+LDLIBSOPTIONS=-Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -lzmq
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -128,6 +130,16 @@ ${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o: src/comy/file/ComyFileSubscribe
 	${MKDIR} -p ${OBJECTDIR}/src/comy/file
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o src/comy/file/ComyFileSubscriber.cpp
+
+${OBJECTDIR}/src/comy/zero/ComyZeroClient.o: src/comy/zero/ComyZeroClient.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/comy/zero
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/zero/ComyZeroClient.o src/comy/zero/ComyZeroClient.cpp
+
+${OBJECTDIR}/src/comy/zero/ComyZeroServer.o: src/comy/zero/ComyZeroServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/comy/zero
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/zero/ComyZeroServer.o src/comy/zero/ComyZeroServer.cpp
 
 # Subprojects
 .build-subprojects:

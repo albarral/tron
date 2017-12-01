@@ -26,6 +26,7 @@ public:
     
     // sets communications channel
     virtual void connect(std::string topic, std::string category) = 0;
+    virtual void connectZero(std::string topic, std::string category, int port) = 0;
     Channel& getChannel() {return oChannel;};
     bool isConnected() {return bconnected;};
 

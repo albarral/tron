@@ -6,13 +6,14 @@
             <name>comy</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
-            <header-extensions>h</header-extensions>
+            <header-extensions>h,hpp</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../tuly</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src/comy</sourceRootElem>
+                <sourceRootElem>/usr/local/include</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
