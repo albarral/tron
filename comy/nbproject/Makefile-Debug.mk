@@ -42,9 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/comy/ComyPublisher.o \
 	${OBJECTDIR}/src/comy/ComyServer.o \
 	${OBJECTDIR}/src/comy/ComySubscriber.o \
-	${OBJECTDIR}/src/comy/file/ComyFileClient.o \
 	${OBJECTDIR}/src/comy/file/ComyFilePublisher.o \
-	${OBJECTDIR}/src/comy/file/ComyFileServer.o \
 	${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o \
 	${OBJECTDIR}/src/comy/zero/ComyZeroClient.o \
 	${OBJECTDIR}/src/comy/zero/ComyZeroServer.o
@@ -111,20 +109,10 @@ ${OBJECTDIR}/src/comy/ComySubscriber.o: src/comy/ComySubscriber.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/ComySubscriber.o src/comy/ComySubscriber.cpp
 
-${OBJECTDIR}/src/comy/file/ComyFileClient.o: src/comy/file/ComyFileClient.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/comy/file
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/file/ComyFileClient.o src/comy/file/ComyFileClient.cpp
-
 ${OBJECTDIR}/src/comy/file/ComyFilePublisher.o: src/comy/file/ComyFilePublisher.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/comy/file
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/file/ComyFilePublisher.o src/comy/file/ComyFilePublisher.cpp
-
-${OBJECTDIR}/src/comy/file/ComyFileServer.o: src/comy/file/ComyFileServer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/comy/file
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/file/ComyFileServer.o src/comy/file/ComyFileServer.cpp
 
 ${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o: src/comy/file/ComyFileSubscriber.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/comy/file

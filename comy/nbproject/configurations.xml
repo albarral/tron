@@ -4,23 +4,19 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>/usr/local/include/zmq.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>/usr/local/include/zmq.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="comy" displayName="comy" projectFiles="true">
         <logicalFolder name="file" displayName="file" projectFiles="true">
-          <itemPath>src/comy/file/ComyFileClient.cpp</itemPath>
-          <itemPath>src/comy/file/ComyFileClient.h</itemPath>
           <itemPath>src/comy/file/ComyFilePublisher.cpp</itemPath>
           <itemPath>src/comy/file/ComyFilePublisher.h</itemPath>
-          <itemPath>src/comy/file/ComyFileServer.cpp</itemPath>
-          <itemPath>src/comy/file/ComyFileServer.h</itemPath>
           <itemPath>src/comy/file/ComyFileSubscriber.cpp</itemPath>
           <itemPath>src/comy/file/ComyFileSubscriber.h</itemPath>
         </logicalFolder>
@@ -128,20 +124,12 @@
       </item>
       <item path="src/comy/ComySubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/comy/file/ComyFileClient.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileClient.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/comy/file/ComyFilePublisher.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
       <item path="src/comy/file/ComyFilePublisher.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileServer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileServer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/file/ComyFileSubscriber.cpp"
             ex="false"
@@ -209,20 +197,12 @@
       </item>
       <item path="src/comy/ComySubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/comy/file/ComyFileClient.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileClient.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/comy/file/ComyFilePublisher.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
       <item path="src/comy/file/ComyFilePublisher.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileServer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileServer.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/file/ComyFileSubscriber.cpp"
             ex="false"

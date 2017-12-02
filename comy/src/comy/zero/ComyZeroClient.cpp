@@ -4,6 +4,8 @@
  ***************************************************************************/
 
 
+#include <string>
+
 #include "comy/zero/ComyZeroClient.h"
 
 
@@ -21,8 +23,8 @@ namespace comy
         contextClient(1),
         socketClient(contextClient, ZMQ_REQ)    
     {    
-        //socketClient.setsockopt(ZMQ_RCVTIMEO, 500);
-        //socketClient.setsockopt(ZMQ_SNDTIMEO,500);
+        socketClient.setsockopt(ZMQ_RCVTIMEO, 250);
+        socketClient.setsockopt(ZMQ_SNDTIMEO, 250);
         //socketClient.setsockopt(ZMQ_REQ_CORRELATE,1);
         //socketClient.setsockopt(ZMQ_REQ_RELAXED,1);
     }
@@ -67,19 +69,16 @@ namespace comy
                 //Send Command
                 zmq::message_t request (text.length());
                 memcpy (request.data (), text.c_str(), text.length());
-                //std::cout << "Sending request... " << text << std::endl;
                 socketClient.send (request);
 
                 //  Get the reply.
                 zmq::message_t reply;
                 socketClient.recv (&reply);
                 std::string rpl = std::string(static_cast<char*>(reply.data()), reply.size());
-                //std::cout << "Received-> " << rpl << std::endl;
                 return true;
 
             }catch(zmq::error_t& e) {
-                //std::cout << "ERROR: Client -> Sending before receiving a request." << std::endl;
-                LOG4CXX_ERROR(logger, "ComyFileClient: send failed!");
+                LOG4CXX_ERROR(logger, "ComyFileClient: send failed!: " << e.what());
                 return false;
             }   
         }else{
