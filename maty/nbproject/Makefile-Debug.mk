@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/ArmMath.o \
 	${OBJECTDIR}/src/maty/math/ArmPolar.o \
 	${OBJECTDIR}/src/maty/math/Click.o \
+	${OBJECTDIR}/src/maty/math/Clock.o \
 	${OBJECTDIR}/src/maty/math/LinearCycler.o \
 	${OBJECTDIR}/src/maty/math/PIDControl.o \
 	${OBJECTDIR}/src/maty/math/TriangularSignal.o \
@@ -88,6 +89,11 @@ ${OBJECTDIR}/src/maty/math/Click.o: src/maty/math/Click.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Click.o src/maty/math/Click.cpp
+
+${OBJECTDIR}/src/maty/math/Clock.o: src/maty/math/Clock.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Clock.o src/maty/math/Clock.cpp
 
 ${OBJECTDIR}/src/maty/math/LinearCycler.o: src/maty/math/LinearCycler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
