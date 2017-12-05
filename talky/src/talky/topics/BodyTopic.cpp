@@ -21,7 +21,7 @@ void BodyTopic::build()
 
     // create categories for body roles topic
     createExpressiveCategory();
-    createArmMoverCategory();
+    createArtisticCategory();
     createExtraCategory();
 
     // build body role language and apply it to this topic
@@ -30,7 +30,7 @@ void BodyTopic::build()
     applyLanguage(oBodyLanguage);                
 }
 
-// create joint category
+// create expressive category
 void BodyTopic::createExpressiveCategory()
 {
     Category oCategory;
@@ -57,26 +57,32 @@ void BodyTopic::createExpressiveCategory()
     addCategory(oCategory);
 }
 
-// create arm mover category
-void BodyTopic::createArmMoverCategory()
+// create artistic category
+void BodyTopic::createArtisticCategory()
 {
     Category oCategory;
     oCategory.setTopicId(topic);
-    oCategory.setId(BodyTopic::eCAT_BODY_ARMMOVER);
+    oCategory.setId(BodyTopic::eCAT_BODY_ARTISTIC);
 
     Concept oConcept;
-    // all concepts here need a quantity
-    oConcept.setNeedsQuantity(true);
+    // here the simple concepts that don't need a quantity
+    std::vector<int> listSimpleConcepts{BodyTopic::eARTISTIC_HALT};
         
-    for (int id=0; id<BodyTopic::eARMMOVER_DIM; id++)
+    for (int id=0; id<BodyTopic::eARTISTIC_DIM; id++)
     {
         oConcept.setMeaning(id);
+        // simple concept
+        if (Category::findValueInList(id, listSimpleConcepts))
+            oConcept.setNeedsQuantity(false);
+        // normal concept
+        else
+            oConcept.setNeedsQuantity(true);
+
         oCategory.addConcept(oConcept);
     }
     
     addCategory(oCategory);
 }
-
 
 // create body extra category
 void BodyTopic::createExtraCategory()

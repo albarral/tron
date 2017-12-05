@@ -23,7 +23,7 @@ void BodyLanguage::build()
     setTopic(Topics::eTOPIC_BODYROLE);
     // define categories
     defineExpressiveCategory();
-    defineArmMoverCategory();
+    defineArtisticCategory();
     defineExtraCategory();
 }
 
@@ -41,19 +41,19 @@ void BodyLanguage::defineExpressiveCategory()
 }
 
 // create slang for arm mover category
-void BodyLanguage::defineArmMoverCategory()
+void BodyLanguage::defineArtisticCategory()
 {
-    int category = BodyTopic::eCAT_BODY_ARMMOVER;
-    addCategory(category, BodyLanguage::CAT_BODY_ARMMOVER);
+    int category = BodyTopic::eCAT_BODY_ARTISTIC;
+    addCategory(category, BodyLanguage::CAT_BODY_ARTISTIC);
 
     Slang oSlang;    
     oSlang.setCategory(category);
-    oSlang.addWord(BodyTopic::eARMMOVER_TYPE, BodyLanguage::ARMMOVER_TYPE);                        
-    oSlang.addWord(BodyTopic::eARMMOVER_ACTION, BodyLanguage::ARMMOVER_ACTION);                        
-    oSlang.addWord(BodyTopic::eARMMOVER_TURN, BodyLanguage::ARMMOVER_TURN);                        
-    oSlang.addWord(BodyTopic::eARMMOVER_WIDER, BodyLanguage::ARMMOVER_WIDER);                        
-    oSlang.addWord(BodyTopic::eARMMOVER_TALLER, BodyLanguage::ARMMOVER_TALLER);                        
-    oSlang.addWord(BodyTopic::eARMMOVER_FASTER, BodyLanguage::ARMMOVER_FASTER);                        
+    oSlang.addWord(BodyTopic::eARTISTIC_FIGURE, BodyLanguage::ARTISTIC_FIGURE);                        
+    oSlang.addWord(BodyTopic::eARTISTIC_FREQ, BodyLanguage::ARTISTIC_FREQ);                        
+    oSlang.addWord(BodyTopic::eARTISTIC_SIZE, BodyLanguage::ARTISTIC_SIZE);                        
+    oSlang.addWord(BodyTopic::eARTISTIC_ORIENTATION, BodyLanguage::ARTISTIC_ORIENTATION);                        
+    oSlang.addWord(BodyTopic::eARTISTIC_RELFACTOR, BodyLanguage::ARTISTIC_RELFACTOR);                        
+    oSlang.addWord(BodyTopic::eARTISTIC_HALT, BodyLanguage::ARTISTIC_HALT);                        
     addSlang(category, oSlang);    
 }
 

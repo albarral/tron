@@ -16,20 +16,20 @@ namespace talky
  public:
     /*! body categories */
     const std::string CAT_BODY_EXPRESSIVE = "express";    /*! expressive category */
-    const std::string CAT_BODY_ARMMOVER = "amover";  /*! arm mover category */
+    const std::string CAT_BODY_ARTISTIC = "art";  /*! artistic category */
     const std::string CAT_BODY_EXTRA = "extra";    /*! extra category */
 
     /*! expressive category */    
     const std::string EXPRESS_FEELING = "feel";      /*! set feeling to express (integer) */
     const std::string EXPRESS_HALT = "halt";          /*! halt expression */
 
-    /*! arm mover category */    
-    const std::string ARMMOVER_TYPE = "type";             /*! set movement type (integer) */
-    const std::string ARMMOVER_ACTION = "go";          /*! start/stop movement (boolean) */
-    const std::string ARMMOVER_TURN = "turn";             /*! change movement orientation (degrees) */
-    const std::string ARMMOVER_WIDER = "wider";            /*! change movement width (boolean) */
-    const std::string ARMMOVER_TALLER = "taller";           /*! change movement height (boolean) */
-    const std::string ARMMOVER_FASTER = "faster";           /*! change movement speed (boolean) */
+    /*! artistic category */    
+    const std::string ARTISTIC_FIGURE = "figure";             /*! id of artistic figure to implement (integer) */
+    const std::string ARTISTIC_FREQ = "freq";                  /*! frequency of cyclic figure (Hz) */
+    const std::string ARTISTIC_SIZE = "size";                   /*! size of cyclic figure (degrees) */
+    const std::string ARTISTIC_ORIENTATION = "angle";     /*! orientation of cyclic figure (degrees) */
+    const std::string ARTISTIC_RELFACTOR = "factor";       /*! relative xy factor of cyclic figure */
+    const std::string ARTISTIC_HALT = "halt";                   /*! halt ongoing artistic movement */
 
     /*! extra category */
     const std::string EXTRA_BODY_END = "end";         /*! end body role process */
@@ -42,7 +42,7 @@ namespace talky
  private:    
     // create category slangs
     void defineExpressiveCategory();
-    void defineArmMoverCategory();
+    void defineArtisticCategory();
     void defineExtraCategory();    
 };
 }

@@ -19,7 +19,7 @@ public:
     enum eBodyCategories
     {
         eCAT_BODY_EXPRESSIVE,                /*! expressive category */
-        eCAT_BODY_ARMMOVER,                  /*! arm mover category */
+        eCAT_BODY_ARTISTIC,                     /*! artistic category */
         eCAT_BODY_EXTRA,                        /*! extra category */
         eCAT_BODY_DIM
     };
@@ -31,19 +31,19 @@ public:
         eEXPRESS_HALT,                        /*! halt expressive action */
         eEXPRESS_DIM
     };
-
-    /*! arm mover category */
-    enum eArmMover
-    {
-        eARMMOVER_TYPE,             /*! set movement type (integer) */
-        eARMMOVER_ACTION,          /*! start/stop movement (boolean) */
-        eARMMOVER_TURN,             /*! change movement orientation (degrees) */
-        eARMMOVER_WIDER,            /*! change movement width (boolean) */
-        eARMMOVER_TALLER,           /*! change movement height (boolean) */
-        eARMMOVER_FASTER,           /*! change movement speed (boolean) */
-        eARMMOVER_DIM
-    };
       
+    /*! artistic category */
+    enum eArtistic
+    {
+        eARTISTIC_FIGURE,        // id of artistic figure to implement
+        eARTISTIC_FREQ,       // frequency of cyclic figure (Hz) 
+        eARTISTIC_SIZE,        // size of cyclic figure (degrees)
+        eARTISTIC_ORIENTATION,  // orientation of cyclic figure (degrees)
+        eARTISTIC_RELFACTOR,    // relative xy factor of cyclic figure 
+        eARTISTIC_HALT,                // halt ongoing artistic movement
+        eARTISTIC_DIM
+    };
+
     /*! extra category  */
     enum eExtraCat
     {
@@ -57,9 +57,9 @@ public:
     void build();
 
  private:    
-    // create concept categories
+    // create topic categories
     void createExpressiveCategory();
-    void createArmMoverCategory();
+    void createArtisticCategory();
     void createExtraCategory();    
 
 };
