@@ -24,5 +24,7 @@ public:
     
 private:
     void testArmMath();
+    void testClock();
+    void testTriangularSignal();
 };
 #endif

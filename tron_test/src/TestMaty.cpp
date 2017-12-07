@@ -3,9 +3,11 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <unistd.h>
 
 #include "TestMaty.h"
 #include "maty/math/ArmMath.h"
+#include "maty/math/TriangularSignal.h"
 
 using namespace log4cxx;
 
@@ -22,7 +24,9 @@ void TestMaty::makeTest()
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
     LOG4CXX_INFO(logger, "\n");
-    testArmMath();
+    //testArmMath();
+    //testClock();
+    testTriangularSignal();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -51,3 +55,42 @@ void TestMaty::testArmMath()
 //    LOG4CXX_INFO(logger, "radius: " << radius << ", angle = " << angle << "\n");
 }
 
+void TestMaty::testClock()
+{
+    LOG4CXX_INFO(logger, "testClock");
+
+    maty::Clock oClock;
+    
+    float freq = 1.0;
+    int period = 1000/freq;
+    oClock.setPeriod(period);
+
+    oClock.reset();    
+    for (int i=0; i<61; i++)
+    {
+        int tics = oClock.update();
+        float fract = oClock.getPeriodFraction();
+        LOG4CXX_INFO(logger, "tics = " << tics << ", fraction = " << fract << "\n");
+        
+        usleep(100000);
+    }
+}
+
+void TestMaty::testTriangularSignal()
+{
+    LOG4CXX_INFO(logger, "testTriangularSignal");
+
+    maty::TriangularSignal oSignal;
+    oSignal.setFrequency(1.0); 
+
+    LOG4CXX_INFO(logger, oSignal.toString());
+    oSignal.start();    
+    for (int i=0; i<30; i++)
+    {
+        float y = oSignal.update();        
+        LOG4CXX_INFO(logger, "y = " << y << "\n");
+        //LOG4CXX_INFO(logger, "y = " << y << ", sector = " << oSignal.getSector() << ", completion = " << oSignal.getCompletion() << "\n");
+        
+        usleep(50000);  // 20Hz
+    }
+}

@@ -38,12 +38,12 @@ int main(int argc, char** argv)
 //    oTestComy.makeTest();
     
      // test maty lib
-//    TestMaty oTestMaty;
-//    oTestMaty.makeTest();
+    TestMaty oTestMaty;
+    oTestMaty.makeTest();
 
     // test nety llib
-    TestNety oTestNety;
-    oTestNety.makeTest();
+//    TestNety oTestNety;
+//    oTestNety.makeTest();
 
     // test tivy lib
 //    TestTivy oTestTivy;

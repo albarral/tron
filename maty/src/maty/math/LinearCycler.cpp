@@ -4,6 +4,7 @@
  ***************************************************************************/
 
 #include "maty/math/LinearCycler.h"
+#include "TriangularSignal.h"
 
 
 namespace maty
@@ -60,8 +61,13 @@ void LinearCycler::update()
 {
     // modulate speed as a triangular signal
     // and decompose it in x & y speeds
-    float magnitude = movSpeed * oTriangularSignal.sense();
+    float magnitude = movSpeed * oTriangularSignal.update();
     oSpeedVector.compute(magnitude);
 }
 
+int LinearCycler::getPhase()
+{
+    float cycleCompletion = ((float)oTriangularSignal.getSector() + oTriangularSignal.getCompletion()) / (float)oTriangularSignal.getSectors();
+    return 360.0 * cycleCompletion;    
+}
 }

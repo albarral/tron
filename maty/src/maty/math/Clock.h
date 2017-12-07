@@ -37,6 +37,9 @@ public:
     int getTics() {return tics;}
     // gets consumed fraction of present period
     float getPeriodFraction() {return (float)t/period;};
+    
+    // get tics roof
+    int getTicsRoof() {return 1000;};
         
 };
 }

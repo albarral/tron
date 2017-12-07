@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/Clock.o \
 	${OBJECTDIR}/src/maty/math/LinearCycler.o \
 	${OBJECTDIR}/src/maty/math/PIDControl.o \
+	${OBJECTDIR}/src/maty/math/Signal.o \
 	${OBJECTDIR}/src/maty/math/TriangularSignal.o \
 	${OBJECTDIR}/src/maty/math/Vector.o
 
@@ -104,6 +105,11 @@ ${OBJECTDIR}/src/maty/math/PIDControl.o: src/maty/math/PIDControl.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/PIDControl.o src/maty/math/PIDControl.cpp
+
+${OBJECTDIR}/src/maty/math/Signal.o: src/maty/math/Signal.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Signal.o src/maty/math/Signal.cpp
 
 ${OBJECTDIR}/src/maty/math/TriangularSignal.o: src/maty/math/TriangularSignal.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math

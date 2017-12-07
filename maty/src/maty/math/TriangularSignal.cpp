@@ -3,66 +3,68 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <cmath>
-
 #include "maty/math/TriangularSignal.h"
 
 namespace maty
 {
 TriangularSignal::TriangularSignal()
 {    
-    absSlope = slope = 0.0;
+    // tune 4 sectors signal
+    tune(1.0, 4);
+    // set start positions of sectors
+    y0[0] = 0.0;
+    y0[1] = 1.0;
+    y0[2] = 0.0;
+    y0[3] = -1.0;
+    
     signal = 0.0;
 }
 
 void TriangularSignal::setFrequency(float freq)
 {
     if (freq > 0.0)
-    {        
-        // signal must go from 0 to 1 in a quarter of a period
-        absSlope = 4.0*freq/1000; 
-        // the slope changes but keeping its sign
-        slope = (slope > 0 ? absSlope : -absSlope);
-        frequency = freq;
+    {                
+        // tune 4 sectors signal with given frequency
+        tune(freq, 4);
+        // and recompute sector slopes
+        computeSlopes();
     }
-};
+}
+
+void TriangularSignal::computeSlopes()
+{
+    // y = kx + yo
+    // signal must change 1 in each period sector
+    float k = 1.0;
+    slope[0] = slope[3] = k;
+    slope[1] = slope[2] = -k;    
+}
 
 void TriangularSignal::start()
 {
-    // start new oscillation going up
+    // reset signal
     signal = 0.0;
-    slope = absSlope;
-    // and starts chronometer
-    oClick.start();
+    reset();
 }
 
-float TriangularSignal::sense()
+float TriangularSignal::update()
 {
-    // compute elapsed time 
-    oClick.read();
-    oClick.start();        
-    // update signal 
-    signal += slope * oClick.getMillis();
-    
-    // if signal arrives at 1 or -1, it must rebound back 
-    if (fabs(signal) >= 1.0)
-    {
-        slope = -slope;
-        // measure excess
-        float excess = fabs(signal) - 1.0;
-        
-        // if excess is bigger than signal's amplitude transform it to direction changes
-        while (excess > 2.0)
-        {
-            slope = -slope;
-            excess -= 2.0;
-        }
-        // the signal excess is the rebound size
-        if (slope > 0)
-            signal = -1.0 + excess;
-        else
-            signal = 1.0 - excess;                            
-    }
+    // sense base signal
+    sense();
+    // and compute triangular function
+    // y = kx + yo
+    signal = slope[sector]*completion + y0[sector];
     return signal;
 }
+
+std::string TriangularSignal::toString()
+{
+    std::string text = "[TriangularSignal2]: "; 
+    for (int i=0; i<sectors; i++)
+    {
+        text += "sector " + std::to_string(i) + ": slope = " + std::to_string(slope[i]) + ": yo = " + std::to_string(y0[i]) + "\n"; 
+    }
+    return text;    
+}
+
 }

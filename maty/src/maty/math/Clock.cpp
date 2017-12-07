@@ -36,13 +36,13 @@ int Clock::update()
     // update advanced time
     t += oClick.getMillis();
 
-    // on each elapsed period a new tic is generated (we use while to grant consistency on unfrequent clock updates)
+    // on each elapsed period a new tic is generated (use while for long update cases)
     while (t > period)
     {
         t -= period;
         tics++;
         
-        // protect tics from overflow
+        // a roof is set to tics counter (overflow protection)
         if (tics == 1000)
             tics = 0;
     }

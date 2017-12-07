@@ -44,6 +44,8 @@ public:
     // get movement xy speeds
     float getXSpeed() {return oSpeedVector.getXComponent();}; 
     float getYSpeed() {return oSpeedVector.getYComponent();}; 
+    // get movement phase
+    int getPhase();
     
 private:    
     // define movement's max speed
