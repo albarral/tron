@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2016 by Migtron Robotics   *
+ *   Copyright (C) 2017 by Migtron Robotics   *
  *   oriol@migtron.com (Oriol Orra)   *
  ***************************************************************************/
 
@@ -36,7 +36,9 @@ namespace comy
         
         LOG4CXX_INFO(logger, "Client ZMQ closing...");
     }
-
+    void ComyZeroClient::connect(std::string topic, std::string category){
+        
+    }
     void ComyZeroClient::connectZero(std::string topic, std::string category, int port){
         
         socketClient.connect("tcp://localhost:" + std::to_string(port));
@@ -70,7 +72,7 @@ namespace comy
                 zmq::message_t request (text.length());
                 memcpy (request.data (), text.c_str(), text.length());
                 socketClient.send (request);
-
+                
                 //  Get the reply.
                 zmq::message_t reply;
                 socketClient.recv (&reply);

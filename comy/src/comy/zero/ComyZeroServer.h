@@ -2,7 +2,7 @@
 #define COMYZEROSERVER_H
 
 /***************************************************************************
- *   Copyright (C) 2016 by Migtron Robotics   *
+ *   Copyright (C) 2017 by Migtron Robotics   *
  *   oriol@migtron.com (Oriol Orra)   *
  ***************************************************************************/
 
@@ -12,6 +12,7 @@
 
 #include "comy/ComyServer.h"
 #include <zmq.hpp>
+#include "zhelpers.hpp"
 
 
 

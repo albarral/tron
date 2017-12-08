@@ -2,7 +2,7 @@
 #define COMYZEROCLIENT_H
 
 /***************************************************************************
- *   Copyright (C) 2016 by Migtron Robotics   *
+ *   Copyright (C) 2017 by Migtron Robotics   *
  *   oriol@migtron.com (Oriol Orra)   *
  ***************************************************************************/
 
@@ -11,7 +11,7 @@
 
 #include "comy/ComyClient.h"
 #include "zmq.hpp"
-
+#include "zhelpers.hpp"
 
 namespace comy
 {
@@ -26,10 +26,11 @@ namespace comy
     public:
         ComyZeroClient();
         ~ComyZeroClient();
-
-        virtual void connectZero(std::string topic, std::string category, int port);
+        
+        virtual void connect(std::string topic, std::string category) override;
+        virtual void connectZero(std::string topic, std::string category, int port) override;
        // send message to server, returns false if nothing sent
-        virtual bool sendMessage(std::string text);
+        virtual bool sendMessage(std::string text) override;
 
     };
 }
