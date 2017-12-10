@@ -97,6 +97,7 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibLibItem>log4cxx</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

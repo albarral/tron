@@ -29,10 +29,11 @@ void NetNodePublisher::connect()
     
     std::string topicName = oInterpreter.getTopicName(topic);
     std::string categoryName = oInterpreter.getCategoryName(topic, category);
+    int prePort = oInterpreter.getPortBeforeChannelType(topic, category);
     
     // connect if valid topic-category names
     if (!topicName.empty() && !categoryName.empty())
-        oComyPublisher.connect(topicName, categoryName);        
+        oComyPublisher.connectZero(topicName, categoryName, prePort);        
 
     // if client connected
     if (oComyPublisher.isConnected())

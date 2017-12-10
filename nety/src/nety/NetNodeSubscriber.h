@@ -7,7 +7,7 @@
  ***************************************************************************/
 
 #include "nety/NetNode.h"
-#include "comy/file/ComyFileSubscriber.h"
+#include "comy/zero/ComyZeroSubscriber.h"
 
 namespace nety
 {
@@ -15,7 +15,7 @@ namespace nety
 class NetNodeSubscriber : public NetNode
 {    
 private:
-    comy::ComyFileSubscriber oComySubscriber;      // communications subscriber for topic-category
+    comy::ComyZeroSubscriber oComySubscriber;      // communications subscriber for topic-category
         
 public:
     NetNodeSubscriber();

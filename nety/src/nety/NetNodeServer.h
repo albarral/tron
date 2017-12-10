@@ -7,7 +7,8 @@
  ***************************************************************************/
 
 #include "nety/NetNode.h"
-#include "comy/file/ComyFileServer.h"
+#include "comy/zero/ComyZeroServer.h"
+//#include "comy/file/ComyFileServer.h"
 
 namespace nety
 {
@@ -15,7 +16,7 @@ namespace nety
 class NetNodeServer : public NetNode
 {    
 private:
-    comy::ComyFileServer oComyServer;      // communications server for topic-category
+    comy::ComyZeroServer oComyServer;      // communications server for topic-category
         
 public:
     NetNodeServer();

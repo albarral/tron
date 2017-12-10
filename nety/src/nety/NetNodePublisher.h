@@ -7,7 +7,7 @@
  ***************************************************************************/
 
 #include "nety/NetNode.h"
-#include "comy/file/ComyFilePublisher.h"
+#include "comy/zero/ComyZeroPublisher.h"
 
 namespace nety
 {
@@ -15,7 +15,7 @@ namespace nety
 class NetNodePublisher : public NetNode
 {    
 private:
-    comy::ComyFilePublisher oComyPublisher;      // communications publisher for topic-category
+    comy::ComyZeroPublisher oComyPublisher;      // communications publisher for topic-category
         
 public:
     NetNodePublisher();

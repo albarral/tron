@@ -29,10 +29,11 @@ void NetNodeSubscriber::connect()
     
     std::string topicName = oInterpreter.getTopicName(topic);
     std::string categoryName = oInterpreter.getCategoryName(topic, category);
+    int prePort = oInterpreter.getPortBeforeChannelType(topic, category);
     
     // connect if valid topic-category names
     if (!topicName.empty() && !categoryName.empty())
-        oComySubscriber.connect(topicName, categoryName);        
+        oComySubscriber.connectZero(topicName, categoryName, prePort);        
 
     // if client connected
     if (oComySubscriber.isConnected())

@@ -7,7 +7,8 @@
  ***************************************************************************/
 
 #include "nety/NetNode.h"
-#include "comy/file/ComyFileClient.h"
+#include "comy/zero/ComyZeroClient.h"
+//#include "comy/file/ComyFileClient.h"
 
 namespace nety
 {
@@ -15,7 +16,7 @@ namespace nety
 class NetNodeClient : public NetNode
 {    
 private:
-    comy::ComyFileClient oComyClient;      // communications client for topic-category
+    comy::ComyZeroClient oComyClient;      // communications client for topic-category
         
 public:
     NetNodeClient();
