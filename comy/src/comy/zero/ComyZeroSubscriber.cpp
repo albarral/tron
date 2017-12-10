@@ -25,41 +25,18 @@ ComyZeroSubscriber::~ComyZeroSubscriber()
 
 }
 
-void ComyZeroSubscriber::connect(std::string topic, std::string category)
-{
-    // set communications channel
-//    setChannel(channelType, topic, category);
-//
-//    if (oChannel.isInformed())
-//    {
-//        // open coms file for reading
-//        if (!comsBasePath.empty())
-//        {        
-//
-//            pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-//            bconnected = oFileReader.open(pathComsFile);   
-//            // first clean file
-//            if (bconnected)
-//                oFileReader.cleanFile();
-//        }
-//        else
-//            bconnected = false;    
-//    }
-//    else
-//    {
-//        bconnected = false;        
-//        LOG4CXX_WARN(logger, "ComyFileSubscriber: connection failed, coms channel needs to be defined");                        
-//    }        
-    
-}
+void ComyZeroSubscriber::connect(std::string topic, std::string category) {}
 
-void ComyZeroSubscriber::connectZero(std::string topic, std::string category, int port)
-{
+void ComyZeroSubscriber::connectZero(std::string topic, std::string category, int prePort){
+        
+    int port = prePort + (100*channelType);
+        
     // set communications channel
     setChannel(channelType, topic, category);
-    topicName = topic + ", " + category + ":";
+    topicName = getChannel().getName();
     
     socketSubscriber.connect("tcp://localhost:" + std::to_string(port));
+    LOG4CXX_INFO(logger, "Subscriber ZMQ connecting...");
     socketSubscriber.setsockopt( ZMQ_SUBSCRIBE, topicName);
 
     if (oChannel.isInformed())

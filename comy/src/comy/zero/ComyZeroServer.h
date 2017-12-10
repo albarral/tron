@@ -36,8 +36,9 @@ namespace comy
 
             ComyZeroServer();
             ~ComyZeroServer();
-
-            virtual void connectZero(std::string topic, std::string category, int port);
+            
+            virtual void connect(std::string topic, std::string category);
+            virtual void connectZero(std::string topic, std::string category, int prePort);
             // read message from client, returns empty if nothing read
             virtual std::string readSingleMessage();    
             // get all new messages received

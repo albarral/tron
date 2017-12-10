@@ -14,17 +14,15 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="comy" displayName="comy" projectFiles="true">
-        <logicalFolder name="file" displayName="file" projectFiles="true">
-          <itemPath>src/comy/file/ComyFilePublisher.cpp</itemPath>
-          <itemPath>src/comy/file/ComyFilePublisher.h</itemPath>
-          <itemPath>src/comy/file/ComyFileSubscriber.cpp</itemPath>
-          <itemPath>src/comy/file/ComyFileSubscriber.h</itemPath>
-        </logicalFolder>
         <logicalFolder name="f1" displayName="zero" projectFiles="true">
           <itemPath>src/comy/zero/ComyZeroClient.cpp</itemPath>
           <itemPath>src/comy/zero/ComyZeroClient.h</itemPath>
+          <itemPath>/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.cpp</itemPath>
+          <itemPath>/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.h</itemPath>
           <itemPath>src/comy/zero/ComyZeroServer.cpp</itemPath>
           <itemPath>src/comy/zero/ComyZeroServer.h</itemPath>
+          <itemPath>/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.cpp</itemPath>
+          <itemPath>/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.h</itemPath>
         </logicalFolder>
         <itemPath>src/comy/Channel.cpp</itemPath>
         <itemPath>src/comy/Channel.h</itemPath>
@@ -91,9 +89,30 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibLibItem>zmq</linkerLibLibItem>
+            <linkerLibLibItem>log4cxx</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/usr/local/include/zmq.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/Channel.cpp" ex="false" tool="1" flavor2="0">
@@ -123,20 +142,6 @@
       <item path="src/comy/ComySubscriber.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/comy/ComySubscriber.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFilePublisher.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFilePublisher.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileSubscriber.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileSubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/zero/ComyZeroClient.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -167,6 +172,26 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/usr/local/include/zmq.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/Channel.cpp" ex="false" tool="1" flavor2="0">
@@ -196,20 +221,6 @@
       <item path="src/comy/ComySubscriber.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/comy/ComySubscriber.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFilePublisher.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFilePublisher.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileSubscriber.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/comy/file/ComyFileSubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/comy/zero/ComyZeroClient.cpp" ex="false" tool="1" flavor2="0">
       </item>

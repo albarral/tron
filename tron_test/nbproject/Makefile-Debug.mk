@@ -59,15 +59,11 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../maty/dist/Debug/GNU-Linux -L../maty/dist/Debug/GNU-Linux -ltron_maty -Wl,-rpath,../nety/dist/Debug/GNU-Linux -L../nety/dist/Debug/GNU-Linux -ltron_nety -Wl,-rpath,../tivy/dist/Debug/GNU-Linux -L../tivy/dist/Debug/GNU-Linux -ltron_tivy -llog4cxx -lopencv_core -lopencv_highgui
+LDLIBSOPTIONS=-Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../maty/dist/Debug/GNU-Linux -L../maty/dist/Debug/GNU-Linux -ltron_maty -Wl,-rpath,../nety/dist/Debug/GNU-Linux -L../nety/dist/Debug/GNU-Linux -ltron_nety -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../tivy/dist/Debug/GNU-Linux -L../tivy/dist/Debug/GNU-Linux -ltron_tivy -Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -lopencv_highgui -lopencv_core -llog4cxx -lzmq
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tuly/dist/Debug/GNU-Linux/libtron_tuly.so
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../talky/dist/Debug/GNU-Linux/libtron_talky.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../comy/dist/Debug/GNU-Linux/libtron_comy.so
 
@@ -75,7 +71,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../maty/dist/Debug/GNU-Lin
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../nety/dist/Debug/GNU-Linux/libtron_nety.so
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../talky/dist/Debug/GNU-Linux/libtron_talky.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tivy/dist/Debug/GNU-Linux/libtron_tivy.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tuly/dist/Debug/GNU-Linux/libtron_tuly.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -123,12 +123,12 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug
-	cd ../talky && ${MAKE}  -f Makefile CONF=Debug
 	cd ../comy && ${MAKE}  -f Makefile CONF=Debug
 	cd ../maty && ${MAKE}  -f Makefile CONF=Debug
 	cd ../nety && ${MAKE}  -f Makefile CONF=Debug
+	cd ../talky && ${MAKE}  -f Makefile CONF=Debug
 	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -137,12 +137,12 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../talky && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../comy && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../maty && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../nety && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../talky && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

@@ -9,9 +9,10 @@
 
 #include <string>
 #include <log4cxx/logger.h>
+#include <zmq.hpp>
 
-#include "comy/file/ComyFileServer.h"
-#include "comy/file/ComyFileSubscriber.h"
+#include "comy/zero/ComyZeroServer.h"
+#include "comy/zero/ComyZeroSubscriber.h"
 
 
 // Class used to test comy lib.
@@ -30,8 +31,8 @@ public:
 private:
     void testClientServerComs();                
     void testPublishSubscribeComs();
-    void readByServer(comy::ComyFileServer& oComyServer);
-    void readBySubscriber(comy::ComyFileSubscriber& oComySubscriber);
+    void readByServer(comy::ComyZeroServer& oComyServer);
+    void readBySubscriber(comy::ComyZeroSubscriber& oComySubscriber);
     
 };
 #endif

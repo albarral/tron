@@ -27,35 +27,15 @@ ComyZeroPublisher::~ComyZeroPublisher()
     socketPublisher.close();    
 }
 
-void ComyZeroPublisher::connect(std::string topic, std::string category)
-{        
-//    // set communications channel
-//    setChannel(channelType, topic, category);
-//    
-//    if (oChannel.isInformed())
-//    {
-//        // open coms file for writing
-//        if (!comsBasePath.empty())
-//        {        
-//
-//            pathComsFile = comsBasePath + "/" + oChannel.getName() + ComyConfig::comsFileExtension;
-//            // writer opened not in append mode            
-//            bconnected = oFileWriter.open(pathComsFile, false);  
-//        }
-//        else
-//            bconnected = false;    
-//    }
-//    else
-//    {
-//        bconnected = false;        
-//        LOG4CXX_WARN(logger, "ComyFilePublisher: connection failed, coms channel needs to be defined");                        
-//    }    
-}
-void ComyZeroPublisher::connectZero(std::string topic, std::string category, int port){
-    
-    socketPublisher.bind ("tcp://*:" + std::to_string(port)); //and binds it
+void ComyZeroPublisher::connect(std::string topic, std::string category) {}
+
+void ComyZeroPublisher::connectZero(std::string topic, std::string category, int prePort){
+        
+    int port = prePort + (100*channelType);
+        
+    socketPublisher.bind("tcp://*:" + std::to_string(port)); //and binds it
     LOG4CXX_INFO(logger, "Publisher ZMQ connecting...");
-    topicName = topic + ", " + category + ":";
+    topicName = getChannel().getName();
     // set communications channel
     setChannel(channelType, topic, category);
     

@@ -36,10 +36,11 @@ namespace comy
         
         LOG4CXX_INFO(logger, "Client ZMQ closing...");
     }
-    void ComyZeroClient::connect(std::string topic, std::string category){
+    void ComyZeroClient::connect(std::string topic, std::string category) {}
+    
+    void ComyZeroClient::connectZero(std::string topic, std::string category, int prePort){
         
-    }
-    void ComyZeroClient::connectZero(std::string topic, std::string category, int port){
+        int port = prePort + (100*channelType);
         
         socketClient.connect("tcp://localhost:" + std::to_string(port));
         LOG4CXX_INFO(logger, "Client ZMQ connecting...");
@@ -71,17 +72,18 @@ namespace comy
                 //Send Command
                 zmq::message_t request (text.length());
                 memcpy (request.data (), text.c_str(), text.length());
-                socketClient.send (request);
+                bool isSent = socketClient.send (request);
+                LOG4CXX_INFO(logger, "Client ZMQ sent: " + text);
                 
                 //  Get the reply.
                 zmq::message_t reply;
                 socketClient.recv (&reply);
                 std::string rpl = std::string(static_cast<char*>(reply.data()), reply.size());
+                LOG4CXX_INFO(logger, "Client ZMQ received: " + rpl);
                 return true;
 
             }catch(zmq::error_t& e) {
-                LOG4CXX_ERROR(logger, "ComyFileClient: send failed!: " << e.what());
-                return false;
+                LOG4CXX_ERROR(logger, "ComyZeroClient: send failed!: " << e.what());
             }   
         }else{
             LOG4CXX_ERROR(logger, "ComyZeroClient: coms zero not open");

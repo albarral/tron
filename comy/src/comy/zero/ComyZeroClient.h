@@ -11,7 +11,6 @@
 
 #include "comy/ComyClient.h"
 #include "zmq.hpp"
-#include "zhelpers.hpp"
 
 namespace comy
 {
@@ -28,7 +27,7 @@ namespace comy
         ~ComyZeroClient();
         
         virtual void connect(std::string topic, std::string category) override;
-        virtual void connectZero(std::string topic, std::string category, int port) override;
+        virtual void connectZero(std::string topic, std::string category, int prePort) override;
        // send message to server, returns false if nothing sent
         virtual bool sendMessage(std::string text) override;
 

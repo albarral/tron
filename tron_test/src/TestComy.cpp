@@ -6,8 +6,8 @@
 #include <unistd.h>
 
 #include "TestComy.h"
-#include "comy/file/ComyFileClient.h"
-#include "comy/file/ComyFilePublisher.h"
+#include "comy/zero/ComyZeroClient.h"
+#include "comy/zero/ComyZeroPublisher.h"
 
 using namespace log4cxx;
 
@@ -23,8 +23,8 @@ void TestComy::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    //testClientServerComs();
-    testPublishSubscribeComs();       
+    testClientServerComs();
+//    testPublishSubscribeComs();       
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -33,15 +33,16 @@ void TestComy::testClientServerComs()
 {
     LOG4CXX_INFO(logger, modName + ": testClientServerComs ...");
     
-    comy::ComyFileClient oComyClient;
-    comy::ComyFileServer oComyServer;
+    comy::ComyZeroClient oComyClient;
+    comy::ComyZeroServer oComyServer;
     
     // connection
     // multichannel communication
     std::string topic = "topic";
     std::string category = "cat";
-    oComyClient.connect(topic, category);
-    oComyServer.connect(topic, category);
+    int port = 5565;
+    oComyServer.connectZero(topic, category, port);
+    oComyClient.connectZero(topic, category, port);
     
     if (!oComyClient.isConnected() || !oComyServer.isConnected())
     {
@@ -70,15 +71,16 @@ void TestComy::testPublishSubscribeComs()
 {
     LOG4CXX_INFO(logger, modName + ": testPublishSubscribeComs ...");
        
-    comy::ComyFilePublisher oComyPublisher;
-    comy::ComyFileSubscriber oComySubscriber;
+    comy::ComyZeroPublisher oComyPublisher;
+    comy::ComyZeroSubscriber oComySubscriber;
     
     // connection
     // multichannel communication
     std::string topic = "topic";
     std::string category = "cat";
-    oComyPublisher.connect(topic, category);
-    oComySubscriber.connect(topic, category);
+    int port = 5563;
+    oComyPublisher.connectZero(topic, category, port);
+    oComySubscriber.connectZero(topic, category, port);
     
     if (!oComyPublisher.isConnected() || !oComySubscriber.isConnected())
     {
@@ -104,7 +106,7 @@ void TestComy::testPublishSubscribeComs()
     readBySubscriber(oComySubscriber);   
 }
 
-void TestComy::readByServer(comy::ComyFileServer& oComyServer)
+void TestComy::readByServer(comy::ComyZeroServer& oComyServer)
 {
     oComyServer.readMessages();
     LOG4CXX_INFO(logger, "server has messages " + std::to_string(oComyServer.getQueueSize()));                
@@ -118,7 +120,7 @@ void TestComy::readByServer(comy::ComyFileServer& oComyServer)
     }
 }
 
-void TestComy::readBySubscriber(comy::ComyFileSubscriber& oComySubscriber)
+void TestComy::readBySubscriber(comy::ComyZeroSubscriber& oComySubscriber)
 {
     oComySubscriber.readMessages();
     LOG4CXX_INFO(logger, "susbscriber has messages " + std::to_string(oComySubscriber.getQueueSize()));                

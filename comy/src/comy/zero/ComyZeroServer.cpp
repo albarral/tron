@@ -28,11 +28,13 @@ namespace comy
         
         LOG4CXX_INFO(logger, "Server ZMQ closing...");
     }
+    void ComyZeroServer::connect(std::string topic, std::string category) {}
 
-    void ComyZeroServer::connectZero(std::string topic, std::string category, int port){
+    void ComyZeroServer::connectZero(std::string topic, std::string category, int prePort){
         
-        socketServer.connect("tcp://*:" + std::to_string(port));
-        LOG4CXX_INFO(logger, "Server ZMQ connected.");
+        int port = prePort + (100*channelType);
+        socketServer.bind("tcp://*:" + std::to_string(port));
+        LOG4CXX_INFO(logger, "Server ZMQ connecting...");
         
         // set communications channel
         setChannel(channelType, topic, category);
@@ -63,12 +65,14 @@ namespace comy
                 //  Wait for next request from client
                 socketServer.recv (&request);
                 rawMessage = std::string(static_cast<char*>(request.data()), request.size());
+                LOG4CXX_INFO(logger, "Server ZMQ (readSingleMessage) received: " + rawMessage);
 
                 //Send reply
-                std::string buffer = responses.valid;
-                zmq::message_t reply (buffer.length());
-                memcpy (reply.data (), buffer.c_str(), buffer.length());
+                std::string response = responses.valid;
+                zmq::message_t reply (response.length());
+                memcpy (reply.data (), response.c_str(), response.length());
                 socketServer.send (reply);
+                LOG4CXX_INFO(logger, "Server ZMQ (readSingleMessage) sent: " + response);
             }catch(zmq::error_t& e) {
                 
                 LOG4CXX_ERROR(logger, "ComyServerServer: can't read message: ");
@@ -97,12 +101,14 @@ bool ComyZeroServer::getNewMessages(std::vector<std::string>& listMessages)
                 if(!bread) break;
                 rawMessage = std::string(static_cast<char*>(request.data()), request.size());
                 listMessages.push_back(std::move(rawMessage));
+                LOG4CXX_INFO(logger, "Server ZMQ (getNewMessages) received: " + listMessages[0]);
 
                 //Send reply
-                std::string buffer = responses.valid;
-                zmq::message_t reply (buffer.length());
-                memcpy (reply.data (), buffer.c_str(), buffer.length());
+                std::string response = responses.valid;
+                zmq::message_t reply (response.length());
+                memcpy (reply.data (), response.c_str(), response.length());
                 socketServer.send (reply);
+                LOG4CXX_INFO(logger, "Server ZMQ (getNewMessages) sent: " + response);
             }catch(zmq::error_t& e) {
                 
                 LOG4CXX_ERROR(logger, "ComyServerServer: can't read message: " << e.what());

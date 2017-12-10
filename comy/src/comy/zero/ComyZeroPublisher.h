@@ -28,7 +28,7 @@ public:
     ~ComyZeroPublisher();
 
         
-    virtual void connectZero(std::string topic, std::string category, int port);
+    virtual void connectZero(std::string topic, std::string category, int prePort);
     virtual void connect(std::string topic, std::string category);
     // starts a new publishing iteration
     virtual bool newPublishing();
