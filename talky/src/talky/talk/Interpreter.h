@@ -52,6 +52,8 @@ public:
     std::string getTopicName(int topicId);
    // gets name of given topic category (returns empty if unknown)
     std::string getCategoryName(int topicId, int categoryId);
+   // gets port of given topic category (returns 0 if unknown)
+    int getPortBeforeChannelType(int topicId, int categoryId);
     
     // interprets given message/message block converting it to a simple command/command block
     // returns true if processed ok

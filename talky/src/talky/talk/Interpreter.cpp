@@ -110,6 +110,11 @@ std::string Interpreter::getCategoryName(int topicId, int categoryId)
         return Topics::EMPTY_VALUE;    
 }
 
+int Interpreter::getPortBeforeChannelType(int topicId, int categoryId){
+    
+    return 49151 + (topicId*10) + categoryId;
+}
+
 bool Interpreter::processMessage(std::string text)
 {
     // check message header to see if it's simple or a block

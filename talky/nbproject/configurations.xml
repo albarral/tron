@@ -100,6 +100,9 @@
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}</output>
+          <linkerLibItems>
+            <linkerLibLibItem>log4cxx</linkerLibLibItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
       <item path="src/talky/DataBlock.cpp" ex="false" tool="1" flavor2="0">
