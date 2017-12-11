@@ -29,12 +29,12 @@ public:
     TriangularSignal();
 
     // sets the signal frequency
-    void setFrequency(float freq);
+    virtual void setFrequency(float value);
     
     // starts the signal
-    void start();
+    void start(Clock& oClock);
     // updates the signal (senses evolved signal and returns its value)
-    float update();
+    float update(Clock& oClock);
     // gets the present signal value
     float getSignal() {return signal;}
 

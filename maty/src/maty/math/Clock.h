@@ -11,13 +11,14 @@
 namespace maty
 {
 // Class that produces a clock signal (periodic signal of specified frequency which gives a tic every new period)
-// On reset the tics are set to 0 and timer is reset. On click the tics are updated according to the ellapsed time.
+// On reset the tics are set to 0 and timer is reset. On click the tics are updated according to the elapsed time.
 class Clock
 {
 private:
     // parameter
-    int period;     // oscillation period (ms)
+    float freq;
     // logic
+    int period;     // oscillation period (ms)
     int tics;     // clock tics
     float t;      // advanced time in present period (ms)
     Click oClick;     // clock utility to measure times
@@ -26,8 +27,8 @@ public:
     Clock();
 
     // sets the clock period
-    void setPeriod(int period);
-    float getPeriod() {return period;};
+    void setFrequency(float value);
+    float getFrequency() {return freq;};
     
     // resets the clock
     void reset();
@@ -35,11 +36,9 @@ public:
     int update();
     // get tics value
     int getTics() {return tics;}
-    // gets consumed fraction of present period
-    float getPeriodFraction() {return (float)t/period;};
     
     // get tics roof
-    int getTicsRoof() {return 1000;};
+    int getTicsRoof() {return 10000;};
         
 };
 }

@@ -9,8 +9,8 @@ namespace maty
 {
 TriangularSignal::TriangularSignal()
 {    
-    // tune 4 sectors signal
-    tune(1.0, 4);
+    // set 4 sectors signal
+    setSectors(4);
     // set start positions of sectors
     y0[0] = 0.0;
     y0[1] = 1.0;
@@ -20,15 +20,12 @@ TriangularSignal::TriangularSignal()
     signal = 0.0;
 }
 
-void TriangularSignal::setFrequency(float freq)
+void TriangularSignal::setFrequency(float value)
 {
-    if (freq > 0.0)
-    {                
-        // tune 4 sectors signal with given frequency
-        tune(freq, 4);
-        // and recompute sector slopes
+    Signal::setFrequency(value);
+    // recompute sector slopes
+    if (value > 0.0)        
         computeSlopes();
-    }
 }
 
 void TriangularSignal::computeSlopes()
@@ -40,27 +37,30 @@ void TriangularSignal::computeSlopes()
     slope[1] = slope[2] = -k;    
 }
 
-void TriangularSignal::start()
+void TriangularSignal::start(Clock& oClock)
 {
     // reset signal
+    reset(oClock);
     signal = 0.0;
-    reset();
 }
 
-float TriangularSignal::update()
+float TriangularSignal::update(Clock& oClock)
 {
     // sense base signal
-    sense();
+    sense(oClock);
     // and compute triangular function
     // y = kx + yo
-    signal = slope[sector]*completion + y0[sector];
+    // caution (protect against signals with initial negative phase)
+    if (sector >= 0)
+        signal = slope[sector]*completion + y0[sector];
     return signal;
 }
 
 std::string TriangularSignal::toString()
 {
-    std::string text = "[TriangularSignal2]: "; 
-    for (int i=0; i<sectors; i++)
+    std::string text = "[TriangularSignal]: "; 
+    int numSectors = getSectors();
+    for (int i=0; i<numSectors; i++)
     {
         text += "sector " + std::to_string(i) + ": slope = " + std::to_string(slope[i]) + ": yo = " + std::to_string(y0[i]) + "\n"; 
     }

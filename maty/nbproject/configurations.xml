@@ -24,8 +24,6 @@
           <itemPath>src/maty/math/Click.h</itemPath>
           <itemPath>src/maty/math/Clock.cpp</itemPath>
           <itemPath>src/maty/math/Clock.h</itemPath>
-          <itemPath>src/maty/math/LinearCycler.cpp</itemPath>
-          <itemPath>src/maty/math/LinearCycler.h</itemPath>
           <itemPath>src/maty/math/MathDefines.h</itemPath>
           <itemPath>src/maty/math/PIDControl.cpp</itemPath>
           <itemPath>src/maty/math/PIDControl.h</itemPath>
@@ -92,10 +90,6 @@
       </item>
       <item path="src/maty/math/Clock.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/maty/math/LinearCycler.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/LinearCycler.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/maty/math/MathDefines.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
@@ -154,10 +148,6 @@
       <item path="src/maty/math/Clock.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/Clock.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/maty/math/LinearCycler.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/LinearCycler.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/math/MathDefines.h" ex="false" tool="3" flavor2="0">
       </item>

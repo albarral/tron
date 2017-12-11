@@ -10,53 +10,73 @@ namespace maty
 Signal::Signal()
 {    
     freq = 1.0;    
+    clockFreq = 10.0;
     sectors = 1;
+    phase = 0;
 }
 
-void Signal::tune(float freq, int sectors)
+void Signal::setFrequency(float value)
 {
-    if (freq > 0.0 && sectors > 0)
-    {        
-        this->freq = freq;
-        this->sectors = sectors;
-        // the signal will advance a sector on each clock period
-        int period = 1000/(freq*sectors);
-        oClock.setPeriod(period);
-    }
+    if (value >= 0.0)
+    {
+        freq = value;
+        tune();
+    }    
 }
 
-void Signal::reset()
+void Signal::setSectors(int value)
 {
-    // start signal
+    if (value > 0)
+    {
+        sectors = value;
+        tune();
+    }            
+}
+
+void Signal::setPhase(int value)
+{
+    if (value > -360 && value < 360)
+        phase = value;
+}
+
+void Signal::tune()
+{
+    angle4tic = 360.0 * freq / clockFreq;
+    angle4sector = 360.0 / sectors;
+}
+
+void Signal::reset(Clock& oClock)
+{
+    // retune for clock frequency
+    clockFreq = oClock.getFrequency();
+    tune();
+    
+    // start counters
+    angle = phase;  
     sector = 0;
     completion = 0.0;
-    oClock.reset();
-    lastTic = 0;
+    lastTic = oClock.getTics();
 }
 
-int Signal::sense()
+int Signal::sense(Clock& oClock)
 {
-    // get clock tics
-    int tic = oClock.update();
-    // update sector completion
-    completion = oClock.getPeriodFraction();
-    
-    // if new tic, change sector
-    if (tic != lastTic)
-    {
-        // elapsed tics
-        int tics = tic - lastTic;
-        lastTic = tic;
-        // protect against clock roof overstepping
-        if (tics < 0)
-            tics += oClock.getTicsRoof();
-        
-        // update sector and completion
-        sector += tics;
-        // watch sectors limit
-        while (sector >= sectors)
-            sector -= sectors;        
-    }
+    // compute elapsed tics
+    int tics = oClock.getTics() - lastTic;
+    lastTic = oClock.getTics();
+    // protect against clock roof overstepping
+    if (tics < 0)
+        tics += oClock.getTicsRoof();
+
+    // evolve angle
+    angle += tics*angle4tic;
+    // but watch limit
+    while (angle >= 360.0)
+        angle -= 360.0;
+
+    // update sector and completion 
+    float fsector = angle / angle4sector;
+    sector = (int)fsector;
+    completion = fsector - sector;    
 
     return sector;
 }

@@ -9,14 +9,17 @@ namespace maty
 {
 Clock::Clock()
 {    
-    period = 100; // 100 ms default period
+    setFrequency(10.0); // default frequency 10Hz
     tics = 0;
 }
 
-void Clock::setPeriod(int period)
+void Clock::setFrequency(float value)
 {
-    if (period > 0)
-        this->period = period;
+    if (value >= 0.0)
+    {
+        freq = value;
+        period = 1000.0/freq;
+    }
 }
 
 void Clock::reset()
@@ -37,13 +40,13 @@ int Clock::update()
     t += oClick.getMillis();
 
     // on each elapsed period a new tic is generated (use while for long update cases)
-    while (t > period)
+    while (t >= period)
     {
         t -= period;
         tics++;
         
         // a roof is set to tics counter (overflow protection)
-        if (tics == 1000)
+        if (tics == 10000)
             tics = 0;
     }
     

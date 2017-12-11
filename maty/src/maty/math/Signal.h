@@ -11,38 +11,46 @@
 namespace maty
 {
 // Base class used to produce periodic signals of specified frequency.     
-// The period is divided in a number of sectors and a clock is used to advance the sectors counter in a cyclic way (in analogy to electronic circuits).
+// The signal is based in an angle [0, 360] which evolves through time, given by an external clock.
+// The signal period is divided in sectors to allow for piecewise functions definition.
 // The signal is started on reset() call, and sensed on sense() calls.
 class Signal
 {
-protected:
-    // parameter
+private:
+    // parameters
     float freq;     // oscillation frequency (Hz))
-    int sectors;           // the sectors in which the signal's period is divided
+    float clockFreq;     // clock frequency (Hz))
+    int sectors;           // the sectors in which the signal period is divided
+    int phase;      // signal phase (degrees)
+    // logic
+    float angle;        // evolving angle (degrees))
+    float angle4tic;   // angle evolved in a clock's tic
+    float angle4sector; // angle evolved in a sector
+    int lastTic;         // last clock tic   
+
+protected:
     // logic
     int sector;         // the signal's present sector
     float completion;  // completion of present sector (values in [0,1])    
-    Clock oClock;     // clock utility to measure tics
-    int lastTic;         // last clock tic   
+
 public:
     Signal();
 
-    // get signal frequency
     float getFrequency() {return freq;};
-    // get num sectors in signal
     int getSectors() {return sectors;};
-    // get the present sector
-    int getSector() {return sector;}
-    // get the present sector completion
-    float getCompletion() {return completion;};        
+    int getPhase() {return phase;};
+    
+    virtual void setFrequency(float value);
+    void setSectors(int value);
+    void setPhase(int value);
     
 protected:    
-    // sets the signal parameters
-    void tune(float freq, int sectors);
-    // reset signal (and internal clock)
-    void reset();
+    // recompute signal factors
+    void tune();
+    // reset signal values
+    void reset(Clock& oClock);
     // senses the signal (updating its sector after the elapsed time)
-    int sense();    
+    int sense(Clock& oClock);    
 };
 }
 #endif
