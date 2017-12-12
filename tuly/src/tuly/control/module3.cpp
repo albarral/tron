@@ -83,7 +83,7 @@ void Module3::run ()
     {
         preLoop();
         loop();
-        checkStateChanged();
+        postLoop();
         
         usleep(period);
     }
@@ -110,7 +110,10 @@ void Module3::setState(int state)
     std::lock_guard<std::mutex> locker(mutex);
     // only proceed when module not OFF
     if (this->state != Module3::state_OFF)
+    {
         this->state = state;    
+        bstateChanged = (state != prevState);        
+    }
 }
 
 void Module3::preLoop()
@@ -120,10 +123,12 @@ void Module3::preLoop()
     prevState = state;
 }
 
-void Module3::checkStateChanged()
+void Module3::postLoop()
 {
     std::lock_guard<std::mutex> locker(mutex);
-    bstateChanged = (state != prevState);        
+    // reset changed flag if no changes in last loop
+    if (bstateChanged && (state == prevState))
+        bstateChanged = false;
 }
 
 bool Module3::isStateChanged()

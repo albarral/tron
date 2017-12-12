@@ -83,8 +83,8 @@ protected:
 private:        
         // prepare for new loop
         void preLoop();
-        // check if state changed during last loop
-        void checkStateChanged();
+        // check loop changes
+        void postLoop();
 };
 }    
 #endif
