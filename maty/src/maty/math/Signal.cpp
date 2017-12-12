@@ -4,6 +4,7 @@
  ***************************************************************************/
 
 #include "maty/math/Signal.h"
+#include "maty/math/Angle.h"
 
 namespace maty
 {
@@ -35,8 +36,15 @@ void Signal::setSectors(int value)
 
 void Signal::setPhase(int value)
 {
-    if (value > -360 && value < 360)
-        phase = value;
+    int prevPhase = phase;
+    // transform new phase to range [0,360)
+    phase = Angle::inLimits(value);
+    // if phase changed move angle accordingly (with limits protection)
+    if (phase != prevPhase)
+    {
+        angle += (phase - prevPhase);
+        angle = Angle::inLimits(angle);
+    }
 }
 
 void Signal::tune()

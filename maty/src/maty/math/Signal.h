@@ -23,7 +23,7 @@ private:
     int sectors;           // the sectors in which the signal period is divided
     int phase;      // signal phase (degrees)
     // logic
-    float angle;        // evolving angle (degrees))
+    float angle;        // evolving angle [0, 360) (degrees)
     float angle4tic;   // angle evolved in a clock's tic
     float angle4sector; // angle evolved in a sector
     int lastTic;         // last clock tic   
