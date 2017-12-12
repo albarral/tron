@@ -61,16 +61,14 @@ void TestMaty::testClock()
 
     maty::Clock oClock;
     
-    float freq = 1.0;
-    int period = 1000/freq;
-    oClock.setPeriod(period);
+    float freq = 50.0;  // 50 Hz
+    oClock.setFrequency(freq);
 
     oClock.reset();    
     for (int i=0; i<61; i++)
     {
         int tics = oClock.update();
-        float fract = oClock.getPeriodFraction();
-        LOG4CXX_INFO(logger, "tics = " << tics << ", fraction = " << fract << "\n");
+        LOG4CXX_INFO(logger, "tics = " << tics << "\n");
         
         usleep(100000);
     }
@@ -80,14 +78,19 @@ void TestMaty::testTriangularSignal()
 {
     LOG4CXX_INFO(logger, "testTriangularSignal");
 
-    maty::TriangularSignal oSignal;
-    oSignal.setFrequency(1.0); 
+    maty::Clock oClock;
+    oClock.setFrequency(50.0);
 
-    LOG4CXX_INFO(logger, oSignal.toString());
-    oSignal.start();    
+    maty::TriangularSignal oTriangularSignal;
+    oTriangularSignal.setFrequency(1.0); 
+
+    LOG4CXX_INFO(logger, oTriangularSignal.toString());
+    oClock.reset();
+    oTriangularSignal.start(oClock);    
     for (int i=0; i<30; i++)
     {
-        float y = oSignal.update();        
+        oClock.update();
+        float y = oTriangularSignal.update(oClock);        
         LOG4CXX_INFO(logger, "y = " << y << "\n");
         //LOG4CXX_INFO(logger, "y = " << y << ", sector = " << oSignal.getSector() << ", completion = " << oSignal.getCompletion() << "\n");
         
