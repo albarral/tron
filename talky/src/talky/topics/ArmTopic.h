@@ -63,8 +63,8 @@ public:
          eCYCLIC_FRONT2_FREQ,            /*! frequency of frontal cycler component 2 (Hz) */
          eCYCLIC_FRONT2_AMP,             /*! amplitude of frontal cycler component 2 (degrees) */
          eCYCLIC_FRONT2_ANGLE,          /*! orientation of frontal cycler component 2 (degrees) */
-         eCYCLIC_FRONT_START,          /*! start frontal cycler movement */
-         eCYCLIC_FRONT_STOP,           /*! stop frontal cycler movement */
+         eCYCLIC_FRONT_PHASE,          /*! phase difference of frontal cycler components (degrees) */
+         eCYCLIC_FRONT_ACTION,          /*! start/stop frontal cycler movement */
          eCYCLIC_DIM
     };
       

@@ -81,8 +81,8 @@ void ArmLanguage::defineCyclicCategory()
     oSlang.addWord(ArmTopic::eCYCLIC_FRONT2_FREQ, CYCLIC_FRONT2_FREQ);
     oSlang.addWord(ArmTopic::eCYCLIC_FRONT2_AMP, CYCLIC_FRONT2_AMP);                         
     oSlang.addWord(ArmTopic::eCYCLIC_FRONT2_ANGLE, CYCLIC_FRONT2_ANGLE);                      
-    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_START, CYCLIC_FRONT_START);                   
-    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_STOP, CYCLIC_FRONT_STOP);                        
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_PHASE, CYCLIC_FRONT_PHASE);                   
+    oSlang.addWord(ArmTopic::eCYCLIC_FRONT_ACTION, CYCLIC_FRONT_ACTION);                        
     addSlang(category, oSlang);    
 }
 

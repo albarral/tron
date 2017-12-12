@@ -79,22 +79,12 @@ void ArmTopic::createCyclicCategory()
     oCategory.setId(ArmTopic::eCAT_ARM_CYCLIC);
 
     Concept oConcept;
-    // here the simple concepts that don't need a quantity
-    std::vector<int> listSimpleConcepts{
-        ArmTopic::eCYCLIC_FRONT_START, 
-        ArmTopic::eCYCLIC_FRONT_STOP};
+    // all concepts in this category need a quantity
+    oConcept.setNeedsQuantity(true);
             
     for (int id=0; id<ArmTopic::eCYCLIC_DIM; id++)
     {
         oConcept.setMeaning(id);
-        
-        // simple concept
-        if (Category::findValueInList(id, listSimpleConcepts))
-            oConcept.setNeedsQuantity(false);
-        // normal concept
-        else
-            oConcept.setNeedsQuantity(true);
-            
         oCategory.addConcept(oConcept);
     }
     

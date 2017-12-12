@@ -45,8 +45,8 @@ namespace talky
     const std::string CYCLIC_FRONT2_FREQ = "freq2";      /*! frequency of frontal cycler component 2 (Hz) */
     const std::string CYCLIC_FRONT2_AMP = "amp2";        /*! amplitude of frontal cycler component 2 (degrees) */
     const std::string CYCLIC_FRONT2_ANGLE = "ang2";      /*! orientation of frontal cycler component 2 (degrees) */
-    const std::string CYCLIC_FRONT_START = "go";          /*! start frontal cycler movement */
-    const std::string CYCLIC_FRONT_STOP = "end";           /*! stop frontal cycler movement */
+    const std::string CYCLIC_FRONT_PHASE = "phase";          /*! phase difference of frontal cycler components (degrees) */
+    const std::string CYCLIC_FRONT_ACTION = "front";           /*! start/stop frontal cycler movement */
     /*! extra category names */
     const std::string EXTRA_ARM_STOP = "stop";                  /*! stop arm */
     const std::string EXTRA_KEEP_TILT = "keep";                   /*! keep the tilt position */
