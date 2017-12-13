@@ -24,6 +24,8 @@
           <itemPath>src/maty/math/Click.h</itemPath>
           <itemPath>src/maty/math/Clock.cpp</itemPath>
           <itemPath>src/maty/math/Clock.h</itemPath>
+          <itemPath>src/maty/math/Coordinates.cpp</itemPath>
+          <itemPath>src/maty/math/Coordinates.h</itemPath>
           <itemPath>src/maty/math/MathDefines.h</itemPath>
           <itemPath>src/maty/math/PIDControl.cpp</itemPath>
           <itemPath>src/maty/math/PIDControl.h</itemPath>
@@ -31,8 +33,16 @@
           <itemPath>src/maty/math/Signal.h</itemPath>
           <itemPath>src/maty/math/TriangularSignal.cpp</itemPath>
           <itemPath>src/maty/math/TriangularSignal.h</itemPath>
+          <itemPath>src/maty/math/Trigger.cpp</itemPath>
+          <itemPath>src/maty/math/Trigger.h</itemPath>
           <itemPath>src/maty/math/Vector.cpp</itemPath>
           <itemPath>src/maty/math/Vector.h</itemPath>
+          <itemPath>src/maty/math/area.cpp</itemPath>
+          <itemPath>src/maty/math/area.h</itemPath>
+          <itemPath>src/maty/math/average.cpp</itemPath>
+          <itemPath>src/maty/math/average.h</itemPath>
+          <itemPath>src/maty/math/distance.cpp</itemPath>
+          <itemPath>src/maty/math/distance.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -90,6 +100,10 @@
       </item>
       <item path="src/maty/math/Clock.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/math/Coordinates.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/Coordinates.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/maty/math/MathDefines.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
@@ -104,9 +118,25 @@
       </item>
       <item path="src/maty/math/TriangularSignal.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/Trigger.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/maty/math/Vector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/Vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/math/area.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/area.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/math/average.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/average.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/math/distance.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -149,6 +179,10 @@
       </item>
       <item path="src/maty/math/Clock.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/math/Coordinates.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/Coordinates.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/maty/math/MathDefines.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
@@ -163,9 +197,25 @@
       </item>
       <item path="src/maty/math/TriangularSignal.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/Trigger.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/maty/math/Vector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/Vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/math/area.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/area.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/math/average.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/average.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/math/distance.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

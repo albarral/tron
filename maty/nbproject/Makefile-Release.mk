@@ -40,10 +40,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/ArmPolar.o \
 	${OBJECTDIR}/src/maty/math/Click.o \
 	${OBJECTDIR}/src/maty/math/Clock.o \
+	${OBJECTDIR}/src/maty/math/Coordinates.o \
 	${OBJECTDIR}/src/maty/math/PIDControl.o \
 	${OBJECTDIR}/src/maty/math/Signal.o \
 	${OBJECTDIR}/src/maty/math/TriangularSignal.o \
-	${OBJECTDIR}/src/maty/math/Vector.o
+	${OBJECTDIR}/src/maty/math/Trigger.o \
+	${OBJECTDIR}/src/maty/math/Vector.o \
+	${OBJECTDIR}/src/maty/math/area.o \
+	${OBJECTDIR}/src/maty/math/average.o \
+	${OBJECTDIR}/src/maty/math/distance.o
 
 
 # C Compiler Flags
@@ -95,6 +100,11 @@ ${OBJECTDIR}/src/maty/math/Clock.o: src/maty/math/Clock.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Clock.o src/maty/math/Clock.cpp
 
+${OBJECTDIR}/src/maty/math/Coordinates.o: src/maty/math/Coordinates.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Coordinates.o src/maty/math/Coordinates.cpp
+
 ${OBJECTDIR}/src/maty/math/PIDControl.o: src/maty/math/PIDControl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
@@ -110,10 +120,30 @@ ${OBJECTDIR}/src/maty/math/TriangularSignal.o: src/maty/math/TriangularSignal.cp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/TriangularSignal.o src/maty/math/TriangularSignal.cpp
 
+${OBJECTDIR}/src/maty/math/Trigger.o: src/maty/math/Trigger.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Trigger.o src/maty/math/Trigger.cpp
+
 ${OBJECTDIR}/src/maty/math/Vector.o: src/maty/math/Vector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Vector.o src/maty/math/Vector.cpp
+
+${OBJECTDIR}/src/maty/math/area.o: src/maty/math/area.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/area.o src/maty/math/area.cpp
+
+${OBJECTDIR}/src/maty/math/average.o: src/maty/math/average.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/average.o src/maty/math/average.cpp
+
+${OBJECTDIR}/src/maty/math/distance.o: src/maty/math/distance.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/distance.o src/maty/math/distance.cpp
 
 # Subprojects
 .build-subprojects:
