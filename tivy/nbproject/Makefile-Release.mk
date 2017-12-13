@@ -35,6 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/tivy/Draw.o \
+	${OBJECTDIR}/src/tivy/DualWindow.o \
+	${OBJECTDIR}/src/tivy/ImageSave.o \
 	${OBJECTDIR}/src/tivy/SharedDisplay.o \
 	${OBJECTDIR}/src/tivy/history/Click.o \
 	${OBJECTDIR}/src/tivy/history/History.o \
@@ -67,6 +70,21 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtivy.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtivy.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/tivy/Draw.o: src/tivy/Draw.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/Draw.o src/tivy/Draw.cpp
+
+${OBJECTDIR}/src/tivy/DualWindow.o: src/tivy/DualWindow.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/DualWindow.o src/tivy/DualWindow.cpp
+
+${OBJECTDIR}/src/tivy/ImageSave.o: src/tivy/ImageSave.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/ImageSave.o src/tivy/ImageSave.cpp
 
 ${OBJECTDIR}/src/tivy/SharedDisplay.o: src/tivy/SharedDisplay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tivy

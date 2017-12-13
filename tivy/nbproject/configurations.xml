@@ -29,6 +29,12 @@
           <itemPath>src/tivy/plot/Plot.cpp</itemPath>
           <itemPath>src/tivy/plot/Plot.h</itemPath>
         </logicalFolder>
+        <itemPath>src/tivy/Draw.cpp</itemPath>
+        <itemPath>src/tivy/Draw.h</itemPath>
+        <itemPath>src/tivy/DualWindow.cpp</itemPath>
+        <itemPath>src/tivy/DualWindow.h</itemPath>
+        <itemPath>src/tivy/ImageSave.cpp</itemPath>
+        <itemPath>src/tivy/ImageSave.h</itemPath>
         <itemPath>src/tivy/SharedDisplay.cpp</itemPath>
         <itemPath>src/tivy/SharedDisplay.h</itemPath>
       </logicalFolder>
@@ -71,6 +77,18 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/tivy/Draw.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/Draw.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/DualWindow.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/DualWindow.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/ImageSave.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/ImageSave.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tivy/SharedDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tivy/SharedDisplay.h" ex="false" tool="3" flavor2="0">
@@ -120,6 +138,18 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/tivy/Draw.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/Draw.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/DualWindow.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/DualWindow.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/ImageSave.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/ImageSave.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tivy/SharedDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tivy/SharedDisplay.h" ex="false" tool="3" flavor2="0">
