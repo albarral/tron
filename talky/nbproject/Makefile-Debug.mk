@@ -51,11 +51,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/talky/coms/StringUtil.o \
 	${OBJECTDIR}/src/talky/languages/ArmLanguage.o \
 	${OBJECTDIR}/src/talky/languages/BodyLanguage.o \
+	${OBJECTDIR}/src/talky/languages/VisionLanguage.o \
 	${OBJECTDIR}/src/talky/talk/Interpreter.o \
 	${OBJECTDIR}/src/talky/talk/SlangTalker.o \
 	${OBJECTDIR}/src/talky/talk/Talker.o \
 	${OBJECTDIR}/src/talky/topics/ArmTopic.o \
-	${OBJECTDIR}/src/talky/topics/BodyTopic.o
+	${OBJECTDIR}/src/talky/topics/BodyTopic.o \
+	${OBJECTDIR}/src/talky/topics/VisionTopic.o
 
 
 # C Compiler Flags
@@ -162,6 +164,11 @@ ${OBJECTDIR}/src/talky/languages/BodyLanguage.o: src/talky/languages/BodyLanguag
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/languages/BodyLanguage.o src/talky/languages/BodyLanguage.cpp
 
+${OBJECTDIR}/src/talky/languages/VisionLanguage.o: src/talky/languages/VisionLanguage.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/languages
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/languages/VisionLanguage.o src/talky/languages/VisionLanguage.cpp
+
 ${OBJECTDIR}/src/talky/talk/Interpreter.o: src/talky/talk/Interpreter.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/talky/talk
 	${RM} "$@.d"
@@ -186,6 +193,11 @@ ${OBJECTDIR}/src/talky/topics/BodyTopic.o: src/talky/topics/BodyTopic.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/BodyTopic.o src/talky/topics/BodyTopic.cpp
+
+${OBJECTDIR}/src/talky/topics/VisionTopic.o: src/talky/topics/VisionTopic.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/talky/topics
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/talky/topics/VisionTopic.o src/talky/topics/VisionTopic.cpp
 
 # Subprojects
 .build-subprojects:

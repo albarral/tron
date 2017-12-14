@@ -8,6 +8,7 @@
 #include "talky/talk/Interpreter.h"
 #include "talky/topics/ArmTopic.h"
 #include "talky/topics/BodyTopic.h"
+#include "talky/topics/VisionTopic.h"
 #include "talky/Topics.h"
 
 using namespace log4cxx;
@@ -55,6 +56,17 @@ void Interpreter::addLanguage(int topicId)
             break;            
         }
 
+        case Topics::eTOPIC_VISION:
+        {
+            // build vision topic
+            VisionTopic oVisionTopic;
+            oVisionTopic.build();
+            // and apply it to talker
+            oTalker.build(oVisionTopic);
+            bvalidTopic = true;
+            break;            
+        }
+
         case Topics::eTOPIC_BODYROLE:
         {
             // build body role topic
@@ -65,6 +77,9 @@ void Interpreter::addLanguage(int topicId)
             bvalidTopic = true;
             break;            
         }
+        
+        default:                            
+            LOG4CXX_WARN(logger, "Interpreter: no language added for topic " << topicId);
     }
     
     // if talk topic created

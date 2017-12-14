@@ -18,6 +18,7 @@ DadyCommander::DadyCommander()
 {    
     // prepare talky interpreter for all necessary topics 
     oInterpreter.addLanguage(talky::Topics::eTOPIC_ARM);
+    oInterpreter.addLanguage(talky::Topics::eTOPIC_VISION);
     oInterpreter.addLanguage(talky::Topics::eTOPIC_BODYROLE);
 }
 
