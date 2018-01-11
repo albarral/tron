@@ -26,6 +26,13 @@ int Distance::getEuclidean2s (cv::Vec2i& vec1, cv::Vec2i& vec2)
     return (x*x + y*y);
 }
 
+int Distance::getEuclidean2s(cv::Point& p1, cv::Point& p2)
+{
+    int x = p1.x - p2.x;
+    int y = p1.y - p2.y;
+    
+    return (x*x + y*y);    
+}
 
 float Distance::getEuclidean3s(cv::Vec3f& vec1, cv::Vec3f& vec2)
 {
