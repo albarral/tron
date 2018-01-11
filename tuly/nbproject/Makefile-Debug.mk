@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tuly/control/module2.o \
 	${OBJECTDIR}/src/tuly/control/module3.o \
 	${OBJECTDIR}/src/tuly/utils/Console.o \
+	${OBJECTDIR}/src/tuly/utils/Environment.o \
 	${OBJECTDIR}/src/tuly/utils/FileReader.o \
 	${OBJECTDIR}/src/tuly/utils/FileWriter.o \
 	${OBJECTDIR}/src/tuly/utils/IntegerQueue.o \
@@ -102,6 +103,11 @@ ${OBJECTDIR}/src/tuly/utils/Console.o: src/tuly/utils/Console.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/utils/Console.o src/tuly/utils/Console.cpp
+
+${OBJECTDIR}/src/tuly/utils/Environment.o: src/tuly/utils/Environment.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/utils/Environment.o src/tuly/utils/Environment.cpp
 
 ${OBJECTDIR}/src/tuly/utils/FileReader.o: src/tuly/utils/FileReader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
