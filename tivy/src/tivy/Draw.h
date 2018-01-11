@@ -57,7 +57,7 @@ public:
     void drawPoint (cv::Point& point, int def_color = Draw::eGREEN, int radius = 3);
 
     // Draws an ellipse in the image
-    void drawEllipse (cv::Point& center, int width, int height, int orientation);
+    void drawEllipse (cv::Point& center, int width, int height, int orientation, int def_color);
 
     // Draws a window in the image
     void drawWindow (cv::Rect& window);

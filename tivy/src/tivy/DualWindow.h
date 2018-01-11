@@ -26,7 +26,7 @@ public:
     cv::Mat& getImage() {return image;};
     
     // updates the partial size of the dual window
-    void reSize(int singleW, int singleH); 
+    void resize(int singleW, int singleH); 
 
     // Sets the image to be shown on the left 
     void setImageLeft (cv::Mat& image);

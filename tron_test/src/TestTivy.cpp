@@ -9,6 +9,7 @@
 
 #include "TestTivy.h"
 #include "TestPlot.h"
+#include "tivy/DualWindow.h"
 #include "tivy/SharedDisplay.h"
 #include "tivy/history/History.h"
 #include "tivy/plot/DiscPlot.h"
@@ -31,6 +32,7 @@ void TestTivy::makeTest()
     testPlot();
     //testHistoryPlot();
     //testDiscPlot();    
+    //testDualWindow();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 }
@@ -91,5 +93,13 @@ void TestTivy::testDiscPlot()
     oSharedDisplay.updateDisplayUp1(oDiscPlot.getImage());
     oSharedDisplay.show();
     sleep(3);    
+}
+
+void TestTivy::testDualWindow()
+{
+    tivy::DualWindow oDualWindow;
+    
+    oDualWindow.resize(400, 200);
+    
 }
 

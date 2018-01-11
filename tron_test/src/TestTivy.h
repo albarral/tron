@@ -26,6 +26,7 @@ private:
     void testPlot();
     void testHistoryPlot();
     void testDiscPlot();
+    void testDualWindow();
     
 };
 

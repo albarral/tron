@@ -14,10 +14,10 @@ DualWindow::DualWindow ()
 {    
     size.width = size.height = 0;
     // default size is VGA
-    reSize(640, 480);    
+    resize(640, 480);    
 }
 
-void DualWindow::reSize(int singleW, int singleH)
+void DualWindow::resize(int singleW, int singleH)
 {
     if (singleW <= 0 || singleH <= 0)
         return;

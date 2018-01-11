@@ -92,7 +92,7 @@ void Draw::drawPoint(cv::Point& point, int def_color, int radius)
 }
 
 
-void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation)
+void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation, int def_color)
 {
     if (!bsized)
     {
@@ -100,7 +100,7 @@ void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation
         return;
     }
     
-    setDefaultColor(Draw::eYELLOW);       
+    setDefaultColor(def_color);       
     cv::ellipse (image_draw, center, cv::Size(width, height), orientation, 0, 360, color, 3);
 }
 
