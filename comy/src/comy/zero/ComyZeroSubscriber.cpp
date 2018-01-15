@@ -16,8 +16,9 @@ log4cxx::LoggerPtr ComyZeroSubscriber::logger(log4cxx::Logger::getLogger("comy")
 ComyZeroSubscriber::ComyZeroSubscriber():
     contextSubscriber(1),
     socketSubscriber(contextSubscriber,ZMQ_SUB)
-{    
-
+{
+    int timeout = 250;
+    socketSubscriber.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
 }
 
 ComyZeroSubscriber::~ComyZeroSubscriber()
@@ -38,7 +39,6 @@ void ComyZeroSubscriber::connectZero(std::string topic, std::string category, in
     socketSubscriber.connect(addr.c_str());
     LOG4CXX_INFO(logger, "Subscriber ZMQ connecting...");
     socketSubscriber.setsockopt(ZMQ_SUBSCRIBE, topicName.c_str(), topicName.length());
-    //setsockopt( ZMQ_SUBSCRIBE, topicName);
 
     if (oChannel.isInformed())
     {
@@ -58,7 +58,6 @@ std::string ComyZeroSubscriber::readSingleMessage()
 {
     std::string rawMessage = "";
 
-    
     try{
         //  Read envelope with address
         zmq::message_t addr;
@@ -69,6 +68,7 @@ std::string ComyZeroSubscriber::readSingleMessage()
         zmq::message_t message;
         socketSubscriber.recv(&message);
         rawMessage = std::string(static_cast<char*>(message.data()), message.size());
+        LOG4CXX_WARN(logger, "ComyZeroSubscriber: received [" + envelope + "] " + rawMessage);
     }catch(zmq::error_t& e) {
         LOG4CXX_ERROR(logger, "ComyZeroSubscriber: send failed!: " << e.what());
     }

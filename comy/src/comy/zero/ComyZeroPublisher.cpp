@@ -17,8 +17,8 @@ ComyZeroPublisher::ComyZeroPublisher():
     contextPublisher(1),
     socketPublisher(contextPublisher, ZMQ_PUB)
 {    
-    
-    //socketPublisher.setsockopt(ZMQ_RCVTIMEO, 500);
+    int timeout = 250;
+    socketPublisher.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
     //socketPublisher.setsockopt(ZMQ_SNDTIMEO,500);
 }
 
@@ -76,6 +76,7 @@ bool ComyZeroPublisher::publishMessage(std::string text)
         if(socketPublisher.send(topic, ZMQ_SNDMORE)){
             zmq::message_t message(text.size());
             memcpy (message.data(), text.data(), text.size());
+            LOG4CXX_WARN(logger, "ComyZeroPublisher: send [" + topicName +"] " + text); 
             return socketPublisher.send(message);
 
         }else {

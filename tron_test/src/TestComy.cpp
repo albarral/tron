@@ -53,18 +53,19 @@ void TestComy::testClientServerComs()
     // send message 1
     std::string msg = "hola, que tal?";            
     oComyClient.sendMessage(msg);
-    LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
-
+    //LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
+    
+    std::string request = oComyServer.readSingleMessage();
+    // receive message
+    //readByServer(oComyServer);
+    
     // send message 2
-    msg = "yo muy bien";            
-    oComyClient.sendMessage(msg);
-    LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
+    //msg = "yo muy bien";            
+    //oComyClient.sendMessage(msg);
+    //LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
 
     // receive message
-    readByServer(oComyServer);
-
-    // receive message
-    readByServer(oComyServer);
+    //readByServer(oComyServer);
 }
 
 void TestComy::testPublishSubscribeComs()

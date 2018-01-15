@@ -16,8 +16,8 @@ namespace comy
         socketServer(contextServer, ZMQ_REP)    
     {    
         int timeout = 250;
-        socketServer.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
-        socketServer.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
+        //socketServer.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
+        //socketServer.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
         //socketClient.setsockopt(ZMQ_REQ_CORRELATE,1);
         //socketClient.setsockopt(ZMQ_REQ_RELAXED,1);
     }
@@ -32,8 +32,8 @@ namespace comy
 
     void ComyZeroServer::connectZero(std::string topic, std::string category, int prePort){
         
-        std::string addr = std::to_string(prePort + (100*channelType));
-        socketServer.bind(addr.c_str());
+        std::string addr = "tcp://*:" + std::to_string(prePort + (100*channelType));
+        socketServer.bind("tcp://*:5555");
         
         LOG4CXX_INFO(logger, "Server ZMQ connecting...");
         

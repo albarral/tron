@@ -25,7 +25,7 @@ namespace comy
     {   
         int timeout = 250;
         socketClient.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
-        socketClient.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
+        //socketClient.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
         //socketClient.setsockopt(ZMQ_REQ_CORRELATE,1);
         //socketClient.setsockopt(ZMQ_REQ_RELAXED,1);
     }
@@ -40,9 +40,9 @@ namespace comy
     
     void ComyZeroClient::connectZero(std::string topic, std::string category, int prePort){
         
-        std::string addr = std::to_string(prePort + (100*channelType));
+        std::string addr = "tcp://localhost:" + std::to_string(prePort + (100*channelType));
         
-        socketClient.connect(addr.c_str());
+        socketClient.connect("tcp://localhost:5555");
         LOG4CXX_INFO(logger, "Client ZMQ connecting...");
         
         // set communications channel
