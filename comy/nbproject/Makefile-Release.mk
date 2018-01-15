@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/70d7f42/ComyZeroPublisher.o \
+	${OBJECTDIR}/_ext/70d7f42/ComyZeroSubscriber.o \
 	${OBJECTDIR}/src/comy/Channel.o \
 	${OBJECTDIR}/src/comy/ComyClient.o \
 	${OBJECTDIR}/src/comy/ComyConfig.o \
@@ -42,8 +44,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/comy/ComyPublisher.o \
 	${OBJECTDIR}/src/comy/ComyServer.o \
 	${OBJECTDIR}/src/comy/ComySubscriber.o \
-	${OBJECTDIR}/src/comy/file/ComyFilePublisher.o \
-	${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o \
 	${OBJECTDIR}/src/comy/zero/ComyZeroClient.o \
 	${OBJECTDIR}/src/comy/zero/ComyZeroServer.o
 
@@ -71,6 +71,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcomy.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcomy.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/_ext/70d7f42/ComyZeroPublisher.o: /home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/70d7f42
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/70d7f42/ComyZeroPublisher.o /home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroPublisher.cpp
+
+${OBJECTDIR}/_ext/70d7f42/ComyZeroSubscriber.o: /home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/70d7f42
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/70d7f42/ComyZeroSubscriber.o /home/oorra/migtron_ws/tron/comy/src/comy/zero/ComyZeroSubscriber.cpp
 
 ${OBJECTDIR}/src/comy/Channel.o: src/comy/Channel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/comy
@@ -106,16 +116,6 @@ ${OBJECTDIR}/src/comy/ComySubscriber.o: src/comy/ComySubscriber.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/comy
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/ComySubscriber.o src/comy/ComySubscriber.cpp
-
-${OBJECTDIR}/src/comy/file/ComyFilePublisher.o: src/comy/file/ComyFilePublisher.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/comy/file
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/file/ComyFilePublisher.o src/comy/file/ComyFilePublisher.cpp
-
-${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o: src/comy/file/ComyFileSubscriber.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/comy/file
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/comy/file/ComyFileSubscriber.o src/comy/file/ComyFileSubscriber.cpp
 
 ${OBJECTDIR}/src/comy/zero/ComyZeroClient.o: src/comy/zero/ComyZeroClient.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/comy/zero

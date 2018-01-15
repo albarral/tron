@@ -12,7 +12,6 @@
 
 #include "comy/ComyServer.h"
 #include <zmq.hpp>
-#include "zhelpers.hpp"
 
 
 
@@ -30,6 +29,7 @@ namespace comy
             zmq::context_t contextServer;   //creates the context 
             zmq::socket_t socketServer;     //creates the socket
             Responses responses;
+            
             
         public:
 

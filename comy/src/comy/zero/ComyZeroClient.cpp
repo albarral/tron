@@ -22,17 +22,17 @@ namespace comy
     ComyZeroClient::ComyZeroClient():
         contextClient(1),
         socketClient(contextClient, ZMQ_REQ)    
-    {    
-        socketClient.setsockopt(ZMQ_RCVTIMEO, 250);
-        socketClient.setsockopt(ZMQ_SNDTIMEO, 250);
+    {   
+        int timeout = 250;
+        socketClient.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
+        socketClient.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
         //socketClient.setsockopt(ZMQ_REQ_CORRELATE,1);
         //socketClient.setsockopt(ZMQ_REQ_RELAXED,1);
     }
 
     ComyZeroClient::~ComyZeroClient()
     {
-        if(socketClient.connected())
-            socketClient.close();
+        socketClient.close();
         
         LOG4CXX_INFO(logger, "Client ZMQ closing...");
     }
@@ -40,9 +40,9 @@ namespace comy
     
     void ComyZeroClient::connectZero(std::string topic, std::string category, int prePort){
         
-        int port = prePort + (100*channelType);
+        std::string addr = std::to_string(prePort + (100*channelType));
         
-        socketClient.connect("tcp://localhost:" + std::to_string(port));
+        socketClient.connect(addr.c_str());
         LOG4CXX_INFO(logger, "Client ZMQ connecting...");
         
         // set communications channel
@@ -51,11 +51,8 @@ namespace comy
         if (oChannel.isInformed())
         {
             // open coms zero for writing
-            if (socketClient.connected())
-                bconnected = true;  
-            
-            else
-                bconnected = false;    
+            bconnected = true;  
+              
         }
         else
         {
@@ -67,27 +64,23 @@ namespace comy
     bool ComyZeroClient::sendMessage(std::string text)
     {
        
-        if(socketClient.connected()){
-            try{
-                //Send Command
-                zmq::message_t request (text.length());
-                memcpy (request.data (), text.c_str(), text.length());
-                bool isSent = socketClient.send (request);
-                LOG4CXX_INFO(logger, "Client ZMQ sent: " + text);
-                
-                //  Get the reply.
-                zmq::message_t reply;
-                socketClient.recv (&reply);
-                std::string rpl = std::string(static_cast<char*>(reply.data()), reply.size());
-                LOG4CXX_INFO(logger, "Client ZMQ received: " + rpl);
-                return true;
+        try{
+            //Send Command
+            zmq::message_t request (text.length());
+            memcpy (request.data (), text.c_str(), text.length());
+            bool isSent = socketClient.send (request);
+            LOG4CXX_INFO(logger, "Client ZMQ sent: " + text);
 
-            }catch(zmq::error_t& e) {
-                LOG4CXX_ERROR(logger, "ComyZeroClient: send failed!: " << e.what());
-            }   
-        }else{
-            LOG4CXX_ERROR(logger, "ComyZeroClient: coms zero not open");
-            return false;
-        }
+            //  Get the reply.
+            zmq::message_t reply;
+            socketClient.recv (&reply);
+            std::string rpl = std::string(static_cast<char*>(reply.data()), reply.size());
+            LOG4CXX_INFO(logger, "Client ZMQ received: " + rpl);
+            return true;
+
+        }catch(zmq::error_t& e) {
+            LOG4CXX_ERROR(logger, "ComyZeroClient: send failed!: " << e.what());
+        }   
+        
     }
 }
