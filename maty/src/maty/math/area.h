@@ -2,7 +2,7 @@
 #define __MATY_MATH_AREA_H
 
 /***************************************************************************
- *   Copyright (C) 2013 by Migtron Robotics   *
+ *   Copyright (C) 2018 by Migtron Robotics   *
  *   albarral@migtron.com   *
 
  ***************************************************************************/
@@ -14,7 +14,7 @@ class Area
 {
 public:
     // Returns the fraction of window2 overlapped by window1
-    static float getWindowOverlap(CvRect* window1, CvRect* window2);
+    static float getWindowOverlap(cv::Rect& window1, cv::Rect& window2);
 
 };
 }
