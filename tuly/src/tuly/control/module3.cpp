@@ -14,7 +14,8 @@ namespace tuly
 Module3::Module3 ()
 {    
     modName = "module3";
-    prevState = state = Module3::state_OFF;
+    bON = false;
+    prevState = state = Module3::state_UNKNOWN;
     boffRequested = false;
     level = -1;
     setFrequency(0.1);  // low default frequency
@@ -23,7 +24,7 @@ Module3::Module3 ()
 void Module3::on()
 {
     // only launch thread if in OFF state
-    if (getState() == Module3::state_OFF)
+    if (!bON)
     {
       t = std::thread(&Module3::run, this);              
     }           
@@ -55,7 +56,7 @@ void Module3::wait()
 
 bool Module3::isOn()
 {
-    return (getState() != Module3::state_OFF);        
+    return bON;
 }
 
 void Module3::setFrequency(float cps)
@@ -76,8 +77,7 @@ float Module3::getFrequency()
 
 void Module3::run ()
 {    
-    // first escape from OFF (as setState() can't escape from it)
-    state = Module3::state_UNKNOWN;
+    bON = true; 
     first();
     while (!offRequested())
     {
@@ -87,9 +87,7 @@ void Module3::run ()
         
         usleep(period);
     }
-    
-    // final state OFF
-    setState(Module3::state_OFF);
+    bON = false;
 }
 
 
@@ -108,12 +106,8 @@ int Module3::getPrevState()
 void Module3::setState(int state)
 {
     std::lock_guard<std::mutex> locker(mutex);
-    // only proceed when module not OFF
-    if (this->state != Module3::state_OFF)
-    {
-        this->state = state;    
-        bstateChanged = (state != prevState);        
-    }
+    this->state = state;    
+    bstateChanged = (state != prevState);        
 }
 
 void Module3::preLoop()

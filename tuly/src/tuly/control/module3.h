@@ -24,13 +24,13 @@ class Module3
 private:
         std::mutex mutex;
         std::thread t;        // module's thread       
+        bool bON;            // flag indicating module running
         int state;             // module's present state
         int prevState;       // module's previous state
         bool bstateChanged; // state was changed in last loop
         float frequency;    // required execution frequency
         int period;           // time (microseconds) to be slept between loop executions
         bool boffRequested;    // indicates off has been requested
-        static const int state_OFF = 99;
         static const int state_UNKNOWN = 100;
         int level;              // module's level (hierarchy level in the control architecture)
 protected:
