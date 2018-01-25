@@ -19,7 +19,10 @@ class Sensor
         bool bvalue; 
 
     public:
-        Sensor();
+        Sensor()
+        {
+            bvalue = false;
+        }
         //~Sensor();
                         
         // Sets the sensor info
