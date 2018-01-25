@@ -19,7 +19,8 @@ void VisionTopic::build()
 {
     reset();
 
-    // create categories for visions topic
+    // create categories for vision topic
+    createFocusCategory();
     createExtraCategory();
 
     // build vision language and apply it to this topic
@@ -28,8 +29,34 @@ void VisionTopic::build()
     applyLanguage(oVisionLanguage);                
 }
 
+// create vision focus category
+void VisionTopic::createFocusCategory()
+{
+    Category oCategory;
+    oCategory.setTopicId(topic);
+    oCategory.setId(VisionTopic::eCAT_VISION_FOCUS);
 
-// create body extra category
+    Concept oConcept;
+    // here the simple concepts that don't need a quantity
+    std::vector<int> listSimpleConcepts{VisionTopic::eFOCUS_SHIFT};
+        
+    for (int id=0; id<VisionTopic::eFOCUS_DIM; id++)
+    {
+        oConcept.setMeaning(id);
+        // simple concept
+        if (Category::findValueInList(id, listSimpleConcepts))
+            oConcept.setNeedsQuantity(false);
+        // normal concept
+        else
+            oConcept.setNeedsQuantity(true);
+        
+        oCategory.addConcept(oConcept);
+    }
+    
+    addCategory(oCategory);
+}
+
+// create vision extra category
 void VisionTopic::createExtraCategory()
 {
     Category oCategory;

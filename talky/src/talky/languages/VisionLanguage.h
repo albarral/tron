@@ -15,7 +15,12 @@ namespace talky
 {
  public:
     /*! vision categories */
+    const std::string CAT_VISION_FOCUS = "focus";    /*! focus category */
     const std::string CAT_VISION_EXTRA = "extra";    /*! extra category */
+
+    /*! focus category */
+    const std::string FOCUS_SHIFT = "shift";         /*! shift visual focus */
+    const std::string FOCUS_MODE = "mode";         /*! change focus mode */
 
     /*! extra category */
     const std::string EXTRA_VISION_END = "end";         /*! end vision process */
@@ -27,6 +32,7 @@ namespace talky
 
  private:    
     // create category slangs
+    void defineFocusCategory();    
     void defineExtraCategory();    
 };
 }

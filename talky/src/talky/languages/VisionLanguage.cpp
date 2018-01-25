@@ -22,7 +22,21 @@ void VisionLanguage::build()
     // set vision topic
     setTopic(Topics::eTOPIC_VISION);
     // define categories
+    defineFocusCategory();
     defineExtraCategory();
+}
+
+// create slang for focus category
+void VisionLanguage::defineFocusCategory()
+{
+    int category = VisionTopic::eCAT_VISION_FOCUS;
+    addCategory(category, VisionLanguage::CAT_VISION_FOCUS);
+
+    Slang oSlang;    
+    oSlang.setCategory(category);
+    oSlang.addWord(VisionTopic::eFOCUS_SHIFT, VisionLanguage::FOCUS_SHIFT);                      
+    oSlang.addWord(VisionTopic::eFOCUS_MODE, VisionLanguage::FOCUS_MODE);                      
+    addSlang(category, oSlang);    
 }
 
 // create slang for extra category

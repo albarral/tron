@@ -18,10 +18,19 @@ public:
     /*! categories of vision topic */
     enum eVisionCategories
     {
+        eCAT_VISION_FOCUS,                      /*! focus category */
         eCAT_VISION_EXTRA,                        /*! extra category */
         eCAT_VISION_DIM
     };
     
+    /*! focus category  */
+    enum eFocusCat
+    {
+        eFOCUS_SHIFT,                           /*! shift visual focus */
+        eFOCUS_MODE,                           /*! change focus mode */
+        eFOCUS_DIM
+    };
+
     /*! extra category  */
     enum eExtraCat
     {
@@ -36,6 +45,7 @@ public:
 
  private:    
     // create topic categories
+    void createFocusCategory();    
     void createExtraCategory();    
 
 };
