@@ -55,11 +55,11 @@ void TestComy::testClientServerComs()
     oComyClient.sendMessage(msg);
     //LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
     
-    std::string request = oComyServer.readSingleMessage();
     // receive message
-    //readByServer(oComyServer);
+    readByServer(oComyServer);
     
-    // send message 2
+    #warning cannot be accomplish because Client cannot send another msg without receiveing reply (just one thread cannot be done)
+    // send message 2,  
     //msg = "yo muy bien";            
     //oComyClient.sendMessage(msg);
     //LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
@@ -79,7 +79,7 @@ void TestComy::testPublishSubscribeComs()
     // multichannel communication
     std::string topic = "topic";
     std::string category = "cat";
-    int port = 5563;
+    int port = 4563;
     oComyPublisher.connectZero(topic, category, port);
     oComySubscriber.connectZero(topic, category, port);
     
@@ -88,6 +88,10 @@ void TestComy::testPublishSubscribeComs()
         LOG4CXX_ERROR(logger, modName + ": publisher or subscriber not connected. Exit test!");                        
         return;
     }
+             
+    #warning needed to start subscriber, ifnot first message is dropped
+    readBySubscriber(oComySubscriber); 
+    //readBySubscriber(oComySubscriber);
     
     // send message 1
     std::string msg = "hola, hay alguien?";            
@@ -97,14 +101,21 @@ void TestComy::testPublishSubscribeComs()
     readBySubscriber(oComySubscriber);   
 
     // start new publishing (overwrite previous published info)
-    oComyPublisher.newPublishing();
+    //oComyPublisher.newPublishing();
 
     // send message 2
     msg = "pero hay alguien?";            
     oComyPublisher.publishMessage(msg);
     LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
     
-    readBySubscriber(oComySubscriber);   
+    readBySubscriber(oComySubscriber);
+    
+    // send message 3
+    msg = "No escucho nada, hola?";            
+    oComyPublisher.publishMessage(msg);
+    LOG4CXX_INFO(logger, modName + ": message sent ... " + msg);                
+    
+    readBySubscriber(oComySubscriber); 
 }
 
 void TestComy::readByServer(comy::ComyZeroServer& oComyServer)

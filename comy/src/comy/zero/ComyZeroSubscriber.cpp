@@ -18,6 +18,7 @@ ComyZeroSubscriber::ComyZeroSubscriber():
     socketSubscriber(contextSubscriber,ZMQ_SUB)
 {
     int timeout = 250;
+    socketSubscriber.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
     socketSubscriber.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
 }
 
@@ -30,7 +31,7 @@ void ComyZeroSubscriber::connect(std::string topic, std::string category) {}
 
 void ComyZeroSubscriber::connectZero(std::string topic, std::string category, int prePort){
         
-    std::string addr = "tcp://*:" + std::to_string(prePort + (100*channelType));
+    std::string addr = "tcp://localhost:" + std::to_string(prePort + (100*channelType));
         
     // set communications channel
     setChannel(channelType, topic, category);
@@ -81,24 +82,20 @@ bool ComyZeroSubscriber::getNewMessages(std::vector<std::string>& listMessages)
 {
     bool bread = false;
     
-    while(true){
+    std::string rawMessage = "";
+    try{
+        //  Read envelope with address
+        zmq::message_t addr;
+        bread = socketSubscriber.recv(&addr);
+        std::string envelope = std::string(static_cast<char*>(addr.data()), addr.size()); 
 
-        std::string rawMessage = "";
-        try{
-            //  Read envelope with address
-            zmq::message_t addr;
-            bread = socketSubscriber.recv(&addr);
-            if(!bread) break;
-            std::string envelope = std::string(static_cast<char*>(addr.data()), addr.size()); 
-
-            //  Read message contents
-            zmq::message_t message;
-            socketSubscriber.recv(&message);
-            rawMessage = std::string(static_cast<char*>(message.data()), message.size());
-            listMessages.push_back(std::move(rawMessage));
-        }catch(zmq::error_t& e) {
-            LOG4CXX_ERROR(logger, "ComyZeroSubscriber: can't read message: " << e.what());
-        }
+        //  Read message contents
+        zmq::message_t message;
+        socketSubscriber.recv(&message);
+        rawMessage = std::string(static_cast<char*>(message.data()), message.size());
+        listMessages.push_back(std::move(rawMessage));
+    }catch(zmq::error_t& e) {
+        LOG4CXX_ERROR(logger, "ComyZeroSubscriber: can't read message: " << e.what());
     }
     
     return bread;

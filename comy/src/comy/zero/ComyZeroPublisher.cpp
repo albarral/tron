@@ -19,7 +19,7 @@ ComyZeroPublisher::ComyZeroPublisher():
 {    
     int timeout = 250;
     socketPublisher.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
-    //socketPublisher.setsockopt(ZMQ_SNDTIMEO,500);
+    socketPublisher.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout));
 }
 
 ComyZeroPublisher::~ComyZeroPublisher()
@@ -35,9 +35,10 @@ void ComyZeroPublisher::connectZero(std::string topic, std::string category, int
     
     socketPublisher.bind(addr.c_str()); //and binds it
     LOG4CXX_INFO(logger, "Publisher ZMQ connecting...");
-    topicName = getChannel().getName();
+    
     // set communications channel
     setChannel(channelType, topic, category);
+    topicName = getChannel().getName();
     
     if (oChannel.isInformed()){
         

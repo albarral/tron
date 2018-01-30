@@ -42,7 +42,7 @@ namespace comy
         
         std::string addr = "tcp://localhost:" + std::to_string(prePort + (100*channelType));
         
-        socketClient.connect("tcp://localhost:5555");
+        socketClient.connect(addr.c_str());
         LOG4CXX_INFO(logger, "Client ZMQ connecting...");
         
         // set communications channel
