@@ -31,6 +31,8 @@ public:
 
     // calculates the squared Mahalanobis distance between two 2D vectors (int - int), with covariances (cx, cy, cxy)
     static float getMahalanobis2s(cv::Vec2i& vec1, cv::Vec2i& vec2, cv::Vec3f& covs2);
+    // calculates the squared Mahalanobis distance between two 2D points, with covariances (cx, cy, cxy)
+    static float getMahalanobis2s(cv::Point& p1, cv::Point& p2, cv::Vec3f& covs2);
  
     // calculates the squared Mahalanobis distance between two 3D vectors (float - float), with variances (cx, cy, cz)
     static float getMahalanobis3s(cv::Vec3f& vec1, cv::Vec3f& vec2, cv::Vec3f& covs2);

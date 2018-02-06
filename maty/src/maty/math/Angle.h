@@ -15,6 +15,9 @@ public:
     // return the equivalent of the given angle in the [0,360) range
     static float inLimits(float angle);
 
+    // returns analog angle difference for a cyclic angle 
+    static float cyclicDifference(float angleDif);
+    
     // Updates an angle average (float) with a new sample (int) causing the given new weight.
     static void updateAverage (float& average, const int& new_value, int new_weight);
     

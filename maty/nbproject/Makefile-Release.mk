@@ -49,7 +49,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/Vector.o \
 	${OBJECTDIR}/src/maty/math/area.o \
 	${OBJECTDIR}/src/maty/math/average.o \
-	${OBJECTDIR}/src/maty/math/distance.o
+	${OBJECTDIR}/src/maty/math/distance.o \
+	${OBJECTDIR}/src/maty/utils/Matrix.o \
+	${OBJECTDIR}/src/maty/utils/Pool.o
 
 
 # C Compiler Flags
@@ -150,6 +152,16 @@ ${OBJECTDIR}/src/maty/math/distance.o: src/maty/math/distance.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/distance.o src/maty/math/distance.cpp
+
+${OBJECTDIR}/src/maty/utils/Matrix.o: src/maty/utils/Matrix.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/utils
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/utils/Matrix.o src/maty/utils/Matrix.cpp
+
+${OBJECTDIR}/src/maty/utils/Pool.o: src/maty/utils/Pool.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/utils
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/utils/Pool.o src/maty/utils/Pool.cpp
 
 # Subprojects
 .build-subprojects:

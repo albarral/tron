@@ -27,6 +27,11 @@ float Angle::inLimits(float angle)
     return angle;    
 }
 
+float Angle::cyclicDifference(float angleDif)
+{
+    return (fabs(angleDif)<180 ? angleDif : ( angleDif>0.0 ? angleDif-360 : angleDif+360) );    
+}
+
 // Updates an average color with a new color sample (int)
 void Angle::updateAverage(float& average, const int& new_value, int new_weight)
 {

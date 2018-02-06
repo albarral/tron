@@ -76,6 +76,17 @@ float Distance::getMahalanobis2s(cv::Vec2i& vec1, cv::Vec2i& vec2, cv::Vec3f& co
 }
 
 
+float Distance::getMahalanobis2s(cv::Point& p1, cv::Point& p2, cv::Vec3f& covs2)
+{
+    int x = p1.x - p2.x; 
+    int y = p1.y - p2.y;
+    float cx = covs2[0];
+    float cy = covs2[1];
+    float cxy = covs2[2];
+
+    return ((x*x*cy+ y*y*cx - 2*x*y*cxy) / (cx*cy - cxy*cxy));
+}
+
 float Distance::getMahalanobis3s (cv::Vec3f& vec1, cv::Vec3f& vec2, cv::Vec3f& covs2)
 {
     float x = vec1[0] - vec2[0];
