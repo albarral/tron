@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/tuly/control/SensorLed.o \
 	${OBJECTDIR}/src/tuly/control/brooks/control.o \
 	${OBJECTDIR}/src/tuly/control/brooks/inhibition.o \
 	${OBJECTDIR}/src/tuly/control/module.o \
@@ -73,6 +74,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/tuly/control/SensorLed.o: src/tuly/control/SensorLed.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tuly/control
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/control/SensorLed.o src/tuly/control/SensorLed.cpp
 
 ${OBJECTDIR}/src/tuly/control/brooks/control.o: src/tuly/control/brooks/control.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tuly/control/brooks

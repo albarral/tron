@@ -23,6 +23,8 @@
             <itemPath>src/tuly/control/brooks/sensor.h</itemPath>
             <itemPath>src/tuly/control/brooks/sensorT.h</itemPath>
           </logicalFolder>
+          <itemPath>src/tuly/control/SensorLed.cpp</itemPath>
+          <itemPath>src/tuly/control/SensorLed.h</itemPath>
           <itemPath>src/tuly/control/module.cpp</itemPath>
           <itemPath>src/tuly/control/module.h</itemPath>
           <itemPath>src/tuly/control/module2.cpp</itemPath>
@@ -84,6 +86,10 @@
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}</output>
         </linkerTool>
       </compileType>
+      <item path="src/tuly/control/SensorLed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/SensorLed.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tuly/control/brooks/control.cpp"
             ex="false"
             tool="1"
@@ -172,6 +178,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/tuly/control/SensorLed.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tuly/control/SensorLed.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tuly/control/brooks/control.cpp"
             ex="false"
             tool="1"
