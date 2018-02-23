@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/TestPlot.o \
 	${OBJECTDIR}/src/TestTalky.o \
 	${OBJECTDIR}/src/TestTivy.o \
+	${OBJECTDIR}/src/TestTronWire.o \
 	${OBJECTDIR}/src/TestTuly.o \
 	${OBJECTDIR}/src/main.o
 
@@ -59,7 +60,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../maty/dist/Debug/GNU-Linux -L../maty/dist/Debug/GNU-Linux -ltron_maty -Wl,-rpath,../nety/dist/Debug/GNU-Linux -L../nety/dist/Debug/GNU-Linux -ltron_nety -Wl,-rpath,../tivy/dist/Debug/GNU-Linux -L../tivy/dist/Debug/GNU-Linux -ltron_tivy -llog4cxx -lopencv_core -lopencv_highgui
+LDLIBSOPTIONS=-Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -Wl,-rpath,../talky/dist/Debug/GNU-Linux -L../talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../comy/dist/Debug/GNU-Linux -L../comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../maty/dist/Debug/GNU-Linux -L../maty/dist/Debug/GNU-Linux -ltron_maty -Wl,-rpath,../nety/dist/Debug/GNU-Linux -L../nety/dist/Debug/GNU-Linux -ltron_nety -Wl,-rpath,../tivy/dist/Debug/GNU-Linux -L../tivy/dist/Debug/GNU-Linux -ltron_tivy -Wl,-rpath,../wire/dist/Debug/GNU-Linux -L../wire/dist/Debug/GNU-Linux -ltron_wire -llog4cxx -lopencv_core -lopencv_highgui
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -77,6 +78,8 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../nety/dist/Debug/GNU-Lin
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tivy/dist/Debug/GNU-Linux/libtron_tivy.so
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../wire/dist/Debug/GNU-Linux/libtron_wire.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
@@ -84,42 +87,47 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 ${OBJECTDIR}/src/TestComy.o: src/TestComy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestComy.o src/TestComy.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestComy.o src/TestComy.cpp
 
 ${OBJECTDIR}/src/TestMaty.o: src/TestMaty.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMaty.o src/TestMaty.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMaty.o src/TestMaty.cpp
 
 ${OBJECTDIR}/src/TestNety.o: src/TestNety.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestNety.o src/TestNety.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestNety.o src/TestNety.cpp
 
 ${OBJECTDIR}/src/TestPlot.o: src/TestPlot.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestPlot.o src/TestPlot.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestPlot.o src/TestPlot.cpp
 
 ${OBJECTDIR}/src/TestTalky.o: src/TestTalky.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky.o src/TestTalky.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky.o src/TestTalky.cpp
 
 ${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
+
+${OBJECTDIR}/src/TestTronWire.o: src/TestTronWire.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTronWire.o src/TestTronWire.cpp
 
 ${OBJECTDIR}/src/TestTuly.o: src/TestTuly.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTuly.o src/TestTuly.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTuly.o src/TestTuly.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -I../talky/src -I../comy/src -I../maty/src -I../nety/src -I../tivy/src -I../wire/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -129,6 +137,7 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	cd ../maty && ${MAKE}  -f Makefile CONF=Debug
 	cd ../nety && ${MAKE}  -f Makefile CONF=Debug
 	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug
+	cd ../wire && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -143,6 +152,7 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	cd ../maty && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../nety && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../wire && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

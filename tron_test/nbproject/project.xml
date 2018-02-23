@@ -15,6 +15,7 @@
                 <make-dep-project>../nety</make-dep-project>
                 <make-dep-project>../tivy</make-dep-project>
                 <make-dep-project>../maty</make-dep-project>
+                <make-dep-project>../wire</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
