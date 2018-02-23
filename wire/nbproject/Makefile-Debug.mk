@@ -40,7 +40,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/wire/OutChannel.o \
 	${OBJECTDIR}/src/tron/wire/PublishChannel.o \
 	${OBJECTDIR}/src/tron/wire/SubscribeChannel.o \
-	${OBJECTDIR}/src/tron/wire/Wire.o
+	${OBJECTDIR}/src/tron/wire/Wire.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsoleInChannel.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsoleOutChannel.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsoleWire.o
 
 
 # C Compiler Flags
@@ -96,6 +99,21 @@ ${OBJECTDIR}/src/tron/wire/Wire.o: src/tron/wire/Wire.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/Wire.o src/tron/wire/Wire.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsoleInChannel.o: src/tron/wire/console/ConsoleInChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleInChannel.o src/tron/wire/console/ConsoleInChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsoleOutChannel.o: src/tron/wire/console/ConsoleOutChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleOutChannel.o src/tron/wire/console/ConsoleOutChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsoleWire.o: src/tron/wire/console/ConsoleWire.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleWire.o src/tron/wire/console/ConsoleWire.cpp
 
 # Subprojects
 .build-subprojects:

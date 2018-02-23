@@ -13,9 +13,15 @@ LoggerPtr Channel::logger(Logger::getLogger("tron.wire"));
 
 Channel::Channel()
 {    
-    type = Channel::eCHANNEL_P2P;
     node = -1;
     channel = -1;
     bopen = false;
+}
+
+Channel::Channel(int node, int channel)
+{
+    this->node = node;
+    this->channel = channel;
+    bopen = false;        
 }
 }

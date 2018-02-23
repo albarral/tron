@@ -12,4 +12,10 @@ InChannel::InChannel()
 {    
     type = Channel::eCHANNEL_P2P;
 }
+
+InChannel::InChannel(int node, int channel) : Channel(node, channel)
+{
+    type = Channel::eCHANNEL_P2P;
+}
+
 }

@@ -17,6 +17,7 @@ class OutChannel : public Channel
 {           
 public:
     OutChannel();
+    OutChannel(int node, int channel);
    
     // send message to destination, returns false if nothing sent
     virtual bool sendMsg(std::string text) = 0;

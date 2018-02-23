@@ -18,6 +18,7 @@ class InChannel : public Channel
 {           
 public:
     InChannel();
+    InChannel(int node, int channel);
    
     // receive messages from origin, returns false if nothing received
     virtual bool receiveMessages(std::vector<std::string>& listMessages) = 0;

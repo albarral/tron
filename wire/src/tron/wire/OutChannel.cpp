@@ -12,4 +12,9 @@ OutChannel::OutChannel()
 {    
     type = Channel::eCHANNEL_P2P;
 }
+
+OutChannel::OutChannel(int node, int channel) : Channel(node, channel)
+{
+    type = Channel::eCHANNEL_P2P;    
+}
 }

@@ -26,20 +26,21 @@ class Channel
     
 protected:
     static log4cxx::LoggerPtr logger;    
-    int type;                   // channel type (one of eTypes)
+    int type;                // channel type (one of eTypes)
     int node;               // associated node
     int channel;           // associated category 
     bool bopen;         // indicator of open channel
     
 public:
     Channel();
+    Channel(int node, int channel);
 
     int getType() {return type;};
     int getNode() {return node;};
     int getChannel() {return channel;};
     
     // open channel
-    virtual bool open(int node, int channel) = 0;
+    virtual bool open() = 0;
     // close channel
     virtual bool close() = 0;
     

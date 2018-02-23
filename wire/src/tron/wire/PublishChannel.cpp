@@ -12,4 +12,9 @@ PublishChannel::PublishChannel()
 {    
     type = Channel::eCHANNEL_BROADCAST;
 }
+
+PublishChannel::PublishChannel(int node, int channel) : Channel(node, channel)
+{    
+    type = Channel::eCHANNEL_BROADCAST;
+}
 }

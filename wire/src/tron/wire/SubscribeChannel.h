@@ -6,15 +6,19 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/InChannel.h"
+#include "tron/wire/Channel.h"
 
 namespace tron
 {
 // Base class used to receive broadcasted messages.
-class SubscribeChannel : public InChannel
+class SubscribeChannel : public Channel
 {           
 public:
     SubscribeChannel();
+    SubscribeChannel(int node, int channel);
+
+    // read broadcasted messages in this channel, returns false if nothing received
+    virtual bool readMessages(std::vector<std::string>& listMessages) = 0;    
 };
 }
 #endif

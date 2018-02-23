@@ -12,4 +12,9 @@ SubscribeChannel::SubscribeChannel()
 {    
     type = Channel::eCHANNEL_BROADCAST;
 }
+
+SubscribeChannel::SubscribeChannel(int node, int channel) : Channel(node, channel)
+{    
+    type = Channel::eCHANNEL_BROADCAST;
+}
 }
