@@ -3,18 +3,18 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/channel/UnicastOutChannel.h"
+#include "tron/wire/channel/ClientChannel.h"
 
 namespace tron
 {
 
-UnicastOutChannel::UnicastOutChannel()
+ClientChannel::ClientChannel()
 {    
-    type = Channel::eCHANNEL_P2P;
+    type = Channel::eCHANNEL_UNICAST;
 }
 
-UnicastOutChannel::UnicastOutChannel(int node, int channel) : OutputChannel(node, channel)
+ClientChannel::ClientChannel(int node, int channel) : OutputChannel(node, channel)
 {
-    type = Channel::eCHANNEL_P2P;    
+    type = Channel::eCHANNEL_UNICAST;    
 }
 }

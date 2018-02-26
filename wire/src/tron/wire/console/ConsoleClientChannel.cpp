@@ -5,34 +5,34 @@
 
 #include <iostream>
 
-#include "tron/wire/console/ConsoleUnicastOutChannel.h"
+#include "tron/wire/console/ConsoleClientChannel.h"
 
 namespace tron
 {
 
-ConsoleUnicastOutChannel::ConsoleUnicastOutChannel()
+ConsoleClientChannel::ConsoleClientChannel()
 {
     name = "channel?-?";
 }
 
-ConsoleUnicastOutChannel::ConsoleUnicastOutChannel(int node, int channel) : UnicastOutChannel(node, channel)
+ConsoleClientChannel::ConsoleClientChannel(int node, int channel) : ClientChannel(node, channel)
 {
     name = "channel" + std::to_string(node) + "-" + std::to_string(channel);
 }
 
-bool ConsoleUnicastOutChannel::open()
+bool ConsoleClientChannel::open()
 {
     bopen = true;
     return true;    
 }
 
-bool ConsoleUnicastOutChannel::close()
+bool ConsoleClientChannel::close()
 {
     bopen = false;
     return true;        
 }
 
-bool ConsoleUnicastOutChannel::sendMsg(std::string text)
+bool ConsoleClientChannel::sendMsg(std::string text)
 {
     std::cout << name + ":" + text << std::endl;        
 }

@@ -29,7 +29,7 @@ public:
     void makeTest();      
     
 private:
-    void testUnicast();       
+    void testClientServer();       
     void launchListener1();
     void wait4Listener1();    
     void receiveMessages();                

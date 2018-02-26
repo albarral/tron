@@ -4,8 +4,8 @@
  ***************************************************************************/
 
 #include "tron/wire/console/ConsoleWire.h"
-#include "tron/wire/console/ConsoleUnicastOutChannel.h"
-#include "tron/wire/console/ConsoleUnicastInChannel.h"
+#include "tron/wire/console/ConsoleClientChannel.h"
+#include "tron/wire/console/ConsoleServerChannel.h"
 #include "tron/wire/console/ConsolePublishChannel.h"
 #include "tron/wire/console/ConsoleSubscribeChannel.h"
 
@@ -17,16 +17,16 @@ ConsoleWire::ConsoleWire()
 {    
 }
 
-OutputChannel* ConsoleWire::createUnicastOutputChannel(int node, int channel)
+OutputChannel* ConsoleWire::createClientChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleUnicastOutChannel(node, channel));
+    return (new ConsoleClientChannel(node, channel));
 }
 
-InputChannel* ConsoleWire::createUnicastInputChannel(int node, int channel)
+InputChannel* ConsoleWire::createServerChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleUnicastInChannel(node, channel));
+    return (new ConsoleServerChannel(node, channel));
 }
 
 OutputChannel* ConsoleWire::createPublishChannel(int node, int channel)

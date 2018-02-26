@@ -21,8 +21,8 @@ class Wire
 {            
 protected:
     static log4cxx::LoggerPtr logger;    
-    std::vector<OutputChannel*> listUnicastOutChannels;
-    std::vector<InputChannel*> listUnicastInChannels;
+    std::vector<OutputChannel*> listClientChannels;
+    std::vector<InputChannel*> listServerChannels;
     std::vector<OutputChannel*> listPublishChannels;
     std::vector<InputChannel*> listSubscribeChannels;
         
@@ -55,10 +55,10 @@ private:
     void clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChannels);
     
 protected:    
-    // create new unicast output channel for given node/channel 
-    virtual OutputChannel* createUnicastOutputChannel(int node, int channel) = 0;
-    // create new unicast input channel for given node/channel
-    virtual InputChannel* createUnicastInputChannel(int node, int channel) = 0;
+    // create new client channel for given node/channel 
+    virtual OutputChannel* createClientChannel(int node, int channel) = 0;
+    // create new server channel for given node/channel
+    virtual InputChannel* createServerChannel(int node, int channel) = 0;
 //    // create new publish channel for given node/channel
     virtual OutputChannel* createPublishChannel(int node, int channel) = 0;
 //    // create new subscribe channel for given node/channel

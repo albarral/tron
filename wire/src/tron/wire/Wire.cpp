@@ -24,9 +24,9 @@ void Wire::clearChannels()
 {
     LOG4CXX_INFO(logger, "Wire: clearing channels ...");
     
-    clearOutputChannelsList(listUnicastOutChannels);
+    clearOutputChannelsList(listClientChannels);
     
-    clearInputChannelsList(listUnicastInChannels);
+    clearInputChannelsList(listServerChannels);
 
     clearOutputChannelsList(listPublishChannels);
     
@@ -60,22 +60,22 @@ void Wire::clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChanne
 }
 
 
-// send message by unicast channel
+// send message by client channel
 bool Wire::sendMsg(int node, int channel, std::string text)
 {
-    // get proper unicast output channel
-    OutputChannel* pOutputChannel = searchOutputChannel(node, channel, listUnicastOutChannels);
+    // get proper client channel
+    OutputChannel* pOutputChannel = searchOutputChannel(node, channel, listClientChannels);
 
      // if not found, create new 
     if (pOutputChannel == 0)    
     {
-        pOutputChannel = createUnicastOutputChannel(node, channel);
+        pOutputChannel = createClientChannel(node, channel);
     
         // and add it to list
         if (pOutputChannel != 0)
         {
-            listUnicastOutChannels.push_back(pOutputChannel);
-            LOG4CXX_INFO(logger, "Wire: new unicast output channel " << node << "-" << channel);
+            listClientChannels.push_back(pOutputChannel);
+            LOG4CXX_INFO(logger, "Wire: new client channel " << node << "-" << channel);
         }
     }
             
@@ -119,22 +119,22 @@ bool Wire::publishMsg(int node, int channel, std::string text)
     }
 }
 
-// receive messages by unicast channel
+// receive messages by server channel
 bool Wire::receiveMessages(int node, int channel, std::vector<std::string>& listMessages)
 {
-    // get proper unicast input channel
-    InputChannel* pInputChannel = searchInputChannel(node, channel, listUnicastInChannels);
+    // get proper server channel
+    InputChannel* pInputChannel = searchInputChannel(node, channel, listServerChannels);
 
      // if not found, create new 
     if (pInputChannel == 0)    
     {
-        pInputChannel = createUnicastInputChannel(node, channel);
+        pInputChannel = createServerChannel(node, channel);
     
         // and add it to list
         if (pInputChannel != 0)
         {
-            listUnicastInChannels.push_back(pInputChannel);
-            LOG4CXX_INFO(logger, "Wire: new unicast input channel " << node << "-" << channel);
+            listServerChannels.push_back(pInputChannel);
+            LOG4CXX_INFO(logger, "Wire: new server channel " << node << "-" << channel);
         }
     }
     

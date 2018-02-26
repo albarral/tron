@@ -3,19 +3,19 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/channel/UnicastInChannel.h"
+#include "tron/wire/channel/ServerChannel.h"
 
 namespace tron
 {
 
-UnicastInChannel::UnicastInChannel()
+ServerChannel::ServerChannel()
 {    
-    type = Channel::eCHANNEL_P2P;
+    type = Channel::eCHANNEL_UNICAST;
 }
 
-UnicastInChannel::UnicastInChannel(int node, int channel) : InputChannel(node, channel)
+ServerChannel::ServerChannel(int node, int channel) : InputChannel(node, channel)
 {
-    type = Channel::eCHANNEL_P2P;
+    type = Channel::eCHANNEL_UNICAST;
 }
 
 }

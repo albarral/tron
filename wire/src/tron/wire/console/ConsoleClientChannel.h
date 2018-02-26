@@ -1,5 +1,5 @@
-#ifndef __TRON_WIRE_CONSOLE_UNICASTOUTCHANNEL_H
-#define __TRON_WIRE_CONSOLE_UNICASTOUTCHANNEL_H
+#ifndef __TRON_WIRE_CONSOLE_CLIENTCHANNEL_H
+#define __TRON_WIRE_CONSOLE_CLIENTCHANNEL_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -8,19 +8,19 @@
 
 #include <string>
 
-#include "tron/wire/channel/UnicastOutChannel.h"
+#include "tron/wire/channel/ClientChannel.h"
 
 namespace tron
 {
-// Implementation of the UnicastOutChannel class for console communications.
-class ConsoleUnicastOutChannel : public UnicastOutChannel
+// Implementation of the ClientChannel class for console communications.
+class ConsoleClientChannel : public ClientChannel
 {
 private: 
     std::string name;   // channel name 
     
 public:
-    ConsoleUnicastOutChannel();
-    ConsoleUnicastOutChannel(int node, int channel);
+    ConsoleClientChannel();
+    ConsoleClientChannel(int node, int channel);
 
     // open channel
     virtual bool open();

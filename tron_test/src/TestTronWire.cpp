@@ -23,15 +23,15 @@ void TestTronWire::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    //testUnicast();
-    testBroadcast();
+    testClientServer();
+    //testBroadcast();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTronWire::testUnicast()
+void TestTronWire::testClientServer()
 {
-    LOG4CXX_INFO(logger, modName + ": testUnicast ...");
+    LOG4CXX_INFO(logger, modName + ": testClientServer ...");
         
     node = 1;
     channel = 2;

@@ -1,5 +1,5 @@
-#ifndef __TRON_WIRE_UNICASTOUTCHANNEL_H
-#define __TRON_WIRE_UNICASTOUTCHANNEL_H
+#ifndef __TRON_WIRE_CLIENTCHANNEL_H
+#define __TRON_WIRE_CLIENTCHANNEL_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -11,11 +11,11 @@
 namespace tron
 {
 // Base class used to transmit messages in unicast communications.
-class UnicastOutChannel : public OutputChannel
+class ClientChannel : public OutputChannel
 {           
 public:
-    UnicastOutChannel();
-    UnicastOutChannel(int node, int channel);
+    ClientChannel();
+    ClientChannel(int node, int channel);
 };
 }
 #endif

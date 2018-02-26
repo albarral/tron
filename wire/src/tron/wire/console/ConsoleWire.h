@@ -22,9 +22,9 @@ public:
 
 private:    
     // create new unicast output channel for given node/channel 
-    virtual OutputChannel* createUnicastOutputChannel(int node, int channel);
+    virtual OutputChannel* createClientChannel(int node, int channel);
     // create new unicast input channel for given node/channel
-    virtual InputChannel* createUnicastInputChannel(int node, int channel);
+    virtual InputChannel* createServerChannel(int node, int channel);
     // create new publish channel for given node/channel
     virtual OutputChannel* createPublishChannel(int node, int channel);
 //    // create new subscribe channel for given node/channel

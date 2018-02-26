@@ -19,7 +19,7 @@ class Channel
     /*! channel types */
     enum eTypes
     {
-        eCHANNEL_P2P,                  /*! point to point channel */
+        eCHANNEL_UNICAST,           /*! unicast channel */
         eCHANNEL_BROADCAST,      /*! broadcast channel */
         eCHANNEL_DIM
     };    
