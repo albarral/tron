@@ -6,19 +6,16 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/Channel.h"
+#include "tron/wire/channel/OutputChannel.h"
 
 namespace tron
 {
 // Base class used to broadcast messages.
-class PublishChannel : public Channel
+class PublishChannel : public OutputChannel
 {           
 public:
     PublishChannel();
     PublishChannel(int node, int channel);
-    
-    // broadcast message through this channel, returns false if nothing sent
-    virtual bool publishMsg(std::string text) = 0;    
 };
 }
 #endif

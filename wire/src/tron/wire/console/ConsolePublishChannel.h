@@ -1,5 +1,5 @@
-#ifndef __TRON_WIRE_CONSOLEOUTCHANNEL_H
-#define __TRON_WIRE_CONSOLEOUTCHANNEL_H
+#ifndef __TRON_WIRE_CONSOLE_PUBLISHCHANNEL_H
+#define __TRON_WIRE_CONSOLE_PUBLISHCHANNEL_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -8,19 +8,19 @@
 
 #include <string>
 
-#include "tron/wire/OutChannel.h"
+#include "tron/wire/channel/PublishChannel.h"
 
 namespace tron
 {
-// Implementation of the OutChannel class for console communications.
-class ConsoleOutChannel : public OutChannel
+// Implementation of the PublishChannel class for console communications.
+class ConsolePublishChannel : public PublishChannel
 {
 private: 
     std::string name;   // channel name 
     
 public:
-    ConsoleOutChannel();
-    ConsoleOutChannel(int node, int channel);
+    ConsolePublishChannel();
+    ConsolePublishChannel(int node, int channel);
 
     // open channel
     virtual bool open();

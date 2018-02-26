@@ -7,11 +7,9 @@
  ***************************************************************************/
 
 
-#include "tron/wire/InChannel.h"
-#include "tron/wire/OutChannel.h"
-#include "tron/wire/PublishChannel.h"
-#include "tron/wire/SubscribeChannel.h"
 #include "tron/wire/Wire.h"
+#include "tron/wire/channel/InputChannel.h"
+#include "tron/wire/channel/OutputChannel.h"
 
 namespace tron
 {
@@ -23,14 +21,14 @@ public:
 //    ~ConsoleWire();
 
 private:    
-    // create new output channel for given node/channel 
-    virtual OutChannel* createOutChannel(int node, int channel);
-    // create new input channel for given node/channel
-    virtual InChannel* createInChannel(int node, int channel);
-//    // create new publish channel for given node/channel
-//    virtual PublishChannel* createPublishChannel(int node, int channel);
+    // create new unicast output channel for given node/channel 
+    virtual OutputChannel* createUnicastOutputChannel(int node, int channel);
+    // create new unicast input channel for given node/channel
+    virtual InputChannel* createUnicastInputChannel(int node, int channel);
+    // create new publish channel for given node/channel
+    virtual OutputChannel* createPublishChannel(int node, int channel);
 //    // create new subscribe channel for given node/channel
-//    virtual SubscribeChannel* createSubscribeChannel(int node, int channel);
+    virtual InputChannel* createSubscribeChannel(int node, int channel);
 };
 }
 #endif

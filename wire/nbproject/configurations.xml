@@ -13,24 +13,32 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="wire" displayName="wire" projectFiles="true">
+        <logicalFolder name="channel" displayName="channel" projectFiles="true">
+          <itemPath>src/tron/wire/channel/Channel.cpp</itemPath>
+          <itemPath>src/tron/wire/channel/Channel.h</itemPath>
+          <itemPath>src/tron/wire/channel/InputChannel.h</itemPath>
+          <itemPath>src/tron/wire/channel/OutputChannel.h</itemPath>
+          <itemPath>src/tron/wire/channel/PublishChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/channel/PublishChannel.h</itemPath>
+          <itemPath>src/tron/wire/channel/SubscribeChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/channel/SubscribeChannel.h</itemPath>
+          <itemPath>src/tron/wire/channel/UnicastInChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/channel/UnicastInChannel.h</itemPath>
+          <itemPath>src/tron/wire/channel/UnicastOutChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/channel/UnicastOutChannel.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="console" displayName="console" projectFiles="true">
-          <itemPath>src/tron/wire/console/ConsoleInChannel.cpp</itemPath>
-          <itemPath>src/tron/wire/console/ConsoleInChannel.h</itemPath>
-          <itemPath>src/tron/wire/console/ConsoleOutChannel.cpp</itemPath>
-          <itemPath>src/tron/wire/console/ConsoleOutChannel.h</itemPath>
+          <itemPath>src/tron/wire/console/ConsolePublishChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/console/ConsolePublishChannel.h</itemPath>
+          <itemPath>src/tron/wire/console/ConsoleSubscribeChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/console/ConsoleSubscribeChannel.h</itemPath>
+          <itemPath>src/tron/wire/console/ConsoleUnicastInChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/console/ConsoleUnicastInChannel.h</itemPath>
+          <itemPath>src/tron/wire/console/ConsoleUnicastOutChannel.cpp</itemPath>
+          <itemPath>src/tron/wire/console/ConsoleUnicastOutChannel.h</itemPath>
           <itemPath>src/tron/wire/console/ConsoleWire.cpp</itemPath>
           <itemPath>src/tron/wire/console/ConsoleWire.h</itemPath>
         </logicalFolder>
-        <itemPath>src/tron/wire/Channel.cpp</itemPath>
-        <itemPath>src/tron/wire/Channel.h</itemPath>
-        <itemPath>src/tron/wire/InChannel.cpp</itemPath>
-        <itemPath>src/tron/wire/InChannel.h</itemPath>
-        <itemPath>src/tron/wire/OutChannel.cpp</itemPath>
-        <itemPath>src/tron/wire/OutChannel.h</itemPath>
-        <itemPath>src/tron/wire/PublishChannel.cpp</itemPath>
-        <itemPath>src/tron/wire/PublishChannel.h</itemPath>
-        <itemPath>src/tron/wire/SubscribeChannel.cpp</itemPath>
-        <itemPath>src/tron/wire/SubscribeChannel.h</itemPath>
         <itemPath>src/tron/wire/Wire.cpp</itemPath>
         <itemPath>src/tron/wire/Wire.h</itemPath>
       </logicalFolder>
@@ -69,46 +77,100 @@
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT}</output>
         </linkerTool>
       </compileType>
-      <item path="src/tron/wire/Channel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/Channel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/InChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/InChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/OutChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/OutChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/PublishChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/PublishChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/SubscribeChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/SubscribeChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tron/wire/Wire.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/wire/Wire.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleInChannel.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="src/tron/wire/channel/Channel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleInChannel.h"
+      <item path="src/tron/wire/channel/Channel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/InputChannel.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleOutChannel.cpp"
+      <item path="src/tron/wire/channel/OutputChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/PublishChannel.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleOutChannel.h"
+      <item path="src/tron/wire/channel/PublishChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/SubscribeChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/SubscribeChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastInChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastInChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastOutChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastOutChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsolePublishChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsolePublishChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleSubscribeChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleSubscribeChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastInChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastInChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastOutChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastOutChannel.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -144,46 +206,100 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="src/tron/wire/Channel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/Channel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/InChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/InChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/OutChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/OutChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/PublishChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/PublishChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/wire/SubscribeChannel.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/wire/SubscribeChannel.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tron/wire/Wire.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/wire/Wire.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleInChannel.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="src/tron/wire/channel/Channel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleInChannel.h"
+      <item path="src/tron/wire/channel/Channel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/InputChannel.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleOutChannel.cpp"
+      <item path="src/tron/wire/channel/OutputChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/PublishChannel.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/wire/console/ConsoleOutChannel.h"
+      <item path="src/tron/wire/channel/PublishChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/SubscribeChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/SubscribeChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastInChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastInChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastOutChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/channel/UnicastOutChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsolePublishChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsolePublishChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleSubscribeChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleSubscribeChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastInChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastInChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastOutChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire/console/ConsoleUnicastOutChannel.h"
             ex="false"
             tool="3"
             flavor2="0">

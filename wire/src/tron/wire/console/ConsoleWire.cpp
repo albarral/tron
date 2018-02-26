@@ -4,8 +4,10 @@
  ***************************************************************************/
 
 #include "tron/wire/console/ConsoleWire.h"
-#include "tron/wire/console/ConsoleOutChannel.h"
-#include "tron/wire/console/ConsoleInChannel.h"
+#include "tron/wire/console/ConsoleUnicastOutChannel.h"
+#include "tron/wire/console/ConsoleUnicastInChannel.h"
+#include "tron/wire/console/ConsolePublishChannel.h"
+#include "tron/wire/console/ConsoleSubscribeChannel.h"
 
 using namespace log4cxx;
 
@@ -15,16 +17,28 @@ ConsoleWire::ConsoleWire()
 {    
 }
 
-OutChannel* ConsoleWire::createOutChannel(int node, int channel)
+OutputChannel* ConsoleWire::createUnicastOutputChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleOutChannel(node, channel));
+    return (new ConsoleUnicastOutChannel(node, channel));
 }
 
-InChannel* ConsoleWire::createInChannel(int node, int channel)
+InputChannel* ConsoleWire::createUnicastInputChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleInChannel(node, channel));
+    return (new ConsoleUnicastInChannel(node, channel));
+}
+
+OutputChannel* ConsoleWire::createPublishChannel(int node, int channel)
+{
+    // pointer conversion (type slicing safe)
+    return (new ConsolePublishChannel(node, channel));
+}
+
+InputChannel* ConsoleWire::createSubscribeChannel(int node, int channel)
+{
+    // pointer conversion (type slicing safe)
+    return (new ConsoleSubscribeChannel(node, channel));
 }
 
 }

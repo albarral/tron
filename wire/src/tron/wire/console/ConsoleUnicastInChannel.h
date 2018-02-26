@@ -1,5 +1,5 @@
-#ifndef __TRON_WIRE_CONSOLEINCHANNEL_H
-#define __TRON_WIRE_CONSOLEINCHANNEL_H
+#ifndef __TRON_WIRE_CONSOLE_UNICASTINCHANNEL_H
+#define __TRON_WIRE_CONSOLE_UNICASTINCHANNEL_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -8,19 +8,19 @@
 
 #include <string>
 
-#include "tron/wire/InChannel.h"
+#include "tron/wire/channel/UnicastInChannel.h"
 
 namespace tron
 {
-// Implementation of the InChannel class for console communications.
-class ConsoleInChannel : public InChannel
+// Implementation of the UnicastInChannel class for console communications.
+class ConsoleUnicastInChannel : public UnicastInChannel
 {
 private: 
     std::string name;   // channel name 
     
 public:
-    ConsoleInChannel();
-    ConsoleInChannel(int node, int channel);
+    ConsoleUnicastInChannel();
+    ConsoleUnicastInChannel(int node, int channel);
 
     // open channel
     virtual bool open();

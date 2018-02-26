@@ -3,17 +3,17 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/SubscribeChannel.h"
+#include "tron/wire/channel/PublishChannel.h"
 
 namespace tron
 {
 
-SubscribeChannel::SubscribeChannel()
+PublishChannel::PublishChannel()
 {    
     type = Channel::eCHANNEL_BROADCAST;
 }
 
-SubscribeChannel::SubscribeChannel(int node, int channel) : Channel(node, channel)
+PublishChannel::PublishChannel(int node, int channel) : OutputChannel(node, channel)
 {    
     type = Channel::eCHANNEL_BROADCAST;
 }

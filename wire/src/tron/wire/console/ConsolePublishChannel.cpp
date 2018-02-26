@@ -5,34 +5,34 @@
 
 #include <iostream>
 
-#include "tron/wire/console/ConsoleOutChannel.h"
+#include "tron/wire/console/ConsolePublishChannel.h"
 
 namespace tron
 {
 
-ConsoleOutChannel::ConsoleOutChannel()
+ConsolePublishChannel::ConsolePublishChannel()
 {
     name = "channel?-?";
 }
 
-ConsoleOutChannel::ConsoleOutChannel(int node, int channel) : OutChannel(node, channel)
+ConsolePublishChannel::ConsolePublishChannel(int node, int channel) : PublishChannel(node, channel)
 {
     name = "channel" + std::to_string(node) + "-" + std::to_string(channel);
 }
 
-bool ConsoleOutChannel::open()
+bool ConsolePublishChannel::open()
 {
     bopen = true;
     return true;    
 }
 
-bool ConsoleOutChannel::close()
+bool ConsolePublishChannel::close()
 {
     bopen = false;
     return true;        
 }
 
-bool ConsoleOutChannel::sendMsg(std::string text)
+bool ConsolePublishChannel::sendMsg(std::string text)
 {
     std::cout << name + ":" + text << std::endl;        
 }

@@ -10,10 +10,8 @@
 #include <vector>
 #include <log4cxx/logger.h>
 
-#include "tron/wire/InChannel.h"
-#include "tron/wire/OutChannel.h"
-#include "tron/wire/PublishChannel.h"
-#include "tron/wire/SubscribeChannel.h"
+#include "tron/wire/channel/InputChannel.h"
+#include "tron/wire/channel/OutputChannel.h"
 
 namespace tron
 {
@@ -23,10 +21,10 @@ class Wire
 {            
 protected:
     static log4cxx::LoggerPtr logger;    
-    std::vector<OutChannel*> listOutChannels;
-    std::vector<InChannel*> listInChannels;
-    std::vector<PublishChannel*> listPublishChannels;
-    std::vector<SubscribeChannel*> listSubscribeChannels;
+    std::vector<OutputChannel*> listUnicastOutChannels;
+    std::vector<InputChannel*> listUnicastInChannels;
+    std::vector<OutputChannel*> listPublishChannels;
+    std::vector<InputChannel*> listSubscribeChannels;
         
 public:
     Wire();
@@ -35,34 +33,36 @@ public:
     // clears all channels lists
     void clearChannels();
     
-    // p2p methods
+    // unicast methods
     bool sendMsg(int node, int channel, std::string text);
 //    bool sendMessages(int node, int channel, std::vector<std::string>& listMessages);
     bool receiveMessages(int node, int channel, std::vector<std::string>& listMessages);
 
     // broadcast methods
-//    bool publishMsg(int node, int channel, std::string text);
+    bool publishMsg(int node, int channel, std::string text);
 //    bool publishMessages(int node, int channel, std::vector<std::string>& listMessages);
-//    bool readMessages(int node, int channel, std::vector<std::string>& listMessages);
+    bool hearMessages(int node, int channel, std::vector<std::string>& listMessages);
+    
+private:    
+    // search output channel in given list for given node/channel
+    OutputChannel* searchOutputChannel(int node, int channel, std::vector<OutputChannel*>& listOutputChannels);
+    // get existing input channel in given list for given node/channel
+    InputChannel* searchInputChannel(int node, int channel, std::vector<InputChannel*>& listInputChannels);
+    
+    // clears given list of input channels (deleting objects in heap)
+    void clearInputChannelsList(std::vector<InputChannel*>& listInputChannels);
+    // clears given list of output channels (deleting objects in heap)
+    void clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChannels);
     
 protected:    
-    // get existing output channel for given node/channel
-    OutChannel* getOutChannel(int node, int channel);
-    // get existing input channel for given node/channel
-    InChannel* getInChannel(int node, int channel);
-//    // get existing publish channel for given node/channel
-//    PublishChannel* getPublishChannel(int node, int channel);
-//    // get existing subscribe channel for given node/channel
-//    SubscribeChannel* getSubscribeChannel(int node, int channel);
-    
-    // create new output channel for given node/channel 
-    virtual OutChannel* createOutChannel(int node, int channel) = 0;
-    // create new input channel for given node/channel
-    virtual InChannel* createInChannel(int node, int channel) = 0;
+    // create new unicast output channel for given node/channel 
+    virtual OutputChannel* createUnicastOutputChannel(int node, int channel) = 0;
+    // create new unicast input channel for given node/channel
+    virtual InputChannel* createUnicastInputChannel(int node, int channel) = 0;
 //    // create new publish channel for given node/channel
-//    virtual PublishChannel* createPublishChannel(int node, int channel) = 0;
+    virtual OutputChannel* createPublishChannel(int node, int channel) = 0;
 //    // create new subscribe channel for given node/channel
-//    virtual SubscribeChannel* createSubscribeChannel(int node, int channel) = 0;
+    virtual InputChannel* createSubscribeChannel(int node, int channel) = 0;
 };
 }
 #endif

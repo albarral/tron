@@ -1,5 +1,5 @@
-#ifndef __TRON_WIRE_OUTCHANNEL_H
-#define __TRON_WIRE_OUTCHANNEL_H
+#ifndef __TRON_WIRE_OUTPUTCHANNEL_H
+#define __TRON_WIRE_OUTPUTCHANNEL_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -7,20 +7,23 @@
  ***************************************************************************/
 
 #include <string>
+#include <vector>
 
-#include "tron/wire/Channel.h"
+#include "tron/wire/channel/Channel.h"
 
 namespace tron
 {
 // Base class used to transmit messages to a destination node.
-class OutChannel : public Channel
+class OutputChannel : public Channel
 {           
 public:
-    OutChannel();
-    OutChannel(int node, int channel);
-   
+    OutputChannel() {};    
+    OutputChannel(int node, int channel) : Channel(node, channel) {};
+
     // send message to destination, returns false if nothing sent
     virtual bool sendMsg(std::string text) = 0;
+    // send messages to destination, returns false if nothing sent
+    //virtual bool sendMessages(std::vector<std::string>& listMessages) = 0;
 };
 }
 #endif

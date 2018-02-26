@@ -23,52 +23,65 @@ Wire::~Wire()
 void Wire::clearChannels()
 {
     LOG4CXX_INFO(logger, "Wire: clearing channels ...");
-    // delete out channel objects pointed to from the lists
-    for (OutChannel* pOutChannel : listOutChannels)
-    {
-        if (pOutChannel != 0) 
-            delete (pOutChannel);
-    }
-    // and clear the list
-    listOutChannels.clear();
     
-    // delete in channel objects pointed to from the lists
-    for (InChannel* pInChannel : listInChannels)
-    {
-        if (pInChannel != 0) 
-            delete (pInChannel);
-    }
-    // and clear the list
-    listInChannels.clear();
+    clearOutputChannelsList(listUnicastOutChannels);
+    
+    clearInputChannelsList(listUnicastInChannels);
 
-    // delete publish channel objects pointed to from the lists
-    for (PublishChannel* pPublishChannel : listPublishChannels)
-    {
-        if (pPublishChannel != 0) 
-            delete (pPublishChannel);
-    }
-    // and clear the list
-    listPublishChannels.clear();
+    clearOutputChannelsList(listPublishChannels);
     
-    // delete subscribe channel objects pointed to from the lists
-    for (SubscribeChannel* pSubscribeChannel : listSubscribeChannels)
-    {
-        if (pSubscribeChannel != 0) 
-            delete (pSubscribeChannel);
-    }
-    // and clear the list
-    listSubscribeChannels.clear();    
+    clearInputChannelsList(listSubscribeChannels);
 }
 
-// send message by p2p channel
+
+void Wire::clearInputChannelsList(std::vector<InputChannel*>& listInputChannels)
+{
+    // delete input channel objects stored in given list
+    for (InputChannel* pInputChannel : listInputChannels)
+    {
+        if (pInputChannel != 0) 
+            delete (pInputChannel);
+    }
+    // and clear the list
+    listInputChannels.clear();    
+}
+
+
+void Wire::clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChannels)
+{
+    // delete output channel objects stored in given list
+    for (OutputChannel* pOutputChannel : listOutputChannels)
+    {
+        if (pOutputChannel != 0) 
+            delete (pOutputChannel);
+    }
+    // and clear the list
+    listOutputChannels.clear();
+}
+
+
+// send message by unicast channel
 bool Wire::sendMsg(int node, int channel, std::string text)
 {
-    // get proper output channel
-    OutChannel* pOutChannel = getOutChannel(node, channel); 
+    // get proper unicast output channel
+    OutputChannel* pOutputChannel = searchOutputChannel(node, channel, listUnicastOutChannels);
+
+     // if not found, create new 
+    if (pOutputChannel == 0)    
+    {
+        pOutputChannel = createUnicastOutputChannel(node, channel);
     
-    // and send message through it
-    if (pOutChannel != 0)    
-        return pOutChannel->sendMsg(text); 
+        // and add it to list
+        if (pOutputChannel != 0)
+        {
+            listUnicastOutChannels.push_back(pOutputChannel);
+            LOG4CXX_INFO(logger, "Wire: new unicast output channel " << node << "-" << channel);
+        }
+    }
+            
+    // if output channel available, send message through it
+    if (pOutputChannel != 0)    
+        return pOutputChannel->sendMsg(text); 
     else
     {
         LOG4CXX_WARN(logger, "Wire: send message failed, no channel for node - channel = " << node << " - " << channel);
@@ -77,17 +90,59 @@ bool Wire::sendMsg(int node, int channel, std::string text)
 }
 
 
-// receive messages by p2p channel
+// publish message by broadcast channel
+bool Wire::publishMsg(int node, int channel, std::string text)
+{
+    // get proper publish channel
+    OutputChannel* pOutputChannel = searchOutputChannel(node, channel, listPublishChannels);
+
+     // if not found, create new 
+    if (pOutputChannel == 0)    
+    {
+        pOutputChannel = createPublishChannel(node, channel);
+    
+        // and add it to list
+        if (pOutputChannel != 0)
+        {
+            listPublishChannels.push_back(pOutputChannel);
+            LOG4CXX_INFO(logger, "Wire: new publish channel " << node << "-" << channel);
+        }
+    }
+            
+    // if output channel available, send message through it
+    if (pOutputChannel != 0)    
+        return pOutputChannel->sendMsg(text); 
+    else
+    {
+        LOG4CXX_WARN(logger, "Wire: publish message failed, no channel for node - channel = " << node << " - " << channel);
+        return false;
+    }
+}
+
+// receive messages by unicast channel
 bool Wire::receiveMessages(int node, int channel, std::vector<std::string>& listMessages)
 {
-    // get proper in channel
-    InChannel* pInChannel = getInChannel(node, channel); 
+    // get proper unicast input channel
+    InputChannel* pInputChannel = searchInputChannel(node, channel, listUnicastInChannels);
+
+     // if not found, create new 
+    if (pInputChannel == 0)    
+    {
+        pInputChannel = createUnicastInputChannel(node, channel);
     
-    // and fetch messages through it
-    if (pInChannel != 0)    
+        // and add it to list
+        if (pInputChannel != 0)
+        {
+            listUnicastInChannels.push_back(pInputChannel);
+            LOG4CXX_INFO(logger, "Wire: new unicast input channel " << node << "-" << channel);
+        }
+    }
+    
+    // if input channel available, fetch messages through it
+    if (pInputChannel != 0)    
     {   
         listMessages.clear();  
-        return pInChannel->receiveMessages(listMessages);
+        return pInputChannel->receiveMessages(listMessages);
     }
     else
     {
@@ -97,52 +152,66 @@ bool Wire::receiveMessages(int node, int channel, std::vector<std::string>& list
 }
 
 
-OutChannel* Wire::getOutChannel(int node, int channel)
+// receive messages by broadcast channel
+bool Wire::hearMessages(int node, int channel, std::vector<std::string>& listMessages)
 {
-    // search proper out channel (pointer) in the channels list
-    for (OutChannel* pOutChannel : listOutChannels)
+    // get proper subscribe channel
+    InputChannel* pInputChannel = searchInputChannel(node, channel, listSubscribeChannels);
+
+     // if not found, create new 
+    if (pInputChannel == 0)    
     {
-        if (pOutChannel->getNode() == node && pOutChannel->getChannel() == channel)
-            return pOutChannel;
+        pInputChannel = createSubscribeChannel(node, channel);
+    
+        // and add it to list
+        if (pInputChannel != 0)
+        {
+            listSubscribeChannels.push_back(pInputChannel);
+            LOG4CXX_INFO(logger, "Wire: new subscribe channel " << node << "-" << channel);
+        }
     }
     
-    LOG4CXX_INFO(logger, "Wire: new out channel for " << node << "-" << channel);
-
-    // if not found, create new out channel
-    OutChannel* pOutChannel2 = createOutChannel(node, channel);
-    
-    // and add it (pointer) to list
-    if (pOutChannel2 != 0)
-    {
-        listOutChannels.push_back(pOutChannel2);
+    // if input channel available, read messages through it
+    if (pInputChannel != 0)    
+    {   
+        listMessages.clear();  
+        return pInputChannel->receiveMessages(listMessages);
     }
-
-    // return pointer to the created channel
-    return pOutChannel2;
+    else
+    {
+        LOG4CXX_WARN(logger, "Wire: hear messages failed, no channel for node - channel = " << node << " - " << channel);
+        return false;
+    }
 }
 
 
-InChannel* Wire::getInChannel(int node, int channel)
+OutputChannel* Wire::searchOutputChannel(int node, int channel, std::vector<OutputChannel*>& listOutputChannels)
 {
-    // search proper out channel (pointer) in the channels list
-    for (InChannel* pInChannel : listInChannels)
+    // search output channel for given node/channel in the given channels list
+    for (OutputChannel* pOutputChannel : listOutputChannels)
     {
-        if (pInChannel->getNode() == node && pInChannel->getChannel() == channel)
-            return pInChannel;
-    }
-    
-    LOG4CXX_INFO(logger, "Wire: new in channel for " << node << "-" << channel);
-
-    // if not found, create new in channel
-    InChannel* pInChannel2 = createInChannel(node, channel);
-    
-    // and add it (pointer) to list
-    if (pInChannel2 != 0)
-    {
-        listInChannels.push_back(pInChannel2);
+        if (pOutputChannel->getNode() == node && pOutputChannel->getChannel() == channel)
+            return pOutputChannel;
     }
 
-    // return pointer to the created channel
-    return pInChannel2;
+    // if not found return 0
+    return 0;
 }
+
+
+InputChannel* Wire::searchInputChannel(int node, int channel, std::vector<InputChannel*>& listInputChannels)
+{
+    // search input channel for given node/channel in the given channels list
+    for (InputChannel* pInputChannel : listInputChannels)
+    {
+        if (pInputChannel->getNode() == node && pInputChannel->getChannel() == channel)
+            return pInputChannel;
+    }
+
+    // if not found return 0
+    return 0;
+}
+
+
+
 }

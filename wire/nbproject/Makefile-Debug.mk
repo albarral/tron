@@ -35,14 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/tron/wire/Channel.o \
-	${OBJECTDIR}/src/tron/wire/InChannel.o \
-	${OBJECTDIR}/src/tron/wire/OutChannel.o \
-	${OBJECTDIR}/src/tron/wire/PublishChannel.o \
-	${OBJECTDIR}/src/tron/wire/SubscribeChannel.o \
 	${OBJECTDIR}/src/tron/wire/Wire.o \
-	${OBJECTDIR}/src/tron/wire/console/ConsoleInChannel.o \
-	${OBJECTDIR}/src/tron/wire/console/ConsoleOutChannel.o \
+	${OBJECTDIR}/src/tron/wire/channel/Channel.o \
+	${OBJECTDIR}/src/tron/wire/channel/PublishChannel.o \
+	${OBJECTDIR}/src/tron/wire/channel/SubscribeChannel.o \
+	${OBJECTDIR}/src/tron/wire/channel/UnicastInChannel.o \
+	${OBJECTDIR}/src/tron/wire/channel/UnicastOutChannel.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsolePublishChannel.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsoleSubscribeChannel.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsoleUnicastInChannel.o \
+	${OBJECTDIR}/src/tron/wire/console/ConsoleUnicastOutChannel.o \
 	${OBJECTDIR}/src/tron/wire/console/ConsoleWire.o
 
 
@@ -70,45 +72,55 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT}: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/src/tron/wire/Channel.o: src/tron/wire/Channel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/Channel.o src/tron/wire/Channel.cpp
-
-${OBJECTDIR}/src/tron/wire/InChannel.o: src/tron/wire/InChannel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/InChannel.o src/tron/wire/InChannel.cpp
-
-${OBJECTDIR}/src/tron/wire/OutChannel.o: src/tron/wire/OutChannel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/OutChannel.o src/tron/wire/OutChannel.cpp
-
-${OBJECTDIR}/src/tron/wire/PublishChannel.o: src/tron/wire/PublishChannel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/PublishChannel.o src/tron/wire/PublishChannel.cpp
-
-${OBJECTDIR}/src/tron/wire/SubscribeChannel.o: src/tron/wire/SubscribeChannel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/SubscribeChannel.o src/tron/wire/SubscribeChannel.cpp
-
 ${OBJECTDIR}/src/tron/wire/Wire.o: src/tron/wire/Wire.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/Wire.o src/tron/wire/Wire.cpp
 
-${OBJECTDIR}/src/tron/wire/console/ConsoleInChannel.o: src/tron/wire/console/ConsoleInChannel.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+${OBJECTDIR}/src/tron/wire/channel/Channel.o: src/tron/wire/channel/Channel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/channel
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleInChannel.o src/tron/wire/console/ConsoleInChannel.cpp
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/channel/Channel.o src/tron/wire/channel/Channel.cpp
 
-${OBJECTDIR}/src/tron/wire/console/ConsoleOutChannel.o: src/tron/wire/console/ConsoleOutChannel.cpp 
+${OBJECTDIR}/src/tron/wire/channel/PublishChannel.o: src/tron/wire/channel/PublishChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/channel
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/channel/PublishChannel.o src/tron/wire/channel/PublishChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/channel/SubscribeChannel.o: src/tron/wire/channel/SubscribeChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/channel
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/channel/SubscribeChannel.o src/tron/wire/channel/SubscribeChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/channel/UnicastInChannel.o: src/tron/wire/channel/UnicastInChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/channel
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/channel/UnicastInChannel.o src/tron/wire/channel/UnicastInChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/channel/UnicastOutChannel.o: src/tron/wire/channel/UnicastOutChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/channel
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/channel/UnicastOutChannel.o src/tron/wire/channel/UnicastOutChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsolePublishChannel.o: src/tron/wire/console/ConsolePublishChannel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleOutChannel.o src/tron/wire/console/ConsoleOutChannel.cpp
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsolePublishChannel.o src/tron/wire/console/ConsolePublishChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsoleSubscribeChannel.o: src/tron/wire/console/ConsoleSubscribeChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleSubscribeChannel.o src/tron/wire/console/ConsoleSubscribeChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsoleUnicastInChannel.o: src/tron/wire/console/ConsoleUnicastInChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleUnicastInChannel.o src/tron/wire/console/ConsoleUnicastInChannel.cpp
+
+${OBJECTDIR}/src/tron/wire/console/ConsoleUnicastOutChannel.o: src/tron/wire/console/ConsoleUnicastOutChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire/console/ConsoleUnicastOutChannel.o src/tron/wire/console/ConsoleUnicastOutChannel.cpp
 
 ${OBJECTDIR}/src/tron/wire/console/ConsoleWire.o: src/tron/wire/console/ConsoleWire.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire/console

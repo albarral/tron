@@ -23,44 +23,82 @@ void TestTronWire::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testP2P();
+    //testUnicast();
+    testBroadcast();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTronWire::testP2P()
+void TestTronWire::testUnicast()
 {
-    LOG4CXX_INFO(logger, modName + ": testP2P ...");
+    LOG4CXX_INFO(logger, modName + ": testUnicast ...");
         
-    launchListener();
-    
+    node = 1;
+    channel = 2;
+        
+    tron::ConsoleWire oWire;
+
+    launchListener1();    
     usleep(1000000);
     
-    tron::ConsoleWire oWire;
     std::string message1 = "hola, que tal?\n";
     std::string message2 = "me alegro\n";
     std::string message3 = "ok, bye!\n";
-    
-    int node = 1; 
-    int channel = 2;
-    
     oWire.sendMsg(node, channel, message1);
     oWire.sendMsg(node, channel, message2);
     oWire.sendMsg(node, channel, message3);
         
-    wait4Listener();
+    wait4Listener1();
 }
 
-void TestTronWire::launchListener()
+
+void TestTronWire::testBroadcast()
 {
-    LOG4CXX_INFO(logger, "TestTronWire::launchListener");
-    t = std::thread(&TestTronWire::receiveMessages, this);              
+    LOG4CXX_INFO(logger, modName + ": testBroadcast ...");
+        
+    node = 1;
+    channel = 3;
+        
+    tron::ConsoleWire oWire;
+
+    launchListener2();    
+    usleep(1000000);
+    
+    std::string message1 = "hola, que tal?\n";
+    std::string message2 = "me alegro\n";
+    std::string message3 = "ok, bye!\n";
+    oWire.publishMsg(node, channel, message1);
+    oWire.publishMsg(node, channel, message2);
+    oWire.publishMsg(node, channel, message3);
+        
+    wait4Listener2();
 }
 
-void TestTronWire::wait4Listener()
+
+void TestTronWire::launchListener1()
 {
-    t.join();
+    LOG4CXX_INFO(logger, "TestTronWire::launchListener1");
+    thread1 = std::thread(&TestTronWire::receiveMessages, this);              
 }
+
+
+void TestTronWire::launchListener2()
+{
+    LOG4CXX_INFO(logger, "TestTronWire::launchListener2");
+    thread2 = std::thread(&TestTronWire::hearMessages, this);              
+}
+
+
+void TestTronWire::wait4Listener1()
+{
+    thread1.join();
+}
+
+void TestTronWire::wait4Listener2()
+{
+    thread2.join();
+}
+
 
 void TestTronWire::receiveMessages()
 {
@@ -70,8 +108,6 @@ void TestTronWire::receiveMessages()
     std::string stop = "stop";
 
     tron::ConsoleWire oWire;    
-    int node = 1; 
-    int channel = 2;
     
     bool bend = false;
     // get messages from channel until stop is received
@@ -94,6 +130,40 @@ void TestTronWire::receiveMessages()
         }
         else 
             bend = true;
-    }
-    
+    }    
 }
+
+void TestTronWire::hearMessages()
+{
+    LOG4CXX_INFO(logger, "TestTronWire::hearMessages");
+
+    std::vector<std::string> listMessages;
+    std::string stop = "stop";
+
+    tron::ConsoleWire oWire;    
+    
+    bool bend = false;
+    // get messages from channel until stop is received
+    while (!bend)
+    {    
+        bool bok = oWire.hearMessages(node, channel, listMessages);
+
+        if (bok)
+        {
+            LOG4CXX_INFO(logger, modName + ": messages heard ...");
+            for (std::string message : listMessages)
+            {
+                LOG4CXX_INFO(logger, message);
+                if (message.compare(stop) == 0)
+                {
+                    bend = true;
+                    break;
+                }
+            }
+        }
+        else 
+            bend = true;
+    }    
+}
+
+

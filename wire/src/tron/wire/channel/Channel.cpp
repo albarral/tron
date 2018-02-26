@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/Channel.h"
+#include "tron/wire/channel/Channel.h"
 
 using namespace log4cxx;
 

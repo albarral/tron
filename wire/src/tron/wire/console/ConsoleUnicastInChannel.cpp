@@ -5,34 +5,34 @@
 
 #include <iostream>
 
-#include "tron/wire/console/ConsoleInChannel.h"
+#include "tron/wire/console/ConsoleUnicastInChannel.h"
 
 namespace tron
 {
 
-ConsoleInChannel::ConsoleInChannel()
+ConsoleUnicastInChannel::ConsoleUnicastInChannel()
 {
     name = "channel?-?";
 }
 
-ConsoleInChannel::ConsoleInChannel(int node, int channel) : InChannel(node, channel)
+ConsoleUnicastInChannel::ConsoleUnicastInChannel(int node, int channel) : UnicastInChannel(node, channel)
 {
     name = "channel" + std::to_string(node) + "-" + std::to_string(channel);
 }
 
-bool ConsoleInChannel::open()
+bool ConsoleUnicastInChannel::open()
 {
     bopen = true;
     return true;    
 }
 
-bool ConsoleInChannel::close()
+bool ConsoleUnicastInChannel::close()
 {
     bopen = false;
     return true;        
 }
 
-bool ConsoleInChannel::receiveMessages(std::vector<std::string>& listMessages)
+bool ConsoleUnicastInChannel::receiveMessages(std::vector<std::string>& listMessages)
 {
     std::string text;
     int channelLen = name.length(); 
