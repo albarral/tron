@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="wire2" displayName="wire2" projectFiles="true">
+        <itemPath>src/tron/wire2/FileClientChannel.cpp</itemPath>
+        <itemPath>src/tron/wire2/FileClientChannel.h</itemPath>
+        <itemPath>src/tron/wire2/FilePublishChannel.cpp</itemPath>
+        <itemPath>src/tron/wire2/FilePublishChannel.h</itemPath>
+        <itemPath>src/tron/wire2/FileServerChannel.cpp</itemPath>
+        <itemPath>src/tron/wire2/FileServerChannel.h</itemPath>
+        <itemPath>src/tron/wire2/FileSubscribeChannel.cpp</itemPath>
+        <itemPath>src/tron/wire2/FileSubscribeChannel.h</itemPath>
+        <itemPath>src/tron/wire2/FileWire.cpp</itemPath>
+        <itemPath>src/tron/wire2/FileWire.h</itemPath>
+        <itemPath>src/tron/wire2/Wire2Config.cpp</itemPath>
+        <itemPath>src/tron/wire2/Wire2Config.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src/tron/wire2</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+            <pElem>../wire/src</pElem>
+            <pElem>../tuly/src</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire2.${CND_DLIB_EXT}</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../wire"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../wire"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tuly"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tuly"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="src/tron/wire2/FileClientChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileClientChannel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FilePublishChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FilePublishChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileServerChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileServerChannel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileSubscribeChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileSubscribeChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileWire.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileWire.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/Wire2Config.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/Wire2Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/tron/wire2/FileClientChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileClientChannel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FilePublishChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FilePublishChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileServerChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileServerChannel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileSubscribeChannel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileSubscribeChannel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileWire.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileWire.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/Wire2Config.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/Wire2Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
