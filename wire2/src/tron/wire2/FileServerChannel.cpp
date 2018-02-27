@@ -3,27 +3,18 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <string>
-#include <iostream>
-#include <sys/stat.h>
-
 #include "tron/wire2/FileServerChannel.h"
-#include "tron/wire2/Wire2Config.h"
-#include "tuly/utils/FileWriter.h"
 
 namespace tron
 {
-log4cxx::LoggerPtr FileServerChannel::logger(log4cxx::Logger::getLogger("tron.comy"));
-
 FileServerChannel::FileServerChannel()
 {    
-    // get coms configuration
-    Wire2Config oComyConfig;    
-    comsBasePath = oComyConfig.getComsBasePath();
+    setFullPath(name);    
+}
 
-    // create coms base folder (if it doesn't exist)
-    if (!comsBasePath.empty())
-        mkdir(comsBasePath.c_str(), 0777);
+FileServerChannel::FileServerChannel(int node, int channel) : ServerChannel(node, channel)
+{
+    setFullPath(name);    
 }
 
 FileServerChannel::~FileServerChannel()
@@ -32,74 +23,54 @@ FileServerChannel::~FileServerChannel()
         oFileReader.close();
 }
 
-void FileServerChannel::connect(std::string topic, std::string category)
+bool FileServerChannel::open()
 {
-    // set communications channel
-    setChannel(channelType, topic, category);
-    
-    if (oChannel.isInformed())
+    // open file reader 
+    bopen = oFileReader.open(fullPath);  
+
+    // if file reader not opened, create the coms file and reopen
+    if (!bopen)
     {
-        // open coms file for reading & writing
-        if (!comsBasePath.empty())
-        {        
-            pathComsFile = comsBasePath + "/" + oChannel.getName() + Wire2Config::comsFileExtension;
-            bconnected = oFileReader.open(pathComsFile); 
-            // if file reader not opened, create the coms file and reopen
-            if (!bconnected)
-            {
-                createComsFile();
-                bconnected = oFileReader.open(pathComsFile); 
-            }
-            // first clean file
-            if (bconnected)
-                oFileReader.cleanFile();
-        }
-        else
-            bconnected = false;    
+        createComsFile();
+        bopen = oFileReader.open(fullPath);  
+    }
+
+    if (bopen) 
+    {
+        // first clean file
+        oFileReader.cleanFile();
+        LOG4CXX_INFO(logger, "FileServerChannel: channel opened ok - " + fullPath);                                
     }
     else
     {
-        bconnected = false;        
-        LOG4CXX_WARN(logger, "ComyFileServer: connection failed, coms channel needs to be defined");                        
-    }        
+        LOG4CXX_WARN(logger, "FileServerChannel: channel opening failed - " + fullPath);                                
+    }
+    
+    return bopen;        
 }
 
-std::string FileServerChannel::readSingleMessage()
-{
-    std::string rawMessage = "";
+bool FileServerChannel::close()
+{        
+    if (bopen && oFileReader.close())
+    {
+        LOG4CXX_INFO(logger, "FileServerChannel: channel closed ok - " + fullPath);                                
+        return true;
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, "FileServerChannel: channel closing failed - " + fullPath);                                
+        return false;
+    }
+}
 
+bool FileServerChannel::receiveMessages(std::vector<std::string>& listMessages)
+{
     if (oFileReader.isOpen())        
-        rawMessage = oFileReader.readLine();            
+        return oFileReader.readAllLines(listMessages);
     else
     {
-        LOG4CXX_ERROR(logger, "ComyFileServer: can't read message, file reader not open ");
+        LOG4CXX_ERROR(logger, "FileServerChannel: can't read messages, file reader not open ");
+        return false;
     }
-    
-    return rawMessage;
-}
-
-bool FileServerChannel::getNewMessages(std::vector<std::string>& listMessages)
-{
-    bool bread = false;
-    if (oFileReader.isOpen())        
-        bread = oFileReader.readAllLines(listMessages);
-    else
-    {
-        LOG4CXX_ERROR(logger, "ComyFileServer: can't read messages, file reader not open ");
-    }
-    
-    return bread;
-}
-
-void FileServerChannel::createComsFile()
-{
-    tuly::FileWriter oFileWriter;
-    oFileWriter.open(pathComsFile, false);  
-    
-    if (oFileWriter.isOpen())                   
-    {
-        LOG4CXX_INFO(logger, "ComyFileServer: coms file created");                        
-        oFileWriter.close();        
-    }        
 }
 }

@@ -15,6 +15,8 @@
       <logicalFolder name="wire2" displayName="wire2" projectFiles="true">
         <itemPath>src/tron/wire2/FileClientChannel.cpp</itemPath>
         <itemPath>src/tron/wire2/FileClientChannel.h</itemPath>
+        <itemPath>src/tron/wire2/FileCommunicator.cpp</itemPath>
+        <itemPath>src/tron/wire2/FileCommunicator.h</itemPath>
         <itemPath>src/tron/wire2/FilePublishChannel.cpp</itemPath>
         <itemPath>src/tron/wire2/FilePublishChannel.h</itemPath>
         <itemPath>src/tron/wire2/FileServerChannel.cpp</itemPath>
@@ -96,6 +98,13 @@
       </item>
       <item path="src/tron/wire2/FileClientChannel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/wire2/FileCommunicator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileCommunicator.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/wire2/FilePublishChannel.cpp"
             ex="false"
             tool="1"
@@ -158,6 +167,13 @@
             flavor2="0">
       </item>
       <item path="src/tron/wire2/FileClientChannel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileCommunicator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/wire2/FileCommunicator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/wire2/FilePublishChannel.cpp"
             ex="false"

@@ -3,65 +3,59 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <sys/stat.h>
-
 #include "tron/wire2/FileClientChannel.h"
-#include "tron/wire2/Wire2Config.h"
 
 namespace tron
 {
-log4cxx::LoggerPtr FileClientChannel::logger(log4cxx::Logger::getLogger("tron.wire2"));
-
 FileClientChannel::FileClientChannel()
 {    
-    // get coms configuration
-    Wire2Config oComyConfig;    
-    comsBasePath = oComyConfig.getComsBasePath();
-    
-    // create coms base folder (if it doesn't exist)
-    if (!comsBasePath.empty())
-        mkdir(comsBasePath.c_str(), 0777);
+    setFullPath(name);    
 }
 
 FileClientChannel::FileClientChannel(int node, int channel) : ClientChannel(node, channel)
 {
-    
+    setFullPath(name);    
 }
 
 FileClientChannel::~FileClientChannel()
 {
-    if (oFileWriter.isOpen())                   
-        oFileWriter.close();    
+    oFileWriter.close();        
 }
 
-void FileClientChannel::connect(std::string topic, std::string category)
+bool FileClientChannel::open()
 {
-    // set communications channel
-    setChannel(channelType, topic, category);
+    // open file writer in append mode
+    bopen = oFileWriter.open(fullPath, true);  
 
-    if (oChannel.isInformed())
+    if (bopen) 
     {
-        // open coms file for writing
-        if (!comsBasePath.empty())
-        {        
-
-            pathComsFile = comsBasePath + "/" + oChannel.getName() + Wire2Config::comsFileExtension;
-            // writer opened in append mode
-            bconnected = oFileWriter.open(pathComsFile, true);  
-        }
-        else
-            bconnected = false;    
+        LOG4CXX_INFO(logger, "FileClientChannel: channel opened ok - " + fullPath);                                
     }
     else
     {
-        bconnected = false;        
-        LOG4CXX_WARN(logger, "ComyFileClient: connection failed, coms channel needs to be defined");                        
+        LOG4CXX_WARN(logger, "FileClientChannel: channel opening failed - " + fullPath);                                
+    }
+    
+    return bopen;        
+}
+
+bool FileClientChannel::close()
+{        
+    if (bopen && oFileWriter.close())
+    {
+        LOG4CXX_INFO(logger, "FileClientChannel: channel closed ok - " + fullPath);                                
+        return true;
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, "FileClientChannel: channel closing failed - " + fullPath);                                
+        return false;
     }
 }
 
-bool FileClientChannel::sendMessage(std::string text)
+bool FileClientChannel::sendMsg(std::string text)
 {
-    if (oFileWriter.isOpen())        
+    if (bopen && oFileWriter.isOpen())        
     {
         // write text in coms file with default string delimiter
         std::string output = text + delimiter;
@@ -70,7 +64,7 @@ bool FileClientChannel::sendMessage(std::string text)
     }
     else
     {
-        LOG4CXX_ERROR(logger, "ComyFileClient: send failed! coms file not open");                
+        LOG4CXX_ERROR(logger, "FileClientChannel: send failed! coms file not open");                
         return false;
     }
 }

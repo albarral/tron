@@ -71,11 +71,16 @@ bool Wire::sendMsg(int node, int channel, std::string text)
     {
         pOutputChannel = createClientChannel(node, channel);
     
-        // and add it to list
+        // open channel and add it to list
         if (pOutputChannel != 0)
         {
-            listClientChannels.push_back(pOutputChannel);
-            LOG4CXX_INFO(logger, "Wire: new client channel " + pOutputChannel->getName());
+             if (pOutputChannel->open())
+            {
+                listClientChannels.push_back(pOutputChannel);
+                LOG4CXX_INFO(logger, "Wire: new client channel " + pOutputChannel->getName());
+            }
+            else
+                pOutputChannel = 0;
         }
     }
             
@@ -101,11 +106,16 @@ bool Wire::publishMsg(int node, int channel, std::string text)
     {
         pOutputChannel = createPublishChannel(node, channel);
     
-        // and add it to list
+        // open channel and add it to list
         if (pOutputChannel != 0)
         {
-            listPublishChannels.push_back(pOutputChannel);
-            LOG4CXX_INFO(logger, "Wire: new publish channel " + pOutputChannel->getName());
+            if (pOutputChannel->open())
+            {
+                listPublishChannels.push_back(pOutputChannel);
+                LOG4CXX_INFO(logger, "Wire: new publish channel " + pOutputChannel->getName());
+            }
+            else
+                pOutputChannel = 0;
         }
     }
             
@@ -130,11 +140,16 @@ bool Wire::receiveMessages(int node, int channel, std::vector<std::string>& list
     {
         pInputChannel = createServerChannel(node, channel);
     
-        // and add it to list
+        // open channel and add it to list
         if (pInputChannel != 0)
         {
-            listServerChannels.push_back(pInputChannel);
-            LOG4CXX_INFO(logger, "Wire: new server channel " + pInputChannel->getName());
+            if (pInputChannel->open())
+            {
+                listServerChannels.push_back(pInputChannel);
+                LOG4CXX_INFO(logger, "Wire: new server channel " + pInputChannel->getName());
+            }
+            else
+                pInputChannel = 0;
         }
     }
     
@@ -163,11 +178,16 @@ bool Wire::hearMessages(int node, int channel, std::vector<std::string>& listMes
     {
         pInputChannel = createSubscribeChannel(node, channel);
     
-        // and add it to list
+        // open channel and add it to list
         if (pInputChannel != 0)
         {
-            listSubscribeChannels.push_back(pInputChannel);
-            LOG4CXX_INFO(logger, "Wire: new subscribe channel " + pInputChannel->getName());
+            if (pInputChannel->open())
+            {
+                listSubscribeChannels.push_back(pInputChannel);
+                LOG4CXX_INFO(logger, "Wire: new subscribe channel " + pInputChannel->getName());
+            }
+            else
+                pInputChannel = 0;
         }
     }
     

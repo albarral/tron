@@ -1,5 +1,5 @@
-#ifndef __TRON_WIRE_CONSOLEWIRE_H
-#define __TRON_WIRE_CONSOLEWIRE_H
+#ifndef __TRON_WIRE2_FILEWIRE_H
+#define __TRON_WIRE2_FILEWIRE_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -13,12 +13,12 @@
 
 namespace tron
 {
-// Implementation of the Wire class for multichannel communications through the console..
-class ConsoleWire : public Wire
+// Implementation of the Wire class for multichannel communications using files.
+class FileWire : public Wire
 {            
 public:
-    ConsoleWire();
-//    ~ConsoleWire();
+    FileWire();
+//    ~FileWire();
 
 private:    
     // create new unicast output channel for given node/channel 

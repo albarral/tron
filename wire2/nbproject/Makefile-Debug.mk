@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/wire2/FileClientChannel.o \
+	${OBJECTDIR}/src/tron/wire2/FileCommunicator.o \
 	${OBJECTDIR}/src/tron/wire2/FilePublishChannel.o \
 	${OBJECTDIR}/src/tron/wire2/FileServerChannel.o \
 	${OBJECTDIR}/src/tron/wire2/FileSubscribeChannel.o \
@@ -75,6 +76,11 @@ ${OBJECTDIR}/src/tron/wire2/FileClientChannel.o: src/tron/wire2/FileClientChanne
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire2
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../wire/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire2/FileClientChannel.o src/tron/wire2/FileClientChannel.cpp
+
+${OBJECTDIR}/src/tron/wire2/FileCommunicator.o: src/tron/wire2/FileCommunicator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire2
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../wire/src -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire2/FileCommunicator.o src/tron/wire2/FileCommunicator.cpp
 
 ${OBJECTDIR}/src/tron/wire2/FilePublishChannel.o: src/tron/wire2/FilePublishChannel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire2

@@ -12,13 +12,13 @@ namespace tron
 bool ConsoleServerChannel::open()
 {
     bopen = true;
-    return true;    
+    return bopen;    
 }
 
 bool ConsoleServerChannel::close()
 {
     bopen = false;
-    return true;        
+    return (bopen == false);        
 }
 
 bool ConsoleServerChannel::receiveMessages(std::vector<std::string>& listMessages)

@@ -7,30 +7,24 @@
  ***************************************************************************/
 
 #include <string>
-#include <log4cxx/logger.h>
 
+#include "tron/wire2/FileCommunicator.h"
 #include "tron/wire/channel/PublishChannel.h"
 #include "tuly/utils/FileWriter.h"
 
 namespace tron
 {
 // Implementation of tron wire PublisChannel class based in files.
-class FilePublishChannel : public PublishChannel
+class FilePublishChannel : public PublishChannel, public FileCommunicator
 {    
 private:
-    static log4cxx::LoggerPtr logger;          
-    const char delimiter = '\n'; // newline used as delimiter for strings (default used by std::getline())
-    std::string comsBasePath;
-    std::string pathComsFile;       // file for broadcasting the info
     tuly::FileWriter oFileWriter;
     
 public:
     FilePublishChannel();
-    FileServerChannel(int node, int channel);
+    FilePublishChannel(int node, int channel);
     ~FilePublishChannel();
 
-    std::string getComsFile() {return pathComsFile;};
-        
     // open channel
     virtual bool open();
     // close channel

@@ -3,42 +3,40 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/wire/console/ConsoleWire.h"
-#include "tron/wire/console/ConsoleClientChannel.h"
-#include "tron/wire/console/ConsoleServerChannel.h"
-#include "tron/wire/console/ConsolePublishChannel.h"
-#include "tron/wire/console/ConsoleSubscribeChannel.h"
-
-using namespace log4cxx;
+#include "tron/wire2/FileWire.h"
+#include "tron/wire2/FileClientChannel.h"
+#include "tron/wire2/FileServerChannel.h"
+#include "tron/wire2/FilePublishChannel.h"
+#include "tron/wire2/FileSubscribeChannel.h"
 
 namespace tron
 {
-ConsoleWire::ConsoleWire()
+FileWire::FileWire()
 {    
 }
 
-OutputChannel* ConsoleWire::createClientChannel(int node, int channel)
+OutputChannel* FileWire::createClientChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleClientChannel(node, channel));
+    return (new FileClientChannel(node, channel));
 }
 
-InputChannel* ConsoleWire::createServerChannel(int node, int channel)
+InputChannel* FileWire::createServerChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleServerChannel(node, channel));
+    return (new FileServerChannel(node, channel));
 }
 
-OutputChannel* ConsoleWire::createPublishChannel(int node, int channel)
+OutputChannel* FileWire::createPublishChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsolePublishChannel(node, channel));
+    return (new FilePublishChannel(node, channel));
 }
 
-InputChannel* ConsoleWire::createSubscribeChannel(int node, int channel)
+InputChannel* FileWire::createSubscribeChannel(int node, int channel)
 {
     // pointer conversion (type slicing safe)
-    return (new ConsoleSubscribeChannel(node, channel));
+    return (new FileSubscribeChannel(node, channel));
 }
 
 }

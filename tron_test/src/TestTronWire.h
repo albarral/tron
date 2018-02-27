@@ -21,6 +21,7 @@ private:
     std::thread threadPS;        // aux thread   
     int node;
     int channel;
+    bool bfileComs;                 // use file coms
 
 public:
     TestTronWire();
