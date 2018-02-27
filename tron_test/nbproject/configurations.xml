@@ -23,6 +23,8 @@
         <itemPath>src/TestPlot.h</itemPath>
         <itemPath>src/TestTalky.cpp</itemPath>
         <itemPath>src/TestTalky.h</itemPath>
+        <itemPath>src/TestTalky2.cpp</itemPath>
+        <itemPath>src/TestTalky2.h</itemPath>
         <itemPath>src/TestTivy.cpp</itemPath>
         <itemPath>src/TestTivy.h</itemPath>
         <itemPath>src/TestTronWire.cpp</itemPath>
@@ -60,12 +62,14 @@
           <standard>8</standard>
           <incDir>
             <pElem>src</pElem>
-            <pElem>../tuly/src</pElem>
-            <pElem>../talky/src</pElem>
             <pElem>../comy/src</pElem>
             <pElem>../maty/src</pElem>
             <pElem>../nety/src</pElem>
+            <pElem>../robot/src</pElem>
+            <pElem>../talky/src</pElem>
+            <pElem>../talky2/src</pElem>
             <pElem>../tivy/src</pElem>
+            <pElem>../tuly/src</pElem>
             <pElem>../wire/src</pElem>
             <pElem>../wire2/src</pElem>
           </incDir>
@@ -73,30 +77,6 @@
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test</output>
           <linkerLibItems>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../tuly"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tuly"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../talky"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../talky"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../comy"
                             CT="2"
@@ -134,6 +114,42 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
+              <makeArtifact PL="../robot"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../robot"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../talky"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../talky"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../talky2"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../talky2"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky2.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
               <makeArtifact PL="../tivy"
                             CT="2"
                             CN="Debug"
@@ -143,6 +159,18 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tivy.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tuly"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tuly"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
@@ -194,6 +222,10 @@
       <item path="src/TestTalky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTalky.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTalky2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTalky2.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -249,6 +281,10 @@
       <item path="src/TestTalky.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTalky.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTalky2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTalky2.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
       </item>
