@@ -17,8 +17,8 @@ class TestTronWire
 private:
     static log4cxx::LoggerPtr logger;
     std::string modName;          // module name
-    std::thread thread1;        // aux thread   
-    std::thread thread2;        // aux thread   
+    std::thread threadCS;        // aux thread   
+    std::thread threadPS;        // aux thread   
     int node;
     int channel;
 
@@ -30,13 +30,13 @@ public:
     
 private:
     void testClientServer();       
-    void launchListener1();
-    void wait4Listener1();    
+    void launchCSListener();
+    void wait4CSListener();    
     void receiveMessages();                
     
     void testBroadcast();
-    void launchListener2();
-    void wait4Listener2();    
+    void launchPSListener();
+    void wait4PSListener();    
     void hearMessages();                
 };
 #endif

@@ -23,8 +23,8 @@ void TestTronWire::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testClientServer();
-    //testBroadcast();
+    //testClientServer();
+    testBroadcast();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -38,7 +38,7 @@ void TestTronWire::testClientServer()
         
     tron::ConsoleWire oWire;
 
-    launchListener1();    
+    launchCSListener();    
     usleep(1000000);
     
     std::string message1 = "hola, que tal?\n";
@@ -48,7 +48,7 @@ void TestTronWire::testClientServer()
     oWire.sendMsg(node, channel, message2);
     oWire.sendMsg(node, channel, message3);
         
-    wait4Listener1();
+    wait4CSListener();
 }
 
 
@@ -61,7 +61,7 @@ void TestTronWire::testBroadcast()
         
     tron::ConsoleWire oWire;
 
-    launchListener2();    
+    launchPSListener();    
     usleep(1000000);
     
     std::string message1 = "hola, que tal?\n";
@@ -71,32 +71,32 @@ void TestTronWire::testBroadcast()
     oWire.publishMsg(node, channel, message2);
     oWire.publishMsg(node, channel, message3);
         
-    wait4Listener2();
+    wait4PSListener();
 }
 
 
-void TestTronWire::launchListener1()
+void TestTronWire::launchCSListener()
 {
     LOG4CXX_INFO(logger, "TestTronWire::launchListener1");
-    thread1 = std::thread(&TestTronWire::receiveMessages, this);              
+    threadCS = std::thread(&TestTronWire::receiveMessages, this);              
 }
 
 
-void TestTronWire::launchListener2()
+void TestTronWire::launchPSListener()
 {
     LOG4CXX_INFO(logger, "TestTronWire::launchListener2");
-    thread2 = std::thread(&TestTronWire::hearMessages, this);              
+    threadPS = std::thread(&TestTronWire::hearMessages, this);              
 }
 
 
-void TestTronWire::wait4Listener1()
+void TestTronWire::wait4CSListener()
 {
-    thread1.join();
+    threadCS.join();
 }
 
-void TestTronWire::wait4Listener2()
+void TestTronWire::wait4PSListener()
 {
-    thread2.join();
+    threadPS.join();
 }
 
 

@@ -9,17 +9,6 @@
 
 namespace tron
 {
-
-ConsolePublishChannel::ConsolePublishChannel()
-{
-    name = "channel?-?";
-}
-
-ConsolePublishChannel::ConsolePublishChannel(int node, int channel) : PublishChannel(node, channel)
-{
-    name = "channel" + std::to_string(node) + "-" + std::to_string(channel);
-}
-
 bool ConsolePublishChannel::open()
 {
     bopen = true;

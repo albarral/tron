@@ -9,17 +9,6 @@
 
 namespace tron
 {
-
-ConsoleSubscribeChannel::ConsoleSubscribeChannel()
-{
-    name = "channel?-?";
-}
-
-ConsoleSubscribeChannel::ConsoleSubscribeChannel(int node, int channel) : SubscribeChannel(node, channel)
-{
-    name = "channel" + std::to_string(node) + "-" + std::to_string(channel);
-}
-
 bool ConsoleSubscribeChannel::open()
 {
     bopen = true;

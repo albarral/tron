@@ -16,5 +16,6 @@ SubscribeChannel::SubscribeChannel()
 SubscribeChannel::SubscribeChannel(int node, int channel) : InputChannel(node, channel)
 {    
     type = Channel::eCHANNEL_BROADCAST;
+    setName();    
 }
 }

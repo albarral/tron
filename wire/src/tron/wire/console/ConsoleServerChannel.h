@@ -15,12 +15,9 @@ namespace tron
 // Implementation of the ServerChannel class for console communications.
 class ConsoleServerChannel : public ServerChannel
 {
-private: 
-    std::string name;   // channel name 
-    
 public:
-    ConsoleServerChannel();
-    ConsoleServerChannel(int node, int channel);
+    ConsoleServerChannel() {};
+    ConsoleServerChannel(int node, int channel) : ServerChannel(node, channel) {};
 
     // open channel
     virtual bool open();

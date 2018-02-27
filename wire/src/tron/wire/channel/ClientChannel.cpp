@@ -16,5 +16,6 @@ ClientChannel::ClientChannel()
 ClientChannel::ClientChannel(int node, int channel) : OutputChannel(node, channel)
 {
     type = Channel::eCHANNEL_UNICAST;    
+    setName();
 }
 }

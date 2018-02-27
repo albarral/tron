@@ -9,17 +9,6 @@
 
 namespace tron
 {
-
-ConsoleClientChannel::ConsoleClientChannel()
-{
-    name = "channel?-?";
-}
-
-ConsoleClientChannel::ConsoleClientChannel(int node, int channel) : ClientChannel(node, channel)
-{
-    name = "channel" + std::to_string(node) + "-" + std::to_string(channel);
-}
-
 bool ConsoleClientChannel::open()
 {
     bopen = true;

@@ -16,6 +16,7 @@ ServerChannel::ServerChannel()
 ServerChannel::ServerChannel(int node, int channel) : InputChannel(node, channel)
 {
     type = Channel::eCHANNEL_UNICAST;
+    setName();    
 }
 
 }

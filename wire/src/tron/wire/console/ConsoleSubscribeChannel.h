@@ -13,12 +13,9 @@ namespace tron
 // Implementation of the SubscribeChannel class for console communications.
 class ConsoleSubscribeChannel : public SubscribeChannel
 {
-private: 
-    std::string name;   // channel name 
-    
 public:
-    ConsoleSubscribeChannel();
-    ConsoleSubscribeChannel(int node, int channel);
+    ConsoleSubscribeChannel() {};
+    ConsoleSubscribeChannel(int node, int channel) : SubscribeChannel(node, channel) {};
 
     // open channel
     virtual bool open();

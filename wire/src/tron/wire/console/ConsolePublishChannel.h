@@ -15,12 +15,9 @@ namespace tron
 // Implementation of the PublishChannel class for console communications.
 class ConsolePublishChannel : public PublishChannel
 {
-private: 
-    std::string name;   // channel name 
-    
 public:
-    ConsolePublishChannel();
-    ConsolePublishChannel(int node, int channel);
+    ConsolePublishChannel() {};
+    ConsolePublishChannel(int node, int channel) : PublishChannel(node, channel) {};
 
     // open channel
     virtual bool open();
