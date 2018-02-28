@@ -16,6 +16,12 @@
         <logicalFolder name="clients" displayName="clients" projectFiles="true">
           <itemPath>src/tron/robot/clients/TronArmClient.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="listeners" displayName="listeners" projectFiles="true">
+          <itemPath>src/tron/robot/listeners/TronArmListener.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="sensors" displayName="sensors" projectFiles="true">
+          <itemPath>src/tron/robot/sensors/ArmSensors.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="topics" displayName="topics" projectFiles="true">
           <itemPath>src/tron/robot/topics/ArmTopic.cpp</itemPath>
           <itemPath>src/tron/robot/topics/ArmTopic.h</itemPath>
@@ -67,6 +73,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/tron/robot/listeners/TronArmListener.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/sensors/ArmSensors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/robot/topics/ArmTopic.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/robot/topics/ArmTopic.h" ex="false" tool="3" flavor2="0">
@@ -97,6 +113,16 @@
       <item path="src/tron/robot/RobotNodes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/robot/clients/TronArmClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/listeners/TronArmListener.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/sensors/ArmSensors.h"
             ex="false"
             tool="3"
             flavor2="0">
