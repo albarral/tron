@@ -5,7 +5,6 @@
 
 
 #include "TestTalky2.h"
-#include "tron/robot/sensors/ArmSensors.h"
 
 using namespace log4cxx;
 
@@ -24,38 +23,47 @@ void TestTalky2::makeTest()
     tron::ArmClient oArmClient;
     tron::ArmListener oArmListener;
 
+    tron::JointsData jointsData1;
+    tron::JointsData jointsData2;
+    
+    jointsData1.hs = 22.0;
+    jointsData1.vs = 23.0;
+    jointsData1.elb = 24.0;
+    jointsData1.hwri = 25.0;
+    jointsData1.vwri = 26.0;
+    
     // send command to arm
-    sendArmCommand(oArmClient, 22.0);        
+    sendArmCommand(oArmClient, jointsData1);        
     // read arm info
-    senseArmInfo(oArmListener);        
+    senseArmInfo(oArmListener, jointsData2);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTalky2::sendArmCommand(tron::ArmClient& oArmClient, float hs)
+void TestTalky2::sendArmCommand(tron::ArmClient& oArmClient, tron::JointsData& jointsData)
 {
     LOG4CXX_INFO(logger, modName + ": sendArmCommand ...");
 
-    if (oArmClient.setHS(hs))
-    {
-        LOG4CXX_INFO(logger, modName + ": sent HS > " << std::to_string(hs));
-    }
-    else
-    {
-        LOG4CXX_ERROR(logger, modName + ": sent HS failed");
-    }        
+    oArmClient.setHS(jointsData.hs);
+    oArmClient.setVS(jointsData.vs);
+    oArmClient.setELB(jointsData.elb);
+    oArmClient.setHWRI(jointsData.hwri);
+    oArmClient.setVWRI(jointsData.vwri);
 }
 
-void TestTalky2::senseArmInfo(tron::ArmListener& oArmListener) 
+void TestTalky2::senseArmInfo(tron::ArmListener& oArmListener, tron::JointsData& jointsData) 
 {
     LOG4CXX_INFO(logger, modName + ": senseArmInfo ...");
 
-    tron::JointsData jointsData;
     // interpret test message
     if (oArmListener.getJointPositions(jointsData))
     {
-        // show obtained hs value
+        // show obtained values
         LOG4CXX_INFO(logger, modName + ": sensed HS < " << std::to_string(jointsData.hs));
+        LOG4CXX_INFO(logger, modName + ": sensed VS < " << std::to_string(jointsData.vs));
+        LOG4CXX_INFO(logger, modName + ": sensed EL < " << std::to_string(jointsData.elb));
+        LOG4CXX_INFO(logger, modName + ": sensed HW < " << std::to_string(jointsData.hwri));
+        LOG4CXX_INFO(logger, modName + ": sensed VW < " << std::to_string(jointsData.vwri));
     }
     else
     {
