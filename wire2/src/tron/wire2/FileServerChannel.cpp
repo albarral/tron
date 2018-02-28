@@ -37,7 +37,7 @@ bool FileServerChannel::open()
 
     if (bopen) 
     {
-        // first clean file
+        // on server wake up the channel is cleared (all existing messages are removed)
         oFileReader.cleanFile();
         LOG4CXX_INFO(logger, "FileServerChannel: channel opened ok - " + fullPath);                                
     }

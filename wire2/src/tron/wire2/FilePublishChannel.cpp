@@ -29,6 +29,7 @@ bool FilePublishChannel::open()
 
     if (bopen) 
     {
+        // on publisher wake up the channel is cleared (all existing messages are removed)
         LOG4CXX_INFO(logger, "FilePublishChannel: channel opened ok - " + fullPath);                                
     }
     else

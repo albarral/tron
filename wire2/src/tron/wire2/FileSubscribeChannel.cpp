@@ -36,8 +36,6 @@ bool FileSubscribeChannel::open()
 
     if (bopen) 
     {
-        // first clean file
-        oFileReader.cleanFile();
         LOG4CXX_INFO(logger, "FileSubscribeChannel: channel opened ok - " + fullPath);                                
     }
     else
