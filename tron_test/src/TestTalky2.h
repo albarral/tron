@@ -10,6 +10,7 @@
 #include <log4cxx/logger.h>
 
 #include "tron/talky2/clients/ArmClient.h"
+#include "tron/talky2/listeners/ArmListener.h"
 
 // Class used to test coms with libtron_talky2.
 class TestTalky2
@@ -26,7 +27,7 @@ public:
     void makeTest();      
     
 private:
-//    void testReadMessage(talky::Interpreter& oInterpreter, std::string msg);                
-    void testWriteMessage(tron::ArmClient& oArmClient, float hs);
+    void sendArmCommand(tron::ArmClient& oArmClient, float hs);
+    void senseArmInfo(tron::ArmListener& oArmListener);                
 };
 #endif

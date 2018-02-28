@@ -1,5 +1,5 @@
 #ifndef __TALKY2_ARM_JOINTTALKER_H
-#define __TALKY_ARM_JOINTTALKER_H
+#define __TALKY2_ARM_JOINTTALKER_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *

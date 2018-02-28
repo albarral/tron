@@ -5,7 +5,7 @@
 
 
 #include "TestTalky2.h"
-#include "tron/talky2/clients/ArmClient.h"
+#include "tron/robot/sensors/ArmSensors.h"
 
 using namespace log4cxx;
 
@@ -22,47 +22,19 @@ void TestTalky2::makeTest()
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
     tron::ArmClient oArmClient;
+    tron::ArmListener oArmListener;
 
-    testWriteMessage(oArmClient, 12.0);        
-    testWriteMessage(oArmClient, 22.0);        
-    testWriteMessage(oArmClient, 13.0);        
-//    testReadMessage(oInterpreter, msg);        
+    // send command to arm
+    sendArmCommand(oArmClient, 22.0);        
+    // read arm info
+    senseArmInfo(oArmListener);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-//void TestTalky2::testReadMessage(talky::Interpreter& oInterpreter, std::string msg)
-//{
-//    LOG4CXX_INFO(logger, modName + ": testReadMessage ...");
-//    LOG4CXX_INFO(logger, modName + ": msg > " + msg);
-//
-//    // interpret test message
-//    if (oInterpreter.processMessage(msg))
-//    {
-//        // if simple message
-//        if (!oInterpreter.isBlockProcessed())
-//        {
-//            // show obtained command
-//            LOG4CXX_INFO(logger, modName + ": msg processed ok");        
-//            LOG4CXX_INFO(logger, modName + ": " + oInterpreter.getCommand().toString());        
-//        }
-//        // if message block
-//        else
-//        {
-//            // show obtained command block
-//            LOG4CXX_INFO(logger, modName + ": msg block processed ok");        
-//            LOG4CXX_INFO(logger, modName + ": " + oInterpreter.getCommandBlock().toString());        
-//        }            
-//    }
-//    else
-//    {
-//        LOG4CXX_WARN(logger, modName + ": msg processing failed!");            
-//    }
-//}
-
-void TestTalky2::testWriteMessage(tron::ArmClient& oArmClient, float hs)
+void TestTalky2::sendArmCommand(tron::ArmClient& oArmClient, float hs)
 {
-    LOG4CXX_DEBUG(logger, modName + ": testWriteMessage ...");
+    LOG4CXX_INFO(logger, modName + ": sendArmCommand ...");
 
     if (oArmClient.setHS(hs))
     {
@@ -72,6 +44,23 @@ void TestTalky2::testWriteMessage(tron::ArmClient& oArmClient, float hs)
     {
         LOG4CXX_ERROR(logger, modName + ": sent HS failed");
     }        
+}
+
+void TestTalky2::senseArmInfo(tron::ArmListener& oArmListener) 
+{
+    LOG4CXX_INFO(logger, modName + ": senseArmInfo ...");
+
+    tron::JointsData jointsData;
+    // interpret test message
+    if (oArmListener.getJointPositions(jointsData))
+    {
+        // show obtained hs value
+        LOG4CXX_INFO(logger, modName + ": sensed HS < " << std::to_string(jointsData.hs));
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, modName + ": arm listener failed!");            
+    }
 }
 
 

@@ -17,6 +17,10 @@
           <itemPath>src/tron/talky2/clients/ArmClient.cpp</itemPath>
           <itemPath>src/tron/talky2/clients/ArmClient.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="listeners" displayName="listeners" projectFiles="true">
+          <itemPath>src/tron/talky2/listeners/ArmListener.cpp</itemPath>
+          <itemPath>src/tron/talky2/listeners/ArmListener.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="talkers" displayName="talkers" projectFiles="true">
           <logicalFolder name="arm" displayName="arm" projectFiles="true">
             <itemPath>src/tron/talky2/talkers/arm/JointTalker.cpp</itemPath>
@@ -129,6 +133,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/tron/talky2/listeners/ArmListener.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/listeners/ArmListener.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/talky2/talkers/arm/JointTalker.cpp"
             ex="false"
             tool="1"
@@ -170,6 +184,16 @@
             flavor2="0">
       </item>
       <item path="src/tron/talky2/clients/ArmClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/listeners/ArmListener.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/listeners/ArmListener.h"
             ex="false"
             tool="3"
             flavor2="0">

@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/Talker.o \
 	${OBJECTDIR}/src/tron/talky2/clients/ArmClient.o \
+	${OBJECTDIR}/src/tron/talky2/listeners/ArmListener.o \
 	${OBJECTDIR}/src/tron/talky2/talkers/arm/JointTalker.o
 
 
@@ -73,6 +74,11 @@ ${OBJECTDIR}/src/tron/talky2/clients/ArmClient.o: src/tron/talky2/clients/ArmCli
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/clients
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/clients/ArmClient.o src/tron/talky2/clients/ArmClient.cpp
+
+${OBJECTDIR}/src/tron/talky2/listeners/ArmListener.o: src/tron/talky2/listeners/ArmListener.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/listeners
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/listeners/ArmListener.o src/tron/talky2/listeners/ArmListener.cpp
 
 ${OBJECTDIR}/src/tron/talky2/talkers/arm/JointTalker.o: src/tron/talky2/talkers/arm/JointTalker.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/talkers/arm
