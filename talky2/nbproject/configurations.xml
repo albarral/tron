@@ -13,19 +13,21 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="talky2" displayName="talky2" projectFiles="true">
-        <logicalFolder name="clients" displayName="clients" projectFiles="true">
-          <itemPath>src/tron/talky2/clients/ArmClient.cpp</itemPath>
-          <itemPath>src/tron/talky2/clients/ArmClient.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="listeners" displayName="listeners" projectFiles="true">
-          <itemPath>src/tron/talky2/listeners/ArmListener.cpp</itemPath>
-          <itemPath>src/tron/talky2/listeners/ArmListener.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="talkers" displayName="talkers" projectFiles="true">
-          <logicalFolder name="arm" displayName="arm" projectFiles="true">
-            <itemPath>src/tron/talky2/talkers/arm/JointTalker.cpp</itemPath>
-            <itemPath>src/tron/talky2/talkers/arm/JointTalker.h</itemPath>
-          </logicalFolder>
+        <logicalFolder name="arm" displayName="arm" projectFiles="true">
+          <itemPath>src/tron/talky2/arm/ArmClient.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmClient.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmCommunicator.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmCommunicator.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmListener.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmListener.h</itemPath>
+          <itemPath>src/tron/talky2/arm/AxisTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/AxisTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/BasicTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/BasicTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/CyclicTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/CyclicTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/JointTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/JointTalker.h</itemPath>
         </logicalFolder>
         <itemPath>src/tron/talky2/Talker.cpp</itemPath>
         <itemPath>src/tron/talky2/Talker.h</itemPath>
@@ -123,35 +125,51 @@
       </item>
       <item path="src/tron/talky2/Talker.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/talky2/clients/ArmClient.cpp"
+      <item path="src/tron/talky2/arm/ArmClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmCommunicator.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/clients/ArmClient.h"
+      <item path="src/tron/talky2/arm/ArmCommunicator.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/listeners/ArmListener.cpp"
+      <item path="src/tron/talky2/arm/ArmListener.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/listeners/ArmListener.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="src/tron/talky2/arm/ArmListener.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/talky2/talkers/arm/JointTalker.cpp"
+      <item path="src/tron/talky2/arm/AxisTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/AxisTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/BasicTalker.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/talkers/arm/JointTalker.h"
+      <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.cpp"
             ex="false"
-            tool="3"
+            tool="1"
             flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -178,35 +196,51 @@
       </item>
       <item path="src/tron/talky2/Talker.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/talky2/clients/ArmClient.cpp"
+      <item path="src/tron/talky2/arm/ArmClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmCommunicator.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/clients/ArmClient.h"
+      <item path="src/tron/talky2/arm/ArmCommunicator.h"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/listeners/ArmListener.cpp"
+      <item path="src/tron/talky2/arm/ArmListener.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/listeners/ArmListener.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="src/tron/talky2/arm/ArmListener.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/talky2/talkers/arm/JointTalker.cpp"
+      <item path="src/tron/talky2/arm/AxisTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/AxisTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/BasicTalker.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/talkers/arm/JointTalker.h"
+      <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.cpp"
             ex="false"
-            tool="3"
+            tool="1"
             flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

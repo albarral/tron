@@ -36,9 +36,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/Talker.o \
-	${OBJECTDIR}/src/tron/talky2/clients/ArmClient.o \
-	${OBJECTDIR}/src/tron/talky2/listeners/ArmListener.o \
-	${OBJECTDIR}/src/tron/talky2/talkers/arm/JointTalker.o
+	${OBJECTDIR}/src/tron/talky2/arm/ArmClient.o \
+	${OBJECTDIR}/src/tron/talky2/arm/ArmCommunicator.o \
+	${OBJECTDIR}/src/tron/talky2/arm/ArmListener.o \
+	${OBJECTDIR}/src/tron/talky2/arm/AxisTalker.o \
+	${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o \
+	${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o \
+	${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o
 
 
 # C Compiler Flags
@@ -78,20 +82,40 @@ ${OBJECTDIR}/src/tron/talky2/Talker.o: src/tron/talky2/Talker.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/Talker.o src/tron/talky2/Talker.cpp
 
-${OBJECTDIR}/src/tron/talky2/clients/ArmClient.o: src/tron/talky2/clients/ArmClient.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/clients
+${OBJECTDIR}/src/tron/talky2/arm/ArmClient.o: src/tron/talky2/arm/ArmClient.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/clients/ArmClient.o src/tron/talky2/clients/ArmClient.cpp
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/ArmClient.o src/tron/talky2/arm/ArmClient.cpp
 
-${OBJECTDIR}/src/tron/talky2/listeners/ArmListener.o: src/tron/talky2/listeners/ArmListener.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/listeners
+${OBJECTDIR}/src/tron/talky2/arm/ArmCommunicator.o: src/tron/talky2/arm/ArmCommunicator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/listeners/ArmListener.o src/tron/talky2/listeners/ArmListener.cpp
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/ArmCommunicator.o src/tron/talky2/arm/ArmCommunicator.cpp
 
-${OBJECTDIR}/src/tron/talky2/talkers/arm/JointTalker.o: src/tron/talky2/talkers/arm/JointTalker.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/talkers/arm
+${OBJECTDIR}/src/tron/talky2/arm/ArmListener.o: src/tron/talky2/arm/ArmListener.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/talkers/arm/JointTalker.o src/tron/talky2/talkers/arm/JointTalker.cpp
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/ArmListener.o src/tron/talky2/arm/ArmListener.cpp
+
+${OBJECTDIR}/src/tron/talky2/arm/AxisTalker.o: src/tron/talky2/arm/AxisTalker.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/AxisTalker.o src/tron/talky2/arm/AxisTalker.cpp
+
+${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o: src/tron/talky2/arm/BasicTalker.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o src/tron/talky2/arm/BasicTalker.cpp
+
+${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o: src/tron/talky2/arm/CyclicTalker.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o src/tron/talky2/arm/CyclicTalker.cpp
+
+${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o: src/tron/talky2/arm/JointTalker.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o src/tron/talky2/arm/JointTalker.cpp
 
 # Subprojects
 .build-subprojects:

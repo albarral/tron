@@ -16,13 +16,13 @@ class TronArmClient
     // set HS joint (horizontal shoulder) to given position (degrees)
     virtual bool setHS(float value) = 0;
     // set VS joint (vertical shoulder) to given position (degrees)
-//    virtual bool setVS(float value) = 0;
-//    // set ELB joint (elbow) to given position (degrees)
-//    virtual bool setELB(float value) = 0;
-//    // set HWRI joint (horizontal wrist) to given position (degrees)
-//    virtual bool setHWRI(float value) = 0;
-//    // set VWRI joint (vertical wrist) to given position (degrees)
-//    virtual bool setVWRI(float value) = 0;
+    virtual bool setVS(float value) = 0;
+    // set ELB joint (elbow) to given position (degrees)
+    virtual bool setELB(float value) = 0;
+    // set HWRI joint (horizontal wrist) to given position (degrees)
+    virtual bool setHWRI(float value) = 0;
+    // set VWRI joint (vertical wrist) to given position (degrees)
+    virtual bool setVWRI(float value) = 0;
 
 /*    
     // axis topic ...

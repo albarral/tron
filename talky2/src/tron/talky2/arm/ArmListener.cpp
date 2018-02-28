@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/talky2/listeners/ArmListener.h"
+#include "tron/talky2/arm/ArmListener.h"
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopic.h"
 
@@ -11,8 +11,6 @@ using namespace log4cxx;
 
 namespace tron
 {
-LoggerPtr ArmListener::logger(Logger::getLogger("tron.talky2"));
-
 ArmListener::ArmListener()
 {    
 }
@@ -31,6 +29,7 @@ bool ArmListener::getJointPositions(JointsData& jointsData)
         // process received messages
         for (std::string message : listMessages)
         {
+            LOG4CXX_TRACE(logger, "ArmListener: check msg " << message);
             // if message interpreted, inform joints data
             if (oJointTalker.interpretMessage(message, code, value))
             {

@@ -9,22 +9,16 @@
 #include <string>
 #include <vector>
 
-#include <log4cxx/logger.h>
-
-#include "tron/wire2/FileWire.h"
-#include "tron/talky2/talkers/arm/JointTalker.h"
+#include "tron/talky2/arm/ArmCommunicator.h"
 #include "tron/robot/listeners/TronArmListener.h"
 #include "tron/robot/sensors/ArmSensors.h"
 
 namespace tron
 {
-// Implementation of TronArmListener class (libtron_robot) to sense a robot arm
-class ArmListener : public TronArmListener
+// Arm client class (implementing TronArmListener interface) to sense a robot arm.
+class ArmListener : public ArmCommunicator, public TronArmListener
 {    
 private:
-    static log4cxx::LoggerPtr logger;
-    FileWire oWire;                                     // communications wire   
-    JointTalker oJointTalker;
     std::vector<std::string> listMessages;
         
 public:

@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/talky2/talkers/arm/JointTalker.h"
+#include "tron/talky2/arm/JointTalker.h"
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopic.h"
 
