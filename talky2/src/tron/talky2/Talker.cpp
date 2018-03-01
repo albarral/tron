@@ -81,13 +81,13 @@ bool Talker::interpretMessage(std::string message, int& code, float& value)
             // invalid quantity
             else
             {
-                LOG4CXX_WARN(logger, name + " Talker: invalid quantity " << message);          
+                LOG4CXX_WARN(logger, name + " Talker: invalid quantity " << listTokens.at(1));          
             }
         }
         // unknown concept 
         else
         {
-            LOG4CXX_WARN(logger, name + " Talker: unknown concept " << message);   
+            LOG4CXX_WARN(logger, name + " Talker: unknown concept " << listTokens.at(0));   
         }
     }
     // wrong message size

@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/dady/DadyCommander.o \
+	${OBJECTDIR}/src/dady/DadyCommander2.o \
 	${OBJECTDIR}/src/dady/main.o
 
 
@@ -67,6 +68,11 @@ ${OBJECTDIR}/src/dady/DadyCommander.o: src/dady/DadyCommander.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/dady
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/DadyCommander.o src/dady/DadyCommander.cpp
+
+${OBJECTDIR}/src/dady/DadyCommander2.o: src/dady/DadyCommander2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/dady
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/DadyCommander2.o src/dady/DadyCommander2.cpp
 
 ${OBJECTDIR}/src/dady/main.o: src/dady/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/dady

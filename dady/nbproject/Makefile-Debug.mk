@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/dady/DadyCommander.o \
+	${OBJECTDIR}/src/dady/DadyCommander2.o \
 	${OBJECTDIR}/src/dady/main.o
 
 
@@ -53,7 +54,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,../../tron/comy/dist/Debug/GNU-Linux -L../../tron/comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../../tron/talky/dist/Debug/GNU-Linux -L../../tron/talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../../tron/tuly/dist/Debug/GNU-Linux -L../../tron/tuly/dist/Debug/GNU-Linux -ltron_tuly -llog4cxx
+LDLIBSOPTIONS=-Wl,-rpath,../../tron/comy/dist/Debug/GNU-Linux -L../../tron/comy/dist/Debug/GNU-Linux -ltron_comy -Wl,-rpath,../../tron/talky/dist/Debug/GNU-Linux -L../../tron/talky/dist/Debug/GNU-Linux -ltron_talky -Wl,-rpath,../../tron/tuly/dist/Debug/GNU-Linux -L../../tron/tuly/dist/Debug/GNU-Linux -ltron_tuly -llog4cxx -Wl,-rpath,../robot/dist/Debug/GNU-Linux -L../robot/dist/Debug/GNU-Linux -ltron_robot -Wl,-rpath,../talky2/dist/Debug/GNU-Linux -L../talky2/dist/Debug/GNU-Linux -ltron_talky2 -Wl,-rpath,../wire/dist/Debug/GNU-Linux -L../wire/dist/Debug/GNU-Linux -ltron_wire -Wl,-rpath,../wire2/dist/Debug/GNU-Linux -L../wire2/dist/Debug/GNU-Linux -ltron_wire2
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -65,6 +66,14 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ../../tron/talky/dist/Debug/GNU
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ../../tron/tuly/dist/Debug/GNU-Linux/libtron_tuly.so
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ../robot/dist/Debug/GNU-Linux/libtron_robot.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ../talky2/dist/Debug/GNU-Linux/libtron_talky2.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ../wire/dist/Debug/GNU-Linux/libtron_wire.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ../wire2/dist/Debug/GNU-Linux/libtron_wire2.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady ${OBJECTFILES} ${LDLIBSOPTIONS}
@@ -72,18 +81,27 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ${OBJECTFILES}
 ${OBJECTDIR}/src/dady/DadyCommander.o: src/dady/DadyCommander.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/dady
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/DadyCommander.o src/dady/DadyCommander.cpp
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -I../robot/src -I../talky2/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/DadyCommander.o src/dady/DadyCommander.cpp
+
+${OBJECTDIR}/src/dady/DadyCommander2.o: src/dady/DadyCommander2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/dady
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -I../robot/src -I../talky2/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/DadyCommander2.o src/dady/DadyCommander2.cpp
 
 ${OBJECTDIR}/src/dady/main.o: src/dady/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/dady
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/main.o src/dady/main.cpp
+	$(COMPILE.cc) -g -Isrc -I../comy/src -I../talky/src -I../tuly/src -I../robot/src -I../talky2/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/main.o src/dady/main.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../../tron/comy && ${MAKE}  -f Makefile CONF=Debug
 	cd ../../tron/talky && ${MAKE}  -f Makefile CONF=Debug
 	cd ../../tron/tuly && ${MAKE}  -f Makefile CONF=Debug
+	cd ../robot && ${MAKE}  -f Makefile CONF=Debug
+	cd ../talky2 && ${MAKE}  -f Makefile CONF=Debug
+	cd ../wire && ${MAKE}  -f Makefile CONF=Debug
+	cd ../wire2 && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -95,6 +113,10 @@ ${OBJECTDIR}/src/dady/main.o: src/dady/main.cpp
 	cd ../../tron/comy && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../../tron/talky && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../../tron/tuly && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../robot && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../talky2 && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../wire && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../wire2 && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
