@@ -8,8 +8,9 @@
 
 #include <log4cxx/logger.h>
 
-#include <map>
 #include <string>
+
+#include "tuly/utils2/CodeMap.h"
 
 namespace tron
 {
@@ -19,8 +20,6 @@ namespace tron
 class Talker
 {
 public:
-    static const int UNKNOWN_VALUE = -1;
-    static const std::string EMPTY;                        /*! empty string */
     static const int MSG_FIELDS = 2;                    /*! number of fields in message */ 
     static const std::string FIELD_SEPARATOR;      /*! character used to separate fields in message */
     
@@ -29,13 +28,12 @@ protected:
     int node;                                              /*! associated node */    
     int topic;                                              /*! associated topic */    
     std::string name;                                  /*! talker name */     
-    std::map<std::string, int> mapWords;      /*! map of known topic words */    
-    std::map<int, std::string> mapCodes;      /*! map of known topic codes */    
+    tuly::CodeMap oCodeMap;                      /*! code map for known concepts */    
     
 public:
     Talker();              	
     Talker(int node, int topic);              	
-    ~Talker();
+    //~Talker();
 
     int getNode() {return node;};    
     int getTopic() {return topic;};        
@@ -50,7 +48,7 @@ public:
     bool interpretMessage(std::string message, int& code, float& value);
     
     // show all concepts known by the talker
-    std::string showKnowledge();
+    void showKnowledge();
     
 protected:
     // fill maps with knowledge (mandatory for any talker)
@@ -59,12 +57,6 @@ protected:
     void addConcept(int code, std::string name);        
     // complete talker name with topic word
     virtual void completeName() = 0;
-    
-private:
-    // finds code associated to given word
-    int getCode4Word(std::string word);
-    // finds word associated to given code
-    std::string getWord4Code(int code);
 };
 }
 #endif

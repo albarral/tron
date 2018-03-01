@@ -3,8 +3,6 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <stdexcept>      // std::out_of_range
-
 #include "tron/talky2/Talker.h"
 #include "tron/robot/RobotNodes.h"
 #include "tuly/utils/StringUtil.h"
@@ -15,7 +13,6 @@ namespace tron
 {
 LoggerPtr Talker::logger(Logger::getLogger("tron.talky2"));
 
-const std::string Talker::EMPTY = "";        
 const std::string Talker::FIELD_SEPARATOR = "*";
 
 Talker::Talker()
@@ -35,35 +32,31 @@ Talker::Talker(int node, int topic)
     name = oRobotNodes.getNodeName(node) + "-";    
 }
 
-Talker::~Talker()
-{
-    mapWords.clear();
-    mapCodes.clear();
-}
+//Talker::~Talker()
+//{
+//}
 
 void Talker::addConcept(int code, std::string name)
 {
-    // add concept to maps
-    mapWords.emplace(name, code);    
-    mapCodes.emplace(code, name);    
+    // add concept to code map
+    oCodeMap.addCode(code, name);
 }
 
 
 bool Talker::buildMessage(int code, float value, std::string& message)
 {
-    // get concept name 
-    std::string word = getWord4Code(code);
+    std::string word;
 
-    // if known concept, build message
-    if (!word.empty())
+    // if known concept, build message with the concept name
+    if (oCodeMap.getName4Code(code, word))
     {
         message = word + Talker::FIELD_SEPARATOR + std::to_string(value);
         return true;
     }
-    // unknown concept
+    // otherwise return false
     else
     {
-        message = Talker::EMPTY;
+        message = "";
         LOG4CXX_WARN(logger, name + " Talker: message not built, unknown code " << code);
         return false;
     }
@@ -72,17 +65,14 @@ bool Talker::buildMessage(int code, float value, std::string& message)
 // expected message is code*value
 bool Talker::interpretMessage(std::string message, int& code, float& value)
 {           
-    // get message parts
+    // get message parts (concept*value)
     std::vector<std::string> listTokens = tuly::StringUtil::split(message, Talker::FIELD_SEPARATOR); 
 
     // if right message size, interpret it
     if (listTokens.size() == Talker::MSG_FIELDS)
     {
-        // interpret concept 
-        code = getCode4Word(listTokens.at(0));
-               
         // if known concept, interpret value 
-        if (code != Talker::UNKNOWN_VALUE)
+        if (oCodeMap.getCode4Name(listTokens.at(0), code))
         {
             if (tuly::StringUtil::convert2Float(listTokens.at(1), value))            
             {
@@ -111,45 +101,9 @@ bool Talker::interpretMessage(std::string message, int& code, float& value)
 }
 
 
-int Talker::getCode4Word(std::string word)
+void Talker::showKnowledge()
 {
-    try 
-    {
-        // search word in words map
-        return mapWords.at(word);
-    }
-    // if word not found, return unknown code
-    catch (const std::out_of_range& oor) 
-    {                
-        return Talker::UNKNOWN_VALUE;
-    }            
-}        
-
-std::string Talker::getWord4Code(int code)
-{
-    try 
-    {
-        // search code in codes map
-        return mapCodes.at(code);
-    }
-    // if code not found, return empty
-    catch (const std::out_of_range& oor) 
-    {                
-        return Talker::EMPTY;
-    }                
-}
-
-std::string Talker::showKnowledge()
-{
-    std::string text;
-            
-    // for each concept
-    for (auto& x: mapCodes) 
-    {
-        text += std::to_string(x.first) + " - " + x.second + "\n";
-    }    
-
-    return text;
+    LOG4CXX_INFO(logger, name + " Talker: knowledge ... \n" << oCodeMap.toString());
 }
 
 }
