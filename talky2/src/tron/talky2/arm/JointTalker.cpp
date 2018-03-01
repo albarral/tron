@@ -5,12 +5,12 @@
 
 #include "tron/talky2/arm/JointTalker.h"
 #include "tron/robot/RobotNodes.h"
-#include "tron/robot/topics/ArmTopic.h"
+#include "tron/robot/topics/ArmTopics.h"
 
 namespace tron
 {
 
-JointTalker::JointTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_JOINT)
+JointTalker::JointTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT)
 {
     // complete name with topic word
     completeName();
@@ -21,8 +21,8 @@ JointTalker::JointTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_JOINT)
 
 void JointTalker::completeName()
 {
-    ArmTopic oArmTopic;
-    name += oArmTopic.getTopicName(topic);    
+    ArmTopics oArmTopic;
+    name += oArmTopic.getName4Topic(topic);    
 }
 
 void JointTalker::buildKnowledge()

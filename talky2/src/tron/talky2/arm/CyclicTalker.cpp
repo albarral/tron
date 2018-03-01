@@ -5,12 +5,12 @@
 
 #include "tron/talky2/arm/CyclicTalker.h"
 #include "tron/robot/RobotNodes.h"
-#include "tron/robot/topics/ArmTopic.h"
+#include "tron/robot/topics/ArmTopics.h"
 
 namespace tron
 {
 
-CyclicTalker::CyclicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_CYCLIC)
+CyclicTalker::CyclicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopics::eARM_CYCLIC)
 {
     // complete name with topic word
     completeName();
@@ -21,8 +21,8 @@ CyclicTalker::CyclicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_CYCL
 
 void CyclicTalker::completeName()
 {
-    ArmTopic oArmTopic;
-    name += oArmTopic.getTopicName(topic);    
+    ArmTopics oArmTopic;
+    name += oArmTopic.getName4Topic(topic);    
 }
 
 void CyclicTalker::buildKnowledge()

@@ -15,38 +15,34 @@ const std::string RobotNodes::HEAD_NODE = "head";
 const std::string RobotNodes::WHEELS_NODE = "wheels";     
 const std::string RobotNodes::BODYROLE_NODE = "body";     
 
-std::string RobotNodes::getNodeName(int nodeId)
+RobotNodes::RobotNodes()
 {
-    switch (nodeId)
-    {
-        case eNODE_ARM:
-            return ARM_NODE;
-            break;
-            
-        case eNODE_HAND:
-            return HAND_NODE;
-            break;
-
-        case eNODE_VISION:
-            return VISION_NODE;
-            break;
-
-        case eNODE_HEAD:
-            return HEAD_NODE;
-            break;
-
-        case eNODE_WHEELS:
-            return WHEELS_NODE;
-            break;
-
-        case eNODE_BODYROLE:
-            return BODYROLE_NODE;
-            break;
-
-        default:
-            // return empty name for undefined nodes
-            return "";
-    }    
+    // build nodes map
+    oNodesMap.addCode(eNODE_ARM, ARM_NODE);
+    oNodesMap.addCode(eNODE_HAND, HAND_NODE);
+    oNodesMap.addCode(eNODE_VISION, VISION_NODE);
+    oNodesMap.addCode(eNODE_HEAD, HEAD_NODE);
+    oNodesMap.addCode(eNODE_WHEELS, WHEELS_NODE);
+    oNodesMap.addCode(eNODE_BODYROLE, BODYROLE_NODE);
 }
 
+std::string RobotNodes::getName4Node(int node)
+{
+    std::string name;
+    if (oNodesMap.getName4Code(node, name))
+        return name;
+    // return empty name if unknown node
+    else
+        return ""; 
+}
+
+int RobotNodes::getCode4Node(std::string nodeName)
+{
+    int code;
+    if (oNodesMap.getCode4Name(nodeName, code))
+        return code;
+    // return -1 if unknown node
+    else 
+        return -1;
+}
 }

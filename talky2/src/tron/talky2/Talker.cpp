@@ -29,7 +29,7 @@ Talker::Talker(int node, int topic)
         
     // start talker name with node word
     RobotNodes oRobotNodes;
-    name = oRobotNodes.getNodeName(node) + "-";    
+    name = oRobotNodes.getName4Node(node) + "-";    
 }
 
 //Talker::~Talker()

@@ -36,7 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/robot/RobotNodes.o \
-	${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o
+	${OBJECTDIR}/src/tron/robot/topics/ArmTopics.o
 
 
 # C Compiler Flags
@@ -53,11 +53,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}: ../tuly/dist/Debug/GNU-Linux/libtron_tuly.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -66,15 +68,16 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}: ${OBJE
 ${OBJECTDIR}/src/tron/robot/RobotNodes.o: src/tron/robot/RobotNodes.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/robot
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/RobotNodes.o src/tron/robot/RobotNodes.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/RobotNodes.o src/tron/robot/RobotNodes.cpp
 
-${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o: src/tron/robot/topics/ArmTopic.cpp 
+${OBJECTDIR}/src/tron/robot/topics/ArmTopics.o: src/tron/robot/topics/ArmTopics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/robot/topics
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o src/tron/robot/topics/ArmTopic.cpp
+	$(COMPILE.cc) -g -Isrc -I../tuly/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/topics/ArmTopics.o src/tron/robot/topics/ArmTopics.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -83,6 +86,7 @@ ${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o: src/tron/robot/topics/ArmTopic.cp
 
 # Subprojects
 .clean-subprojects:
+	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

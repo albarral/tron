@@ -8,6 +8,8 @@
 
 #include <string>
 
+#include "tuly/utils2/CodeMap.h"
+
 namespace tron
 {
 /** 
@@ -36,7 +38,16 @@ namespace tron
     static const std::string WHEELS_NODE;    /*! wheels node name */
     static const std::string BODYROLE_NODE;    /*! body role node name */
 
-    static std::string getNodeName(int nodeId);
+ private:         
+     tuly::CodeMap oNodesMap;                      /*! code map for robot nodes */    
+
+ public:         
+    RobotNodes();              	
+     
+    // gets name for given node code
+    std::string getName4Node(int node);
+    // gets code for given node name
+    int getCode4Node(std::string nodeName);
 };
 }
 #endif

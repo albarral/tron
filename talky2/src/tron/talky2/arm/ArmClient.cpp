@@ -5,7 +5,7 @@
 
 #include "tron/talky2/arm/ArmClient.h"
 #include "tron/robot/RobotNodes.h"
-#include "tron/robot/topics/ArmTopic.h"
+#include "tron/robot/topics/ArmTopics.h"
 
 using namespace log4cxx;
 
@@ -159,7 +159,7 @@ bool ArmClient::sendJointCommand(int code, float value)
 {    
     if (oJointTalker.buildMessage(code, value, message))
     {
-        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopic::eARM_JOINT, message);
+        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT, message);
     }
     else
         return false;
@@ -169,7 +169,7 @@ bool ArmClient::sendAxisCommand(int code, float value)
 {    
     if (oAxisTalker.buildMessage(code, value, message))
     {
-        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopic::eARM_AXIS, message);
+        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopics::eARM_AXIS, message);
     }
     else
         return false;
@@ -179,7 +179,7 @@ bool ArmClient::sendCyclicCommand(int code, float value)
 {    
     if (oCyclicTalker.buildMessage(code, value, message))
     {
-        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopic::eARM_CYCLIC, message);
+        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopics::eARM_CYCLIC, message);
     }
     else
         return false;
@@ -189,7 +189,7 @@ bool ArmClient::sendExtraCommand(int code, float value)
 {    
     if (oBasicTalker.buildMessage(code, value, message))
     {
-        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopic::eARM_EXTRA, message);
+        return oWire.sendMsg(RobotNodes::eNODE_ARM, ArmTopics::eARM_EXTRA, message);
     }
     else
         return false;

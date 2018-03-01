@@ -5,12 +5,12 @@
 
 #include "tron/talky2/arm/BasicTalker.h"
 #include "tron/robot/RobotNodes.h"
-#include "tron/robot/topics/ArmTopic.h"
+#include "tron/robot/topics/ArmTopics.h"
 
 namespace tron
 {
 
-BasicTalker::BasicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_EXTRA)
+BasicTalker::BasicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopics::eARM_EXTRA)
 {
     // complete name with topic word
     completeName();
@@ -21,8 +21,8 @@ BasicTalker::BasicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_EXTRA)
 
 void BasicTalker::completeName()
 {
-    ArmTopic oArmTopic;
-    name += oArmTopic.getTopicName(topic);    
+    ArmTopics oArmTopic;
+    name += oArmTopic.getName4Topic(topic);    
 }
 
 void BasicTalker::buildKnowledge()

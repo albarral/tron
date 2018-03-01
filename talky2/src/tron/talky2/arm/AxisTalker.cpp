@@ -5,12 +5,12 @@
 
 #include "tron/talky2/arm/AxisTalker.h"
 #include "tron/robot/RobotNodes.h"
-#include "tron/robot/topics/ArmTopic.h"
+#include "tron/robot/topics/ArmTopics.h"
 
 namespace tron
 {
 
-AxisTalker::AxisTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_AXIS)
+AxisTalker::AxisTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopics::eARM_AXIS)
 {
     // complete name with topic word
     completeName();
@@ -21,8 +21,8 @@ AxisTalker::AxisTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_AXIS)
 
 void AxisTalker::completeName()
 {
-    ArmTopic oArmTopic;
-    name += oArmTopic.getTopicName(topic);    
+    ArmTopics oArmTopic;
+    name += oArmTopic.getName4Topic(topic);    
 }
 
 void AxisTalker::buildKnowledge()

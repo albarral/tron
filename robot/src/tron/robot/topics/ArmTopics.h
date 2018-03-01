@@ -1,5 +1,5 @@
-#ifndef __TRON_ROBOT_ARMTOPIC_H
-#define __TRON_ROBOT_ARMTOPIC_H
+#ifndef __TRON_ROBOT_ARMTOPICS_H
+#define __TRON_ROBOT_ARMTOPICS_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -8,10 +8,12 @@
 
 #include <string>
 
+#include "tuly/utils2/CodeMap.h"
+
 namespace tron
 {
-// Definition of arm topic concepts
- class ArmTopic 
+// Definition of arm topics
+ class ArmTopics 
 {
 public:
     /*! arm topics */
@@ -30,7 +32,17 @@ public:
     static const std::string ARM_CYCLIC;
     static const std::string ARM_EXTRA;
 
-    static std::string getTopicName(int topicId);
+ private:         
+     tuly::CodeMap oTopicsMap;                      /*! code map for arm topics */    
+
+ public:     
+     ArmTopics();
+     
+    // gets name for given topic code
+    std::string getName4Topic(int topic);
+    // gets code for given topic name
+    int getCode4Topic(std::string topicName);
+    
 };
 }
 #endif

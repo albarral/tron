@@ -36,7 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/robot/RobotNodes.o \
-	${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o
+	${OBJECTDIR}/src/tron/robot/topics/ArmTopics.o
 
 
 # C Compiler Flags
@@ -68,10 +68,10 @@ ${OBJECTDIR}/src/tron/robot/RobotNodes.o: src/tron/robot/RobotNodes.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/RobotNodes.o src/tron/robot/RobotNodes.cpp
 
-${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o: src/tron/robot/topics/ArmTopic.cpp 
+${OBJECTDIR}/src/tron/robot/topics/ArmTopics.o: src/tron/robot/topics/ArmTopics.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/robot/topics
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/topics/ArmTopic.o src/tron/robot/topics/ArmTopic.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/robot/topics/ArmTopics.o src/tron/robot/topics/ArmTopics.cpp
 
 # Subprojects
 .build-subprojects:
