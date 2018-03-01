@@ -12,10 +12,10 @@ namespace tron
 
 BasicTalker::BasicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_EXTRA)
 {
-    // and complete it with topic word
+    // complete name with topic word
     completeName();
     
-    // finally build talker knowledge
+    // build talker knowledge
     buildKnowledge();    
 }
 
@@ -29,6 +29,6 @@ void BasicTalker::buildKnowledge()
 {
     addConcept(eEXTRA_ARM_STOP, EXTRA_ARM_STOP);
     addConcept(eEXTRA_KEEP_TILT, EXTRA_KEEP_TILT);                         
-    addConcept(eEXTRA_AMY_END, EXTRA_AMY_END);                      
+    addConcept(eEXTRA_ARM_END, EXTRA_AMY_END);                      
 }
 }

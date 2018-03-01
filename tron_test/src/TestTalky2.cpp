@@ -32,17 +32,17 @@ void TestTalky2::makeTest()
     jointsData1.hwri = 25.0;
     jointsData1.vwri = 26.0;
     
-    // send command to arm
-    sendArmCommand(oArmClient, jointsData1);        
-    // read arm info
-    senseArmInfo(oArmListener, jointsData2);        
+    // send command to arm joints
+    sendCommand2ArmJoints(oArmClient, jointsData1);        
+    // read arm joints info
+    senseDataFromArmJoints(oArmListener, jointsData2);        
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTalky2::sendArmCommand(tron::ArmClient& oArmClient, tron::JointsData& jointsData)
+void TestTalky2::sendCommand2ArmJoints(tron::ArmClient& oArmClient, tron::JointsData& jointsData)
 {
-    LOG4CXX_INFO(logger, modName + ": sendArmCommand ...");
+    LOG4CXX_INFO(logger, modName + ": sendCommand2ArmJoints ...");
 
     oArmClient.setHS(jointsData.hs);
     oArmClient.setVS(jointsData.vs);
@@ -51,9 +51,9 @@ void TestTalky2::sendArmCommand(tron::ArmClient& oArmClient, tron::JointsData& j
     oArmClient.setVWRI(jointsData.vwri);
 }
 
-void TestTalky2::senseArmInfo(tron::ArmListener& oArmListener, tron::JointsData& jointsData) 
+void TestTalky2::senseDataFromArmJoints(tron::ArmListener& oArmListener, tron::JointsData& jointsData) 
 {
-    LOG4CXX_INFO(logger, modName + ": senseArmInfo ...");
+    LOG4CXX_INFO(logger, modName + ": senseDataFromArmJoints ...");
 
     // interpret test message
     if (oArmListener.getJointPositions(jointsData))

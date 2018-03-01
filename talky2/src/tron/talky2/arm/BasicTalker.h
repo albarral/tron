@@ -19,7 +19,7 @@ namespace tron
     {
         eEXTRA_ARM_STOP,                 /*! stop arm */
         eEXTRA_KEEP_TILT,          /*! keep the tilt position */
-        eEXTRA_AMY_END,                   /*! end process */
+        eEXTRA_ARM_END,                   /*! end process */
         eEXTRA_DIM
     };
 

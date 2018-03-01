@@ -28,7 +28,12 @@ public:
     void makeTest();      
     
 private:
-    void sendArmCommand(tron::ArmClient& oArmClient, tron::JointsData& jointsData);
-    void senseArmInfo(tron::ArmListener& oArmListener, tron::JointsData& jointsData);                
+    // send commands ...
+    void sendCommand2ArmJoints(tron::ArmClient& oArmClient, tron::JointsData& jointsData);
+//    void sendCommand2ArmAxes(tron::ArmClient& oArmClient, tron::AxesData& axesData);
+    
+    // sense data ..
+    void senseDataFromArmJoints(tron::ArmListener& oArmListener, tron::JointsData& jointsData);                
+//    void senseDataFromArmAxes(tron::ArmListener& oArmListener, tron::AxesData& axesData);                
 };
 #endif

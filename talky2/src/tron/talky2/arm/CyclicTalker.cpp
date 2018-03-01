@@ -12,10 +12,10 @@ namespace tron
 
 CyclicTalker::CyclicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_CYCLIC)
 {
-    // and complete it with topic word
+    // complete name with topic word
     completeName();
     
-    // finally build talker knowledge
+    // build talker knowledge
     buildKnowledge();    
 }
 

@@ -24,7 +24,6 @@ class TronArmClient
     // set VWRI joint (vertical wrist) to given position (degrees)
     virtual bool setVWRI(float value) = 0;
 
-/*    
     // axis topic ...
     // set pan axis to given position (degrees)
     virtual bool setPan(float value) = 0;
@@ -54,15 +53,15 @@ class TronArmClient
     virtual bool setFrontCyclerFreq2(float value) = 0;
     // set phase difference of frontal cycler components (degrees)
     virtual bool setFrontCyclerPhase(float value) = 0;
-    
+
     // extra topic ...    
     // stop arm
-    virtual bool stopArm();
+    virtual bool stopArm() = 0;
     // keep arm tilt
-    virtual bool keepTilt();
+    virtual bool keepTilt() = 0;
     // end arm control process
-    virtual bool endArm();        
- */
+    virtual bool endArm() = 0;        
+
 };
 }
 #endif

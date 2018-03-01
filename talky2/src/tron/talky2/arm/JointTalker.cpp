@@ -12,10 +12,10 @@ namespace tron
 
 JointTalker::JointTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopic::eARM_JOINT)
 {
-    // and complete it with topic word
+    // complete name with topic word
     completeName();
     
-    // finally build talker knowledge
+    // build talker knowledge
     buildKnowledge();    
 }
 
