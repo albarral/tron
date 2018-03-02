@@ -6,22 +6,26 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <string>
+#include <log4cxx/logger.h>
 
-#include "tron/talky2/arm/ArmCommunicator.h"
+#include "tron/talky2/arm/ArmChannelClient.h"
 #include "tron/robot/clients/TronArmClient.h"
 
 namespace tron
 {
 // Arm client class (implementing TronArmClient interface) to control a robot arm.
-class ArmClient : public ArmCommunicator, public TronArmClient
+class ArmClient : public TronArmClient
 {    
 private:
-    std::string message;
+    static log4cxx::LoggerPtr logger;
+    ArmChannelClient* pArmJointClient;
+    ArmChannelClient* pArmAxisClient;
+    ArmChannelClient* pArmCyclicClient;
+    ArmChannelClient* pArmExtraClient;
         
 public:
     ArmClient();
-    //~ArmClient();
+    ~ArmClient();
 
     // set HS joint (horizontal shoulder) to given position (degrees)
     virtual bool setHS(float value);
@@ -70,17 +74,7 @@ public:
     // keep arm tilt
     virtual bool keepTilt();
     // end arm control process
-    virtual bool endArm();        
-    
-private:
-    // send command for joint topic
-    bool sendJointCommand(int code, float value);
-    // send command for axis topic
-    bool sendAxisCommand(int code, float value);
-    // send command for cyclic topic
-    bool sendCyclicCommand(int code, float value);
-    // send command for extra topic
-    bool sendExtraCommand(int code, float value);
+    virtual bool endArm();            
 };
 
 }

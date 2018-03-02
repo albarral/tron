@@ -11,6 +11,8 @@ using namespace log4cxx;
 
 namespace tron
 {
+LoggerPtr ArmListener::logger(Logger::getLogger("tron.talky2"));
+
 ArmListener::ArmListener()
 {    
 }
