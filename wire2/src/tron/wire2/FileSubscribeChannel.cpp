@@ -66,7 +66,8 @@ bool FileSubscribeChannel::receiveMessages(std::vector<std::string>& listMessage
     {
         // read file from top
         oFileReader.goTop();
-        return oFileReader.readAllLines(listMessages);
+        oFileReader.readAllLines(listMessages);
+        return true;    // no matter if something read or not
     }
     else
     {

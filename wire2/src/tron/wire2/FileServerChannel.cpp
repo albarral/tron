@@ -65,8 +65,11 @@ bool FileServerChannel::close()
 
 bool FileServerChannel::receiveMessages(std::vector<std::string>& listMessages)
 {
-    if (oFileReader.isOpen())        
-        return oFileReader.readAllLines(listMessages);
+    if (oFileReader.isOpen())  
+    {
+        oFileReader.readAllLines(listMessages);
+        return true;    // no matter if something read or not
+    }
     else
     {
         LOG4CXX_ERROR(logger, "FileServerChannel: can't read messages, file reader not open ");

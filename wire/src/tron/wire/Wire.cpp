@@ -194,7 +194,6 @@ bool Wire::hearMessages(int node, int channel, std::vector<std::string>& listMes
     // if input channel available, read messages through it
     if (pInputChannel != 0)    
     {   
-        listMessages.clear();  
         return pInputChannel->receiveMessages(listMessages);
     }
     else
