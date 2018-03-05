@@ -36,6 +36,8 @@
           <itemPath>src/tron/talky2/channel/ChannelCommunicator.h</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelListener.cpp</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelListener.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelServer.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelServer.h</itemPath>
         </logicalFolder>
         <itemPath>src/tron/talky2/Talker.cpp</itemPath>
         <itemPath>src/tron/talky2/Talker.h</itemPath>
@@ -209,6 +211,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/tron/talky2/channel/ChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -306,6 +318,16 @@
             flavor2="0">
       </item>
       <item path="src/tron/talky2/channel/ChannelListener.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.h"
             ex="false"
             tool="3"
             flavor2="0">

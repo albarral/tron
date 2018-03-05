@@ -45,7 +45,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelClient.o \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelCommunicator.o \
-	${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o
+	${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o \
+	${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o
 
 
 # C Compiler Flags
@@ -126,6 +127,11 @@ ${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o: src/tron/talky2/channel/
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/channel
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o src/tron/talky2/channel/ChannelListener.cpp
+
+${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o: src/tron/talky2/channel/ChannelServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/channel
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o src/tron/talky2/channel/ChannelServer.cpp
 
 # Subprojects
 .build-subprojects:
