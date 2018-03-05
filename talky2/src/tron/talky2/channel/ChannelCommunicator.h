@@ -21,9 +21,10 @@ protected:
     static log4cxx::LoggerPtr logger;
     int node;
     int topic;
+    Talker* pTalker;
+    bool btuned;
     std::string identity;    
     FileWire oWire;                                     // communications wire   
-    Talker* pTalker;
         
 public:
     ChannelCommunicator(int node, int topic);
@@ -31,6 +32,12 @@ public:
     
 protected:    
     virtual void setIdentity() = 0;
+    
+private:
+    // create talker for this channel node & topic
+    bool createTalker();        
+    // create talker for specific arm topic
+    Talker* createTalker4ArmTopic();
 };
 
 }

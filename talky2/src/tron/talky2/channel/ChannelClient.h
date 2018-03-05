@@ -13,7 +13,7 @@ namespace tron
 // Base channel communicator with client functionality (sender on unicast channels).
 class ChannelClient : public ChannelCommunicator
 {    
-private:
+protected:
     std::string message;
         
 public:

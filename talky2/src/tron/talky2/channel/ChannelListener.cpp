@@ -22,9 +22,9 @@ ChannelListener::~ChannelListener()
 
 bool ChannelListener::senseChannel()
 {    
-    // clear message queue
+    // clear messages queue
     listMessages.clear();  
-    // hear messages in joints channel
+    // hear messages coming from the proper channel
     if (oWire.hearMessages(node, topic, listMessages))                    
         return true;
     else

@@ -8,7 +8,7 @@
 
 #include <log4cxx/logger.h>
 
-#include "tron/talky2/arm/ArmChannelClient.h"
+#include "tron/talky2/channel/ChannelClient.h"
 #include "tron/robot/clients/TronArmClient.h"
 
 namespace tron
@@ -18,10 +18,10 @@ class ArmClient : public TronArmClient
 {    
 private:
     static log4cxx::LoggerPtr logger;
-    ArmChannelClient* pArmJointClient;
-    ArmChannelClient* pArmAxisClient;
-    ArmChannelClient* pArmCyclicClient;
-    ArmChannelClient* pArmExtraClient;
+    ChannelClient* pJointChannelClient;
+    ChannelClient* pAxisChannelClient;
+    ChannelClient* pCyclicChannelClient;
+    ChannelClient* pExtraChannelClient;
         
 public:
     ArmClient();

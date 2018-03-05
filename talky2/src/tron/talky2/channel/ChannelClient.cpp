@@ -21,7 +21,7 @@ ChannelClient::ChannelClient(int node, int topic) : ChannelCommunicator(node, to
 
 bool ChannelClient::sendMessage(int code, float value)
 {    
-    if (pTalker != 0)
+    if (btuned)
     {
         if (pTalker->buildMessage(code, value, message))
         {
@@ -41,7 +41,7 @@ bool ChannelClient::sendMessage(int code, float value)
     }
     else
     {
-        LOG4CXX_WARN(logger, identity + ": send message failed, no talker found");            
+        LOG4CXX_WARN(logger, identity + ": send message failed, communicator not tuned");            
         return false;
     }
 }

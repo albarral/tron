@@ -16,7 +16,7 @@ namespace tron
 // Base channel communicator with listener functionality (subscriber on broadcast channels).
 class ChannelListener : public ChannelCommunicator
 {    
-private:
+protected:
     std::vector<std::string> listMessages;
         
 public:
@@ -27,7 +27,7 @@ public:
     bool senseChannel();
     
     // process data from received messages
-    virtual void processSensedData() = 0;
+    virtual void processData() = 0;
     
 protected:    
     virtual void setIdentity();
