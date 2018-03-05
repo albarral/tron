@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/ArmServer.o \
+	${OBJECTDIR}/src/JointChannelServer.o \
 	${OBJECTDIR}/src/TestComy.o \
 	${OBJECTDIR}/src/TestMaty.o \
 	${OBJECTDIR}/src/TestNety.o \
@@ -70,6 +72,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/src/ArmServer.o: src/ArmServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ArmServer.o src/ArmServer.cpp
+
+${OBJECTDIR}/src/JointChannelServer.o: src/JointChannelServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/JointChannelServer.o src/JointChannelServer.cpp
 
 ${OBJECTDIR}/src/TestComy.o: src/TestComy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

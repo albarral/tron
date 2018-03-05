@@ -11,6 +11,7 @@
 
 #include "tron/talky2/arm/ArmClient.h"
 #include "tron/talky2/arm/ArmListener.h"
+#include "ArmServer.h"
 #include "tron/robot/sensors/ArmSensors.h"
 
 // Class used to test coms with libtron_talky2.
@@ -29,11 +30,14 @@ public:
     
 private:
     // send commands ...
-    void sendCommand2ArmJoints(tron::ArmClient& oArmClient, tron::JointsData& jointsData);
+    void sendArmJointCommands(tron::ArmClient& oArmClient, float value);
 //    void sendCommand2ArmAxes(tron::ArmClient& oArmClient, tron::AxesData& axesData);
+
+    // serve commands ..
+    void serveArmJointCommands(tron::ArmServer& oArmServer);                
     
     // sense data ..
-    void senseDataFromArmJoints(tron::ArmListener& oArmListener, tron::JointsData& jointsData);                
+    void hearArmJointsData(tron::ArmListener& oArmListener, tron::JointsData& jointsData);                
 //    void senseDataFromArmAxes(tron::ArmListener& oArmListener, tron::AxesData& axesData);                
 };
 #endif
