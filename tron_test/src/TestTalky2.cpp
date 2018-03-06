@@ -6,6 +6,9 @@
 
 #include "TestTalky2.h"
 #include "test/talky2/JointChannelServer.h"
+#include "tron/talky2/arm/JointTalker.h"
+#include "tron/robot/RobotNodes.h"
+#include "tron/robot/topics/ArmTopics.h"
 
 using namespace log4cxx;
 
@@ -60,6 +63,12 @@ void TestTalky2::testBroadcastComs()
 {
     LOG4CXX_INFO(logger, "TestTalky2::testBroadcastComs \n");
 
+    ChannelPublisher oJointChannelPublisher(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT);
+
+    publishData2Channel(oJointChannelPublisher, 80.0);
+    oJointChannelPublisher.clearChannel();
+    publishData2Channel(oJointChannelPublisher, 90.0);
+    
     ArmListener oArmListener;
     JointsData jointsData;
             
@@ -116,6 +125,16 @@ void TestTalky2::checkServerChannel(ChannelServer& oChannelServer)
     {
         LOG4CXX_WARN(logger, "TestTalky2: no messages in channel ...");
     }
+}
+
+
+void TestTalky2::publishData2Channel(ChannelPublisher& oChannelPublisher, float value)
+{
+    oChannelPublisher.publishMessage(JointTalker::eJOINT_HS_POS, value++);
+    oChannelPublisher.publishMessage(JointTalker::eJOINT_VS_POS, value++);
+    oChannelPublisher.publishMessage(JointTalker::eJOINT_ELB_POS, value++);
+    oChannelPublisher.publishMessage(JointTalker::eJOINT_HWRI_POS, value++);
+    oChannelPublisher.publishMessage(JointTalker::eJOINT_VWRI_POS, value++);    
 }
 
 }
