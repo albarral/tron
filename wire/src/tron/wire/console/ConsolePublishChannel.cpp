@@ -21,8 +21,16 @@ bool ConsolePublishChannel::close()
     return (bopen == false);        
 }
 
+bool ConsolePublishChannel::clearInfo()
+{
+    // not really an info clearing 
+    std::cout << name + ":" << std::endl;                
+    return true;    
+}
+
 bool ConsolePublishChannel::sendMsg(std::string text)
 {
-    std::cout << name + ":" + text << std::endl;        
+    std::cout << name + ":" + text << std::endl;    
+    return true;    
 }
 }

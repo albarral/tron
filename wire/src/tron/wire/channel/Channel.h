@@ -47,7 +47,9 @@ public:
     virtual bool open() = 0;
     // close channel
     virtual bool close() = 0;
-    
+    // clear info in channel
+    virtual bool clearInfo() = 0;
+
     bool isOpen() {return bopen;};
     
 protected:

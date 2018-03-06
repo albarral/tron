@@ -54,6 +54,21 @@ bool FilePublishChannel::close()
     }
 }
 
+bool FilePublishChannel::clearInfo()
+{
+    if (bopen && oFileWriter.isOpen())        
+    {
+        // overwrite any previous info
+        oFileWriter.goTop();
+        return true;
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "FilePublishChannel: can't clear info, coms file not open");                
+        return false;
+    }   
+}
+
 bool FilePublishChannel::sendMsg(std::string text)
 {
     if (bopen && oFileWriter.isOpen())        
@@ -68,22 +83,6 @@ bool FilePublishChannel::sendMsg(std::string text)
         LOG4CXX_ERROR(logger, "FilePublishChannel: send failed! coms file not open");                
         return false;
     }
-}
-
-
-bool FilePublishChannel::newPublishing()
-{
-    if (oFileWriter.isOpen())        
-    {
-        // overwrite any previous info
-        oFileWriter.goTop();
-        return true;
-    }
-    else
-    {
-        LOG4CXX_ERROR(logger, "FilePublishChannel: can't publish info, coms file not open");                
-        return false;
-    }   
 }
 
 }

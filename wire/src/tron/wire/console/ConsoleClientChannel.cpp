@@ -23,6 +23,7 @@ bool ConsoleClientChannel::close()
 
 bool ConsoleClientChannel::sendMsg(std::string text)
 {
-    std::cout << name + ":" + text << std::endl;        
+    std::cout << name + ":" + text << std::endl;      
+    return true;    
 }
 }

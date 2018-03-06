@@ -23,6 +23,8 @@ public:
     virtual bool open();
     // close channel
     virtual bool close();
+    // clear info in channel
+    virtual bool clearInfo();
     // receive messages from origin, returns false if nothing received
     virtual bool receiveMessages(std::vector<std::string>& listMessages);
 };

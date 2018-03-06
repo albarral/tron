@@ -16,6 +16,9 @@ class SubscribeChannel : public InputChannel
 public:
     SubscribeChannel();
     SubscribeChannel(int node, int channel);
+
+    // clear info in channel
+    virtual bool clearInfo();    
 };
 }
 #endif

@@ -29,19 +29,23 @@ protected:
 public:
     Wire();
     ~Wire();
-
-    // clears all channels lists
-    void clearChannels();
     
-    // unicast methods
+    // send message through client channel
     bool sendMsg(int node, int channel, std::string text);
 //    bool sendMessages(int node, int channel, std::vector<std::string>& listMessages);
+    // receive messages from server channel 
     bool receiveMessages(int node, int channel, std::vector<std::string>& listMessages);
 
-    // broadcast methods
+    // publish message through publisher channel
     bool publishMsg(int node, int channel, std::string text);
 //    bool publishMessages(int node, int channel, std::vector<std::string>& listMessages);
+    // read messages from subscribe channel 
     bool hearMessages(int node, int channel, std::vector<std::string>& listMessages);
+
+    // clears info in specified publish channel
+    bool clearPublishChannel(int node, int channel);
+    // clears info in specified server channel
+    bool clearServerChannel(int node, int channel);
     
 private:    
     // search output channel in given list for given node/channel
@@ -49,10 +53,12 @@ private:
     // get existing input channel in given list for given node/channel
     InputChannel* searchInputChannel(int node, int channel, std::vector<InputChannel*>& listInputChannels);
     
+    // clears all channels lists
+    void deleteChannels();
     // clears given list of input channels (deleting objects in heap)
-    void clearInputChannelsList(std::vector<InputChannel*>& listInputChannels);
+    void deleteInputChannels(std::vector<InputChannel*>& listInputChannels);
     // clears given list of output channels (deleting objects in heap)
-    void clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChannels);
+    void deleteOutputChannels(std::vector<OutputChannel*>& listOutputChannels);
     
 protected:    
     // create new client channel for given node/channel 

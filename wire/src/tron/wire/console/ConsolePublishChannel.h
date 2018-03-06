@@ -23,6 +23,8 @@ public:
     virtual bool open();
     // close channel
     virtual bool close();
+    // clear info in channel
+    virtual bool clearInfo();
     // send message to destination, returns false if nothing sent
     virtual bool sendMsg(std::string text);
 };

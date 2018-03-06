@@ -20,4 +20,11 @@ ClientChannel::ClientChannel(int node, int channel) : OutputChannel(node, channe
     setName();
     mode = "client";
 }
+    
+// clients do not own the channel, so they can't clear its info
+bool ClientChannel::clearInfo()
+{
+    return true;    
+}    
+
 }

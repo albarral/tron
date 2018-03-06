@@ -16,6 +16,9 @@ class ClientChannel : public OutputChannel
 public:
     ClientChannel();
     ClientChannel(int node, int channel);
+    
+    // clear info in channel
+    virtual bool clearInfo();    
 };
 }
 #endif

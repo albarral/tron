@@ -17,48 +17,8 @@ Wire::Wire()
 
 Wire::~Wire()
 {
-    clearChannels();
+    deleteChannels();
 }
-
-void Wire::clearChannels()
-{    
-    clearOutputChannelsList(listClientChannels);
-    
-    clearInputChannelsList(listServerChannels);
-
-    clearOutputChannelsList(listPublishChannels);
-    
-    clearInputChannelsList(listSubscribeChannels);
-}
-
-
-void Wire::clearInputChannelsList(std::vector<InputChannel*>& listInputChannels)
-{
-    // delete input channel objects stored in given list
-    for (InputChannel* pInputChannel : listInputChannels)
-    {    
-       LOG4CXX_INFO(logger, "Wire: clear " + pInputChannel->getMode() + " channel " + pInputChannel->getName());
-       if (pInputChannel != 0) 
-            delete (pInputChannel);
-    }
-    // and clear the list
-    listInputChannels.clear();    
-}
-
-
-void Wire::clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChannels)
-{
-    // delete output channel objects stored in given list
-    for (OutputChannel* pOutputChannel : listOutputChannels)
-    {    
-       LOG4CXX_INFO(logger, "Wire: clear " + pOutputChannel->getMode() + " channel " + pOutputChannel->getName());
-        if (pOutputChannel != 0) 
-            delete (pOutputChannel);
-    }
-    // and clear the list
-    listOutputChannels.clear();
-}
-
 
 // send message by client channel
 bool Wire::sendMsg(int node, int channel, std::string text)
@@ -203,6 +163,40 @@ bool Wire::hearMessages(int node, int channel, std::vector<std::string>& listMes
 }
 
 
+bool Wire::clearPublishChannel(int node, int channel)
+{
+    // get proper publish channel
+    OutputChannel* pOutputChannel = searchOutputChannel(node, channel, listPublishChannels);
+            
+    // if publish channel available, clear its info
+    if (pOutputChannel != 0)    
+        return pOutputChannel->clearInfo();
+    else
+    {
+        LOG4CXX_WARN(logger, "Wire: clear publish channel failed, no channel for node - channel = " << node << " - " << channel);
+        return false;
+    }    
+}
+
+
+bool Wire::clearServerChannel(int node, int channel)
+{
+    // get proper server channel
+    InputChannel* pInputChannel = searchInputChannel(node, channel, listServerChannels);
+    
+    // if input server available, clear its info
+    if (pInputChannel != 0)    
+    {   
+        return pInputChannel->clearInfo();
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, "Wire: clear server channel failed, no channel for node - channel = " << node << " - " << channel);
+        return false;
+    }    
+}
+
+
 OutputChannel* Wire::searchOutputChannel(int node, int channel, std::vector<OutputChannel*>& listOutputChannels)
 {
     // search output channel for given node/channel in the given channels list
@@ -231,5 +225,40 @@ InputChannel* Wire::searchInputChannel(int node, int channel, std::vector<InputC
 }
 
 
+void Wire::deleteChannels()
+{    
+    deleteOutputChannels(listClientChannels);    
+    deleteInputChannels(listServerChannels);
+    deleteOutputChannels(listPublishChannels);   
+    deleteInputChannels(listSubscribeChannels);
+}
+
+
+void Wire::deleteInputChannels(std::vector<InputChannel*>& listInputChannels)
+{
+    // delete input channel objects stored in given list
+    for (InputChannel* pInputChannel : listInputChannels)
+    {    
+       LOG4CXX_INFO(logger, "Wire: clear " + pInputChannel->getMode() + " channel " + pInputChannel->getName());
+       if (pInputChannel != 0) 
+            delete (pInputChannel);
+    }
+    // and clear the list
+    listInputChannels.clear();    
+}
+
+
+void Wire::deleteOutputChannels(std::vector<OutputChannel*>& listOutputChannels)
+{
+    // delete output channel objects stored in given list
+    for (OutputChannel* pOutputChannel : listOutputChannels)
+    {    
+       LOG4CXX_INFO(logger, "Wire: clear " + pOutputChannel->getMode() + " channel " + pOutputChannel->getName());
+        if (pOutputChannel != 0) 
+            delete (pOutputChannel);
+    }
+    // and clear the list
+    listOutputChannels.clear();
+}
 
 }

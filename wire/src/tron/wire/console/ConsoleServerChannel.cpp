@@ -21,6 +21,13 @@ bool ConsoleServerChannel::close()
     return (bopen == false);        
 }
 
+bool ConsoleServerChannel::clearInfo()
+{
+    // not really an info clearing 
+    std::cout << name + ":" << std::endl;                    
+    return true;    
+}
+
 bool ConsoleServerChannel::receiveMessages(std::vector<std::string>& listMessages)
 {
     std::string text;

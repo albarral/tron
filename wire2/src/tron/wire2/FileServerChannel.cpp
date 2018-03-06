@@ -63,6 +63,21 @@ bool FileServerChannel::close()
     }
 }
 
+bool FileServerChannel::clearInfo()
+{
+    if (bopen && oFileReader.isOpen())        
+    {
+        // overwrite any previous info
+        oFileReader.cleanFile();
+        return true;
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "FileServerChannel: can't clear info, coms file not open");                
+        return false;
+    }   
+}
+
 bool FileServerChannel::receiveMessages(std::vector<std::string>& listMessages)
 {
     if (oFileReader.isOpen())  

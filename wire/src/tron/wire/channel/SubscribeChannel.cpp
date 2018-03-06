@@ -20,4 +20,10 @@ SubscribeChannel::SubscribeChannel(int node, int channel) : InputChannel(node, c
     setName();    
     mode = "subscribe";
 }
+
+// subscribers do not own the channel, so they can't clear its info
+bool SubscribeChannel::clearInfo()
+{
+    return true;    
+}    
 }
