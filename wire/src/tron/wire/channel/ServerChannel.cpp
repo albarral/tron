@@ -11,12 +11,14 @@ namespace tron
 ServerChannel::ServerChannel()
 {    
     type = Channel::eCHANNEL_UNICAST;
+    mode = "server";
 }
 
 ServerChannel::ServerChannel(int node, int channel) : InputChannel(node, channel)
 {
     type = Channel::eCHANNEL_UNICAST;
     setName();    
+    mode = "server";
 }
 
 }

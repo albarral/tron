@@ -31,6 +31,7 @@ protected:
     int channel;           // associated category 
     bool bopen;         // indicator of open channel
     std::string name;   // channel name
+    std::string mode;   // channel mode (client, server, publisher, subscriber)
     
 public:
     Channel();
@@ -40,7 +41,8 @@ public:
     int getNode() {return node;};
     int getChannel() {return channel;};
     std::string getName() {return name;};
-    
+    std::string getMode() {return mode;};
+
     // open channel
     virtual bool open() = 0;
     // close channel

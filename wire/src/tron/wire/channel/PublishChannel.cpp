@@ -11,11 +11,13 @@ namespace tron
 PublishChannel::PublishChannel()
 {    
     type = Channel::eCHANNEL_BROADCAST;
+    mode = "publish";
 }
 
 PublishChannel::PublishChannel(int node, int channel) : OutputChannel(node, channel)
 {    
     type = Channel::eCHANNEL_BROADCAST;
     setName();
+    mode = "publish";
 }
 }

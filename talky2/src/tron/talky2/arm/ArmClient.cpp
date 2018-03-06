@@ -28,10 +28,14 @@ ArmClient::ArmClient()
 
 ArmClient::~ArmClient()
 {    
-    delete(pJointChannelClient);
-    delete(pAxisChannelClient);
-    delete(pCyclicChannelClient);
-    delete(pExtraChannelClient);
+    if (pJointChannelClient != 0)
+        delete(pJointChannelClient);
+    if (pAxisChannelClient != 0)
+        delete(pAxisChannelClient);
+    if (pCyclicChannelClient != 0)
+        delete(pCyclicChannelClient);
+    if (pExtraChannelClient != 0)
+        delete(pExtraChannelClient);
 }
 
 // JOINT TOPIC ...

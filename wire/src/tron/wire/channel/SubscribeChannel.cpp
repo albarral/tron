@@ -11,11 +11,13 @@ namespace tron
 SubscribeChannel::SubscribeChannel()
 {    
     type = Channel::eCHANNEL_BROADCAST;
+    mode = "subscribe";
 }
 
 SubscribeChannel::SubscribeChannel(int node, int channel) : InputChannel(node, channel)
 {    
     type = Channel::eCHANNEL_BROADCAST;
     setName();    
+    mode = "subscribe";
 }
 }

@@ -11,11 +11,13 @@ namespace tron
 ClientChannel::ClientChannel()
 {    
     type = Channel::eCHANNEL_UNICAST;
+    mode = "client";
 }
 
 ClientChannel::ClientChannel(int node, int channel) : OutputChannel(node, channel)
 {
     type = Channel::eCHANNEL_UNICAST;    
     setName();
+    mode = "client";
 }
 }

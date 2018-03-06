@@ -21,9 +21,7 @@ Wire::~Wire()
 }
 
 void Wire::clearChannels()
-{
-    LOG4CXX_INFO(logger, "Wire: clearing channels ...");
-    
+{    
     clearOutputChannelsList(listClientChannels);
     
     clearInputChannelsList(listServerChannels);
@@ -38,8 +36,9 @@ void Wire::clearInputChannelsList(std::vector<InputChannel*>& listInputChannels)
 {
     // delete input channel objects stored in given list
     for (InputChannel* pInputChannel : listInputChannels)
-    {
-        if (pInputChannel != 0) 
+    {    
+       LOG4CXX_INFO(logger, "Wire: clear " + pInputChannel->getMode() + " channel " + pInputChannel->getName());
+       if (pInputChannel != 0) 
             delete (pInputChannel);
     }
     // and clear the list
@@ -51,7 +50,8 @@ void Wire::clearOutputChannelsList(std::vector<OutputChannel*>& listOutputChanne
 {
     // delete output channel objects stored in given list
     for (OutputChannel* pOutputChannel : listOutputChannels)
-    {
+    {    
+       LOG4CXX_INFO(logger, "Wire: clear " + pOutputChannel->getMode() + " channel " + pOutputChannel->getName());
         if (pOutputChannel != 0) 
             delete (pOutputChannel);
     }
