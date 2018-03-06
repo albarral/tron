@@ -6,21 +6,20 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <string>
 #include <log4cxx/logger.h>
 
 #include "tron/talky2/arm/ArmClient.h"
 #include "tron/talky2/arm/ArmListener.h"
-#include "ArmServer.h"
 #include "tron/robot/sensors/ArmSensors.h"
+#include "tron/talky2/channel/ChannelServer.h"
 
+namespace tron
+{
 // Class used to test coms with libtron_talky2.
 class TestTalky2
 {
 private:
     static log4cxx::LoggerPtr logger;
-    std::string modName;          // module name
-   
 
 public:
     TestTalky2();
@@ -29,15 +28,19 @@ public:
     void makeTest();      
     
 private:
-    // send commands ...
-    void sendArmJointCommands(tron::ArmClient& oArmClient, float value);
-//    void sendCommand2ArmAxes(tron::ArmClient& oArmClient, tron::AxesData& axesData);
+    void testUnicastComs();      
+    void testBroadcastComs();      
 
-    // serve commands ..
-    void serveArmJointCommands(tron::ArmServer& oArmServer);                
+    // send commands ...
+    void sendArmJointCommands(ArmClient& oArmClient, float value);
+//    void sendCommand2ArmAxes(tron::ArmClient& oArmClient, tron::AxesData& axesData);
     
     // sense data ..
-    void hearArmJointsData(tron::ArmListener& oArmListener, tron::JointsData& jointsData);                
-//    void senseDataFromArmAxes(tron::ArmListener& oArmListener, tron::AxesData& axesData);                
+    void hearArmJointsData(ArmListener& oArmListener, JointsData& jointsData);                
+
+        
+    void checkServerChannel(ChannelServer& oChannelServer);
 };
+
+}
 #endif

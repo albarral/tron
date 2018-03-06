@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include "JointChannelServer.h"
+#include "test/talky2/JointChannelServer.h"
 #include "tron/talky2/arm/JointTalker.h"
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopics.h"

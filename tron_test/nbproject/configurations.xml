@@ -13,10 +13,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>src/ArmServer.cpp</itemPath>
-        <itemPath>src/ArmServer.h</itemPath>
-        <itemPath>src/JointChannelServer.cpp</itemPath>
-        <itemPath>src/JointChannelServer.h</itemPath>
+        <logicalFolder name="talky2" displayName="talky2" projectFiles="true">
+          <itemPath>src/test/talky2/JointChannelServer.cpp</itemPath>
+          <itemPath>src/test/talky2/JointChannelServer.h</itemPath>
+        </logicalFolder>
         <itemPath>src/TestComy.cpp</itemPath>
         <itemPath>src/TestComy.h</itemPath>
         <itemPath>src/TestMaty.cpp</itemPath>
@@ -207,14 +207,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="src/ArmServer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/ArmServer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/JointChannelServer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JointChannelServer.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/TestComy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestComy.h" ex="false" tool="3" flavor2="0">
@@ -252,6 +244,16 @@
       <item path="src/TestTuly.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -274,14 +276,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="src/ArmServer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/ArmServer.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/JointChannelServer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/JointChannelServer.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/TestComy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestComy.h" ex="false" tool="3" flavor2="0">
@@ -319,6 +313,16 @@
       <item path="src/TestTuly.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
   </confs>

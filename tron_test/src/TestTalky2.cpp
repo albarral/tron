@@ -5,27 +5,38 @@
 
 
 #include "TestTalky2.h"
+#include "test/talky2/JointChannelServer.h"
 
 using namespace log4cxx;
 
+namespace tron
+{
 LoggerPtr TestTalky2::logger(Logger::getLogger("tron"));
 
 // Constructor 
 TestTalky2::TestTalky2()
 {    
-    modName = "TestTalky2";
  }
 
 void TestTalky2::makeTest()
 {
-    LOG4CXX_INFO(logger, modName + ": test start \n");
+    LOG4CXX_INFO(logger, "TestTalky2: test start \n");
 
-    tron::ArmClient oArmClient1;
-    tron::ArmClient oArmClient2;
-    tron::ArmListener oArmListener;
-    tron::ArmServer oArmServer;
+    //testUnicastComs();
+    
+    testBroadcastComs();
+        
+    LOG4CXX_INFO(logger, "TestTalky2: test end \n");
+}
 
-    tron::JointsData jointsData2;
+
+void TestTalky2::testUnicastComs()
+{
+    LOG4CXX_INFO(logger, "TestTalky2::testUnicastComs \n");
+
+    ArmClient oArmClient1;
+    ArmClient oArmClient2;
+    JointChannelServer oJointChannelServer;
 
     float val1 = 10.0;
     float val2 = 20.0;
@@ -37,21 +48,30 @@ void TestTalky2::makeTest()
         sendArmJointCommands(oArmClient2, val2);        
 
         // serve joint commands
-        serveArmJointCommands(oArmServer);
+        checkServerChannel(oJointChannelServer);
         
         val1 += 100;
         val2 += 100;
     }
+}
+
+
+void TestTalky2::testBroadcastComs()
+{
+    LOG4CXX_INFO(logger, "TestTalky2::testBroadcastComs \n");
+
+    ArmListener oArmListener;
+    JointsData jointsData;
             
     // read arm joints info
-    //hearArmJointsData(oArmListener, jointsData2);        
+    hearArmJointsData(oArmListener, jointsData);        
         
-    LOG4CXX_INFO(logger, modName + ": test end \n");
-};
+    LOG4CXX_INFO(logger, "TestTalky2: test end \n");
+}
 
-void TestTalky2::sendArmJointCommands(tron::ArmClient& oArmClient, float value)
+void TestTalky2::sendArmJointCommands(ArmClient& oArmClient, float value)
 {
-    LOG4CXX_INFO(logger, modName + ": sendArmJointCommands ...");
+    LOG4CXX_INFO(logger, "TestTalky2: sendArmJointCommands ...");
 
     oArmClient.setHS(value++);
     oArmClient.setVS(value++);
@@ -60,40 +80,42 @@ void TestTalky2::sendArmJointCommands(tron::ArmClient& oArmClient, float value)
     oArmClient.setVWRI(value++);
 }
 
-void TestTalky2::serveArmJointCommands(tron::ArmServer& oArmServer)
+
+void TestTalky2::hearArmJointsData(ArmListener& oArmListener, JointsData& jointsData) 
 {
-    LOG4CXX_INFO(logger, modName + ": serveArmJointCommands ...");
-
-    if (oArmServer.checkJointsChannel())
-    {
-        // show obtained values
-        LOG4CXX_INFO(logger, modName + ": commands processed");
-    }
-    else
-    {
-        LOG4CXX_WARN(logger, modName + ": arm server didn't receive commands");            
-    }    
-}
-
-
-void TestTalky2::hearArmJointsData(tron::ArmListener& oArmListener, tron::JointsData& jointsData) 
-{
-    LOG4CXX_INFO(logger, modName + ": hearArmJointsData ...");
+    LOG4CXX_INFO(logger, "TestTalky2: hearArmJointsData ...");
 
     // interpret test message
     if (oArmListener.getJointPositions(jointsData))
     {
         // show obtained values
-        LOG4CXX_INFO(logger, modName + ": sensed HS < " << std::to_string(jointsData.hs));
-        LOG4CXX_INFO(logger, modName + ": sensed VS < " << std::to_string(jointsData.vs));
-        LOG4CXX_INFO(logger, modName + ": sensed EL < " << std::to_string(jointsData.elb));
-        LOG4CXX_INFO(logger, modName + ": sensed HW < " << std::to_string(jointsData.hwri));
-        LOG4CXX_INFO(logger, modName + ": sensed VW < " << std::to_string(jointsData.vwri));
+        LOG4CXX_INFO(logger, "TestTalky2: sensed HS < " << std::to_string(jointsData.hs));
+        LOG4CXX_INFO(logger, "TestTalky2: sensed VS < " << std::to_string(jointsData.vs));
+        LOG4CXX_INFO(logger, "TestTalky2: sensed EL < " << std::to_string(jointsData.elb));
+        LOG4CXX_INFO(logger, "TestTalky2: sensed HW < " << std::to_string(jointsData.hwri));
+        LOG4CXX_INFO(logger, "TestTalky2: sensed VW < " << std::to_string(jointsData.vwri));
     }
     else
     {
-        LOG4CXX_WARN(logger, modName + ": arm listener failed!");            
+        LOG4CXX_WARN(logger, "TestTalky2: arm listener failed!");            
     }
 }
 
+void TestTalky2::checkServerChannel(ChannelServer& oChannelServer)
+{    
+    LOG4CXX_INFO(logger, "TestTalky2::checkServerChannel ...");
 
+    // get messages in channel
+    if (oChannelServer.senseChannel())
+    {
+        // and process them
+        oChannelServer.processCommands();
+    }
+    // warn if no messages read
+    else
+    {
+        LOG4CXX_WARN(logger, "TestTalky2: no messages in channel ...");
+    }
+}
+
+}

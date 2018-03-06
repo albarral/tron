@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 //    oTestTronWire.makeTest();
 
     // test talky2 lib
-    TestTalky2 oTestTalky2;
+    tron::TestTalky2 oTestTalky2;
     oTestTalky2.makeTest();
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");

@@ -1,5 +1,5 @@
-#ifndef __TRON_TEST_JOINT_CHANNELSERVER_H
-#define __TRON_TEST_JOINT_CHANNELSERVER_H
+#ifndef __TRONTEST_JOINT_CHANNELSERVER_H
+#define __TRONTEST_JOINT_CHANNELSERVER_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
