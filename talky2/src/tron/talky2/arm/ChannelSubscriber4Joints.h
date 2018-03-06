@@ -1,25 +1,25 @@
-#ifndef __TALKY2_ARM_JOINT_CHANNELLISTENER_H
-#define __TALKY2_ARM_JOINT_CHANNELLISTENER_H
+#ifndef __TALKY2_ARM_JOINT_CHANNEL_SUBSCRIBER_H
+#define __TALKY2_ARM_JOINT_CHANNEL_SUBSCRIBER_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/talky2/channel/ChannelListener.h"
+#include "tron/talky2/channel/ChannelSubscriber.h"
 #include "tron/robot/sensors/ArmSensors.h"
 
 namespace tron
 {
-// Channel listener implementation for arm joints topic.
-class JointChannelListener : public ChannelListener
+// Specific channel subscriber for arm joints topic.
+class ChannelSubscriber4Joints : public ChannelSubscriber
 {    
 private:
     JointsData jointsData;
         
 public:
-    JointChannelListener();
-    //~JointChannelListener();
+    ChannelSubscriber4Joints();
+    //~ChannelSubscriber4Joints();
 
     JointsData& getJointsData() {return jointsData;};
     

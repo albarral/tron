@@ -22,9 +22,9 @@ protected:
     int node;
     int topic;
     Talker* pTalker;
-    bool btuned;
+    bool btuned;                // the communicator is tuned when it has a talker
     std::string identity;    
-    FileWire oWire;                                     // communications wire   
+    FileWire oWire;                 // communications wire   
         
 public:
     ChannelCommunicator(int node, int topic);

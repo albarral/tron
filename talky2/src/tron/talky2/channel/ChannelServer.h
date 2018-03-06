@@ -29,6 +29,9 @@ public:
     // process commands from received messages
     virtual void processCommands() = 0;
     
+    // clears info in our channel
+    bool clearChannel();
+    
 protected:    
     virtual void setIdentity();
 };

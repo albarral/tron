@@ -22,10 +22,10 @@
           <itemPath>src/tron/talky2/arm/AxisTalker.h</itemPath>
           <itemPath>src/tron/talky2/arm/BasicTalker.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/BasicTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.h</itemPath>
           <itemPath>src/tron/talky2/arm/CyclicTalker.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/CyclicTalker.h</itemPath>
-          <itemPath>src/tron/talky2/arm/JointChannelListener.cpp</itemPath>
-          <itemPath>src/tron/talky2/arm/JointChannelListener.h</itemPath>
           <itemPath>src/tron/talky2/arm/JointTalker.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/JointTalker.h</itemPath>
         </logicalFolder>
@@ -34,10 +34,12 @@
           <itemPath>src/tron/talky2/channel/ChannelClient.h</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelCommunicator.cpp</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelCommunicator.h</itemPath>
-          <itemPath>src/tron/talky2/channel/ChannelListener.cpp</itemPath>
-          <itemPath>src/tron/talky2/channel/ChannelListener.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelPublisher.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelPublisher.h</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelServer.cpp</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelServer.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelSubscriber.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelSuscriber.cpp</itemPath>
         </logicalFolder>
         <itemPath>src/tron/talky2/Talker.cpp</itemPath>
         <itemPath>src/tron/talky2/Talker.h</itemPath>
@@ -157,22 +159,22 @@
       </item>
       <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/talky2/arm/CyclicTalker.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/CyclicTalker.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/JointChannelListener.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/JointChannelListener.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/JointTalker.cpp"
             ex="false"
@@ -201,12 +203,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/channel/ChannelListener.cpp"
+      <item path="src/tron/talky2/channel/ChannelPublisher.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/channel/ChannelListener.h"
+      <item path="src/tron/talky2/channel/ChannelPublisher.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -219,6 +221,16 @@
       <item path="src/tron/talky2/channel/ChannelServer.h"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSuscriber.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
     </conf>
@@ -268,22 +280,22 @@
       </item>
       <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/talky2/arm/CyclicTalker.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/CyclicTalker.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/JointChannelListener.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/JointChannelListener.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/JointTalker.cpp"
             ex="false"
@@ -312,12 +324,12 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/channel/ChannelListener.cpp"
+      <item path="src/tron/talky2/channel/ChannelPublisher.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="src/tron/talky2/channel/ChannelListener.h"
+      <item path="src/tron/talky2/channel/ChannelPublisher.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -330,6 +342,16 @@
       <item path="src/tron/talky2/channel/ChannelServer.h"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSuscriber.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
     </conf>

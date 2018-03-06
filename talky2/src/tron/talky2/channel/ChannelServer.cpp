@@ -24,7 +24,7 @@ bool ChannelServer::senseChannel()
 {    
     // clear message queue
     listMessages.clear();  
-    // hear messages in joints channel
+    // get messages from wire (wire establishes a server connection)
     if (oWire.receiveMessages(node, topic, listMessages))                    
         return true;
     else
@@ -32,6 +32,18 @@ bool ChannelServer::senseChannel()
         LOG4CXX_WARN(logger, identity + ": sense channel failed, no reception channel");                                      
         return false;        
     }
+}
+
+bool ChannelServer::clearChannel()
+{
+    // clear the info in our wire's server channel
+    if (oWire.clearServerChannel(node, topic))
+        return true;
+    else
+    {
+        LOG4CXX_WARN(logger, identity + ": clear channel failed, no server channel");                                      
+        return false;        
+    }    
 }
 
 void ChannelServer::setIdentity()

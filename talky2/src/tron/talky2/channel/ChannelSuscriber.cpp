@@ -3,28 +3,28 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/talky2/channel/ChannelListener.h"
+#include "tron/talky2/channel/ChannelSubscriber.h"
 
 using namespace log4cxx;
 
 namespace tron
 {
-ChannelListener::ChannelListener(int node, int topic) : ChannelCommunicator(node, topic)
+ChannelSubscriber::ChannelSubscriber(int node, int topic) : ChannelCommunicator(node, topic)
 {    
     setIdentity();
 }
 
-ChannelListener::~ChannelListener()
+ChannelSubscriber::~ChannelSubscriber()
 {    
     listMessages.clear();
 }
 
 
-bool ChannelListener::senseChannel()
+bool ChannelSubscriber::senseChannel()
 {    
     // clear messages queue
     listMessages.clear();  
-    // hear messages coming from the proper channel
+    // hear messages from wire (wire establishes a subscriber connection)
     if (oWire.hearMessages(node, topic, listMessages))                    
         return true;
     else
@@ -34,9 +34,9 @@ bool ChannelListener::senseChannel()
     }
 }
 
-void ChannelListener::setIdentity()
+void ChannelSubscriber::setIdentity()
 {
-    identity = "ChannelListener" + std::to_string(node) + "- " + std::to_string(topic);
+    identity = "ChannelSubscriber" + std::to_string(node) + "- " + std::to_string(topic);
     
 }
 }

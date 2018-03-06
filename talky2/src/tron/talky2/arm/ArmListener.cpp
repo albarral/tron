@@ -22,11 +22,11 @@ ArmListener::ArmListener()
 bool ArmListener::getJointPositions(JointsData& jointsData)
 {    
     // hear messages in joints channel
-    if (oJointChannelListener.senseChannel())
+    if (oChannelSubscriber4Joints.senseChannel())
     {
         // process received messages
-        oJointChannelListener.processData();
-        jointsData = oJointChannelListener.getJointsData();
+        oChannelSubscriber4Joints.processData();
+        jointsData = oChannelSubscriber4Joints.getJointsData();
         return true;
     }
     // if no messages could be read

@@ -10,7 +10,7 @@
 #include <vector>
 #include <log4cxx/logger.h>
 
-#include "tron/talky2/arm/JointChannelListener.h"
+#include "tron/talky2/arm/ChannelSubscriber4Joints.h"
 #include "tron/robot/listeners/TronArmListener.h"
 #include "tron/robot/sensors/ArmSensors.h"
 
@@ -21,7 +21,7 @@ class ArmListener : public TronArmListener
 {    
 private:
     static log4cxx::LoggerPtr logger;
-    JointChannelListener oJointChannelListener;
+    ChannelSubscriber4Joints oChannelSubscriber4Joints;
         
 public:
     ArmListener();

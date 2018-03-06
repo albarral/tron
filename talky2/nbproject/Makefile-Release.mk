@@ -40,13 +40,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/arm/ArmListener.o \
 	${OBJECTDIR}/src/tron/talky2/arm/AxisTalker.o \
 	${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o \
+	${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Joints.o \
 	${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o \
-	${OBJECTDIR}/src/tron/talky2/arm/JointChannelListener.o \
 	${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelClient.o \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelCommunicator.o \
-	${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o \
-	${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o
+	${OBJECTDIR}/src/tron/talky2/channel/ChannelPublisher.o \
+	${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o \
+	${OBJECTDIR}/src/tron/talky2/channel/ChannelSuscriber.o
 
 
 # C Compiler Flags
@@ -98,15 +99,15 @@ ${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o: src/tron/talky2/arm/BasicTalker.
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o src/tron/talky2/arm/BasicTalker.cpp
 
+${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Joints.o: src/tron/talky2/arm/ChannelSubscriber4Joints.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Joints.o src/tron/talky2/arm/ChannelSubscriber4Joints.cpp
+
 ${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o: src/tron/talky2/arm/CyclicTalker.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o src/tron/talky2/arm/CyclicTalker.cpp
-
-${OBJECTDIR}/src/tron/talky2/arm/JointChannelListener.o: src/tron/talky2/arm/JointChannelListener.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/JointChannelListener.o src/tron/talky2/arm/JointChannelListener.cpp
 
 ${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o: src/tron/talky2/arm/JointTalker.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
@@ -123,15 +124,20 @@ ${OBJECTDIR}/src/tron/talky2/channel/ChannelCommunicator.o: src/tron/talky2/chan
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelCommunicator.o src/tron/talky2/channel/ChannelCommunicator.cpp
 
-${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o: src/tron/talky2/channel/ChannelListener.cpp 
+${OBJECTDIR}/src/tron/talky2/channel/ChannelPublisher.o: src/tron/talky2/channel/ChannelPublisher.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/channel
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelListener.o src/tron/talky2/channel/ChannelListener.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelPublisher.o src/tron/talky2/channel/ChannelPublisher.cpp
 
 ${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o: src/tron/talky2/channel/ChannelServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/channel
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o src/tron/talky2/channel/ChannelServer.cpp
+
+${OBJECTDIR}/src/tron/talky2/channel/ChannelSuscriber.o: src/tron/talky2/channel/ChannelSuscriber.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/channel
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelSuscriber.o src/tron/talky2/channel/ChannelSuscriber.cpp
 
 # Subprojects
 .build-subprojects:

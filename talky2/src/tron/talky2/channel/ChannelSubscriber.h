@@ -1,5 +1,5 @@
-#ifndef __TALKY2_CHANNELLISTENER_H
-#define __TALKY2_CHANNELLISTENER_H
+#ifndef __TALKY2_CHANNEL_SUBSCRIBER_H
+#define __TALKY2_CHANNEL_SUBSCRIBER_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -13,15 +13,15 @@
 
 namespace tron
 {
-// Base channel communicator with listener functionality (subscriber on broadcast channels).
-class ChannelListener : public ChannelCommunicator
+// Channel communicator with subscriber functionality.
+class ChannelSubscriber : public ChannelCommunicator
 {    
 protected:
     std::vector<std::string> listMessages;
         
 public:
-    ChannelListener(int node, int topic); 
-    ~ChannelListener();
+    ChannelSubscriber(int node, int topic); 
+    ~ChannelSubscriber();
 
     // read messages from proper broadcast channel
     bool senseChannel();

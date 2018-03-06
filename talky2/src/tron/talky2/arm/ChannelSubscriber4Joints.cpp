@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/talky2/arm/JointChannelListener.h"
+#include "tron/talky2/arm/ChannelSubscriber4Joints.h"
 #include "tron/talky2/arm/JointTalker.h"
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopics.h"
@@ -12,7 +12,7 @@ using namespace log4cxx;
 
 namespace tron
 {
-JointChannelListener::JointChannelListener() : ChannelListener(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT)
+ChannelSubscriber4Joints::ChannelSubscriber4Joints() : ChannelSubscriber(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT)
 {    
 }
 
@@ -20,7 +20,7 @@ JointChannelListener::JointChannelListener() : ChannelListener(RobotNodes::eNODE
 //{    
 //}
 
-void JointChannelListener::processData()
+void ChannelSubscriber4Joints::processData()
 {    
     int code;
     float value;
@@ -30,7 +30,7 @@ void JointChannelListener::processData()
         // process received messages
         for (std::string message : listMessages)
         {
-            LOG4CXX_TRACE(logger, "JointChannelListener: check msg " << message);
+            LOG4CXX_TRACE(logger, "ChannelSubscriber4Joints: check msg " << message);
             // if message interpreted, inform joints data
             if (pTalker->interpretMessage(message, code, value))
             {
@@ -59,13 +59,13 @@ void JointChannelListener::processData()
             }
             else
             {
-                LOG4CXX_WARN(logger, "JointChannelListener: joint position not interpreted");
+                LOG4CXX_WARN(logger, "ChannelSubscriber4Joints: joint position not interpreted");
             }
         }
     }
     else
     {
-        LOG4CXX_ERROR(logger, "JointChannelListener: can't process data, communicator not tuned");
+        LOG4CXX_ERROR(logger, "ChannelSubscriber4Joints: can't process data, communicator not tuned");
         return;
     }        
 }

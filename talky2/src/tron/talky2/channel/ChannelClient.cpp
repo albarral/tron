@@ -23,8 +23,10 @@ bool ChannelClient::sendMessage(int code, float value)
 {    
     if (btuned)
     {
+        // build message with topic talker
         if (pTalker->buildMessage(code, value, message))
         {
+            // send message through wire (wire establishes a client connection)
             if (oWire.sendMsg(node, topic, message))
                 return true;
             else
