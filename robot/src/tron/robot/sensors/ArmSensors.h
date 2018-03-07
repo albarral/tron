@@ -19,27 +19,11 @@ struct JointsData
     float vwri;   
 };
 
-struct JointsStates
-{
-    int hsState; 
-    int vsState; 
-    int elbState; 
-    int hwriState; 
-    int vwriState;   
-};
-
 struct AxesData
 {
-    float panPos; 
-    float tiltPos; 
-    float radialPos; 
-};
-
-struct AxesSpeeds
-{
-    float panSpeed; 
-    float tiltSpeed; 
-    float radialSpeed; 
+    float pan; 
+    float tilt; 
+    float radial; 
 };
 
 }
