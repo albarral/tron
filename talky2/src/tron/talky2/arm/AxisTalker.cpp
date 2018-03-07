@@ -33,5 +33,6 @@ void AxisTalker::buildKnowledge()
     addConcept(eAXIS_PAN_SPEED, AXIS_PAN_SPEED);                   
     addConcept(eAXIS_TILT_SPEED, AXIS_TILT_SPEED);                        
     addConcept(eAXIS_RAD_SPEED, AXIS_RAD_SPEED);                        
+    addConcept(eAXIS_KEEP_TILT, AXIS_KEEP_TILT);                         
 }
 }

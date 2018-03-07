@@ -28,7 +28,6 @@ void BasicTalker::completeName()
 void BasicTalker::buildKnowledge()
 {
     addConcept(eEXTRA_ARM_STOP, EXTRA_ARM_STOP);
-    addConcept(eEXTRA_KEEP_TILT, EXTRA_KEEP_TILT);                         
     addConcept(eEXTRA_ARM_END, EXTRA_AMY_END);                      
 }
 }

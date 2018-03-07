@@ -23,6 +23,7 @@ namespace tron
          eAXIS_PAN_SPEED,                     /*! pan speed (degrees/s) */
          eAXIS_TILT_SPEED,                     /*! tilt speed (degrees/s) */
          eAXIS_RAD_SPEED,                     /*! radial speed (cm/s) */
+         eAXIS_KEEP_TILT,                       /*! keep the tilt position */         
          eAXIS_DIM
     };
 
@@ -33,6 +34,7 @@ namespace tron
     const std::string AXIS_PAN_SPEED = "vpan";            /*! pan speed (degrees/s) */
     const std::string AXIS_TILT_SPEED = "vtilt";              /*! tilt speed (degrees/s) */
     const std::string AXIS_RAD_SPEED = "vrad";             /*! radial speed (cm/s) */
+    const std::string AXIS_KEEP_TILT = "keeptilt";               /*! keep the tilt position */
 
  public:    
     AxisTalker(); 

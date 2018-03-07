@@ -108,6 +108,12 @@ bool ArmClient::setRadialSpeed(float value)
      return pAxisChannelClient->sendMessage(AxisTalker::eAXIS_RAD_SPEED, value);
 }
 
+bool ArmClient::keepTilt()
+{
+    LOG4CXX_DEBUG(logger, "ArmClient: keep tilt > ");     
+    return pAxisChannelClient->sendMessage(AxisTalker::eAXIS_KEEP_TILT, 0.0);        
+}
+
 // CYCLIC TOPIC ...
 
 bool ArmClient::setFrontCyclerAmp1(float value)
@@ -158,12 +164,6 @@ bool ArmClient::stopArm()
 {
     LOG4CXX_DEBUG(logger, "ArmClient: stop arm > ");     
     return pExtraChannelClient->sendMessage(BasicTalker::eEXTRA_ARM_STOP, 0.0);        
-}
-
-bool ArmClient::keepTilt()
-{
-    LOG4CXX_DEBUG(logger, "ArmClient: keep tilt > ");     
-    return pExtraChannelClient->sendMessage(BasicTalker::eEXTRA_KEEP_TILT, 0.0);        
 }
 
 bool ArmClient::endArm()

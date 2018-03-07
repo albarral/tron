@@ -18,14 +18,12 @@ namespace tron
     enum eExtraCat
     {
         eEXTRA_ARM_STOP,                 /*! stop arm */
-        eEXTRA_KEEP_TILT,          /*! keep the tilt position */
         eEXTRA_ARM_END,                   /*! end process */
         eEXTRA_DIM
     };
 
     /*! extra category names */
     const std::string EXTRA_ARM_STOP = "stop";                  /*! stop arm */
-    const std::string EXTRA_KEEP_TILT = "keep";                   /*! keep the tilt position */
     const std::string EXTRA_AMY_END = "end";                    /*! end arm process */
 
  public:    

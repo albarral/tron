@@ -51,6 +51,8 @@ public:
     virtual bool setTiltSpeed(float value);
     // move radial axis at given speed (cm/s)
     virtual bool setRadialSpeed(float value);
+    // keep arm tilt
+    virtual bool keepTilt();
 
     // cyclic topic ...
     // set amplitude of frontal cycler first component (degrees)
@@ -71,8 +73,6 @@ public:
     // extra topic ...    
     // stop arm
     virtual bool stopArm();
-    // keep arm tilt
-    virtual bool keepTilt();
     // end arm control process
     virtual bool endArm();            
 };

@@ -37,6 +37,8 @@ class TronArmClient
     virtual bool setTiltSpeed(float value) = 0;
     // move radial axis at given speed (cm/s)
     virtual bool setRadialSpeed(float value) = 0;
+    // keep arm tilt
+    virtual bool keepTilt() = 0;
     
     // cyclic topic ...
     // set amplitude of frontal cycler first component (degrees)
@@ -57,8 +59,6 @@ class TronArmClient
     // extra topic ...    
     // stop arm
     virtual bool stopArm() = 0;
-    // keep arm tilt
-    virtual bool keepTilt() = 0;
     // end arm control process
     virtual bool endArm() = 0;        
 

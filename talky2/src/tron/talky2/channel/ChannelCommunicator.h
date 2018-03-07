@@ -30,6 +30,9 @@ public:
     ChannelCommunicator(int node, int topic);
     ~ChannelCommunicator();
     
+    bool isTuned() {return btuned;};
+    std::string getIdentity() {return identity;};
+    
 protected:    
     virtual void setIdentity() = 0;
     
