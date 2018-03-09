@@ -38,7 +38,8 @@ public:
 
     // publish message through publisher channel
     bool publishMsg(int node, int channel, std::string text);
-//    bool publishMessages(int node, int channel, std::vector<std::string>& listMessages);
+    // publish messages through publisher channel
+    bool publishMessages(int node, int channel, std::vector<std::string>& listMessages);
     // read messages from subscribe channel 
     bool hearMessages(int node, int channel, std::vector<std::string>& listMessages);
 

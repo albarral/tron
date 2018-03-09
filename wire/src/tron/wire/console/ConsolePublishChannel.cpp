@@ -28,9 +28,21 @@ bool ConsolePublishChannel::clearInfo()
     return true;    
 }
 
-bool ConsolePublishChannel::sendMsg(std::string text)
+bool ConsolePublishChannel::sendMsg(std::string message)
 {
-    std::cout << name + ":" + text << std::endl;    
+    // write message to console
+    std::cout << name + ":" + message << std::endl;    
     return true;    
 }
+
+bool ConsolePublishChannel::sendMessages(std::vector<std::string>& listMessages)
+{
+    for (std::string message : listMessages)
+    {       
+        // write message to console
+        std::cout << name + ":" + message << std::endl;    
+    }
+    return true;    
+}
+
 }

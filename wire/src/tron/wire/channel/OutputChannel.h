@@ -21,9 +21,9 @@ public:
     OutputChannel(int node, int channel) : Channel(node, channel) {};
 
     // send message to destination, returns false if nothing sent
-    virtual bool sendMsg(std::string text) = 0;
+    virtual bool sendMsg(std::string message) = 0;
     // send messages to destination, returns false if nothing sent
-    //virtual bool sendMessages(std::vector<std::string>& listMessages) = 0;
+    virtual bool sendMessages(std::vector<std::string>& listMessages) = 0;
 };
 }
 #endif

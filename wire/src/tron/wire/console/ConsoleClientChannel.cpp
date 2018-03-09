@@ -26,4 +26,15 @@ bool ConsoleClientChannel::sendMsg(std::string text)
     std::cout << name + ":" + text << std::endl;      
     return true;    
 }
+
+bool ConsoleClientChannel::sendMessages(std::vector<std::string>& listMessages)
+{
+    for (std::string message : listMessages)
+    {       
+        // write message to console
+        std::cout << name + ":" + message << std::endl;    
+    }
+    return true;    
+}
+
 }

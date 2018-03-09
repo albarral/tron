@@ -25,6 +25,8 @@ public:
     virtual bool close();
     // send message to destination, returns false if nothing sent
     virtual bool sendMsg(std::string text);
+    // send messages to destination, returns false if nothing sent
+    virtual bool sendMessages(std::vector<std::string>& listMessages);    
 };
 }
 #endif

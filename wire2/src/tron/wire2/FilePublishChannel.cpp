@@ -69,20 +69,38 @@ bool FilePublishChannel::clearInfo()
     }   
 }
 
-bool FilePublishChannel::sendMsg(std::string text)
+bool FilePublishChannel::sendMsg(std::string message)
 {
     if (bopen && oFileWriter.isOpen())        
     {
-        // write text in coms file with default string delimiter
-        std::string output = text + delimiter;
-        oFileWriter.writeFlush(output);
+        // write message to coms file with default string delimiter
+        oFileWriter.writeFlush(message + delimiter);
         return true;
     }
     else
     {
-        LOG4CXX_ERROR(logger, "FilePublishChannel: send failed! coms file not open");                
+        LOG4CXX_ERROR(logger, "FilePublishChannel: send msg failed! coms file not open");                
         return false;
     }
+}
+
+bool FilePublishChannel::sendMessages(std::vector<std::string>& listMessages)
+{
+    if (bopen && oFileWriter.isOpen())        
+    {
+        // for each message
+        for (std::string message : listMessages)
+        {       
+            // write message to coms file with default string delimiter
+            oFileWriter.writeFlush(message + delimiter);
+        }
+        return true;
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "FilePublishChannel: send messages failed! coms file not open");                
+        return false;
+    }    
 }
 
 }

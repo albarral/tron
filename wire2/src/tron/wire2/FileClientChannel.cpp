@@ -53,13 +53,12 @@ bool FileClientChannel::close()
     }
 }
 
-bool FileClientChannel::sendMsg(std::string text)
+bool FileClientChannel::sendMsg(std::string message)
 {
     if (bopen && oFileWriter.isOpen())        
     {
-        // write text in coms file with default string delimiter
-        std::string output = text + delimiter;
-        oFileWriter.writeFlush(output);
+        // write message to coms file with default string delimiter
+        oFileWriter.writeFlush(message + delimiter);
         return true;
     }
     else
@@ -69,5 +68,23 @@ bool FileClientChannel::sendMsg(std::string text)
     }
 }
 
+bool FileClientChannel::sendMessages(std::vector<std::string>& listMessages)
+{
+    if (bopen && oFileWriter.isOpen())        
+    {
+        // for each message
+        for (std::string message : listMessages)
+        {       
+            // write message to coms file with default string delimiter
+            oFileWriter.writeFlush(message + delimiter);
+        }
+        return true;
+    }
+    else
+    {
+        LOG4CXX_ERROR(logger, "FileClientChannel: send messages failed! coms file not open");                
+        return false;
+    }    
+}
 
 }

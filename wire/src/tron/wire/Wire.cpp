@@ -89,6 +89,42 @@ bool Wire::publishMsg(int node, int channel, std::string text)
     }
 }
 
+
+// publish messages through publisher channel
+bool Wire::publishMessages(int node, int channel, std::vector<std::string>& listMessages)
+{
+    // get proper publish channel
+    OutputChannel* pOutputChannel = searchOutputChannel(node, channel, listPublishChannels);
+
+     // if not found, create new 
+    if (pOutputChannel == 0)    
+    {
+        pOutputChannel = createPublishChannel(node, channel);
+    
+        // open channel and add it to list
+        if (pOutputChannel != 0)
+        {
+            if (pOutputChannel->open())
+            {
+                listPublishChannels.push_back(pOutputChannel);
+                LOG4CXX_INFO(logger, "Wire: new publish channel " + pOutputChannel->getName());
+            }
+            else
+                pOutputChannel = 0;
+        }
+    }
+            
+    // if output channel available, send message through it
+    if (pOutputChannel != 0)    
+        return pOutputChannel->sendMessages(listMessages); 
+    else
+    {
+        LOG4CXX_WARN(logger, "Wire: publish messages failed, no channel for node - channel = " << node << " - " << channel);
+        return false;
+    }
+}
+
+
 // receive messages by server channel
 bool Wire::receiveMessages(int node, int channel, std::vector<std::string>& listMessages)
 {
