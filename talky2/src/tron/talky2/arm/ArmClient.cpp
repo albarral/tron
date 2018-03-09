@@ -158,6 +158,12 @@ bool ArmClient::setFrontCyclerPhase(float value)
     return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT_PHASE, value);    
 }
 
+bool ArmClient::setFrontCyclerAction(int value)
+{
+    LOG4CXX_DEBUG(logger, "ArmClient: front cycler action > " << std::to_string(value));     
+    return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT_ACTION, (float)value);        
+}
+
 // EXTRA TOPIC ...
 
 bool ArmClient::stopArm()

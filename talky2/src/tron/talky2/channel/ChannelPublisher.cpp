@@ -22,6 +22,7 @@ ChannelPublisher::~ChannelPublisher()
 
 bool ChannelPublisher::publishMessage(int code, float value)
 {    
+    bool bok = false;
     if (btuned)
     {
         // build message with topic talker
@@ -29,28 +30,27 @@ bool ChannelPublisher::publishMessage(int code, float value)
         {
             // publish message through wire (wire establishes a publish connection)
             if (oWire.publishMsg(node, topic, message))
-                return true;
+                bok = true;
             else
             {
                 LOG4CXX_WARN(logger, identity + ": publish message failed, no transmission channel");                                      
-                return false;        
             }
         }
         else
         {
             LOG4CXX_WARN(logger, identity + ": publish message failed, message not built");                       
-            return false;        
         }
     }
     else
     {
         LOG4CXX_WARN(logger, identity + ": publish message failed, communicator not tuned");            
-        return false;
     }
+    return bok;
 }
 
 bool ChannelPublisher::addMessage(int code, float value)
 {    
+    bool bok = false;
     if (btuned)
     {
         // build message with topic talker
@@ -58,43 +58,43 @@ bool ChannelPublisher::addMessage(int code, float value)
         {
             // and add it to output queue
             listMessages.push_back(message);
+            bok = true;
         }
         else
         {
             LOG4CXX_WARN(logger, identity + ": add message failed, message not built");                       
-            return false;        
         }
     }
     else
     {
         LOG4CXX_WARN(logger, identity + ": add message failed, communicator not tuned");            
-        return false;
     }
+    return bok;
 }
 
 
 // publish all messages of the output queue 
 bool ChannelPublisher::publishAll()
 {
+    bool bok = false;
     // if output queue is filled
     if (!listMessages.empty())
     {
         // publish messages through wire (wire establishes a publish connection)
         if (oWire.publishMessages(node, topic, listMessages))
-            return true;
+            bok = true;
         else
         {
             LOG4CXX_WARN(logger, identity + ": publish messages failed, no transmission channel");                                      
-            return false;        
         }
-        // clear output queue
+        // anyway clear output queue
         listMessages.clear();
     }
     else
     {
         LOG4CXX_WARN(logger, identity + ": publish messages ignored, output queue is empty");                       
-        return true;        
     }    
+    return bok;
 }
 
 bool ChannelPublisher::clearChannel()

@@ -69,6 +69,8 @@ public:
     virtual bool setFrontCyclerFreq2(float value);
     // set phase difference of frontal cycler components (degrees)
     virtual bool setFrontCyclerPhase(float value);
+    // starts or stops frontal cycler movement
+    virtual bool setFrontCyclerAction(int value);
 
     // extra topic ...    
     // stop arm

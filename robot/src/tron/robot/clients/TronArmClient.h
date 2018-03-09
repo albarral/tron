@@ -55,6 +55,8 @@ class TronArmClient
     virtual bool setFrontCyclerFreq2(float value) = 0;
     // set phase difference of frontal cycler components (degrees)
     virtual bool setFrontCyclerPhase(float value) = 0;
+    // starts or stops frontal cycler movement
+    virtual bool setFrontCyclerAction(int value) = 0;
 
     // extra topic ...    
     // stop arm

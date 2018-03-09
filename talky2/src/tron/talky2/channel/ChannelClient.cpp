@@ -21,6 +21,7 @@ ChannelClient::ChannelClient(int node, int topic) : ChannelCommunicator(node, to
 
 bool ChannelClient::sendMessage(int code, float value)
 {    
+    bool bok = false;
     if (btuned)
     {
         // build message with topic talker
@@ -28,24 +29,22 @@ bool ChannelClient::sendMessage(int code, float value)
         {
             // send message through wire (wire establishes a client connection)
             if (oWire.sendMsg(node, topic, message))
-                return true;
+                bok = true;
             else
             {
                 LOG4CXX_WARN(logger, identity + ": send message failed, no transmission channel");                                      
-                return false;        
             }
         }
         else
         {
             LOG4CXX_WARN(logger, identity + ": send message failed, message not built");                       
-            return false;        
         }
     }
     else
     {
         LOG4CXX_WARN(logger, identity + ": send message failed, communicator not tuned");            
-        return false;
     }
+    return bok;
 }
 
 void ChannelClient::setIdentity()
