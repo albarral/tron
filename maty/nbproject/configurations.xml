@@ -86,6 +86,9 @@
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_maty.${CND_DLIB_EXT}</output>
+          <linkerLibItems>
+            <linkerLibLibItem>opencv_core</linkerLibLibItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
       <item path="src/maty/math/Angle.cpp" ex="false" tool="1" flavor2="0">
