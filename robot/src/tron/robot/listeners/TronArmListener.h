@@ -16,15 +16,15 @@ class TronArmListener
  public:     
     // joint topic ...
     // sense joints positions 
-    virtual bool getJointPositions(JointsData& jointsData) = 0;
+    virtual JointsData& getJointPositions() = 0;
     // sense joint states
-//    virtual bool getJointStates(JointsStates& jointsStates) = 0;
+//    virtual JointsData& getJointStates() = 0;
 //
-//    // axis topic ...
-//    // sense axes positions 
-//    virtual bool getAxesPositions(AxesData& axesData) = 0;
-//    // sense axes speeds 
-//    virtual bool getAxesSpeeds(AxesSpeeds& axesSpeeds) = 0;
+    // axis topic ...
+    // sense axes positions 
+    virtual AxesData& getAxesPositions() = 0;
+    // sense axes speeds 
+    virtual AxesData& getAxesSpeeds() = 0;
     
 };
 }

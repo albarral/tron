@@ -11,6 +11,8 @@
 #include <log4cxx/logger.h>
 
 #include "tron/talky2/arm/ChannelSubscriber4Joints.h"
+#include "tron/talky2/arm/ChannelSubscriber4Axes.h"
+#include "tron/talky2/channel/ChannelSubscriber.h"
 #include "tron/robot/listeners/TronArmListener.h"
 #include "tron/robot/sensors/ArmSensors.h"
 
@@ -22,22 +24,30 @@ class ArmListener : public TronArmListener
 private:
     static log4cxx::LoggerPtr logger;
     ChannelSubscriber4Joints oChannelSubscriber4Joints;
+    ChannelSubscriber4Axes oChannelSubscriber4Axes;    
         
 public:
     ArmListener();
     //~ArmListener();
 
+    // senses subscribed channels
+    bool senseChannels();
+    
     // joint topic ...
     // sense joints positions 
-    virtual bool getJointPositions(JointsData& jointsData);
-//    // sense joint states
-//    virtual bool getJointStates(JointsStates& jointsStates);
+    virtual JointsData& getJointPositions();
+    // sense joint states
+//    virtual JointsData& getJointStates();
 //
-//    // axis topic ...
-//    // sense axes positions 
-//    virtual bool getAxesPositions(AxesData& axesData);
-//    // sense axes speeds 
-//    virtual bool getAxesSpeeds(AxesSpeeds& axesSpeeds);
+    // axis topic ...
+    // sense axes positions 
+    virtual AxesData& getAxesPositions();
+    // sense axes speeds 
+    virtual AxesData& getAxesSpeeds();
+    
+private:
+    // hear and process info in given channel 
+    bool senseChannel(ChannelSubscriber& oChannelSubscriber);
 };
 
 }

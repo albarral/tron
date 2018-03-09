@@ -37,23 +37,23 @@ void ChannelSubscriber4Joints::processData()
                 switch (code)
                 {
                     case JointTalker::eJOINT_HS_POS:
-                        jointsData.hs = value;
+                        jointPositions.hs = value;
                         break;
 
                     case JointTalker::eJOINT_VS_POS:
-                        jointsData.vs = value;
+                        jointPositions.vs = value;
                         break;
 
                     case JointTalker::eJOINT_ELB_POS:
-                        jointsData.elb = value;
+                        jointPositions.elb = value;
                         break;
 
                     case JointTalker::eJOINT_HWRI_POS:
-                        jointsData.hwri = value;
+                        jointPositions.hwri = value;
                         break;
 
                     case JointTalker::eJOINT_VWRI_POS:
-                        jointsData.vwri = value;
+                        jointPositions.vwri = value;
                         break;
                 }    
             }

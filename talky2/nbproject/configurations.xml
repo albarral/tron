@@ -22,6 +22,8 @@
           <itemPath>src/tron/talky2/arm/AxisTalker.h</itemPath>
           <itemPath>src/tron/talky2/arm/BasicTalker.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/BasicTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Axes.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Axes.h</itemPath>
           <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.h</itemPath>
           <itemPath>src/tron/talky2/arm/CyclicTalker.cpp</itemPath>
@@ -159,6 +161,16 @@
       </item>
       <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.cpp"
             ex="false"
             tool="1"
@@ -279,6 +291,16 @@
             flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.cpp"
             ex="false"

@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/arm/ArmListener.o \
 	${OBJECTDIR}/src/tron/talky2/arm/AxisTalker.o \
 	${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o \
+	${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Axes.o \
 	${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Joints.o \
 	${OBJECTDIR}/src/tron/talky2/arm/CyclicTalker.o \
 	${OBJECTDIR}/src/tron/talky2/arm/JointTalker.o \
@@ -98,6 +99,11 @@ ${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o: src/tron/talky2/arm/BasicTalker.
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/BasicTalker.o src/tron/talky2/arm/BasicTalker.cpp
+
+${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Axes.o: src/tron/talky2/arm/ChannelSubscriber4Axes.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Axes.o src/tron/talky2/arm/ChannelSubscriber4Axes.cpp
 
 ${OBJECTDIR}/src/tron/talky2/arm/ChannelSubscriber4Joints.o: src/tron/talky2/arm/ChannelSubscriber4Joints.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm
