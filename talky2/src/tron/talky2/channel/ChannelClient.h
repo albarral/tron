@@ -10,7 +10,7 @@
 
 namespace tron
 {
-// Base channel communicator with client functionality (sender on unicast channels).
+// Base channel communicator with client functionality (info sender on unicast channels).
 class ChannelClient : public ChannelCommunicator
 {    
 protected:

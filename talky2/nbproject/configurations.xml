@@ -38,8 +38,8 @@
           <itemPath>src/tron/talky2/channel/ChannelPublisher.h</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelServer.cpp</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelServer.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelSubscriber.cpp</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelSubscriber.h</itemPath>
-          <itemPath>src/tron/talky2/channel/ChannelSuscriber.cpp</itemPath>
         </logicalFolder>
         <itemPath>src/tron/talky2/Talker.cpp</itemPath>
         <itemPath>src/tron/talky2/Talker.h</itemPath>
@@ -223,14 +223,14 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="src/tron/talky2/channel/ChannelSubscriber.h"
             ex="false"
             tool="3"
-            flavor2="0">
-      </item>
-      <item path="src/tron/talky2/channel/ChannelSuscriber.cpp"
-            ex="false"
-            tool="1"
             flavor2="0">
       </item>
     </conf>
@@ -344,14 +344,14 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="src/tron/talky2/channel/ChannelSubscriber.h"
             ex="false"
             tool="3"
-            flavor2="0">
-      </item>
-      <item path="src/tron/talky2/channel/ChannelSuscriber.cpp"
-            ex="false"
-            tool="1"
             flavor2="0">
       </item>
     </conf>

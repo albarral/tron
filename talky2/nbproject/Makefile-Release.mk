@@ -47,7 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelCommunicator.o \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelPublisher.o \
 	${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o \
-	${OBJECTDIR}/src/tron/talky2/channel/ChannelSuscriber.o
+	${OBJECTDIR}/src/tron/talky2/channel/ChannelSubscriber.o
 
 
 # C Compiler Flags
@@ -134,10 +134,10 @@ ${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o: src/tron/talky2/channel/Ch
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelServer.o src/tron/talky2/channel/ChannelServer.cpp
 
-${OBJECTDIR}/src/tron/talky2/channel/ChannelSuscriber.o: src/tron/talky2/channel/ChannelSuscriber.cpp 
+${OBJECTDIR}/src/tron/talky2/channel/ChannelSubscriber.o: src/tron/talky2/channel/ChannelSubscriber.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/channel
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelSuscriber.o src/tron/talky2/channel/ChannelSuscriber.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/channel/ChannelSubscriber.o src/tron/talky2/channel/ChannelSubscriber.cpp
 
 # Subprojects
 .build-subprojects:

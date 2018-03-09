@@ -13,7 +13,7 @@
 
 namespace tron
 {
-// Channel communicator with subscriber functionality.
+// Channel communicator with subscriber functionality (info receptor on broadcast channels).
 class ChannelSubscriber : public ChannelCommunicator
 {    
 protected:
