@@ -14,6 +14,7 @@ const std::string RobotNodes::VISION_NODE = "vision";
 const std::string RobotNodes::HEAD_NODE = "head";    
 const std::string RobotNodes::WHEELS_NODE = "wheels";     
 const std::string RobotNodes::BODYROLE_NODE = "body";     
+const std::string RobotNodes::ANY_NODE = "any";
 
 RobotNodes::RobotNodes()
 {
@@ -24,6 +25,7 @@ RobotNodes::RobotNodes()
     oNodesMap.addCode(eNODE_HEAD, HEAD_NODE);
     oNodesMap.addCode(eNODE_WHEELS, WHEELS_NODE);
     oNodesMap.addCode(eNODE_BODYROLE, BODYROLE_NODE);
+    oNodesMap.addCode(NODE_ANY, ANY_NODE);
 }
 
 std::string RobotNodes::getName4Node(int node)

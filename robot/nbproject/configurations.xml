@@ -14,7 +14,9 @@
                    projectFiles="true">
       <logicalFolder name="robot" displayName="robot" projectFiles="true">
         <logicalFolder name="clients" displayName="clients" projectFiles="true">
+          <itemPath>src/tron/robot/clients/TronAnyClient.h</itemPath>
           <itemPath>src/tron/robot/clients/TronArmClient.h</itemPath>
+          <itemPath>src/tron/robot/clients/TronBodyClient.h</itemPath>
         </logicalFolder>
         <logicalFolder name="listeners" displayName="listeners" projectFiles="true">
           <itemPath>src/tron/robot/listeners/TronArmListener.h</itemPath>
@@ -25,6 +27,8 @@
         <logicalFolder name="topics" displayName="topics" projectFiles="true">
           <itemPath>src/tron/robot/topics/ArmTopics.cpp</itemPath>
           <itemPath>src/tron/robot/topics/ArmTopics.h</itemPath>
+          <itemPath>src/tron/robot/topics/BodyTopics.cpp</itemPath>
+          <itemPath>src/tron/robot/topics/BodyTopics.h</itemPath>
         </logicalFolder>
         <itemPath>src/tron/robot/RobotNodes.cpp</itemPath>
         <itemPath>src/tron/robot/RobotNodes.h</itemPath>
@@ -83,7 +87,17 @@
       </item>
       <item path="src/tron/robot/RobotNodes.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/robot/clients/TronAnyClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/robot/clients/TronArmClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/clients/TronBodyClient.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -104,6 +118,13 @@
             flavor2="0">
       </item>
       <item path="src/tron/robot/topics/ArmTopics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/BodyTopics.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/BodyTopics.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -130,7 +151,17 @@
       </item>
       <item path="src/tron/robot/RobotNodes.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/robot/clients/TronAnyClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/tron/robot/clients/TronArmClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/clients/TronBodyClient.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -151,6 +182,13 @@
             flavor2="0">
       </item>
       <item path="src/tron/robot/topics/ArmTopics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/BodyTopics.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/BodyTopics.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

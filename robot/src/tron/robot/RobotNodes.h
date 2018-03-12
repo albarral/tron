@@ -29,7 +29,10 @@ namespace tron
         eNODE_BODYROLE,        /*! body role node */  
         eNODE_DIM
     };
-     
+
+    static const int NODE_ANY = 100;    /*! any node */  
+    static const std::string ANY_NODE;  /*! any node name */
+    
     // node names
     static const std::string ARM_NODE;         /*! arm node name */
     static const std::string HAND_NODE;        /*! hand node name */

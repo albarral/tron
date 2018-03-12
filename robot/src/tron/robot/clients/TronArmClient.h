@@ -57,13 +57,6 @@ class TronArmClient
     virtual bool setFrontCyclerPhase(float value) = 0;
     // starts or stops frontal cycler movement
     virtual bool setFrontCyclerAction(int value) = 0;
-
-    // extra topic ...    
-    // stop arm
-    virtual bool stopArm() = 0;
-    // end arm control process
-    virtual bool endArm() = 0;        
-
 };
 }
 #endif
