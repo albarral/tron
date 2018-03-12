@@ -11,6 +11,7 @@
 
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopics.h"
+#include "tron/robot/topics/BodyTopics.h"
 #include "tron/talky2/Talker.h"
 
 namespace dady
@@ -29,6 +30,7 @@ private:
     std::string message;                 // message to send
     tron::RobotNodes oRobotNodes;
     tron::ArmTopics oArmTopics;
+    tron::BodyTopics oBodyTopics;
     
 
 public:
@@ -45,6 +47,7 @@ public:
 private:
     bool checkCorrectMessage();
     tron::Talker* createTalker4ArmTopic(int topic);
+    tron::Talker* createTalker4BodyTopic(int topic);
     
 };
 }		

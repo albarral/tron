@@ -7,12 +7,15 @@
 
 #include "dady/DadyCommander2.h"
 #include "tuly/utils/StringUtil.h"
-// arm talkers ...
+#include "tron/wire2/FileWire.h"
+#include "tron/talky2/BasicTalker.h"
+// arm talkers
 #include "tron/talky2/arm/JointTalker.h"
 #include "tron/talky2/arm/AxisTalker.h"
 #include "tron/talky2/arm/CyclicTalker.h"
-#include "tron/talky2/arm/BasicTalker.h"
-#include "tron/wire2/FileWire.h"
+// body talkers
+#include "tron/talky2/body/ExpressiveTalker.h"
+#include "tron/talky2/body/ArtisticTalker.h"
 
 using namespace log4cxx;
 
@@ -93,6 +96,10 @@ bool DadyCommander2::checkCorrectMessage()
             pTalker = createTalker4ArmTopic(targetTopic);
             break;
 
+        case tron::RobotNodes::eNODE_BODYROLE: 
+            pTalker = createTalker4BodyTopic(targetTopic);
+            break;
+
         default:
             pTalker = 0;            
     }
@@ -131,7 +138,29 @@ tron::Talker* DadyCommander2::createTalker4ArmTopic(int topic)
             break;
             
         case tron::ArmTopics::eARM_EXTRA: 
-            return new tron::BasicTalker();
+            return new tron::BasicTalker(tron::RobotNodes::eNODE_ARM, tron::ArmTopics::eARM_EXTRA);
+            break;
+            
+        default:
+            return 0;
+    }    
+}
+
+tron::Talker* DadyCommander2::createTalker4BodyTopic(int topic)
+{
+    // create proper talker for body node topic
+    switch (topic)
+    {
+        case tron::BodyTopics::eBODY_EXPRESSIVE: 
+            return new tron::ExpressiveTalker();
+            break;
+            
+        case tron::BodyTopics::eBODY_ARTISTIC: 
+            return new tron::ArtisticTalker();
+            break;
+                        
+        case tron::BodyTopics::eBODY_EXTRA: 
+            return new tron::BasicTalker(tron::RobotNodes::eNODE_BODYROLE, tron::BodyTopics::eBODY_EXTRA);
             break;
             
         default:
