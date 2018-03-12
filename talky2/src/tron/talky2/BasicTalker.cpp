@@ -3,14 +3,12 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/talky2/arm/BasicTalker.h"
-#include "tron/robot/RobotNodes.h"
-#include "tron/robot/topics/ArmTopics.h"
+#include "tron/talky2/BasicTalker.h"
 
 namespace tron
 {
 
-BasicTalker::BasicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopics::eARM_EXTRA)
+BasicTalker::BasicTalker(int node, int topic) : Talker(node, topic)
 {
     // complete name with topic word
     completeName();
@@ -21,13 +19,12 @@ BasicTalker::BasicTalker() : Talker(RobotNodes::eNODE_ARM, ArmTopics::eARM_EXTRA
 
 void BasicTalker::completeName()
 {
-    ArmTopics oArmTopic;
-    name += oArmTopic.getName4Topic(topic);    
+    name += "basic";
 }
 
 void BasicTalker::buildKnowledge()
 {
-    addConcept(eEXTRA_ARM_STOP, EXTRA_ARM_STOP);
-    addConcept(eEXTRA_ARM_END, EXTRA_AMY_END);                      
+    addConcept(eBASIC_FULL_STOP, BASIC_FULL_STOP);
+    addConcept(eBASIC_CONTROL_END, BASIC_CONTROL_END);                      
 }
 }

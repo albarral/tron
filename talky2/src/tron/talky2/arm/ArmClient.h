@@ -9,12 +9,13 @@
 #include <log4cxx/logger.h>
 
 #include "tron/talky2/channel/ChannelClient.h"
+#include "tron/robot/clients/TronAnyClient.h"
 #include "tron/robot/clients/TronArmClient.h"
 
 namespace tron
 {
 // Arm client class (implementing TronArmClient interface) to control a robot arm.
-class ArmClient : public TronArmClient
+class ArmClient : public TronArmClient, public TronAnyClient
 {    
 private:
     static log4cxx::LoggerPtr logger;
@@ -73,10 +74,10 @@ public:
     virtual bool setFrontCyclerAction(int value);
 
     // extra topic ...    
-    // stop arm
-    virtual bool stopArm();
-    // end arm control process
-    virtual bool endArm();            
+    // full stop of control actions 
+    virtual bool fullStop();
+    // end control process
+    virtual bool endNode();        
 };
 
 }

@@ -7,7 +7,7 @@
 #include "tron/talky2/arm/JointTalker.h"
 #include "tron/talky2/arm/AxisTalker.h"
 #include "tron/talky2/arm/CyclicTalker.h"
-#include "tron/talky2/arm/BasicTalker.h"
+#include "tron/talky2/BasicTalker.h"
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopics.h"
 
@@ -166,15 +166,15 @@ bool ArmClient::setFrontCyclerAction(int value)
 
 // EXTRA TOPIC ...
 
-bool ArmClient::stopArm()
+bool ArmClient::fullStop()
 {
-    LOG4CXX_DEBUG(logger, "ArmClient: stop arm > ");     
-    return pExtraChannelClient->sendMessage(BasicTalker::eEXTRA_ARM_STOP, 0.0);        
+    LOG4CXX_DEBUG(logger, "ArmClient: full stop > ");     
+    return pExtraChannelClient->sendMessage(BasicTalker::eBASIC_FULL_STOP, 0.0);        
 }
 
-bool ArmClient::endArm()
+bool ArmClient::endNode()
 {
     LOG4CXX_DEBUG(logger, "ArmClient: end arm > ");     
-    return pExtraChannelClient->sendMessage(BasicTalker::eEXTRA_ARM_END, 0.0);        
+    return pExtraChannelClient->sendMessage(BasicTalker::eBASIC_CONTROL_END, 0.0);        
 }
 }

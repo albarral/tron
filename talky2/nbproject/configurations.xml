@@ -20,8 +20,6 @@
           <itemPath>src/tron/talky2/arm/ArmListener.h</itemPath>
           <itemPath>src/tron/talky2/arm/AxisTalker.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/AxisTalker.h</itemPath>
-          <itemPath>src/tron/talky2/arm/BasicTalker.cpp</itemPath>
-          <itemPath>src/tron/talky2/arm/BasicTalker.h</itemPath>
           <itemPath>src/tron/talky2/arm/ChannelSubscriber4Axes.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/ChannelSubscriber4Axes.h</itemPath>
           <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.cpp</itemPath>
@@ -30,6 +28,14 @@
           <itemPath>src/tron/talky2/arm/CyclicTalker.h</itemPath>
           <itemPath>src/tron/talky2/arm/JointTalker.cpp</itemPath>
           <itemPath>src/tron/talky2/arm/JointTalker.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="body" displayName="body" projectFiles="true">
+          <itemPath>src/tron/talky2/body/ArtisticTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/body/ArtisticTalker.h</itemPath>
+          <itemPath>src/tron/talky2/body/BodyClient.cpp</itemPath>
+          <itemPath>src/tron/talky2/body/BodyClient.h</itemPath>
+          <itemPath>src/tron/talky2/body/ExpressiveTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/body/ExpressiveTalker.h</itemPath>
         </logicalFolder>
         <logicalFolder name="channel" displayName="channel" projectFiles="true">
           <itemPath>src/tron/talky2/channel/ChannelClient.cpp</itemPath>
@@ -43,6 +49,8 @@
           <itemPath>src/tron/talky2/channel/ChannelSubscriber.cpp</itemPath>
           <itemPath>src/tron/talky2/channel/ChannelSubscriber.h</itemPath>
         </logicalFolder>
+        <itemPath>src/tron/talky2/BasicTalker.cpp</itemPath>
+        <itemPath>src/tron/talky2/BasicTalker.h</itemPath>
         <itemPath>src/tron/talky2/Talker.cpp</itemPath>
         <itemPath>src/tron/talky2/Talker.h</itemPath>
       </logicalFolder>
@@ -135,6 +143,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/tron/talky2/BasicTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/talky2/Talker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/talky2/Talker.h" ex="false" tool="3" flavor2="0">
@@ -153,13 +165,6 @@
       <item path="src/tron/talky2/arm/AxisTalker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/AxisTalker.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/BasicTalker.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.cpp"
             ex="false"
@@ -194,6 +199,33 @@
             flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/JointTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="src/tron/talky2/channel/ChannelClient.cpp"
             ex="false"
@@ -266,6 +298,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/tron/talky2/BasicTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/talky2/Talker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/talky2/Talker.h" ex="false" tool="3" flavor2="0">
@@ -284,13 +320,6 @@
       <item path="src/tron/talky2/arm/AxisTalker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/AxisTalker.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/BasicTalker.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/tron/talky2/arm/BasicTalker.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.cpp"
             ex="false"
@@ -325,6 +354,33 @@
             flavor2="0">
       </item>
       <item path="src/tron/talky2/arm/JointTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="src/tron/talky2/channel/ChannelClient.cpp"
             ex="false"

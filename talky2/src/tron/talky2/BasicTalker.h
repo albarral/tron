@@ -10,24 +10,24 @@
 
 namespace tron
 {
-// Basic common Talker for all nodes
+// Basic Talker for any node
  class BasicTalker : public Talker
 {
  public:
-    /*! extra category  */
-    enum eExtraCat
+    /*! basic category  */
+    enum eBasicCat
     {
-        eEXTRA_ARM_STOP,                 /*! stop arm */
-        eEXTRA_ARM_END,                   /*! end process */
-        eEXTRA_DIM
+        eBASIC_FULL_STOP,                        /*! full stop (emergency) */
+        eBASIC_CONTROL_END,                   /*! end control process */
+        eBASIC_DIM
     };
 
     /*! extra category names */
-    const std::string EXTRA_ARM_STOP = "stop";                  /*! stop arm */
-    const std::string EXTRA_AMY_END = "end";                    /*! end arm process */
+    const std::string BASIC_FULL_STOP = "stop";                  /*! full stop (emergency) */
+    const std::string BASIC_CONTROL_END = "end";                    /*! end control process */
 
  public:    
-    BasicTalker(); 
+    BasicTalker(int node, int topic); 
     
  protected: 
     // fill maps with knowledge 
