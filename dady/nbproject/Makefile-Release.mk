@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/dady/DadyCommander.o \
 	${OBJECTDIR}/src/dady/DadyCommander2.o \
 	${OBJECTDIR}/src/dady/main.o
 
@@ -63,11 +62,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dady ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/src/dady/DadyCommander.o: src/dady/DadyCommander.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/dady
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/dady/DadyCommander.o src/dady/DadyCommander.cpp
 
 ${OBJECTDIR}/src/dady/DadyCommander2.o: src/dady/DadyCommander2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/dady

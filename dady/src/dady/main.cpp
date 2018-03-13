@@ -10,7 +10,6 @@
 #include <log4cxx/logger.h>
 #include <log4cxx/xml/domconfigurator.h>
 
-//#include "dady/DadyCommander.h"
 #include "dady/DadyCommander2.h"
 
 // obtains user's home path
