@@ -12,19 +12,26 @@
 #include "tron/robot/RobotNodes.h"
 #include "tron/robot/topics/ArmTopics.h"
 #include "tron/robot/topics/BodyTopics.h"
-#include "tron/talky2/Talker.h"
 
 namespace dady
 {
 // Class used to interpret user entered commands in talky communication language.
+// Commands format: ./dady <node> <topic> <concept>*<value>
 class DadyCommander2 
 {
-public: 
+public:    
     static const std::string COMMAND_SEPARATOR;       // separator in dady commands
+private: 
+    /*! command fields */
+    enum eCommand
+    {
+        eCOMMAND_NODE,
+        eCOMMAND_TOPIC,
+        eCOMMAND_CONCEPT,
+        eCOMMAND_DIM
+    };
     
-private:
     static log4cxx::LoggerPtr logger;    
-    const int NUM_WORDS = 3;            // words expected in dady commands
     int targetNode;                          // target node (arm, vision, ...) 
     int targetTopic;                          // target topic (for arm node: joints, axis, ...)
     std::string message;                 // message to send
@@ -37,17 +44,18 @@ public:
     DadyCommander2();
     //~DadyCommander2();
     
-    int getCommandSize() {return NUM_WORDS;};
+    int getCommandSize() {return eCOMMAND_DIM;};
     
     bool checkValidCommand(std::string entry);
     bool sendMessage();
-
-    void showAvailableCommands();
     
 private:
-    bool checkCorrectMessage();
-    tron::Talker* createTalker4ArmTopic(int topic);
-    tron::Talker* createTalker4BodyTopic(int topic);
+    int interpretTopic(int node, std::string topicName);
+    bool checkCorrectMessage(int node, int topic, std::string msg);
+
+    void showAvailableNodes();
+    void showAvailableTopics(int node);
+    void showAvailableConcepts(int node, int topic);
     
 };
 }		

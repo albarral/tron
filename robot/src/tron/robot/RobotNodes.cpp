@@ -20,12 +20,11 @@ RobotNodes::RobotNodes()
 {
     // build nodes map
     oNodesMap.addCode(eNODE_ARM, ARM_NODE);
-    oNodesMap.addCode(eNODE_HAND, HAND_NODE);
-    oNodesMap.addCode(eNODE_VISION, VISION_NODE);
-    oNodesMap.addCode(eNODE_HEAD, HEAD_NODE);
-    oNodesMap.addCode(eNODE_WHEELS, WHEELS_NODE);
+//    oNodesMap.addCode(eNODE_HAND, HAND_NODE);
+//    oNodesMap.addCode(eNODE_VISION, VISION_NODE);
+//    oNodesMap.addCode(eNODE_HEAD, HEAD_NODE);
+//    oNodesMap.addCode(eNODE_WHEELS, WHEELS_NODE);
     oNodesMap.addCode(eNODE_BODYROLE, BODYROLE_NODE);
-    oNodesMap.addCode(NODE_ANY, ANY_NODE);
 }
 
 std::string RobotNodes::getName4Node(int node)
@@ -46,5 +45,10 @@ int RobotNodes::getCode4Node(std::string nodeName)
     // return -1 if unknown node
     else 
         return -1;
+}
+
+std::string RobotNodes::getMapDescription()
+{
+    return oNodesMap.toString();
 }
 }

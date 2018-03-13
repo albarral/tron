@@ -47,8 +47,8 @@ public:
     // returns true if message could be interpreted
     bool interpretMessage(std::string message, int& code, float& value);
     
-    // show all concepts known by the talker
-    void showKnowledge();
+    // get description of all concepts known by the talker
+    std::string getMapDescription();
     
 protected:
     // fill maps with knowledge (mandatory for any talker)

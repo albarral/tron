@@ -93,7 +93,7 @@ bool Talker::interpretMessage(std::string message, int& code, float& value)
     // wrong message size
     else
     {
-        LOG4CXX_WARN(logger, name + " Talker: message not interpreted (wrong size) " << message);    
+        LOG4CXX_WARN(logger, name + " Talker: wrong concept format! (concept*quantity expected)");    
     }
     
     // if program arrives here, interpretation failed
@@ -101,9 +101,9 @@ bool Talker::interpretMessage(std::string message, int& code, float& value)
 }
 
 
-void Talker::showKnowledge()
+std::string Talker::getMapDescription()
 {
-    LOG4CXX_INFO(logger, name + " Talker: knowledge ... \n" << oCodeMap.toString());
+    return oCodeMap.toString();
 }
 
 }

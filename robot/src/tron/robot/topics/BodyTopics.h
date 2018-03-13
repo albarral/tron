@@ -6,14 +6,12 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <string>
-
-#include "tuly/utils2/CodeMap.h"
+#include "tron/robot/topics/NodeTopics.h"
 
 namespace tron
 {
 // Definition of body topics
- class BodyTopics 
+ class BodyTopics : public NodeTopics
 {
 public:
     /*! body topics */
@@ -32,17 +30,11 @@ public:
     static const std::string BODY_ARTISTIC;
     static const std::string BODY_EXTRA;
 
- private:         
-     tuly::CodeMap oTopicsMap;                      /*! code map for body topics */    
-
  public:     
      BodyTopics();
      
-    // gets name for given topic code
-    std::string getName4Topic(int topic);
-    // gets code for given topic name
-    int getCode4Topic(std::string topicName);
-    
+protected:
+     virtual void fillMap();
 };
 }
 #endif

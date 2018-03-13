@@ -8,6 +8,8 @@
 #include "dady/DadyCommander2.h"
 #include "tuly/utils/StringUtil.h"
 #include "tron/wire2/FileWire.h"
+#include "tron/talky2/TalkyLanguages.h"
+// common talkers
 #include "tron/talky2/BasicTalker.h"
 // arm talkers
 #include "tron/talky2/arm/JointTalker.h"
@@ -32,78 +34,112 @@ DadyCommander2::DadyCommander2()
 
 bool DadyCommander2::checkValidCommand(std::string entry)
 {              
-    // get command parts 
+    int processedElements = 0;
+    int validElements = 0;
+    std::string nodeName;
+    std::string topicName;
+    
+    // if no command
+    if (entry.empty())
+    {
+        // show available nodes
+        showAvailableNodes();
+        return false;        
+    }
+    
+    // split command parts 
     std::vector<std::string> listTokens = tuly::StringUtil::split(entry, COMMAND_SEPARATOR);
     
-    // skip if bad command format
-    if (listTokens.size() != NUM_WORDS)
+    // skip if excessive command parts
+    if (listTokens.size() > eCOMMAND_DIM)
     {
-        LOG4CXX_WARN(logger, "DadyCommander2: invalid command size " << listTokens.size());    
+        LOG4CXX_WARN(logger, "DadyCommander2: command size exceeded " << listTokens.size());    
         return false;         
     }
-
-    std::string nodeName = listTokens.at(0);
-    std::string topicName = listTokens.at(1);
-    message = listTokens.at(2);
-        
-    targetNode = oRobotNodes.getCode4Node(nodeName);
-    // check valid node
-    if (targetNode == -1)
-    {
-        LOG4CXX_WARN(logger, "DadyCommander2: unknown node " << nodeName);    
-        return false;
-    }
     
-    // check valid topic
-    switch (targetNode)
+    // if node informed
+    if (listTokens.size() > eCOMMAND_NODE)
     {
-        case tron::RobotNodes::eNODE_ARM: 
-            targetTopic = oArmTopics.getCode4Topic(topicName);
-            break;
-            
-        default: 
-            targetTopic = -1;
-    }
-
-    // check valid topic
-    if (targetTopic == -1)
-    {
-        LOG4CXX_WARN(logger, "DadyCommander2: unknown topic " + topicName);    
-        return false;
-    }
-    
-    // check if message is correct
-    if (checkCorrectMessage())
-    {
-        return true;
+        // interpret node
+        nodeName = listTokens.at(eCOMMAND_NODE);
+        targetNode = oRobotNodes.getCode4Node(nodeName);
+        // and check its validity
+        if (targetNode != -1)
+            validElements++;
+        else
+            LOG4CXX_WARN(logger, "DadyCommander2: unknown node " << nodeName);    
     }
     else
-    {
-        LOG4CXX_WARN(logger, "DadyCommander2: incorrect message " + message);            
+        // show available nodes
+        showAvailableNodes();
+        
+    processedElements++;
+    // skip if node invalid or not informed
+    if (processedElements != validElements)
         return false;
+        
+    // if topic informed
+    if (listTokens.size() > eCOMMAND_TOPIC)
+    {
+        // interpret topic
+        topicName = listTokens.at(eCOMMAND_TOPIC);
+        targetTopic = interpretTopic(targetNode, topicName);    
+        // and check its validity
+        if (targetTopic != -1)
+            validElements++;
+        else
+            LOG4CXX_WARN(logger, "DadyCommander2: unknown topic " + topicName);    
     }
+    else
+        // show available topics for node
+        showAvailableTopics(targetNode);        
+    
+    processedElements++;
+    // skip if topic invalid or not informed
+    if (processedElements != validElements)
+        return false;
+
+    // if concept informed
+    if (listTokens.size() > eCOMMAND_CONCEPT)
+    {
+        // interpret concept
+        message = listTokens.at(eCOMMAND_CONCEPT);            
+        if (checkCorrectMessage(targetNode, targetTopic, message))
+            validElements++;
+        else
+            LOG4CXX_WARN(logger, "DadyCommander2: invalid concept " + message);            
+    }
+    else
+        // show available concepts for node & topic
+        showAvailableConcepts(targetNode, targetTopic);
+
+    processedElements++;
+    // return false if concept invalid or not informed
+    return (processedElements == validElements);
 }
 
-
-bool DadyCommander2::checkCorrectMessage()
-{    
-    tron::Talker* pTalker;
-    
-    // create proper talker for target node & topic
-    switch (targetNode)
+int DadyCommander2::interpretTopic(int node, std::string topicName)
+{
+    int topic = -1;
+    // check valid topic
+    switch (node)
     {
         case tron::RobotNodes::eNODE_ARM: 
-            pTalker = createTalker4ArmTopic(targetTopic);
+            topic = oArmTopics.getCode4Topic(topicName);
             break;
-
+            
         case tron::RobotNodes::eNODE_BODYROLE: 
-            pTalker = createTalker4BodyTopic(targetTopic);
+            topic = oBodyTopics.getCode4Topic(topicName);
             break;
-
-        default:
-            pTalker = 0;            
     }
-    
+    return topic;
+}
+
+bool DadyCommander2::checkCorrectMessage(int node, int topic, std::string msg)
+{    
+    // create proper talker for target node & topic
+    tron::Talker* pTalker = tron::TalkyLanguages::createTalker(node, topic);
+        
     // if talker created
     if (pTalker != 0)
     {
@@ -120,65 +156,44 @@ bool DadyCommander2::checkCorrectMessage()
         return false;    
 }
 
-tron::Talker* DadyCommander2::createTalker4ArmTopic(int topic)
-{
-    // create proper talker for arm node topic
-    switch (topic)
-    {
-        case tron::ArmTopics::eARM_JOINT: 
-            return new tron::JointTalker();
-            break;
-            
-        case tron::ArmTopics::eARM_AXIS: 
-            return new tron::AxisTalker();
-            break;
-            
-        case tron::ArmTopics::eARM_CYCLIC: 
-            return new tron::CyclicTalker();
-            break;
-            
-        case tron::ArmTopics::eARM_EXTRA: 
-            return new tron::BasicTalker(tron::RobotNodes::eNODE_ARM, tron::ArmTopics::eARM_EXTRA);
-            break;
-            
-        default:
-            return 0;
-    }    
-}
-
-tron::Talker* DadyCommander2::createTalker4BodyTopic(int topic)
-{
-    // create proper talker for body node topic
-    switch (topic)
-    {
-        case tron::BodyTopics::eBODY_EXPRESSIVE: 
-            return new tron::ExpressiveTalker();
-            break;
-            
-        case tron::BodyTopics::eBODY_ARTISTIC: 
-            return new tron::ArtisticTalker();
-            break;
-                        
-        case tron::BodyTopics::eBODY_EXTRA: 
-            return new tron::BasicTalker(tron::RobotNodes::eNODE_BODYROLE, tron::BodyTopics::eBODY_EXTRA);
-            break;
-            
-        default:
-            return 0;
-    }    
-}
-
 bool DadyCommander2::sendMessage()
 {
-    tron::FileWire oWire; // communications wire   
-    
+    tron::FileWire oWire; // communications wire       
     return oWire.sendMsg(targetNode, targetTopic, message);
 }
 
-void DadyCommander2::showAvailableCommands()
+void DadyCommander2::showAvailableNodes()
 {
-    // TO DO ...
-    //show known languages
-    //oInterpreter.showKnowledge();    
+   LOG4CXX_INFO(logger, "available nodes: \n" + oRobotNodes.getMapDescription());   
+}
+
+void DadyCommander2::showAvailableTopics(int node)
+{
+    std::string desc; 
+    switch (node)
+    {
+        case tron::RobotNodes::eNODE_ARM: 
+            desc = oArmTopics.getMapDescription();
+            break;
+
+        case tron::RobotNodes::eNODE_BODYROLE: 
+            desc = oBodyTopics.getMapDescription();
+            break;
+    }   
+    LOG4CXX_INFO(logger, "available topics: \n" + desc);      
+}
+
+void DadyCommander2::showAvailableConcepts(int node, int topic)
+{
+    // create proper talker for target node & topic
+    tron::Talker* pTalker = tron::TalkyLanguages::createTalker(node, topic);
+        
+    // if talker created
+    if (pTalker != 0)
+    {        
+        LOG4CXX_INFO(logger, "available concepts: \n" + pTalker->getMapDescription());
+        // release the talker
+        delete(pTalker);
+    }
 }
 }

@@ -51,6 +51,8 @@ namespace tron
     std::string getName4Node(int node);
     // gets code for given node name
     int getCode4Node(std::string nodeName);
+    
+    std::string getMapDescription();
 };
 }
 #endif

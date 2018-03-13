@@ -34,16 +34,17 @@ int main(int argc, char** argv)
     // if command has wrong number of params, show usage
     if (argc != oDadyCommander.getCommandSize() + 1)
     {
-        LOG4CXX_WARN(logger, "usage: dady <node> <topic> <talky message>");        
-        LOG4CXX_INFO(logger, "Talky available commands ...");        
-        oDadyCommander.showAvailableCommands();
-        return 0;
+        LOG4CXX_WARN(logger, "usage: dady node topic concept*quantity");        
     }    
     
     // read command
-    std::string userCommand = argv[1];
-    for (int i=2; i<argc; i++)
-        userCommand += DadyCommander2::COMMAND_SEPARATOR + argv[i];      
+    std::string userCommand = "";
+    for (int i=1; i<argc; i++)
+    {
+        userCommand += argv[i]; 
+        if (i != argc-1)
+            userCommand += DadyCommander2::COMMAND_SEPARATOR;      
+    }
     
     // check command validity (if it can be interpreted)
     bool bsent = false;

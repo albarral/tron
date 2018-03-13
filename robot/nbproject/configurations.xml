@@ -29,6 +29,8 @@
           <itemPath>src/tron/robot/topics/ArmTopics.h</itemPath>
           <itemPath>src/tron/robot/topics/BodyTopics.cpp</itemPath>
           <itemPath>src/tron/robot/topics/BodyTopics.h</itemPath>
+          <itemPath>src/tron/robot/topics/NodeTopics.cpp</itemPath>
+          <itemPath>src/tron/robot/topics/NodeTopics.h</itemPath>
         </logicalFolder>
         <itemPath>src/tron/robot/RobotNodes.cpp</itemPath>
         <itemPath>src/tron/robot/RobotNodes.h</itemPath>
@@ -126,6 +128,13 @@
       </item>
       <item path="src/tron/robot/topics/BodyTopics.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/robot/topics/NodeTopics.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/NodeTopics.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -189,6 +198,13 @@
             flavor2="0">
       </item>
       <item path="src/tron/robot/topics/BodyTopics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/NodeTopics.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/robot/topics/NodeTopics.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
