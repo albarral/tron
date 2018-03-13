@@ -35,14 +35,6 @@ public:
     
 protected:    
     virtual void setIdentity() = 0;
-    
-private:
-    // create talker for this channel node & topic
-    bool createTalker();        
-    // create talker for specific arm topic
-    Talker* createTalker4ArmTopic();
-    // create talker for specific body topic
-    Talker* createTalker4BodyTopic();
 };
 
 }

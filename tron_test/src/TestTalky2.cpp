@@ -6,9 +6,13 @@
 
 #include "TestTalky2.h"
 #include "test/talky2/JointChannelServer.h"
-#include "tron/talky2/arm/JointTalker.h"
 #include "tron/robot/RobotNodes.h"
+#include "tron/robot/sensors/ArmSensors.h"
 #include "tron/robot/topics/ArmTopics.h"
+#include "tron/talky2/arm/ArmClient.h"
+#include "tron/talky2/arm/JointTalker.h"
+#include "tron/talky2/body/BodyClient.h"
+#include "tron/talky2/channel/ChannelPublisher.h"
 
 using namespace log4cxx;
 
@@ -25,9 +29,9 @@ void TestTalky2::makeTest()
 {
     LOG4CXX_INFO(logger, "TestTalky2: test start \n");
 
-    //testUnicastComs();
+    testUnicastComs();
     
-    testBroadcastComs();
+    //testBroadcastComs();
         
     LOG4CXX_INFO(logger, "TestTalky2: test end \n");
 }
@@ -37,25 +41,24 @@ void TestTalky2::testUnicastComs()
 {
     LOG4CXX_INFO(logger, "TestTalky2::testUnicastComs \n");
 
-    ArmClient oArmClient1;
-    ArmClient oArmClient2;
+    /*
+    ArmClient oArmClient;
     JointChannelServer oJointChannelServer;
 
-    float val1 = 10.0;
-    float val2 = 20.0;
+    float value = 10.0;
+    oArmClient.setHS(value++);
+    oArmClient.setVS(value++);
+    oArmClient.setELB(value++);
+    oArmClient.setHWRI(value++);
+    oArmClient.setVWRI(value++);
 
-    for (int i=0; i<3; i++)
-    {
-        // send joint commands 
-        sendArmJointCommands(oArmClient1, val1);        
-        sendArmJointCommands(oArmClient2, val2);        
-
-        // serve joint commands
-        checkServerChannel(oJointChannelServer);
-        
-        val1 += 100;
-        val2 += 100;
-    }
+    // serve joint commands
+    checkServerChannel(oJointChannelServer);
+     */
+    
+    BodyClient oBodyClient;
+    oBodyClient.expressFeeling(10);
+    oBodyClient.endNode();
 }
 
 
@@ -63,40 +66,35 @@ void TestTalky2::testBroadcastComs()
 {
     LOG4CXX_INFO(logger, "TestTalky2::testBroadcastComs \n");
 
-    ChannelPublisher oJointChannelPublisher(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT);
+    ChannelPublisher oChannelPublisher(RobotNodes::eNODE_ARM, ArmTopics::eARM_JOINT);
 
-    publishData2Channel(oJointChannelPublisher, 80.0);
-    oJointChannelPublisher.clearChannel();
-    publishData2Channel(oJointChannelPublisher, 90.0);
+    float value = 80.0;
+
+    oChannelPublisher.clearChannel();
+    oChannelPublisher.addMessage(JointTalker::eJOINT_HS_POS, value++);
+    oChannelPublisher.addMessage(JointTalker::eJOINT_VS_POS, value++);
+    oChannelPublisher.addMessage(JointTalker::eJOINT_ELB_POS, value++);
+    oChannelPublisher.addMessage(JointTalker::eJOINT_HWRI_POS, value++);
+    oChannelPublisher.addMessage(JointTalker::eJOINT_VWRI_POS, value++);    
+    oChannelPublisher.publishAll();
     
     ArmListener oArmListener;
-    JointsData jointsData;
             
     // read arm joints info
-    hearArmJointsData(oArmListener, jointsData);        
+    hearArmJointsData(oArmListener);        
         
     LOG4CXX_INFO(logger, "TestTalky2: test end \n");
 }
 
-void TestTalky2::sendArmJointCommands(ArmClient& oArmClient, float value)
-{
-    LOG4CXX_INFO(logger, "TestTalky2: sendArmJointCommands ...");
-
-    oArmClient.setHS(value++);
-    oArmClient.setVS(value++);
-    oArmClient.setELB(value++);
-    oArmClient.setHWRI(value++);
-    oArmClient.setVWRI(value++);
-}
-
-
-void TestTalky2::hearArmJointsData(ArmListener& oArmListener, JointsData& jointsData) 
+void TestTalky2::hearArmJointsData(ArmListener& oArmListener) 
 {
     LOG4CXX_INFO(logger, "TestTalky2: hearArmJointsData ...");
+    JointsData jointsData;
 
     // interpret test message
-    if (oArmListener.getJointPositions(jointsData))
+    if (oArmListener.senseChannels())
     {
+        jointsData = oArmListener.getJointPositions();
         // show obtained values
         LOG4CXX_INFO(logger, "TestTalky2: sensed HS < " << std::to_string(jointsData.hs));
         LOG4CXX_INFO(logger, "TestTalky2: sensed VS < " << std::to_string(jointsData.vs));
@@ -125,16 +123,6 @@ void TestTalky2::checkServerChannel(ChannelServer& oChannelServer)
     {
         LOG4CXX_WARN(logger, "TestTalky2: no messages in channel ...");
     }
-}
-
-
-void TestTalky2::publishData2Channel(ChannelPublisher& oChannelPublisher, float value)
-{
-    oChannelPublisher.publishMessage(JointTalker::eJOINT_HS_POS, value++);
-    oChannelPublisher.publishMessage(JointTalker::eJOINT_VS_POS, value++);
-    oChannelPublisher.publishMessage(JointTalker::eJOINT_ELB_POS, value++);
-    oChannelPublisher.publishMessage(JointTalker::eJOINT_HWRI_POS, value++);
-    oChannelPublisher.publishMessage(JointTalker::eJOINT_VWRI_POS, value++);    
 }
 
 }

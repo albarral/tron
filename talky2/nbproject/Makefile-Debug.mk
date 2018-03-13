@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/talky2/BasicTalker.o \
 	${OBJECTDIR}/src/tron/talky2/Talker.o \
+	${OBJECTDIR}/src/tron/talky2/TalkyLanguages.o \
 	${OBJECTDIR}/src/tron/talky2/arm/ArmClient.o \
 	${OBJECTDIR}/src/tron/talky2/arm/ArmListener.o \
 	${OBJECTDIR}/src/tron/talky2/arm/AxisTalker.o \
@@ -95,6 +96,11 @@ ${OBJECTDIR}/src/tron/talky2/Talker.o: src/tron/talky2/Talker.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/Talker.o src/tron/talky2/Talker.cpp
+
+${OBJECTDIR}/src/tron/talky2/TalkyLanguages.o: src/tron/talky2/TalkyLanguages.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../robot/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/talky2/TalkyLanguages.o src/tron/talky2/TalkyLanguages.cpp
 
 ${OBJECTDIR}/src/tron/talky2/arm/ArmClient.o: src/tron/talky2/arm/ArmClient.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/talky2/arm

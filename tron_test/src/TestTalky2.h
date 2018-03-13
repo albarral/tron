@@ -8,11 +8,8 @@
 
 #include <log4cxx/logger.h>
 
-#include "tron/talky2/arm/ArmClient.h"
 #include "tron/talky2/arm/ArmListener.h"
 #include "tron/talky2/channel/ChannelServer.h"
-#include "tron/talky2/channel/ChannelPublisher.h"
-#include "tron/robot/sensors/ArmSensors.h"
 
 namespace tron
 {
@@ -32,15 +29,10 @@ private:
     void testUnicastComs();      
     void testBroadcastComs();      
 
-    // send commands 
-    void sendArmJointCommands(ArmClient& oArmClient, float value);    
     // receive commands
     void checkServerChannel(ChannelServer& oChannelServer);
-
-    // publish data
-    void publishData2Channel(ChannelPublisher& oChannelPublisher, float value);
     // hear data
-    void hearArmJointsData(ArmListener& oArmListener, JointsData& jointsData);                
+    void hearArmJointsData(ArmListener& oArmListener);                
 };
 
 }
