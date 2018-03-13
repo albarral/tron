@@ -10,6 +10,8 @@
 
 #include "tron/talky2/arm/ArmListener.h"
 #include "tron/talky2/channel/ChannelServer.h"
+#include "tron/robot/sensors/ArmSensors.h"
+
 
 namespace tron
 {
@@ -31,8 +33,9 @@ private:
 
     // receive commands
     void checkServerChannel(ChannelServer& oChannelServer);
-    // hear data
-    void hearArmJointsData(ArmListener& oArmListener);                
+    
+    void showArmJointsData(JointsData& jointsData);                
+    void showArmAxesData(AxesData& axesPositions, AxesData& axesSpeeds);                
 };
 
 }

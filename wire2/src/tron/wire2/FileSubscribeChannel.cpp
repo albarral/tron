@@ -67,6 +67,18 @@ bool FileSubscribeChannel::receiveMessages(std::vector<std::string>& listMessage
         // read file from top
         oFileReader.goTop();
         oFileReader.readAllLines(listMessages);
+        // clear possible empty messages at the end
+        bool bend = false;
+        while (!bend)
+        {            
+            if (listMessages.back().empty())
+            {
+                listMessages.pop_back();
+                LOG4CXX_DEBUG(logger, "FileSubscribeChannel: clear empty message");                                
+            }
+            else
+                bend = true;
+        }        
         return true;    // no matter if something read or not
     }
     else
