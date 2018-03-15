@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="talky2" displayName="talky2" projectFiles="true">
+        <logicalFolder name="arm" displayName="arm" projectFiles="true">
+          <itemPath>src/tron/talky2/arm/ArmClient.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmClient.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmListener.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ArmListener.h</itemPath>
+          <itemPath>src/tron/talky2/arm/AxisTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/AxisTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Axes.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Axes.h</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/ChannelSubscriber4Joints.h</itemPath>
+          <itemPath>src/tron/talky2/arm/CyclicTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/CyclicTalker.h</itemPath>
+          <itemPath>src/tron/talky2/arm/JointTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/arm/JointTalker.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="body" displayName="body" projectFiles="true">
+          <itemPath>src/tron/talky2/body/ArtisticTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/body/ArtisticTalker.h</itemPath>
+          <itemPath>src/tron/talky2/body/BodyClient.cpp</itemPath>
+          <itemPath>src/tron/talky2/body/BodyClient.h</itemPath>
+          <itemPath>src/tron/talky2/body/ExpressiveTalker.cpp</itemPath>
+          <itemPath>src/tron/talky2/body/ExpressiveTalker.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="channel" displayName="channel" projectFiles="true">
+          <itemPath>src/tron/talky2/channel/ChannelClient.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelClient.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelCommunicator.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelCommunicator.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelPublisher.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelPublisher.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelServer.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelServer.h</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelSubscriber.cpp</itemPath>
+          <itemPath>src/tron/talky2/channel/ChannelSubscriber.h</itemPath>
+        </logicalFolder>
+        <itemPath>src/tron/talky2/BasicTalker.cpp</itemPath>
+        <itemPath>src/tron/talky2/BasicTalker.h</itemPath>
+        <itemPath>src/tron/talky2/Talker.cpp</itemPath>
+        <itemPath>src/tron/talky2/Talker.h</itemPath>
+        <itemPath>src/tron/talky2/TalkyLanguages.cpp</itemPath>
+        <itemPath>src/tron/talky2/TalkyLanguages.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src/tron/talky2</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+            <pElem>../robot/src</pElem>
+            <pElem>../tuly/src</pElem>
+            <pElem>../wire/src</pElem>
+            <pElem>../wire2/src</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky2.${CND_DLIB_EXT}</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../robot"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../robot"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tuly"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tuly"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../wire"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../wire"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../wire2"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../wire2"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire2.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="src/tron/talky2/BasicTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/Talker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/Talker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/TalkyLanguages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/TalkyLanguages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmListener.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/AxisTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/AxisTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelCommunicator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelCommunicator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelPublisher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelPublisher.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/tron/talky2/BasicTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/BasicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/Talker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/Talker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/TalkyLanguages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/TalkyLanguages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmListener.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ArmListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/AxisTalker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/AxisTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Axes.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/ChannelSubscriber4Joints.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/CyclicTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/arm/JointTalker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ArtisticTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/BodyClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/body/ExpressiveTalker.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelCommunicator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelCommunicator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelPublisher.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelPublisher.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/talky2/channel/ChannelSubscriber.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -9,9 +9,11 @@
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
-                <make-dep-project>../../tron/comy</make-dep-project>
                 <make-dep-project>../../tron/tuly</make-dep-project>
-                <make-dep-project>../../tron/talky</make-dep-project>
+                <make-dep-project>../talky2</make-dep-project>
+                <make-dep-project>../wire2</make-dep-project>
+                <make-dep-project>../robot</make-dep-project>
+                <make-dep-project>../wire</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src/dady</sourceRootElem>

@@ -48,7 +48,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tuly/utils/IntegerQueue.o \
 	${OBJECTDIR}/src/tuly/utils/MessageQueue.o \
 	${OBJECTDIR}/src/tuly/utils/StringUtil.o \
-	${OBJECTDIR}/src/tuly/utils/UtilsTest.o
+	${OBJECTDIR}/src/tuly/utils/UtilsTest.o \
+	${OBJECTDIR}/src/tuly/utils2/CodeMap.o
 
 
 # C Compiler Flags
@@ -144,6 +145,11 @@ ${OBJECTDIR}/src/tuly/utils/UtilsTest.o: src/tuly/utils/UtilsTest.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/utils/UtilsTest.o src/tuly/utils/UtilsTest.cpp
+
+${OBJECTDIR}/src/tuly/utils2/CodeMap.o: src/tuly/utils2/CodeMap.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tuly/utils2
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tuly/utils2/CodeMap.o src/tuly/utils2/CodeMap.cpp
 
 # Subprojects
 .build-subprojects:

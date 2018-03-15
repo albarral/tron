@@ -8,12 +8,14 @@
 #include <log4cxx/logger.h>
 #include <log4cxx/xml/domconfigurator.h>
 
-#include "TestTalky.h"
 #include "TestComy.h"
 #include "TestMaty.h"
 #include "TestNety.h"
 #include "TestTivy.h"
+#include "TestTalky.h"
+#include "TestTalky2.h"
 #include "TestTuly.h"
+#include "TestTronWire.h"
 
 // obtains user's home path
 std::string getHomePath();
@@ -46,12 +48,20 @@ int main(int argc, char** argv)
 //    oTestNety.makeTest();
 
     // test tivy lib
-    TestTivy oTestTivy;
-    oTestTivy.makeTest();
+//    TestTivy oTestTivy;
+//    oTestTivy.makeTest();
     
      // test tuly lib
 //    TestTuly oTestTuly;
 //    oTestTuly.makeTest();
+    
+    // test tron_wire lib
+//    TestTronWire oTestTronWire;
+//    oTestTronWire.makeTest();
+
+    // test talky2 lib
+    tron::TestTalky2 oTestTalky2;
+    oTestTalky2.makeTest();
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     

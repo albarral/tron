@@ -11,10 +11,14 @@
             <make-dep-projects>
                 <make-dep-project>../comy</make-dep-project>
                 <make-dep-project>../talky</make-dep-project>
+                <make-dep-project>../talky2</make-dep-project>
                 <make-dep-project>../tuly</make-dep-project>
+                <make-dep-project>../wire2</make-dep-project>
+                <make-dep-project>../robot</make-dep-project>
                 <make-dep-project>../nety</make-dep-project>
                 <make-dep-project>../tivy</make-dep-project>
                 <make-dep-project>../maty</make-dep-project>
+                <make-dep-project>../wire</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>

@@ -13,6 +13,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="talky2" displayName="talky2" projectFiles="true">
+          <itemPath>src/test/talky2/JointChannelServer.cpp</itemPath>
+          <itemPath>src/test/talky2/JointChannelServer.h</itemPath>
+        </logicalFolder>
         <itemPath>src/TestComy.cpp</itemPath>
         <itemPath>src/TestComy.h</itemPath>
         <itemPath>src/TestMaty.cpp</itemPath>
@@ -23,8 +27,12 @@
         <itemPath>src/TestPlot.h</itemPath>
         <itemPath>src/TestTalky.cpp</itemPath>
         <itemPath>src/TestTalky.h</itemPath>
+        <itemPath>src/TestTalky2.cpp</itemPath>
+        <itemPath>src/TestTalky2.h</itemPath>
         <itemPath>src/TestTivy.cpp</itemPath>
         <itemPath>src/TestTivy.h</itemPath>
+        <itemPath>src/TestTronWire.cpp</itemPath>
+        <itemPath>src/TestTronWire.h</itemPath>
         <itemPath>src/TestTuly.cpp</itemPath>
         <itemPath>src/TestTuly.h</itemPath>
         <itemPath>src/main.cpp</itemPath>
@@ -58,41 +66,21 @@
           <standard>8</standard>
           <incDir>
             <pElem>src</pElem>
-            <pElem>../tuly/src</pElem>
-            <pElem>../talky/src</pElem>
             <pElem>../comy/src</pElem>
             <pElem>../maty/src</pElem>
             <pElem>../nety/src</pElem>
+            <pElem>../robot/src</pElem>
+            <pElem>../talky/src</pElem>
+            <pElem>../talky2/src</pElem>
             <pElem>../tivy/src</pElem>
+            <pElem>../tuly/src</pElem>
+            <pElem>../wire/src</pElem>
+            <pElem>../wire2/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test</output>
           <linkerLibItems>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../tuly"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tuly"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../talky"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../talky"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../comy"
                             CT="2"
@@ -130,6 +118,42 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
+              <makeArtifact PL="../robot"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../robot"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_robot.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../talky"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../talky"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../talky2"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../talky2"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_talky2.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
               <makeArtifact PL="../tivy"
                             CT="2"
                             CN="Debug"
@@ -139,6 +163,42 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tivy.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tuly"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tuly"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tuly.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../wire"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../wire"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../wire2"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../wire2"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire2.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibLibItem>log4cxx</linkerLibLibItem>
@@ -167,15 +227,33 @@
       </item>
       <item path="src/TestTalky.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestTalky2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTalky2.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTivy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTronWire.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTronWire.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestTuly.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTuly.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -218,15 +296,33 @@
       </item>
       <item path="src/TestTalky.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestTalky2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTalky2.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestTivy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTivy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestTronWire.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestTronWire.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestTuly.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTuly.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/test/talky2/JointChannelServer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
   </confs>

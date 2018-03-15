@@ -60,18 +60,17 @@ std::string FileReader::readLine()
 
 bool FileReader::readAllLines(std::vector<std::string>& listLines)
 {          
-    // clear output list
-    listLines.clear();
-
+    bool bread = false;
     std::string line;    
     while (std::getline(infile, line))
     {
         listLines.push_back(line);
+        bread = true;
     }
     // refresh as eof is reached
     refresh();
     
-    return (!listLines.empty());
+    return (bread);
 }
 
 void FileReader::refresh()

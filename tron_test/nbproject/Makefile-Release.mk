@@ -40,9 +40,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/TestNety.o \
 	${OBJECTDIR}/src/TestPlot.o \
 	${OBJECTDIR}/src/TestTalky.o \
+	${OBJECTDIR}/src/TestTalky2.o \
 	${OBJECTDIR}/src/TestTivy.o \
+	${OBJECTDIR}/src/TestTronWire.o \
 	${OBJECTDIR}/src/TestTuly.o \
-	${OBJECTDIR}/src/main.o
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/test/talky2/JointChannelServer.o
 
 
 # C Compiler Flags
@@ -94,10 +97,20 @@ ${OBJECTDIR}/src/TestTalky.o: src/TestTalky.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky.o src/TestTalky.cpp
 
+${OBJECTDIR}/src/TestTalky2.o: src/TestTalky2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky2.o src/TestTalky2.cpp
+
 ${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
+
+${OBJECTDIR}/src/TestTronWire.o: src/TestTronWire.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTronWire.o src/TestTronWire.cpp
 
 ${OBJECTDIR}/src/TestTuly.o: src/TestTuly.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -108,6 +121,11 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/test/talky2/JointChannelServer.o: src/test/talky2/JointChannelServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/test/talky2
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/test/talky2/JointChannelServer.o src/test/talky2/JointChannelServer.cpp
 
 # Subprojects
 .build-subprojects:

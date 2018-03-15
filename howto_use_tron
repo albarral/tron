@@ -14,9 +14,12 @@ It uses tron libraries:
 
 > USAGE
 
-usage: dady <talky message>
+usage: dady node topic concept*quantity
 
-note: use dady without params to get the list of topics, categories and concepts available for communication.
+user guidance: 
+- if no node informed, dady will show all available nodes
+- if no topic informed (but node is), dady will show all available topics for that node
+- if no concept informed (but node & topic are), dady will show all available concepts for that topic
 
 
 > INSTALLATION
