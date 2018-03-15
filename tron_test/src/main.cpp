@@ -8,11 +8,8 @@
 #include <log4cxx/logger.h>
 #include <log4cxx/xml/domconfigurator.h>
 
-#include "TestComy.h"
 #include "TestMaty.h"
-#include "TestNety.h"
 #include "TestTivy.h"
-#include "TestTalky.h"
 #include "TestTalky2.h"
 #include "TestTuly.h"
 #include "TestTronWire.h"
@@ -30,22 +27,10 @@ int main(int argc, char** argv)
     log4cxx::xml::DOMConfigurator::configure(configFile);    
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
-
-    // test talky lib
-//    TestTalky oTestTalky;
-//    oTestTalky.makeTest();
-
-    // test comy lib
-//    TestComy oTestComy;
-//    oTestComy.makeTest();
     
      // test maty lib
 //    TestMaty oTestMaty;
 //    oTestMaty.makeTest();
-
-    // test nety llib
-//    TestNety oTestNety;
-//    oTestNety.makeTest();
 
     // test tivy lib
 //    TestTivy oTestTivy;
