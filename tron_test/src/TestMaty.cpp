@@ -103,28 +103,40 @@ void TestMaty::testTriangularSignal()
 
 void TestMaty::testOscillators()
 {
-    maty::Oscillator oOsc1;
-    maty::SenoidalOscillator oOsc2;
-    
     float freq = 1.0;
     float span = 2.0;
+    int phase = 90;
+
     // oscillator 1: linear [-1, 1] 
+    maty::Oscillator oOsc1;
     oOsc1.setFrequency(freq);
     oOsc1.setSpan(span);
     oOsc1.setSymmetry(true);
+
     // oscillator 2: senoidal  [-1, 1]
-    oOsc2.setFrequency(freq);
+    //maty::SenoidalOscillator oOsc2;
+    //oOsc2.setFrequency(freq);
+
+    // oscillator 3: linear [-1, 1] with phase
+    maty::Oscillator oOsc3;
+    oOsc3.setFrequency(freq);
+    oOsc3.setSpan(span);
+    oOsc3.setSymmetry(true);
+    oOsc3.setPhase(phase);    
     
     // reset oscillators
     oOsc1.reset();
-    oOsc2.reset();
+    //oOsc2.reset();
+    oOsc3.reset();
     
     // run them for 2s
     for (int i=0; i<41; i++)
     {
         oOsc1.update();
-        oOsc2.update();        
-        LOG4CXX_INFO(logger, "signals = " << oOsc1.getValue() << ", " << oOsc2.getValue2());
+ //       oOsc2.update();        
+        oOsc3.update();        
+//        LOG4CXX_INFO(logger, "signals = " << oOsc1.getValue() << ", " << oOsc2.getValue2());
+        LOG4CXX_INFO(logger, "signals = " << oOsc1.getValue() << ", " << oOsc3.getValue());
         
         usleep(50000);  // 50ms (20Hz)
     }

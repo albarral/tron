@@ -33,6 +33,15 @@ void Oscillator::setSpan(float value)
     }            
 }
 
+void Oscillator::setPhase(int angle)
+{
+    // phase must be in [0, 360) range
+    if (angle >= 0 && angle < 360)
+    {
+        phase = angle;
+    }
+}
+
 void Oscillator::setSymmetry(bool value)
 {
     bsymmetric = value;
@@ -64,6 +73,15 @@ void Oscillator::reset()
     Signal2::reset();
     // and direction
     bup = true;
+    
+    // if phase defined
+    if (phase != 0.0)
+    {
+        // advance the oscillator to the corresponding period position
+        float dif = 2.0 * span * (float)phase/360.0;
+        while (dif != 0.0)
+            dif = advance(dif);
+    }
 }
 
 void Oscillator::update()
