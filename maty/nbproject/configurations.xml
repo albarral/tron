@@ -53,6 +53,8 @@
           <itemPath>src/maty/signals/SenoidalOscillator.h</itemPath>
           <itemPath>src/maty/signals/Signal2.cpp</itemPath>
           <itemPath>src/maty/signals/Signal2.h</itemPath>
+          <itemPath>src/maty/signals/VectorialOscillator.cpp</itemPath>
+          <itemPath>src/maty/signals/VectorialOscillator.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f1" displayName="utils" projectFiles="true">
           <itemPath>src/maty/utils/Matrix.cpp</itemPath>
@@ -179,6 +181,16 @@
       </item>
       <item path="src/maty/signals/Signal2.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/signals/VectorialOscillator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/maty/signals/VectorialOscillator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/maty/utils/Matrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/utils/Matrix.h" ex="false" tool="3" flavor2="0">
@@ -287,6 +299,16 @@
       <item path="src/maty/signals/Signal2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/signals/Signal2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/signals/VectorialOscillator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/maty/signals/VectorialOscillator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="src/maty/utils/Matrix.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -53,6 +53,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/signals/Oscillator.o \
 	${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o \
 	${OBJECTDIR}/src/maty/signals/Signal2.o \
+	${OBJECTDIR}/src/maty/signals/VectorialOscillator.o \
 	${OBJECTDIR}/src/maty/utils/Matrix.o \
 	${OBJECTDIR}/src/maty/utils/Pool.o
 
@@ -170,6 +171,11 @@ ${OBJECTDIR}/src/maty/signals/Signal2.o: src/maty/signals/Signal2.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/Signal2.o src/maty/signals/Signal2.cpp
+
+${OBJECTDIR}/src/maty/signals/VectorialOscillator.o: src/maty/signals/VectorialOscillator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/VectorialOscillator.o src/maty/signals/VectorialOscillator.cpp
 
 ${OBJECTDIR}/src/maty/utils/Matrix.o: src/maty/utils/Matrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/utils

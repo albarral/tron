@@ -24,8 +24,8 @@ public:
 
     float getValue2() {return value2;};
 
-    void reset(); 
-    void update();
+    virtual void reset(); 
+    virtual void update();
 
     virtual std::string toString();
 };
