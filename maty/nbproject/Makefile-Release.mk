@@ -51,8 +51,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/average.o \
 	${OBJECTDIR}/src/maty/math/distance.o \
 	${OBJECTDIR}/src/maty/signals/Oscillator.o \
+	${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o \
 	${OBJECTDIR}/src/maty/signals/Signal2.o \
-	${OBJECTDIR}/src/maty/signals/SoftOscillator.o \
 	${OBJECTDIR}/src/maty/utils/Matrix.o \
 	${OBJECTDIR}/src/maty/utils/Pool.o
 
@@ -161,15 +161,15 @@ ${OBJECTDIR}/src/maty/signals/Oscillator.o: src/maty/signals/Oscillator.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/Oscillator.o src/maty/signals/Oscillator.cpp
 
+${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o: src/maty/signals/SenoidalOscillator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o src/maty/signals/SenoidalOscillator.cpp
+
 ${OBJECTDIR}/src/maty/signals/Signal2.o: src/maty/signals/Signal2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/Signal2.o src/maty/signals/Signal2.cpp
-
-${OBJECTDIR}/src/maty/signals/SoftOscillator.o: src/maty/signals/SoftOscillator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/SoftOscillator.o src/maty/signals/SoftOscillator.cpp
 
 ${OBJECTDIR}/src/maty/utils/Matrix.o: src/maty/utils/Matrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/utils

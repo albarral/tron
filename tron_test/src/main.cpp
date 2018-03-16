@@ -29,8 +29,8 @@ int main(int argc, char** argv)
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
     
      // test maty lib
-//    TestMaty oTestMaty;
-//    oTestMaty.makeTest();
+    TestMaty oTestMaty;
+    oTestMaty.makeTest();
 
     // test tivy lib
 //    TestTivy oTestTivy;
@@ -45,8 +45,8 @@ int main(int argc, char** argv)
 //    oTestTronWire.makeTest();
 
     // test talky2 lib
-    tron::TestTalky2 oTestTalky2;
-    oTestTalky2.makeTest();
+//    tron::TestTalky2 oTestTalky2;
+//    oTestTalky2.makeTest();
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     

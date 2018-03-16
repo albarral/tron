@@ -23,7 +23,7 @@ private:
     // logic
     float min;      // minimum signal value
     float max;      // maximum signal value
-    float k;        // slope of signal change (linear signal)
+    float k;        // slope of signal change (units/ms)
     bool bup;     // sign of signal change (true positive, false negative)
 
 public:
@@ -40,11 +40,14 @@ public:
     virtual void reset(); 
     virtual void update();
 
-    std::string toString();
+    virtual std::string toString();
     
 private:    
     // recompute oscillator values
     void tune();
+    // advance quantity in present direction
+    // if limit reached, change direction and return unused quantity
+    float advance(float quantity);
 };
 }
 #endif

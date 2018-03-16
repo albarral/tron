@@ -8,6 +8,8 @@
 #include "TestMaty.h"
 #include "maty/math/ArmMath.h"
 #include "maty/math/TriangularSignal.h"
+#include "maty/signals/Oscillator.h"
+#include "maty/signals/SenoidalOscillator.h"
 
 using namespace log4cxx;
 
@@ -26,7 +28,8 @@ void TestMaty::makeTest()
     LOG4CXX_INFO(logger, "\n");
     //testArmMath();
     //testClock();
-    testTriangularSignal();
+    //testTriangularSignal();
+    testOscillators();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -95,5 +98,34 @@ void TestMaty::testTriangularSignal()
         //LOG4CXX_INFO(logger, "y = " << y << ", sector = " << oSignal.getSector() << ", completion = " << oSignal.getCompletion() << "\n");
         
         usleep(50000);  // 20Hz
+    }
+}
+
+void TestMaty::testOscillators()
+{
+    maty::Oscillator oOsc1;
+    maty::SenoidalOscillator oOsc2;
+    
+    float freq = 1.0;
+    float span = 2.0;
+    // oscillator 1: linear [-1, 1] 
+    oOsc1.setFrequency(freq);
+    oOsc1.setSpan(span);
+    oOsc1.setSymmetry(true);
+    // oscillator 2: senoidal  [-1, 1]
+    oOsc2.setFrequency(freq);
+    
+    // reset oscillators
+    oOsc1.reset();
+    oOsc2.reset();
+    
+    // run them for 2s
+    for (int i=0; i<41; i++)
+    {
+        oOsc1.update();
+        oOsc2.update();        
+        LOG4CXX_INFO(logger, "signals = " << oOsc1.getValue() << ", " << oOsc2.getValue2());
+        
+        usleep(50000);  // 50ms (20Hz)
     }
 }

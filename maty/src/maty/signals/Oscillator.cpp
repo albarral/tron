@@ -42,7 +42,7 @@ void Oscillator::setSymmetry(bool value)
 void Oscillator::tune()
 {
     // the oscillator signal should walk the span twice in each period
-    k = 2 * span * freq;
+    k = 2.0 * span * freq * 0.001;
      // if symmetric oscillation, the signal range will be [span/2, span/2]
     if (bsymmetric)
     {
@@ -73,36 +73,46 @@ void Oscillator::update()
     
     // compute signal change
     float dif = k*at;    
-    float v0;
     // and apply change to signal (considering overflows)
     while (dif != 0.0)
     {
-        v0 = value;
-        // if positive direction, increase value
-        if (bup)
-        {
-            value += dif;
-            // if overflow: protect, change direction and compute remaining change
-            if (value > max)
-            {
-                value = max;
-                bup = !bup;
-                dif -= max - v0;
-            }
-        }
-        // if negative direction, decrease value
-        else
-        {
-            value -= dif;
-            // if overflow: protect, change direction and compute remaining change
-            if (value < min)
-            {
-                value = min;
-                bup = !bup;
-                dif -= v0 - min;
-            }            
-        }        
+        dif = advance(dif);
     }
+}
+
+float Oscillator::advance(float quantity)
+{
+    // if positive direction, increase value
+    if (bup)
+    {
+        value += quantity;
+        // if limit passed: compute excess, stay in limit and change direction
+        if (value > max)
+        {
+            quantity = value - max;
+            value = max;
+            bup = !bup;
+        }
+        else 
+            quantity = 0.0;
+    }
+    // if negative direction, decrease value
+    else
+    {
+        value -= quantity;
+        // if limit passed: compute excess, stay in limit and change direction
+        if (value < min)
+        {
+            quantity = min - value;
+            value = min;
+            bup = !bup;
+        }            
+        else 
+            quantity = 0.0;
+    }               
+    
+    // return excess
+    return quantity;
 }
 
 std::string Oscillator::toString()
