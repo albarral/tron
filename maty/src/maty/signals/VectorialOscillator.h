@@ -19,7 +19,7 @@ class VectorialOscillator : public Oscillator
 {
 private:
     float amplitude;        // vector maximum amplitude
-    maty::Vector o2DVector;
+    maty::Vector o2DVector;     // oscillating vector
     
 public:
     VectorialOscillator();
@@ -33,9 +33,9 @@ public:
     virtual void reset(); 
     virtual void update();
     
-    // get movement xy speeds
-    float getXSpeed() {return o2DVector.getX();}; 
-    float getYSpeed() {return o2DVector.getY();}; 
+    // get x & y outputs
+    float getX() {return o2DVector.getX();}; 
+    float getY() {return o2DVector.getY();}; 
 
     // get description
     virtual std::string toString();

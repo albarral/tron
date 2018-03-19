@@ -47,6 +47,8 @@
           <itemPath>src/maty/math/distance.h</itemPath>
         </logicalFolder>
         <logicalFolder name="signals" displayName="signals" projectFiles="true">
+          <itemPath>src/maty/signals/DualOscillator.cpp</itemPath>
+          <itemPath>src/maty/signals/DualOscillator.h</itemPath>
           <itemPath>src/maty/signals/Oscillator.cpp</itemPath>
           <itemPath>src/maty/signals/Oscillator.h</itemPath>
           <itemPath>src/maty/signals/SenoidalOscillator.cpp</itemPath>
@@ -162,6 +164,13 @@
       <item path="src/maty/math/distance.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/signals/DualOscillator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/maty/signals/DualOscillator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/Oscillator.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -281,6 +290,13 @@
       <item path="src/maty/math/distance.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/signals/DualOscillator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/maty/signals/DualOscillator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/Oscillator.cpp" ex="false" tool="1" flavor2="0">
       </item>
