@@ -1,9 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2017 by Migtron Robotics   *
+ *   Copyright (C) 2018 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tivy/DrawnDisplay.h"
+#include "tivy/display/DrawnDisplay.h"
 
 namespace tivy 
 {

@@ -5,7 +5,7 @@
 
 #include <opencv2/highgui/highgui.hpp>  // for named window
 
-#include "tivy/Display.h"
+#include "tivy/display/Display.h"
 
 namespace tivy 
 {

@@ -14,8 +14,8 @@
 #include "tivy/history/History.h"
 #include "tivy/plot/DiscPlot.h"
 #include "tivy/plot/HistoryPlot.h"
-#include "tivy/DrawnDisplay.h"
-#include "tivy/Chart.h"
+#include "tivy/display/DrawnDisplay.h"
+#include "tivy/display/Chart.h"
 
 using namespace log4cxx;
 
@@ -128,14 +128,14 @@ void TestTivy::testChart()
 {    
     tivy::Chart oChart;
     oChart.setRanges(200, 100);
-    oChart.plotChartAxes();
+    oChart.plotAxes();
     sleep(1);    
     
     cv::Point point = cv::Point(50, 50);      
-    oChart.plotChartPoint(point);
+    oChart.plotPoint(point);
     sleep(1);    
 
     point.x += 20;
-    oChart.plotChartPoint(point);
+    oChart.plotPoint(point);
     sleep(1);    
 }

@@ -8,7 +8,7 @@
 
 #include "opencv2/core/core.hpp"   
 
-#include "tivy/DrawnDisplay.h"
+#include "tivy/display/DrawnDisplay.h"
 
 namespace tivy 
 {
@@ -35,9 +35,9 @@ public:
     // set the represented physical ranges (symmetric ranges)
     void setRanges(int xmax, int ymax);    
     // draws the axes in the plot
-    void plotChartAxes();        
+    void plotAxes();        
     // plots the specified physical point in the display (renewing the image if necessary)
-    bool plotChartPoint(cv::Point& point, bool brenew=false);
+    bool plotPoint(cv::Point& point, bool brenew=false);
     
 private:            
     // checks if given physical point (x,y) is inside the represented ranges

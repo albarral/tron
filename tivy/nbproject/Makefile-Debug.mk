@@ -35,13 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/tivy/Chart.o \
-	${OBJECTDIR}/src/tivy/Display.o \
 	${OBJECTDIR}/src/tivy/Draw.o \
-	${OBJECTDIR}/src/tivy/DrawnDisplay.o \
 	${OBJECTDIR}/src/tivy/DualWindow.o \
 	${OBJECTDIR}/src/tivy/ImageSave.o \
 	${OBJECTDIR}/src/tivy/SharedDisplay.o \
+	${OBJECTDIR}/src/tivy/display/Chart.o \
+	${OBJECTDIR}/src/tivy/display/Display.o \
+	${OBJECTDIR}/src/tivy/display/DrawnDisplay.o \
 	${OBJECTDIR}/src/tivy/history/Click.o \
 	${OBJECTDIR}/src/tivy/history/History.o \
 	${OBJECTDIR}/src/tivy/history/History2D.o \
@@ -74,25 +74,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tivy.${CND_DLIB_EXT}: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_tivy.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/src/tivy/Chart.o: src/tivy/Chart.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tivy
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/Chart.o src/tivy/Chart.cpp
-
-${OBJECTDIR}/src/tivy/Display.o: src/tivy/Display.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tivy
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/Display.o src/tivy/Display.cpp
-
 ${OBJECTDIR}/src/tivy/Draw.o: src/tivy/Draw.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tivy
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/Draw.o src/tivy/Draw.cpp
-
-${OBJECTDIR}/src/tivy/DrawnDisplay.o: src/tivy/DrawnDisplay.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tivy
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/DrawnDisplay.o src/tivy/DrawnDisplay.cpp
 
 ${OBJECTDIR}/src/tivy/DualWindow.o: src/tivy/DualWindow.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tivy
@@ -108,6 +93,21 @@ ${OBJECTDIR}/src/tivy/SharedDisplay.o: src/tivy/SharedDisplay.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tivy
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/SharedDisplay.o src/tivy/SharedDisplay.cpp
+
+${OBJECTDIR}/src/tivy/display/Chart.o: src/tivy/display/Chart.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy/display
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/display/Chart.o src/tivy/display/Chart.cpp
+
+${OBJECTDIR}/src/tivy/display/Display.o: src/tivy/display/Display.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy/display
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/display/Display.o src/tivy/display/Display.cpp
+
+${OBJECTDIR}/src/tivy/display/DrawnDisplay.o: src/tivy/display/DrawnDisplay.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy/display
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/display/DrawnDisplay.o src/tivy/display/DrawnDisplay.cpp
 
 ${OBJECTDIR}/src/tivy/history/Click.o: src/tivy/history/Click.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tivy/history

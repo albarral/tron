@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tivy/Chart.h"
+#include "tivy/display/Chart.h"
 
 namespace tivy 
 {
@@ -38,7 +38,7 @@ void Chart::setRanges(int xmax, int ymax)
     origin.y = H/2;    
 }
 
-void Chart::plotChartAxes()
+void Chart::plotAxes()
 {
     Draw::setDefaultColor(Draw::eRED);
     // set axes physical limits
@@ -71,7 +71,7 @@ void Chart::plotChartAxes()
     Draw::setDefaultColor(Draw::eWHITE);
 }
 
-bool Chart::plotChartPoint(cv::Point& point, bool brenew)
+bool Chart::plotPoint(cv::Point& point, bool brenew)
 {
     if (brenew)
     {

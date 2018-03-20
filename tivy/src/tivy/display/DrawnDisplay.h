@@ -6,7 +6,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tivy/Display.h"
+#include "tivy/display/Display.h"
 #include "tivy/Draw.h"
 
 namespace tivy 
