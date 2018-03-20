@@ -7,7 +7,13 @@
 
 #include "TestMaty.h"
 #include "maty/math/ArmMath.h"
-#include "maty/math/TriangularSignal.h"
+#include "maty/signals/Oscillator.h"
+#include "maty/signals/SenoidalOscillator.h"
+#include "maty/signals/VectorialOscillator.h"
+#include "maty/signals/DualOscillator.h"
+#include "tivy/display/Chart.h"
+#include "maty/math/Click.h"
+
 
 using namespace log4cxx;
 
@@ -26,7 +32,8 @@ void TestMaty::makeTest()
     LOG4CXX_INFO(logger, "\n");
     //testArmMath();
     //testClock();
-    testTriangularSignal();
+    //testTriangularSignal();
+    testOscillators();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -55,45 +62,94 @@ void TestMaty::testArmMath()
 //    LOG4CXX_INFO(logger, "radius: " << radius << ", angle = " << angle << "\n");
 }
 
-void TestMaty::testClock()
+
+void TestMaty::testOscillators()
 {
-    LOG4CXX_INFO(logger, "testClock");
+    float freq = 0.5;
+    float span = 2.0;
 
-    maty::Clock oClock;
+    // oscillator 1: linear [-1, 1] 
+    maty::Oscillator oOsc;
+    oOsc.setFrequency(freq);
+    oOsc.setSpan(span);
+    oOsc.setSymmetry(true);
     
-    float freq = 50.0;  // 50 Hz
-    oClock.setFrequency(freq);
+    // oscillator 2: senoidal  [-1, 1]
+    maty::SenoidalOscillator oSenOsc;
+    oSenOsc.setFrequency(freq);
 
-    oClock.reset();    
-    for (int i=0; i<61; i++)
-    {
-        int tics = oClock.update();
-        LOG4CXX_INFO(logger, "tics = " << tics << "\n");
+    // oscillator 3: vectorial 
+    maty::VectorialOscillator oVecOsc;
+    oVecOsc.setFrequency(freq);
+    oVecOsc.setAmplitude(10.0);
+    oVecOsc.setAngle(45);
+    
+    
+    // reset oscillators
+    oOsc.reset();
+    oSenOsc.reset();
+    oVecOsc.reset();
         
-        usleep(100000);
+    for (int i=0; i<200; i++)
+    {
+        oOsc.update();
+        oSenOsc.update();        
+        oVecOsc.update();      
+        
+        LOG4CXX_INFO(logger, "signal 1 = " << oOsc.getValue() );
+        LOG4CXX_INFO(logger, "signal 2 = " << oSenOsc.getValue2());
+        LOG4CXX_INFO(logger, "signal 3 = " << oVecOsc.getX() << ", " << oVecOsc.getY());
+        
+        usleep(50000);  // 50ms (20Hz)
     }
 }
 
-void TestMaty::testTriangularSignal()
-{
-    LOG4CXX_INFO(logger, "testTriangularSignal");
+void TestMaty::testDualOscillator()
+{    
+    // use dual oscillator to get oscillating speed
+    float freq = 0.5;
+    float angle = 180;
+    float speed = 0.1;
+    maty::DualOscillator oDualOsc;
+    oDualOsc.setPrimaryFreq(freq);
+    oDualOsc.setPrimaryAmp(speed);
+    oDualOsc.setPrimaryAngle(angle);
+    // secondary oscillator is orthogonal to first one
+    oDualOsc.setSecondaryFreq(freq);
+    oDualOsc.setSecondaryAmp(speed);
+    oDualOsc.setSecondaryAngle(angle+90.0);
+    oDualOsc.setSecondaryPhase(90);
 
-    maty::Clock oClock;
-    oClock.setFrequency(50.0);
-
-    maty::TriangularSignal oTriangularSignal;
-    oTriangularSignal.setFrequency(1.0); 
-
-    LOG4CXX_INFO(logger, oTriangularSignal.toString());
-    oClock.reset();
-    oTriangularSignal.start(oClock);    
-    for (int i=0; i<30; i++)
-    {
-        oClock.update();
-        float y = oTriangularSignal.update(oClock);        
-        LOG4CXX_INFO(logger, "y = " << y << "\n");
-        //LOG4CXX_INFO(logger, "y = " << y << ", sector = " << oSignal.getSector() << ", completion = " << oSignal.getCompletion() << "\n");
+    maty::Click oClick;
+    tivy::Chart oChart;
+    oChart.setRanges(100, 100);
+    oChart.plotAxes();
+    
+    // reset oscillator
+    oDualOsc.reset();
+    oClick.reset();
         
-        usleep(50000);  // 20Hz
+    cv::Vec2f pos = {0.0, 0.0};
+    int time = 0;
+    cv::Point point;
+    for (int i=0; i<200; i++)
+    {
+        oDualOsc.update();
+
+        oClick.read();
+        oClick.start();
+        time = oClick.getMillis();
+        
+        LOG4CXX_INFO(logger, "signal 4 = " << oDualOsc.getX() << ", " << oDualOsc.getY());
+        
+        // apply present speed value
+        pos[0] += oDualOsc.getX()*time;
+        pos[1] += oDualOsc.getY()*time;
+        point.x = pos[0];
+        point.y = pos[1];
+
+        oChart.plotPoint(point, true);
+        
+        usleep(50000);  // 50ms (20Hz)
     }
 }

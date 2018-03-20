@@ -31,10 +31,11 @@ void CyclicTalker::buildKnowledge()
     addConcept(eCYCLIC_FRONT1_FREQ, CYCLIC_FRONT1_FREQ);
     addConcept(eCYCLIC_FRONT1_AMP, CYCLIC_FRONT1_AMP);                         
     addConcept(eCYCLIC_FRONT1_ANGLE, CYCLIC_FRONT1_ANGLE);                      
+    addConcept(eCYCLIC_FRONT1_PHASE, CYCLIC_FRONT1_PHASE);                   
     addConcept(eCYCLIC_FRONT2_FREQ, CYCLIC_FRONT2_FREQ);
     addConcept(eCYCLIC_FRONT2_AMP, CYCLIC_FRONT2_AMP);                         
     addConcept(eCYCLIC_FRONT2_ANGLE, CYCLIC_FRONT2_ANGLE);                      
-    addConcept(eCYCLIC_FRONT_PHASE, CYCLIC_FRONT_PHASE);                   
+    addConcept(eCYCLIC_FRONT2_PHASE, CYCLIC_FRONT2_PHASE);                   
     addConcept(eCYCLIC_FRONT_ACTION, CYCLIC_FRONT_ACTION);                        
 }
 }

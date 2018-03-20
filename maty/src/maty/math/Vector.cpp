@@ -27,7 +27,7 @@ void Vector::setAngle(float value)
     cosA = cos(radians);    
 }
 
-void Vector::compute(float magnitude)
+void Vector::updateMagnitude(float magnitude)
 {
     // x = A cos(a)
     // v = A sin(a);

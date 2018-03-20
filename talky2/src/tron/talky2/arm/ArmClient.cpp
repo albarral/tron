@@ -134,6 +134,12 @@ bool ArmClient::setFrontCyclerFreq1(float value)
     return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT1_FREQ, value);    
 }
 
+bool ArmClient::setFrontCyclerPhase1(float value)
+{
+    LOG4CXX_DEBUG(logger, "ArmClient: set front cycler phase1 > " << std::to_string(value));     
+    return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT1_PHASE, value);    
+}
+
 bool ArmClient::setFrontCyclerAmp2(float value)
 {
     LOG4CXX_DEBUG(logger, "ArmClient: set front cycler amp2 > " << std::to_string(value));     
@@ -152,10 +158,10 @@ bool ArmClient::setFrontCyclerFreq2(float value)
     return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT2_FREQ, value);    
 }
 
-bool ArmClient::setFrontCyclerPhase(float value)
+bool ArmClient::setFrontCyclerPhase2(float value)
 {
-    LOG4CXX_DEBUG(logger, "ArmClient: set front cycler phase > " << std::to_string(value));     
-    return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT_PHASE, value);    
+    LOG4CXX_DEBUG(logger, "ArmClient: set front cycler phase2 > " << std::to_string(value));     
+    return pCyclicChannelClient->sendMessage(CyclicTalker::eCYCLIC_FRONT2_PHASE, value);    
 }
 
 bool ArmClient::setFrontCyclerAction(int value)

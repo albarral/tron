@@ -39,6 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tivy/DualWindow.o \
 	${OBJECTDIR}/src/tivy/ImageSave.o \
 	${OBJECTDIR}/src/tivy/SharedDisplay.o \
+	${OBJECTDIR}/src/tivy/display/Chart.o \
+	${OBJECTDIR}/src/tivy/display/Display.o \
+	${OBJECTDIR}/src/tivy/display/DrawnDisplay.o \
 	${OBJECTDIR}/src/tivy/history/Click.o \
 	${OBJECTDIR}/src/tivy/history/History.o \
 	${OBJECTDIR}/src/tivy/history/History2D.o \
@@ -90,6 +93,21 @@ ${OBJECTDIR}/src/tivy/SharedDisplay.o: src/tivy/SharedDisplay.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tivy
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/SharedDisplay.o src/tivy/SharedDisplay.cpp
+
+${OBJECTDIR}/src/tivy/display/Chart.o: src/tivy/display/Chart.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy/display
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/display/Chart.o src/tivy/display/Chart.cpp
+
+${OBJECTDIR}/src/tivy/display/Display.o: src/tivy/display/Display.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy/display
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/display/Display.o src/tivy/display/Display.cpp
+
+${OBJECTDIR}/src/tivy/display/DrawnDisplay.o: src/tivy/display/DrawnDisplay.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tivy/display
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tivy/display/DrawnDisplay.o src/tivy/display/DrawnDisplay.cpp
 
 ${OBJECTDIR}/src/tivy/history/Click.o: src/tivy/history/Click.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tivy/history

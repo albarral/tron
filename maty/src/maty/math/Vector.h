@@ -12,10 +12,11 @@ namespace maty
 class Vector
 {
 private:
+    // parameter
     float angle;  // vector angle (degrees)
+    // logic
     float cosA;   // cosinus(angle)
     float sinA;   // sinus(angle)
-    // components
     float x;   // x component
     float y;   // y component
     
@@ -23,14 +24,15 @@ public:
     Vector();
     //~Vector();
 
+    float getAngle() {return angle;};
+    float getX() {return x;}; 
+    float getY() {return y;}; 
+
     // parameters
     void setAngle(float value);
-    // compute the vector components for the given magnitude value (keeping vector's angle)
-    void compute(float magnitude);
-
-    // read vector components
-    float getXComponent() {return x;}; 
-    float getYComponent() {return y;}; 
+    
+    // update vector x & y components to the given magnitude value
+    void updateMagnitude(float magnitude);
 };
 }
 #endif

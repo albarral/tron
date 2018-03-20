@@ -14,6 +14,8 @@
 #include "tivy/history/History.h"
 #include "tivy/plot/DiscPlot.h"
 #include "tivy/plot/HistoryPlot.h"
+#include "tivy/display/DrawnDisplay.h"
+#include "tivy/display/Chart.h"
 
 using namespace log4cxx;
 
@@ -29,10 +31,12 @@ void TestTivy::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testPlot();
+    //testPlot();
     //testHistoryPlot();
     //testDiscPlot();    
     //testDualWindow();
+    //testDrawnDisplay();
+    testChart();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 }
@@ -103,3 +107,35 @@ void TestTivy::testDualWindow()
     
 }
 
+void TestTivy::testDrawnDisplay()
+{    
+    tivy::DrawnDisplay oDrawnDisplay;
+    oDrawnDisplay.init("test", 200, 100);
+    
+    cv::Point point = cv::Point(100, 50);
+      
+    oDrawnDisplay.drawPoint(point);
+    oDrawnDisplay.update();
+    sleep(1);    
+    point.x += 20;
+    
+    oDrawnDisplay.drawPoint(point);
+    oDrawnDisplay.update();
+    sleep(1);    
+}
+
+void TestTivy::testChart()
+{    
+    tivy::Chart oChart;
+    oChart.setRanges(200, 100);
+    oChart.plotAxes();
+    sleep(1);    
+    
+    cv::Point point = cv::Point(50, 50);      
+    oChart.plotPoint(point);
+    sleep(1);    
+
+    point.x += 20;
+    oChart.plotPoint(point);
+    sleep(1);    
+}

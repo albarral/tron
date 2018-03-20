@@ -39,17 +39,19 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/ArmMath.o \
 	${OBJECTDIR}/src/maty/math/ArmPolar.o \
 	${OBJECTDIR}/src/maty/math/Click.o \
-	${OBJECTDIR}/src/maty/math/Clock.o \
 	${OBJECTDIR}/src/maty/math/Coordinates.o \
 	${OBJECTDIR}/src/maty/math/Distance2.o \
 	${OBJECTDIR}/src/maty/math/PIDControl.o \
-	${OBJECTDIR}/src/maty/math/Signal.o \
-	${OBJECTDIR}/src/maty/math/TriangularSignal.o \
 	${OBJECTDIR}/src/maty/math/Trigger.o \
 	${OBJECTDIR}/src/maty/math/Vector.o \
 	${OBJECTDIR}/src/maty/math/area.o \
 	${OBJECTDIR}/src/maty/math/average.o \
 	${OBJECTDIR}/src/maty/math/distance.o \
+	${OBJECTDIR}/src/maty/signals/DualOscillator.o \
+	${OBJECTDIR}/src/maty/signals/Oscillator.o \
+	${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o \
+	${OBJECTDIR}/src/maty/signals/Signal2.o \
+	${OBJECTDIR}/src/maty/signals/VectorialOscillator.o \
 	${OBJECTDIR}/src/maty/utils/Matrix.o \
 	${OBJECTDIR}/src/maty/utils/Pool.o
 
@@ -98,11 +100,6 @@ ${OBJECTDIR}/src/maty/math/Click.o: src/maty/math/Click.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Click.o src/maty/math/Click.cpp
 
-${OBJECTDIR}/src/maty/math/Clock.o: src/maty/math/Clock.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Clock.o src/maty/math/Clock.cpp
-
 ${OBJECTDIR}/src/maty/math/Coordinates.o: src/maty/math/Coordinates.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
@@ -117,16 +114,6 @@ ${OBJECTDIR}/src/maty/math/PIDControl.o: src/maty/math/PIDControl.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/PIDControl.o src/maty/math/PIDControl.cpp
-
-${OBJECTDIR}/src/maty/math/Signal.o: src/maty/math/Signal.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Signal.o src/maty/math/Signal.cpp
-
-${OBJECTDIR}/src/maty/math/TriangularSignal.o: src/maty/math/TriangularSignal.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/TriangularSignal.o src/maty/math/TriangularSignal.cpp
 
 ${OBJECTDIR}/src/maty/math/Trigger.o: src/maty/math/Trigger.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
@@ -152,6 +139,31 @@ ${OBJECTDIR}/src/maty/math/distance.o: src/maty/math/distance.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/distance.o src/maty/math/distance.cpp
+
+${OBJECTDIR}/src/maty/signals/DualOscillator.o: src/maty/signals/DualOscillator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/DualOscillator.o src/maty/signals/DualOscillator.cpp
+
+${OBJECTDIR}/src/maty/signals/Oscillator.o: src/maty/signals/Oscillator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/Oscillator.o src/maty/signals/Oscillator.cpp
+
+${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o: src/maty/signals/SenoidalOscillator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o src/maty/signals/SenoidalOscillator.cpp
+
+${OBJECTDIR}/src/maty/signals/Signal2.o: src/maty/signals/Signal2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/Signal2.o src/maty/signals/Signal2.cpp
+
+${OBJECTDIR}/src/maty/signals/VectorialOscillator.o: src/maty/signals/VectorialOscillator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/signals/VectorialOscillator.o src/maty/signals/VectorialOscillator.cpp
 
 ${OBJECTDIR}/src/maty/utils/Matrix.o: src/maty/utils/Matrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/utils
