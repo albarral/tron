@@ -22,8 +22,6 @@
           <itemPath>src/maty/math/ArmPolar.h</itemPath>
           <itemPath>src/maty/math/Click.cpp</itemPath>
           <itemPath>src/maty/math/Click.h</itemPath>
-          <itemPath>src/maty/math/Clock.cpp</itemPath>
-          <itemPath>src/maty/math/Clock.h</itemPath>
           <itemPath>src/maty/math/Coordinates.cpp</itemPath>
           <itemPath>src/maty/math/Coordinates.h</itemPath>
           <itemPath>src/maty/math/Distance2.cpp</itemPath>
@@ -31,10 +29,6 @@
           <itemPath>src/maty/math/MathDefines.h</itemPath>
           <itemPath>src/maty/math/PIDControl.cpp</itemPath>
           <itemPath>src/maty/math/PIDControl.h</itemPath>
-          <itemPath>src/maty/math/Signal.cpp</itemPath>
-          <itemPath>src/maty/math/Signal.h</itemPath>
-          <itemPath>src/maty/math/TriangularSignal.cpp</itemPath>
-          <itemPath>src/maty/math/TriangularSignal.h</itemPath>
           <itemPath>src/maty/math/Trigger.cpp</itemPath>
           <itemPath>src/maty/math/Trigger.h</itemPath>
           <itemPath>src/maty/math/Vector.cpp</itemPath>
@@ -119,10 +113,6 @@
       </item>
       <item path="src/maty/math/Click.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/maty/math/Clock.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/Clock.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/maty/math/Coordinates.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/Coordinates.h" ex="false" tool="3" flavor2="0">
@@ -136,14 +126,6 @@
       <item path="src/maty/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/PIDControl.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/maty/math/Signal.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/Signal.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/maty/math/TriangularSignal.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/TriangularSignal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -245,10 +227,6 @@
       </item>
       <item path="src/maty/math/Click.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/maty/math/Clock.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/Clock.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/maty/math/Coordinates.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/Coordinates.h" ex="false" tool="3" flavor2="0">
@@ -262,14 +240,6 @@
       <item path="src/maty/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/PIDControl.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/maty/math/Signal.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/Signal.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/maty/math/TriangularSignal.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/maty/math/TriangularSignal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -24,8 +24,6 @@ public:
     
 private:
     void testArmMath();
-    void testClock();
-    void testTriangularSignal();
     void testOscillators();
     void testDualOscillator();
 };

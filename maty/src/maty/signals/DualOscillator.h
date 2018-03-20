@@ -32,20 +32,20 @@ public:
     void setPrimaryAmp(float value);
     void setPrimaryPhase(int value);
     
-    float getPrimaryFreq() {oOscillator1.getFrequency();}; 
-    float getPrimaryAngle() {oOscillator1.getAngle();};
-    float getPrimaryAmp() {oOscillator1.getAmplitude();};
-    int getPrimaryPhase() {oOscillator1.getPhase();};
+    float getPrimaryFreq() {return oOscillator1.getFrequency();}; 
+    float getPrimaryAngle() {return oOscillator1.getAngle();};
+    float getPrimaryAmp() {return oOscillator1.getAmplitude();};
+    int getPrimaryPhase() {return oOscillator1.getPhase();};
 
     void setSecondaryFreq(float value);
     void setSecondaryAngle(float value);
     void setSecondaryAmp(float value);
     void setSecondaryPhase(int value);
     
-    float getSecondaryFreq() {oOscillator2.getFrequency();}; 
-    float getSecondaryAngle() {oOscillator2.getAngle();};
-    float getSecondaryAmp() {oOscillator2.getAmplitude();};
-    int getSecondaryPhase() {oOscillator2.getPhase();};
+    float getSecondaryFreq() {return oOscillator2.getFrequency();}; 
+    float getSecondaryAngle() {return oOscillator2.getAngle();};
+    float getSecondaryAmp() {return oOscillator2.getAmplitude();};
+    int getSecondaryPhase() {return oOscillator2.getPhase();};
 
     float getX() {return x;}; 
     float getY() {return y;}; 

@@ -39,12 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/ArmMath.o \
 	${OBJECTDIR}/src/maty/math/ArmPolar.o \
 	${OBJECTDIR}/src/maty/math/Click.o \
-	${OBJECTDIR}/src/maty/math/Clock.o \
 	${OBJECTDIR}/src/maty/math/Coordinates.o \
 	${OBJECTDIR}/src/maty/math/Distance2.o \
 	${OBJECTDIR}/src/maty/math/PIDControl.o \
-	${OBJECTDIR}/src/maty/math/Signal.o \
-	${OBJECTDIR}/src/maty/math/TriangularSignal.o \
 	${OBJECTDIR}/src/maty/math/Trigger.o \
 	${OBJECTDIR}/src/maty/math/Vector.o \
 	${OBJECTDIR}/src/maty/math/area.o \
@@ -103,11 +100,6 @@ ${OBJECTDIR}/src/maty/math/Click.o: src/maty/math/Click.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Click.o src/maty/math/Click.cpp
 
-${OBJECTDIR}/src/maty/math/Clock.o: src/maty/math/Clock.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Clock.o src/maty/math/Clock.cpp
-
 ${OBJECTDIR}/src/maty/math/Coordinates.o: src/maty/math/Coordinates.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
@@ -122,16 +114,6 @@ ${OBJECTDIR}/src/maty/math/PIDControl.o: src/maty/math/PIDControl.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/PIDControl.o src/maty/math/PIDControl.cpp
-
-${OBJECTDIR}/src/maty/math/Signal.o: src/maty/math/Signal.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Signal.o src/maty/math/Signal.cpp
-
-${OBJECTDIR}/src/maty/math/TriangularSignal.o: src/maty/math/TriangularSignal.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/TriangularSignal.o src/maty/math/TriangularSignal.cpp
 
 ${OBJECTDIR}/src/maty/math/Trigger.o: src/maty/math/Trigger.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math

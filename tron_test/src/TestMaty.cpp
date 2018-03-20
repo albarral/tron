@@ -7,7 +7,6 @@
 
 #include "TestMaty.h"
 #include "maty/math/ArmMath.h"
-#include "maty/math/TriangularSignal.h"
 #include "maty/signals/Oscillator.h"
 #include "maty/signals/SenoidalOscillator.h"
 #include "maty/signals/VectorialOscillator.h"
@@ -63,48 +62,6 @@ void TestMaty::testArmMath()
 //    LOG4CXX_INFO(logger, "radius: " << radius << ", angle = " << angle << "\n");
 }
 
-void TestMaty::testClock()
-{
-    LOG4CXX_INFO(logger, "testClock");
-
-    maty::Clock oClock;
-    
-    float freq = 50.0;  // 50 Hz
-    oClock.setFrequency(freq);
-
-    oClock.reset();    
-    for (int i=0; i<61; i++)
-    {
-        int tics = oClock.update();
-        LOG4CXX_INFO(logger, "tics = " << tics << "\n");
-        
-        usleep(100000);
-    }
-}
-
-void TestMaty::testTriangularSignal()
-{
-    LOG4CXX_INFO(logger, "testTriangularSignal");
-
-    maty::Clock oClock;
-    oClock.setFrequency(50.0);
-
-    maty::TriangularSignal oTriangularSignal;
-    oTriangularSignal.setFrequency(1.0); 
-
-    LOG4CXX_INFO(logger, oTriangularSignal.toString());
-    oClock.reset();
-    oTriangularSignal.start(oClock);    
-    for (int i=0; i<30; i++)
-    {
-        oClock.update();
-        float y = oTriangularSignal.update(oClock);        
-        LOG4CXX_INFO(logger, "y = " << y << "\n");
-        //LOG4CXX_INFO(logger, "y = " << y << ", sector = " << oSignal.getSector() << ", completion = " << oSignal.getCompletion() << "\n");
-        
-        usleep(50000);  // 20Hz
-    }
-}
 
 void TestMaty::testOscillators()
 {
