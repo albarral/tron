@@ -10,6 +10,11 @@
 #include "maty/math/TriangularSignal.h"
 #include "maty/signals/Oscillator.h"
 #include "maty/signals/SenoidalOscillator.h"
+#include "maty/signals/VectorialOscillator.h"
+#include "maty/signals/DualOscillator.h"
+#include "tivy/display/Chart.h"
+#include "maty/math/Click.h"
+
 
 using namespace log4cxx;
 
@@ -103,40 +108,90 @@ void TestMaty::testTriangularSignal()
 
 void TestMaty::testOscillators()
 {
-    float freq = 1.0;
+    float freq = 0.5;
     float span = 2.0;
-    int phase = 90;
 
     // oscillator 1: linear [-1, 1] 
-    maty::Oscillator oOsc1;
-    oOsc1.setFrequency(freq);
-    oOsc1.setSpan(span);
-    oOsc1.setSymmetry(true);
-
+    maty::Oscillator oOsc;
+    oOsc.setFrequency(freq);
+    oOsc.setSpan(span);
+    oOsc.setSymmetry(true);
+    
     // oscillator 2: senoidal  [-1, 1]
-    //maty::SenoidalOscillator oOsc2;
-    //oOsc2.setFrequency(freq);
+    maty::SenoidalOscillator oSenOsc;
+    oSenOsc.setFrequency(freq);
 
-    // oscillator 3: linear [-1, 1] with phase
-    maty::Oscillator oOsc3;
-    oOsc3.setFrequency(freq);
-    oOsc3.setSpan(span);
-    oOsc3.setSymmetry(true);
-    oOsc3.setPhase(phase);    
+    // oscillator 3: vectorial 
+    maty::VectorialOscillator oVecOsc;
+    oVecOsc.setFrequency(freq);
+    oVecOsc.setAmplitude(10.0);
+    oVecOsc.setAngle(45);
+    
     
     // reset oscillators
-    oOsc1.reset();
-    //oOsc2.reset();
-    oOsc3.reset();
-    
-    // run them for 2s
-    for (int i=0; i<41; i++)
+    oOsc.reset();
+    oSenOsc.reset();
+    oVecOsc.reset();
+        
+    for (int i=0; i<200; i++)
     {
-        oOsc1.update();
- //       oOsc2.update();        
-        oOsc3.update();        
-//        LOG4CXX_INFO(logger, "signals = " << oOsc1.getValue() << ", " << oOsc2.getValue2());
-        LOG4CXX_INFO(logger, "signals = " << oOsc1.getValue() << ", " << oOsc3.getValue());
+        oOsc.update();
+        oSenOsc.update();        
+        oVecOsc.update();      
+        
+        LOG4CXX_INFO(logger, "signal 1 = " << oOsc.getValue() );
+        LOG4CXX_INFO(logger, "signal 2 = " << oSenOsc.getValue2());
+        LOG4CXX_INFO(logger, "signal 3 = " << oVecOsc.getX() << ", " << oVecOsc.getY());
+        
+        usleep(50000);  // 50ms (20Hz)
+    }
+}
+
+void TestMaty::testDualOscillator()
+{    
+    // use dual oscillator to get oscillating speed
+    float freq = 0.5;
+    float angle = 180;
+    float speed = 0.1;
+    maty::DualOscillator oDualOsc;
+    oDualOsc.setPrimaryFreq(freq);
+    oDualOsc.setPrimaryAmp(speed);
+    oDualOsc.setPrimaryAngle(angle);
+    // secondary oscillator is orthogonal to first one
+    oDualOsc.setSecondaryFreq(freq);
+    oDualOsc.setSecondaryAmp(speed);
+    oDualOsc.setSecondaryAngle(angle+90.0);
+    oDualOsc.setSecondaryPhase(90);
+
+    maty::Click oClick;
+    tivy::Chart oChart;
+    oChart.setRanges(100, 100);
+    oChart.plotAxes();
+    
+    // reset oscillator
+    oDualOsc.reset();
+    oClick.reset();
+        
+    cv::Vec2f pos = {0.0, 0.0};
+    int time = 0;
+    cv::Point point;
+    for (int i=0; i<200; i++)
+    {
+        oDualOsc.update();
+
+        oClick.read();
+        oClick.start();
+        time = oClick.getMillis();
+        
+        LOG4CXX_INFO(logger, "signal 4 = " << oDualOsc.getX() << ", " << oDualOsc.getY());
+        
+        // apply present speed value
+        pos[0] += oDualOsc.getX()*time;
+        pos[1] += oDualOsc.getY()*time;
+        point.x = pos[0];
+        point.y = pos[1];
+
+        oChart.plotPoint(point, true);
         
         usleep(50000);  // 50ms (20Hz)
     }

@@ -12,15 +12,11 @@
 
 namespace maty
 {
-// Class implementing a dual oscillator. It's composed of two orthogonal vectorial oscillators working synchronously.
+// Class implementing a dual oscillator. It's composed of two vectorial oscillators working synchronously.
 // The x y output is the sum of both oscillators outputs.
 class DualOscillator
 {
 private:
-    // params for oscillators relation
-    float relFreq;                 // relative frequency between oscillators (secondary = relative * primary)
-    float relFactor;              // relative factor between oscillators amplitudes (secondary = relative * primary)
-    int phaseGap;               // phase gap between oscillators (secondary = primary + gap)    
     // logic
     maty::VectorialOscillator oOscillator1;     // primary oscillator
     maty::VectorialOscillator oOscillator2;     // secondary oscillator
@@ -31,24 +27,26 @@ public:
     DualOscillator();
     //~DualOscillator();                
 
-    void setMainFreq(float value);
-    void setMainAngle(float value);
-    void setMainAmp(float value);
-    void setMainPhase(int value);
+    void setPrimaryFreq(float value);
+    void setPrimaryAngle(float value);
+    void setPrimaryAmp(float value);
+    void setPrimaryPhase(int value);
     
-    float getMainFreq() {oOscillator1.getFrequency();}; 
-    float getMainAngle() {oOscillator1.getAngle();};
-    float getMainAmp() {oOscillator1.getAmplitude();};
-    int getMainPhase() {oOscillator1.getPhase();};
+    float getPrimaryFreq() {oOscillator1.getFrequency();}; 
+    float getPrimaryAngle() {oOscillator1.getAngle();};
+    float getPrimaryAmp() {oOscillator1.getAmplitude();};
+    int getPrimaryPhase() {oOscillator1.getPhase();};
 
-    void setRelativeFreq(float value);
-    void setRelativeFactor(float value);
-    void setPhaseGap(int value);
+    void setSecondaryFreq(float value);
+    void setSecondaryAngle(float value);
+    void setSecondaryAmp(float value);
+    void setSecondaryPhase(int value);
     
-    float getRelativeFreq() {return relFreq;}; 
-    float getRelativeFactor() {return relFactor;}; 
-    int getPhaseGap() {return phaseGap;};
-    
+    float getSecondaryFreq() {oOscillator2.getFrequency();}; 
+    float getSecondaryAngle() {oOscillator2.getAngle();};
+    float getSecondaryAmp() {oOscillator2.getAmplitude();};
+    int getSecondaryPhase() {oOscillator2.getPhase();};
+
     float getX() {return x;}; 
     float getY() {return y;}; 
 

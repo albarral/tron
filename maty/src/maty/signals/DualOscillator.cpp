@@ -9,63 +9,47 @@ namespace maty
 {
 DualOscillator::DualOscillator()
 {
-    relFreq = 0.0;
-    relFactor = 0.0;
-    phaseGap = 0;
     x = y = 0.0;
 }
 
-void  DualOscillator::setMainFreq(float value)
+void  DualOscillator::setPrimaryFreq(float value)
 {
     oOscillator1.setFrequency(value);
-    // tune second oscillator to keep the frequency relation
-    oOscillator2.setFrequency(relFreq*value);
 }
 
-void  DualOscillator::setMainAngle(float value)
+void  DualOscillator::setPrimaryAngle(float value)
 {
-    // oscillators are orthogonal
     oOscillator1.setAngle(value);
-    // tune second oscillator to keep the orthogonal orientation relation
-    oOscillator2.setAngle(value + 90);
 }
 
-void  DualOscillator::setMainAmp(float value)
+void  DualOscillator::setPrimaryAmp(float value)
 {
     oOscillator1.setAmplitude(value);
-    // tune second oscillator to keep the amplitude relation
-    oOscillator2.setAmplitude(relFactor*value);
 }
 
-void  DualOscillator::setMainPhase(int value)
+void  DualOscillator::setPrimaryPhase(int value)
 {
     oOscillator1.setPhase(value);
-    // tune second oscillator to keep the phase relation
-    oOscillator2.setPhase(value + phaseGap);
 }
 
-void  DualOscillator::setRelativeFreq(float value)
+void  DualOscillator::setSecondaryFreq(float value)
 {
-    if (value >= 0.0)
-    {
-        relFreq = value;
-        oOscillator2.setFrequency(relFreq*oOscillator1.getFrequency());        
-    }    
+    oOscillator2.setFrequency(value);
 }
 
-void  DualOscillator::setRelativeFactor(float value)
+void  DualOscillator::setSecondaryAngle(float value)
 {
-    if (value >= 0.0)
-    {
-        relFactor = value;
-        oOscillator2.setAmplitude(relFactor*oOscillator1.getAmplitude());        
-    }    
+    oOscillator2.setAngle(value);
 }
 
-void  DualOscillator::setPhaseGap(int value)
+void  DualOscillator::setSecondaryAmp(float value)
 {
-    phaseGap = value;
-    oOscillator2.setPhase(oOscillator1.getPhase() + phaseGap);        
+    oOscillator2.setAmplitude(value);
+}
+
+void  DualOscillator::setSecondaryPhase(int value)
+{
+    oOscillator2.setPhase(value);
 }
 
 void DualOscillator::reset()
@@ -75,7 +59,6 @@ void DualOscillator::reset()
     x = y = 0.0;
 }
                     
-
 void DualOscillator::update()
 {
     oOscillator1.update();

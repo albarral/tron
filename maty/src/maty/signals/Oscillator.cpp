@@ -9,8 +9,9 @@ namespace maty
 {
 Oscillator::Oscillator()
 {    
-    freq = 1.0;    
-    span = 10.0;
+    freq = 0.0;    
+    span = 1.0;
+    phase = 0.0;
     bsymmetric = true;
     tune();
 }

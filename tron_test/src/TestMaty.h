@@ -27,5 +27,6 @@ private:
     void testClock();
     void testTriangularSignal();
     void testOscillators();
+    void testDualOscillator();
 };
 #endif
