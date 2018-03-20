@@ -29,8 +29,14 @@
           <itemPath>src/tivy/plot/Plot.cpp</itemPath>
           <itemPath>src/tivy/plot/Plot.h</itemPath>
         </logicalFolder>
+        <itemPath>src/tivy/Chart.cpp</itemPath>
+        <itemPath>src/tivy/Chart.h</itemPath>
+        <itemPath>src/tivy/Display.cpp</itemPath>
+        <itemPath>src/tivy/Display.h</itemPath>
         <itemPath>src/tivy/Draw.cpp</itemPath>
         <itemPath>src/tivy/Draw.h</itemPath>
+        <itemPath>src/tivy/DrawnDisplay.cpp</itemPath>
+        <itemPath>src/tivy/DrawnDisplay.h</itemPath>
         <itemPath>src/tivy/DualWindow.cpp</itemPath>
         <itemPath>src/tivy/DualWindow.h</itemPath>
         <itemPath>src/tivy/ImageSave.cpp</itemPath>
@@ -77,9 +83,21 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/tivy/Chart.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/Chart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/Display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/Display.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tivy/Draw.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tivy/Draw.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/DrawnDisplay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/DrawnDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tivy/DualWindow.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -138,9 +156,21 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/tivy/Chart.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/Chart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/Display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/Display.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tivy/Draw.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tivy/Draw.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tivy/DrawnDisplay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tivy/DrawnDisplay.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tivy/DualWindow.cpp" ex="false" tool="1" flavor2="0">
       </item>

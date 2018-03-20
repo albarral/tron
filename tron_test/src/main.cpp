@@ -29,12 +29,12 @@ int main(int argc, char** argv)
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
     
      // test maty lib
-    TestMaty oTestMaty;
-    oTestMaty.makeTest();
+//    TestMaty oTestMaty;
+//    oTestMaty.makeTest();
 
     // test tivy lib
-//    TestTivy oTestTivy;
-//    oTestTivy.makeTest();
+    TestTivy oTestTivy;
+    oTestTivy.makeTest();
     
      // test tuly lib
 //    TestTuly oTestTuly;

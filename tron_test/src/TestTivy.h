@@ -27,6 +27,8 @@ private:
     void testHistoryPlot();
     void testDiscPlot();
     void testDualWindow();
+    void testDrawnDisplay();
+    void testChart();
     
 };
 

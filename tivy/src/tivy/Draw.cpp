@@ -8,8 +8,6 @@
 
 #include "tivy/Draw.h"
 
-//using namespace cv;
-
 namespace tivy
 {
 // Constructor
@@ -20,19 +18,19 @@ Draw::Draw ()
 }
 
 
-void Draw::setSize(cv::Mat& image)
-{      
-    image_draw.create(image.rows, image.cols, image.type());
+void Draw::setSize(int w, int h)
+{     
+    image = cv::Mat::zeros(h, w, CV_8UC3);           
     bsized = true;    
 }
 
 
-void Draw::setBackGround(cv::Mat& image)
+void Draw::setBackGround(cv::Mat& image2)
 {      
     if (!bsized)        
-        setSize(image);
+        setSize(image2.cols, image2.rows);
 
-    image.copyTo(image_draw);
+    image.copyTo(image);
 }
 
 
@@ -44,7 +42,7 @@ void Draw::clearBackGround()
         return;
     }
         
-    image_draw.setTo(cv::Scalar(0));
+    image.setTo(cv::Scalar(0));
 }
 
 
@@ -62,7 +60,7 @@ void Draw::drawMask(cv::Mat& mask)
         return;
     }
 
-    image_draw.setTo(color, mask);
+    image.setTo(color, mask);
 }
 
 
@@ -74,12 +72,12 @@ void Draw::drawMask(cv::Mat& mask, cv::Rect& window)
         return;
     }
 
-    cv::Mat image_roi = image_draw(window);
+    cv::Mat image_roi = image(window);
     image_roi.setTo(color, mask);
 }
 
 
-void Draw::drawPoint(cv::Point& point, int def_color, int radius)
+void Draw::drawPoint(cv::Point& point, int radius)
 {
     if (!bsized)
     {
@@ -87,12 +85,22 @@ void Draw::drawPoint(cv::Point& point, int def_color, int radius)
         return;
     }
 
-    setDefaultColor(def_color);    
-    cv::circle(image_draw, point, radius, color, -1);
+    cv::circle(image, point, radius, color, -1);
 }
 
 
-void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation, int def_color)
+void Draw::drawLine(cv::Point& point1, cv::Point& point2)
+{
+    if (!bsized)
+    {
+        std::cout << "Draw error: image_draw still not created" << std::endl;
+        return;
+    }
+
+    cv::line(image, point1, point2, color);
+}
+
+void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation)
 {
     if (!bsized)
     {
@@ -100,12 +108,11 @@ void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation
         return;
     }
     
-    setDefaultColor(def_color);       
-    cv::ellipse (image_draw, center, cv::Size(width, height), orientation, 0, 360, color, 3);
+    cv::ellipse (image, center, cv::Size(width, height), orientation, 0, 360, color, 3);
 }
 
 
-void Draw::drawWindow(cv::Rect& window)
+void Draw::drawRectangle(cv::Rect& window)
 {
     if (!bsized)
     {
@@ -113,7 +120,7 @@ void Draw::drawWindow(cv::Rect& window)
         return;
     }
     
-    cv::rectangle(image_draw, window, color);
+    cv::rectangle(image, window, color);
 }
 
 
@@ -126,8 +133,8 @@ void Draw::drawHLine(int row)
     }
 
     cv::Point pt1(0, row);
-    cv::Point pt2(image_draw.cols-1, row);
-    cv::line(image_draw, pt1, pt2, color);    
+    cv::Point pt2(image.cols-1, row);
+    cv::line(image, pt1, pt2, color);    
 }
 
         
@@ -140,8 +147,8 @@ void Draw::drawVLine(int col)
     }
 
     cv::Point pt1(col, 0);
-    cv::Point pt2(col, image_draw.rows-1);
-    cv::line(image_draw, pt1, pt2, color);    
+    cv::Point pt2(col, image.rows-1);
+    cv::line(image, pt1, pt2, color);    
 }
 
 
@@ -152,7 +159,7 @@ void Draw::drawNumber(int num, cv::Point& point)
         std::cout << "Draw error: image_draw still not created" << std::endl;
         return;
     }
-    cv::putText(image_draw, std::to_string(num), point, cv::FONT_HERSHEY_SIMPLEX, 1.0, color);
+    cv::putText(image, std::to_string(num), point, cv::FONT_HERSHEY_SIMPLEX, fontSize, color);
 }
 
 void Draw::drawFloatNumber(float num, cv::Point& point)
@@ -165,7 +172,7 @@ void Draw::drawFloatNumber(float num, cv::Point& point)
     // just show one decimal digit
     std::string text = std::to_string(num);
     text = text.substr(0,3);
-    cv::putText(image_draw, text, point, cv::FONT_HERSHEY_SIMPLEX, 1.0, color, 2);
+    cv::putText(image, text, point, cv::FONT_HERSHEY_SIMPLEX, fontSize, color, 2);
 }
 
 void Draw::setDefaultColor(int value)
