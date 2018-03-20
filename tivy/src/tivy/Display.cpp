@@ -37,7 +37,7 @@ void Display::show(cv::Mat& image)
 
     // show plot
     cv::imshow(windowName, image);
-    cv::waitKey(100);    
+    cv::waitKey(1);    
 }
 
 void Display::hide()

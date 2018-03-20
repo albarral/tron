@@ -50,28 +50,34 @@ void Chart::plotChartAxes()
     cv::Point left2 = physical2Chart(left);
     cv::Point right2 = physical2Chart(right);
     cv::Point top2 = physical2Chart(top);
-    cv::Point bottom2 = physical2Chart(bottom);
-        
+    cv::Point bottom2 = physical2Chart(bottom);        
     // draw x axis
     Draw::drawLine(left2, right2); 
     // draw y axis
     Draw::drawLine(top2, bottom2); 
 
-    // draw axes limits 
     Draw::setDefaultColor(Draw::eYELLOW);
+    // draw axes limits 
     Draw::drawNumber(min.x, left2);
     Draw::drawNumber(max.x, right2);
     Draw::drawNumber(min.y, bottom2);
     Draw::drawNumber(max.y, top2);
     
+    imageBackground = image.clone();
+
     // update display
     update();
 
     Draw::setDefaultColor(Draw::eWHITE);
 }
 
-bool Chart::plotChartPoint(cv::Point& point)
+bool Chart::plotChartPoint(cv::Point& point, bool brenew)
 {
+    if (brenew)
+    {
+        imageBackground.copyTo(image);
+    }
+    
     // if point is inside represented range
     if (checkRangeLimits(point))
     {

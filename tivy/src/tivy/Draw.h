@@ -40,11 +40,11 @@ public:
     // Sets the image size
     void setSize(int w, int h);
 
-    // Sets the background image to be drawn. 
-    void setBackGround(cv::Mat& image2);
+    // sets the draw image to be a copy of the given image
+    void setImage(cv::Mat& image2);
 
-    // Clears the image background (black image).)
-    void clearBackGround();
+    // clears the drawn image 
+    void clear();
 
     // Sets the color to be used for painting
     void setExactColor(cv::Vec3f&  rgb_color);

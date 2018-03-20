@@ -25,20 +25,20 @@ void Draw::setSize(int w, int h)
 }
 
 
-void Draw::setBackGround(cv::Mat& image2)
+void Draw::setImage(cv::Mat& image2)
 {      
     if (!bsized)        
         setSize(image2.cols, image2.rows);
 
-    image.copyTo(image);
+    image2.copyTo(image);
 }
 
 
-void Draw::clearBackGround()
+void Draw::clear()
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
         
@@ -56,7 +56,7 @@ void Draw::drawMask(cv::Mat& mask)
 {                
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
 
@@ -68,7 +68,7 @@ void Draw::drawMask(cv::Mat& mask, cv::Rect& window)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
 
@@ -81,7 +81,7 @@ void Draw::drawPoint(cv::Point& point, int radius)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
 
@@ -93,7 +93,7 @@ void Draw::drawLine(cv::Point& point1, cv::Point& point2)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
 
@@ -104,7 +104,7 @@ void Draw::drawEllipse(cv::Point& center, int width, int height, int orientation
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
     
@@ -116,7 +116,7 @@ void Draw::drawRectangle(cv::Rect& window)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
     
@@ -128,7 +128,7 @@ void Draw::drawHLine(int row)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
 
@@ -142,7 +142,7 @@ void Draw::drawVLine(int col)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
 
@@ -156,7 +156,7 @@ void Draw::drawNumber(int num, cv::Point& point)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
     cv::putText(image, std::to_string(num), point, cv::FONT_HERSHEY_SIMPLEX, fontSize, color);
@@ -166,7 +166,7 @@ void Draw::drawFloatNumber(float num, cv::Point& point)
 {
     if (!bsized)
     {
-        std::cout << "Draw error: image_draw still not created" << std::endl;
+        std::cout << "Draw error: image still not created" << std::endl;
         return;
     }
     // just show one decimal digit

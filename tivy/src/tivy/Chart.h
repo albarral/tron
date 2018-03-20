@@ -24,6 +24,7 @@ private:
     cv::Point min;   // minimum physical values represented in x and y axis
     cv::Point max;   // maximum physical values represented in x and y axis
     // logic
+    cv::Mat imageBackground;  // background image (with only the axes plotted)
     cv::Point origin;   // position of axis origin in image (pixels)    
     float scale;        // (isotropic) conversion factor to represent physical points in the image 
 
@@ -35,8 +36,8 @@ public:
     void setRanges(int xmax, int ymax);    
     // draws the axes in the plot
     void plotChartAxes();        
-    // plots the specified physical point in the display
-    bool plotChartPoint(cv::Point& point);
+    // plots the specified physical point in the display (renewing the image if necessary)
+    bool plotChartPoint(cv::Point& point, bool brenew=false);
     
 private:            
     // checks if given physical point (x,y) is inside the represented ranges
