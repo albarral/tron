@@ -63,7 +63,7 @@ public:
     // set frequency of frontal cycler first component (Hz)
     virtual bool setFrontCyclerFreq1(float value);
     // set phase of frontal cycler first component (degrees)
-    virtual bool setFrontCyclerPhase1(float value) = 0;
+    virtual bool setFrontCyclerPhase1(float value);
     // set amplitude of frontal cycler second component (degrees)
     virtual bool setFrontCyclerAmp2(float value);
     // set angle of frontal cycler second component (degrees)
@@ -71,7 +71,7 @@ public:
     // set frequency of frontal cycler second component (Hz)
     virtual bool setFrontCyclerFreq2(float value);
     // set phase of frontal cycler second component (degrees)
-    virtual bool setFrontCyclerPhase2(float value) = 0;
+    virtual bool setFrontCyclerPhase2(float value);
     // starts or stops frontal cycler movement
     virtual bool setFrontCyclerAction(int value);
 

@@ -40,6 +40,12 @@
           <itemPath>src/maty/math/distance.cpp</itemPath>
           <itemPath>src/maty/math/distance.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="moves" displayName="moves" projectFiles="true">
+          <itemPath>src/maty/moves/CyclicMath.cpp</itemPath>
+          <itemPath>src/maty/moves/CyclicMath.h</itemPath>
+          <itemPath>src/maty/moves/CyclicMove.cpp</itemPath>
+          <itemPath>src/maty/moves/CyclicMove.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="signals" displayName="signals" projectFiles="true">
           <itemPath>src/maty/signals/DualOscillator.cpp</itemPath>
           <itemPath>src/maty/signals/DualOscillator.h</itemPath>
@@ -146,6 +152,14 @@
       <item path="src/maty/math/distance.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMath.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMath.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMove.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMove.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/DualOscillator.cpp"
             ex="false"
@@ -260,6 +274,14 @@
       <item path="src/maty/math/distance.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMath.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMath.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMove.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicMove.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/DualOscillator.cpp"
             ex="false"
