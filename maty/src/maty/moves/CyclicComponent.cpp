@@ -3,11 +3,11 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "maty/moves/CyclicMove.h"
+#include "maty/moves/CyclicComponent.h"
 
 namespace maty
 {
-CyclicMove::CyclicMove()
+CyclicComponent::CyclicComponent()
 {
     freq = 0.0;
     angle = 0.0;

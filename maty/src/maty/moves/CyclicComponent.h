@@ -1,5 +1,5 @@
-#ifndef __MATY_MOVES_CYCLICMOVE_H
-#define __MATY_MOVES_CYCLICMOVE_H
+#ifndef __MATY_MOVES_CYCLIC_COMPONENT_H
+#define __MATY_MOVES_CYCLIC_COMPONENT_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -8,17 +8,17 @@
  
 namespace maty
 {
-// Class used to represent a cyclic movement. 
-class CyclicMove
+// Class used to represent a cyclic component.
+class CyclicComponent
 {
 private:
     float freq;   // movement frequency (Hz)
-    float angle;  // movement frontal angle (degrees)
+    float angle;  // movement angle (degrees)
     float amp;   // movement amplitude (degress)
-    float phase;   // phase difference between both cyclic components
+    float phase;   // movement phase (degrees)
     
 public:  
-    CyclicMove();
+    CyclicComponent();
     //~CyclicMove();
     
     void setFreq(float value) {freq = value;}

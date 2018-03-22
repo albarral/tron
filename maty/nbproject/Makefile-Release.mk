@@ -47,8 +47,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/area.o \
 	${OBJECTDIR}/src/maty/math/average.o \
 	${OBJECTDIR}/src/maty/math/distance.o \
+	${OBJECTDIR}/src/maty/moves/CircularMovement.o \
+	${OBJECTDIR}/src/maty/moves/CyclicComponent.o \
 	${OBJECTDIR}/src/maty/moves/CyclicMath.o \
-	${OBJECTDIR}/src/maty/moves/CyclicMove.o \
+	${OBJECTDIR}/src/maty/moves/CyclicMovement.o \
 	${OBJECTDIR}/src/maty/signals/DualOscillator.o \
 	${OBJECTDIR}/src/maty/signals/Oscillator.o \
 	${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o \
@@ -142,15 +144,25 @@ ${OBJECTDIR}/src/maty/math/distance.o: src/maty/math/distance.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/distance.o src/maty/math/distance.cpp
 
+${OBJECTDIR}/src/maty/moves/CircularMovement.o: src/maty/moves/CircularMovement.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CircularMovement.o src/maty/moves/CircularMovement.cpp
+
+${OBJECTDIR}/src/maty/moves/CyclicComponent.o: src/maty/moves/CyclicComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicComponent.o src/maty/moves/CyclicComponent.cpp
+
 ${OBJECTDIR}/src/maty/moves/CyclicMath.o: src/maty/moves/CyclicMath.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicMath.o src/maty/moves/CyclicMath.cpp
 
-${OBJECTDIR}/src/maty/moves/CyclicMove.o: src/maty/moves/CyclicMove.cpp 
+${OBJECTDIR}/src/maty/moves/CyclicMovement.o: src/maty/moves/CyclicMovement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicMove.o src/maty/moves/CyclicMove.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicMovement.o src/maty/moves/CyclicMovement.cpp
 
 ${OBJECTDIR}/src/maty/signals/DualOscillator.o: src/maty/signals/DualOscillator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/signals

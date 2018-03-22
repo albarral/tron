@@ -41,10 +41,14 @@
           <itemPath>src/maty/math/distance.h</itemPath>
         </logicalFolder>
         <logicalFolder name="moves" displayName="moves" projectFiles="true">
+          <itemPath>src/maty/moves/CircularMovement.cpp</itemPath>
+          <itemPath>src/maty/moves/CircularMovement.h</itemPath>
+          <itemPath>src/maty/moves/CyclicComponent.cpp</itemPath>
+          <itemPath>src/maty/moves/CyclicComponent.h</itemPath>
           <itemPath>src/maty/moves/CyclicMath.cpp</itemPath>
           <itemPath>src/maty/moves/CyclicMath.h</itemPath>
-          <itemPath>src/maty/moves/CyclicMove.cpp</itemPath>
-          <itemPath>src/maty/moves/CyclicMove.h</itemPath>
+          <itemPath>src/maty/moves/CyclicMovement.cpp</itemPath>
+          <itemPath>src/maty/moves/CyclicMovement.h</itemPath>
         </logicalFolder>
         <logicalFolder name="signals" displayName="signals" projectFiles="true">
           <itemPath>src/maty/signals/DualOscillator.cpp</itemPath>
@@ -153,13 +157,24 @@
       </item>
       <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/moves/CircularMovement.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/maty/moves/CircularMovement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicComponent.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/maty/moves/CyclicMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/moves/CyclicMath.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/maty/moves/CyclicMove.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/maty/moves/CyclicMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/maty/moves/CyclicMove.h" ex="false" tool="3" flavor2="0">
+      <item path="src/maty/moves/CyclicMovement.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/DualOscillator.cpp"
             ex="false"
@@ -275,13 +290,24 @@
       </item>
       <item path="src/maty/math/distance.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/maty/moves/CircularMovement.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/maty/moves/CircularMovement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/CyclicComponent.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/maty/moves/CyclicMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/moves/CyclicMath.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/maty/moves/CyclicMove.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/maty/moves/CyclicMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/maty/moves/CyclicMove.h" ex="false" tool="3" flavor2="0">
+      <item path="src/maty/moves/CyclicMovement.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/DualOscillator.cpp"
             ex="false"
