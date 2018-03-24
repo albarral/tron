@@ -16,7 +16,7 @@ namespace tuly
  */
 class CodeMap
 {
-private:
+protected:
     std::map<int, std::string> mapCodes;      /*! map of codes (code - name) */    
     std::map<std::string, int> mapNames;      /*! map of names (name - code) */    
     
@@ -35,7 +35,7 @@ public:
     bool getCode4Name(std::string name, int& code);
     
     //  return description of code map
-    std::string toString();
+    virtual std::string toString();
 };
 }
 #endif
