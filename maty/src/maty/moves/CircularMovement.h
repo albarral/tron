@@ -16,10 +16,6 @@ namespace maty
 class CircularMovement : public CyclicMovement
 {  
 private: 
-    float freq;
-    float amplitude;
-    float relFactor;
-    float orientation;    
     bool brotation;                       // positive (anti clockwise) or negative (clockwise) rotation
     
 public:  
@@ -28,8 +24,10 @@ public:
     
     // create circular movement
     void createCircle(float freq, float amplitude, float angle, bool brotation); 
-    // create movement
+    // create elliptic movement
     void createEllipse(float freq, float amplitude, float relFactor, float angle, bool brotation); 
+    
+//    void updateRotation(bool brotation);    
     
 private:
     void computePhases(bool brotation, float orientation);

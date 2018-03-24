@@ -18,6 +18,10 @@ protected:
     bool bdual;                                 // both components informed
     CyclicComponent oCyclicComponent1;     // primary cyclic component
     CyclicComponent oCyclicComponent2;     // secondary cyclic component
+//    float freq;
+//    float amplitude;
+//    float relFactor;
+//    float orientation;    
     
 public:  
     CyclicMovement();

@@ -49,6 +49,8 @@
           <itemPath>src/maty/moves/CyclicMath.h</itemPath>
           <itemPath>src/maty/moves/CyclicMovement.cpp</itemPath>
           <itemPath>src/maty/moves/CyclicMovement.h</itemPath>
+          <itemPath>src/maty/moves/WaveMovement.cpp</itemPath>
+          <itemPath>src/maty/moves/WaveMovement.h</itemPath>
         </logicalFolder>
         <logicalFolder name="signals" displayName="signals" projectFiles="true">
           <itemPath>src/maty/signals/DualOscillator.cpp</itemPath>
@@ -175,6 +177,10 @@
       <item path="src/maty/moves/CyclicMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/moves/CyclicMovement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/WaveMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/WaveMovement.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/DualOscillator.cpp"
             ex="false"
@@ -308,6 +314,10 @@
       <item path="src/maty/moves/CyclicMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/maty/moves/CyclicMovement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/maty/moves/WaveMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/maty/moves/WaveMovement.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/maty/signals/DualOscillator.cpp"
             ex="false"

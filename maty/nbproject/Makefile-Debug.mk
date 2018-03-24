@@ -51,6 +51,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/moves/CyclicComponent.o \
 	${OBJECTDIR}/src/maty/moves/CyclicMath.o \
 	${OBJECTDIR}/src/maty/moves/CyclicMovement.o \
+	${OBJECTDIR}/src/maty/moves/WaveMovement.o \
 	${OBJECTDIR}/src/maty/signals/DualOscillator.o \
 	${OBJECTDIR}/src/maty/signals/Oscillator.o \
 	${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o \
@@ -163,6 +164,11 @@ ${OBJECTDIR}/src/maty/moves/CyclicMovement.o: src/maty/moves/CyclicMovement.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicMovement.o src/maty/moves/CyclicMovement.cpp
+
+${OBJECTDIR}/src/maty/moves/WaveMovement.o: src/maty/moves/WaveMovement.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/WaveMovement.o src/maty/moves/WaveMovement.cpp
 
 ${OBJECTDIR}/src/maty/signals/DualOscillator.o: src/maty/signals/DualOscillator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/signals
