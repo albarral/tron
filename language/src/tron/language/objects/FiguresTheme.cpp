@@ -23,5 +23,6 @@ void FiguresTheme::build()
     addCode(eFIGURE_RECTANGLE, FIGURE_RECTANGLE);                   
     addCode(eFIGURE_TRIANGLE, FIGURE_TRIANGLE);                        
     addCode(eFIGURE_LINE, FIGURE_LINE);                        
+    addCode(eFIGURE_WAVE, FIGURE_WAVE);                        
 }
 }

@@ -1,5 +1,5 @@
-#ifndef __MATY_MOVES_CYCLICMATH_H
-#define __MATY_MOVES_CYCLICMATH_H
+#ifndef __MATY_MATH_CYCLICMATH_H
+#define __MATY_MATH_CYCLICMATH_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *

@@ -3,10 +3,10 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "maty/moves/WaveMovement.h"
+#include "tron/moves/WaveMovement.h"
 #include "maty/math/Angle.h"
 
-namespace maty
+namespace tron
 {
 WaveMovement::WaveMovement()
 {
@@ -22,23 +22,23 @@ void WaveMovement::createLine(float freq, float amplitude, float angle)
     oCyclicComponent1.setFreq(freq);
     oCyclicComponent1.setAmp(amplitude);
     // orthogonal orientation
-    angle = Angle::inLimits(angle);
+    angle = maty::Angle::inLimits(angle);
     oCyclicComponent1.setAngle(angle);
 }
 
-void WaveMovement::createWave(float freq, float amplitude, float relFactor, float angle)
+void WaveMovement::createWave(float freq, float amplitude, float relFactor, float relFreq, float angle)
 {
     bdual = true;
-    // same freq
+    // relative freq
     oCyclicComponent1.setFreq(freq);
-    oCyclicComponent2.setFreq(freq);
+    oCyclicComponent2.setFreq(freq * relFreq);
     // relative factor
     oCyclicComponent1.setAmp(amplitude);
     oCyclicComponent2.setAmp(amplitude * relFactor);
-    // orthogonal orientation
     // keep inside limits [0, 360)    
-    angle = Angle::inLimits(angle);
-    float angle2 = Angle::inLimits(angle + 90.0);
+    angle = maty::Angle::inLimits(angle);
+    // orthogonal orientation
+    float angle2 = maty::Angle::inLimits(angle + 90.0);
     oCyclicComponent1.setAngle(angle);
     oCyclicComponent2.setAngle(angle2);
     

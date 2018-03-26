@@ -1,14 +1,14 @@
-#ifndef __MATY_MOVES_CIRCULAR_MOVEMENT_H
-#define __MATY_MOVES_CIRCULAR_MOVEMENT_H
+#ifndef __TRON_MOVES_CIRCULAR_MOVEMENT_H
+#define __TRON_MOVES_CIRCULAR_MOVEMENT_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "maty/moves/CyclicMovement.h"
+#include "tron/moves/CyclicMovement.h"
  
-namespace maty
+namespace tron
 {
 // Class used to generate circular (or elliptic) cyclic movements.
 // It extends from CyclicMovement.    

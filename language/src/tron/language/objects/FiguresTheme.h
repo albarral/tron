@@ -23,6 +23,7 @@ namespace tron
          eFIGURE_RECTANGLE,                    
          eFIGURE_TRIANGLE,                    
          eFIGURE_LINE,                    
+         eFIGURE_WAVE,                    
          eFIGURE_DIM
     };
 
@@ -33,6 +34,7 @@ namespace tron
     const std::string FIGURE_RECTANGLE = "rectangle"; 
     const std::string FIGURE_TRIANGLE = "triangle";   
     const std::string FIGURE_LINE = "line";  
+    const std::string FIGURE_WAVE = "wave";  
 
  public:    
     FiguresTheme(); 

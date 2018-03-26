@@ -40,6 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/ArmPolar.o \
 	${OBJECTDIR}/src/maty/math/Click.o \
 	${OBJECTDIR}/src/maty/math/Coordinates.o \
+	${OBJECTDIR}/src/maty/math/CyclicComponent.o \
+	${OBJECTDIR}/src/maty/math/CyclicMath.o \
 	${OBJECTDIR}/src/maty/math/Distance2.o \
 	${OBJECTDIR}/src/maty/math/PIDControl.o \
 	${OBJECTDIR}/src/maty/math/Trigger.o \
@@ -47,11 +49,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/maty/math/area.o \
 	${OBJECTDIR}/src/maty/math/average.o \
 	${OBJECTDIR}/src/maty/math/distance.o \
-	${OBJECTDIR}/src/maty/moves/CircularMovement.o \
-	${OBJECTDIR}/src/maty/moves/CyclicComponent.o \
-	${OBJECTDIR}/src/maty/moves/CyclicMath.o \
-	${OBJECTDIR}/src/maty/moves/CyclicMovement.o \
-	${OBJECTDIR}/src/maty/moves/WaveMovement.o \
 	${OBJECTDIR}/src/maty/signals/DualOscillator.o \
 	${OBJECTDIR}/src/maty/signals/Oscillator.o \
 	${OBJECTDIR}/src/maty/signals/SenoidalOscillator.o \
@@ -110,6 +107,16 @@ ${OBJECTDIR}/src/maty/math/Coordinates.o: src/maty/math/Coordinates.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/Coordinates.o src/maty/math/Coordinates.cpp
 
+${OBJECTDIR}/src/maty/math/CyclicComponent.o: src/maty/math/CyclicComponent.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/CyclicComponent.o src/maty/math/CyclicComponent.cpp
+
+${OBJECTDIR}/src/maty/math/CyclicMath.o: src/maty/math/CyclicMath.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/maty/math
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/CyclicMath.o src/maty/math/CyclicMath.cpp
+
 ${OBJECTDIR}/src/maty/math/Distance2.o: src/maty/math/Distance2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
@@ -144,31 +151,6 @@ ${OBJECTDIR}/src/maty/math/distance.o: src/maty/math/distance.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/maty/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/math/distance.o src/maty/math/distance.cpp
-
-${OBJECTDIR}/src/maty/moves/CircularMovement.o: src/maty/moves/CircularMovement.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CircularMovement.o src/maty/moves/CircularMovement.cpp
-
-${OBJECTDIR}/src/maty/moves/CyclicComponent.o: src/maty/moves/CyclicComponent.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicComponent.o src/maty/moves/CyclicComponent.cpp
-
-${OBJECTDIR}/src/maty/moves/CyclicMath.o: src/maty/moves/CyclicMath.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicMath.o src/maty/moves/CyclicMath.cpp
-
-${OBJECTDIR}/src/maty/moves/CyclicMovement.o: src/maty/moves/CyclicMovement.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/CyclicMovement.o src/maty/moves/CyclicMovement.cpp
-
-${OBJECTDIR}/src/maty/moves/WaveMovement.o: src/maty/moves/WaveMovement.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/maty/moves
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/maty/moves/WaveMovement.o src/maty/moves/WaveMovement.cpp
 
 ${OBJECTDIR}/src/maty/signals/DualOscillator.o: src/maty/signals/DualOscillator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/maty/signals

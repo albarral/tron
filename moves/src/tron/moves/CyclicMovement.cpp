@@ -3,10 +3,10 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "maty/moves/CyclicMovement.h"
+#include "tron/moves/CyclicMovement.h"
 #include "maty/math/Angle.h"
 
-namespace maty
+namespace tron
 {
 CyclicMovement::CyclicMovement()
 {

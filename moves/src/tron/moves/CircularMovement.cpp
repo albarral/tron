@@ -3,10 +3,10 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "maty/moves/CircularMovement.h"
+#include "tron/moves/CircularMovement.h"
 #include "maty/math/Angle.h"
 
-namespace maty
+namespace tron
 {
 CircularMovement::CircularMovement()
 {
@@ -31,10 +31,10 @@ void CircularMovement::createEllipse(float freq, float amplitude, float relFacto
     // relative factor
     oCyclicComponent1.setAmp(amplitude);
     oCyclicComponent2.setAmp(amplitude * relFactor);
-    // orthogonal orientation
     // keep inside limits [0, 360)    
-    angle = Angle::inLimits(angle);
-    float angle2 = Angle::inLimits(angle + 90.0);
+    angle = maty::Angle::inLimits(angle);
+    // orthogonal orientation
+    float angle2 = maty::Angle::inLimits(angle + 90.0);
     oCyclicComponent1.setAngle(angle);
     oCyclicComponent2.setAngle(angle2);
     
@@ -50,15 +50,15 @@ void CircularMovement::computePhases(bool brotation, float orientation)
         xphase = orientation;
         // keep inside limits [0, 360)    
         yphase = xphase - 90.0;
-        yphase = Angle::inLimits(yphase);        
+        yphase = maty::Angle::inLimits(yphase);        
     }
     // if negative rotation (clockwise)
     else
     {
         // keep inside limits [0, 360)    
-        xphase = Angle::inLimits(-orientation);                
+        xphase = maty::Angle::inLimits(-orientation);                
         // keep inside limits [0, 360)    
-        yphase = Angle::inLimits(xphase + 90.0);                
+        yphase = maty::Angle::inLimits(xphase + 90.0);                
     }
     oCyclicComponent1.setPhase(xphase);
     oCyclicComponent2.setPhase(yphase);

@@ -1,5 +1,5 @@
-#ifndef __MATY_MOVES_CYCLIC_COMPONENT_H
-#define __MATY_MOVES_CYCLIC_COMPONENT_H
+#ifndef __MATY_MATH_CYCLIC_COMPONENT_H
+#define __MATY_MATH_CYCLIC_COMPONENT_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -14,12 +14,12 @@ class CyclicComponent
 private:
     float freq;   // movement frequency (Hz)
     float angle;  // movement angle (degrees)
-    float amp;   // movement amplitude (degress)
+    float amp;   // movement amplitude (degrees)
     float phase;   // movement phase (degrees)
     
 public:  
     CyclicComponent();
-    //~CyclicMove();
+    //~CyclicComponent();
     
     void setFreq(float value) {freq = value;}
     void setAngle(float value) {angle = value;}

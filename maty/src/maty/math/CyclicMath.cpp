@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "maty/moves/CyclicMath.h"
+#include "maty/math/CyclicMath.h"
 
 namespace maty
 {                    
