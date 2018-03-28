@@ -28,7 +28,7 @@ cd <tron_installation_path>
 gedit tron.conf
 change paths to meet real tron installation 
 
-sudo mv tron.conf /etc/ld.so.conf.d
+sudo cp tron.conf /etc/ld.so.conf.d
 sudo /sbin/ldconfig
 
 
