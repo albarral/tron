@@ -16,6 +16,7 @@ Module3::Module3 ()
     modName = "module3";
     bON = false;
     prevState = state = Module3::state_UNKNOWN;
+    stable = 0;
     boffRequested = false;
     level = -1;
     setFrequency(0.1);  // low default frequency
@@ -103,32 +104,46 @@ int Module3::getPrevState()
     return (prevState);        
 }
 
-void Module3::setState(int state)
+int Module3::getStable()
 {
     std::lock_guard<std::mutex> locker(mutex);
-    this->state = state;    
-    bstateChanged = (state != prevState);        
+    return (stable);        
+}
+
+void Module3::setState(int value)
+{
+    std::lock_guard<std::mutex> locker(mutex);
+    state = value;    
+    // if state changed, reset stability counter
+    if (state != prevState)
+        stable = 0;        
 }
 
 void Module3::preLoop()
 {
     std::lock_guard<std::mutex> locker(mutex);
-    // store prev state
+    // store previous state
     prevState = state;
 }
 
 void Module3::postLoop()
 {
     std::lock_guard<std::mutex> locker(mutex);
-    // reset changed flag if no changes in last loop
-    if (bstateChanged && (state == prevState))
-        bstateChanged = false;
+    // if state not changed in last loop, increase stability counter (limited)
+    if (state == prevState && stable < 1000)
+        stable++;
 }
 
 bool Module3::isStateChanged()
 {
     std::lock_guard<std::mutex> locker(mutex);
-    return bstateChanged;        
+    return (state != prevState);        
+}
+
+int Module3::getStableTime()
+{
+    std::lock_guard<std::mutex> locker(mutex);
+    return (stable * period / 1000);        
 }
 
 }

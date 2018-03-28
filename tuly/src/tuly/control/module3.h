@@ -27,7 +27,7 @@ private:
         bool bON;            // flag indicating module running
         int state;             // module's present state
         int prevState;       // module's previous state
-        bool bstateChanged; // state was changed in last loop
+        int stable;            // cycles without state changes (limited to 1000)            
         float frequency;    // required execution frequency
         int period;           // time (microseconds) to be slept between loop executions
         bool boffRequested;    // indicates off has been requested
@@ -76,9 +76,13 @@ protected:
         virtual void loop() = 0;            
         
         // sets a new state (ignore it if in OFF state)
-        void setState(int state);
-        // cheks if state has changed in last loop
+        void setState(int value);
+        // checks if state has changed in last loop
         bool isStateChanged();
+        // gets stable cycles in same state
+        int getStable();        
+        // gets stable time in milliseconds (limited due to limited stability counter)
+        int getStableTime();        
         
 private:        
         // prepare for new loop
