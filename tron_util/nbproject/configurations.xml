@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="util" displayName="util" projectFiles="true">
+        <itemPath>src/tron/util/Click.cpp</itemPath>
+        <itemPath>src/tron/util/Click.h</itemPath>
+        <itemPath>src/tron/util/CodeMap.cpp</itemPath>
+        <itemPath>src/tron/util/CodeMap.h</itemPath>
+        <itemPath>src/tron/util/Environment.cpp</itemPath>
+        <itemPath>src/tron/util/Environment.h</itemPath>
+        <itemPath>src/tron/util/IntegerQueue.cpp</itemPath>
+        <itemPath>src/tron/util/IntegerQueue.h</itemPath>
+        <itemPath>src/tron/util/MessageQueue.cpp</itemPath>
+        <itemPath>src/tron/util/MessageQueue.h</itemPath>
+        <itemPath>src/tron/util/Pool.cpp</itemPath>
+        <itemPath>src/tron/util/Pool.h</itemPath>
+        <itemPath>src/tron/util/StringUtil.cpp</itemPath>
+        <itemPath>src/tron/util/StringUtil.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src/tron/util</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
+        </ccTool>
+      </compileType>
+      <item path="src/tron/util/Click.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Click.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/Environment.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Environment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/IntegerQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/IntegerQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/MessageQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/MessageQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/Pool.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Pool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/StringUtil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/StringUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/tron/util/Click.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Click.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/Environment.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Environment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/IntegerQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/IntegerQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/MessageQueue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/MessageQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/Pool.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Pool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/StringUtil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/StringUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
