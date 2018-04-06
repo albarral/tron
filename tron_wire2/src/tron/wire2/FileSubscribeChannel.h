@@ -11,7 +11,7 @@
 
 #include "tron/wire2/FileCommunicator.h"
 #include "tron/wire/channel/SubscribeChannel.h"
-#include "tuly/utils/FileReader.h"
+#include "tron/tools/FileReader.h"
 
 namespace tron
 {
@@ -19,7 +19,7 @@ namespace tron
 class FileSubscribeChannel : public SubscribeChannel, public FileCommunicator
 {    
 private:
-    tuly::FileReader oFileReader;     // file reader
+    FileReader oFileReader;     // file reader
     
 public:
     FileSubscribeChannel();

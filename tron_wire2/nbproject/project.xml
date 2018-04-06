@@ -3,14 +3,14 @@
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>wire2</name>
+            <name>tron_wire2</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
-                <make-dep-project>../tuly</make-dep-project>
-                <make-dep-project>../wire</make-dep-project>
+                <make-dep-project>../tron_wire</make-dep-project>
+                <make-dep-project>../tron_tools</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src/tron/wire2</sourceRootElem>

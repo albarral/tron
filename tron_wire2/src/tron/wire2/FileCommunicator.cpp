@@ -7,7 +7,7 @@
 
 #include "tron/wire2/FileCommunicator.h"
 #include "tron/wire2/Wire2Config.h"
-#include "tuly/utils/FileWriter.h"
+#include "tron/tools/FileWriter.h"
 
 namespace tron
 {
@@ -30,7 +30,7 @@ void FileCommunicator::setFullPath(std::string fileName)
 bool FileCommunicator::createComsFile()
 {
     // create physical file by opening it with a writer
-    tuly::FileWriter oFileWriter;
+    FileWriter oFileWriter;
     oFileWriter.open(fullPath, false);  
     
     if (oFileWriter.isOpen())                   

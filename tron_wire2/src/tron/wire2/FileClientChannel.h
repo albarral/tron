@@ -10,7 +10,7 @@
 
 #include "tron/wire2/FileCommunicator.h"
 #include "tron/wire/channel/ClientChannel.h"
-#include "tuly/utils/FileWriter.h"
+#include "tron/tools/FileWriter.h"
 
 namespace tron
 {
@@ -18,7 +18,7 @@ namespace tron
 class FileClientChannel : public ClientChannel, public FileCommunicator
 {    
 private:
-    tuly::FileWriter oFileWriter;
+    FileWriter oFileWriter;
     
 public:
     FileClientChannel();
