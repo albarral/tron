@@ -12,16 +12,16 @@ CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
 CND_ARTIFACT_NAME_Debug=libtron_wire.so
 CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/libtron_wire.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=libwire.so.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/libwire.so.tar
+CND_PACKAGE_NAME_Debug=libtronwire.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/libtronwire.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=libwire.so
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libwire.so
+CND_ARTIFACT_NAME_Release=libtron_wire.so
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libtron_wire.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=libwire.so.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/libwire.so.tar
+CND_PACKAGE_NAME_Release=libtronwire.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/libtronwire.so.tar
 #
 # include compiler specific variables
 #

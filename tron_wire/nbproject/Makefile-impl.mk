@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=wire
+PROJECTNAME=tron_wire
 
 # Active Configuration
 DEFAULTCONF=Debug
