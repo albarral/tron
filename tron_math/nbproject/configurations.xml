@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="math" displayName="math" projectFiles="true">
+        <itemPath>src/tron/math/Angle.cpp</itemPath>
+        <itemPath>src/tron/math/Angle.h</itemPath>
+        <itemPath>src/tron/math/ArmMath.cpp</itemPath>
+        <itemPath>src/tron/math/ArmMath.h</itemPath>
+        <itemPath>src/tron/math/ArmPolar.cpp</itemPath>
+        <itemPath>src/tron/math/ArmPolar.h</itemPath>
+        <itemPath>src/tron/math/Coordinates.cpp</itemPath>
+        <itemPath>src/tron/math/Coordinates.h</itemPath>
+        <itemPath>src/tron/math/Distance2.cpp</itemPath>
+        <itemPath>src/tron/math/Distance2.h</itemPath>
+        <itemPath>src/tron/math/MathDefines.h</itemPath>
+        <itemPath>src/tron/math/Matrix.cpp</itemPath>
+        <itemPath>src/tron/math/Matrix.h</itemPath>
+        <itemPath>src/tron/math/PIDControl.cpp</itemPath>
+        <itemPath>src/tron/math/PIDControl.h</itemPath>
+        <itemPath>src/tron/math/Trigger.cpp</itemPath>
+        <itemPath>src/tron/math/Trigger.h</itemPath>
+        <itemPath>src/tron/math/Vector.cpp</itemPath>
+        <itemPath>src/tron/math/Vector.h</itemPath>
+        <itemPath>src/tron/math/area.cpp</itemPath>
+        <itemPath>src/tron/math/area.h</itemPath>
+        <itemPath>src/tron/math/average.cpp</itemPath>
+        <itemPath>src/tron/math/average.h</itemPath>
+        <itemPath>src/tron/math/distance.cpp</itemPath>
+        <itemPath>src/tron/math/distance.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src/tron/math</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
+        </ccTool>
+      </compileType>
+      <item path="src/tron/math/Angle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Angle.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmMath.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmMath.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmPolar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmPolar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Coordinates.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Coordinates.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Distance2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Distance2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/MathDefines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Matrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Matrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/PIDControl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Trigger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Vector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/area.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/area.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/average.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/average.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/distance.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/distance.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/tron/math/Angle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Angle.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmMath.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmMath.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmPolar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/ArmPolar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Coordinates.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Coordinates.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Distance2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Distance2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/MathDefines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Matrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Matrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/PIDControl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Trigger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/Vector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/Vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/area.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/area.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/average.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/average.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/math/distance.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/math/distance.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
