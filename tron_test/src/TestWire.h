@@ -12,7 +12,7 @@
 #include <log4cxx/logger.h>
 
 // Class used to test tron_wire lib.
-class TestTronWire
+class TestWire
 {
 private:
     static log4cxx::LoggerPtr logger;
@@ -24,8 +24,8 @@ private:
     bool bfileComs;                 // use file coms
 
 public:
-    TestTronWire();
-    //~TestTronWire();
+    TestWire();
+    //~TestWire();
 
     void makeTest();      
     

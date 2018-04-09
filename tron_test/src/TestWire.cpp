@@ -7,22 +7,22 @@
 #include <vector>
 #include "log4cxx/ndc.h"
 
-#include "TestTronWire.h"
+#include "TestWire.h"
 #include "tron/wire/Wire.h"
 #include "tron/wire/console/ConsoleWire.h"
 #include "tron/wire2/FileWire.h"
 
 using namespace log4cxx;
 
-LoggerPtr TestTronWire::logger(Logger::getLogger("tron.wire"));
+LoggerPtr TestWire::logger(Logger::getLogger("tron.wire"));
 
 // Constructor 
-TestTronWire::TestTronWire()
+TestWire::TestWire()
 {    
-    modName = "TestTronWire";
+    modName = "TestWire";
  }
 
-void TestTronWire::makeTest()
+void TestWire::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
@@ -33,7 +33,7 @@ void TestTronWire::makeTest()
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTronWire::testClientServer()
+void TestWire::testClientServer()
 {
     log4cxx::NDC::push("Client");   	
     
@@ -66,7 +66,7 @@ void TestTronWire::testClientServer()
 }
 
 
-void TestTronWire::testBroadcast()
+void TestWire::testBroadcast()
 {
     log4cxx::NDC::push("Broadcaster");   	
     
@@ -99,32 +99,32 @@ void TestTronWire::testBroadcast()
 }
 
 
-void TestTronWire::launchCSListener()
+void TestWire::launchCSListener()
 {
     LOG4CXX_INFO(logger, "launchCSListener");
-    threadCS = std::thread(&TestTronWire::receiveMessages, this);              
+    threadCS = std::thread(&TestWire::receiveMessages, this);              
 }
 
 
-void TestTronWire::launchPSListener()
+void TestWire::launchPSListener()
 {
     LOG4CXX_INFO(logger, "launchPSListener");
-    threadPS = std::thread(&TestTronWire::hearMessages, this);              
+    threadPS = std::thread(&TestWire::hearMessages, this);              
 }
 
 
-void TestTronWire::wait4CSListener()
+void TestWire::wait4CSListener()
 {
     threadCS.join();
 }
 
-void TestTronWire::wait4PSListener()
+void TestWire::wait4PSListener()
 {
     threadPS.join();
 }
 
 
-void TestTronWire::receiveMessages()
+void TestWire::receiveMessages()
 {
     log4cxx::NDC::push("CSListener");   	
     
@@ -166,7 +166,7 @@ void TestTronWire::receiveMessages()
         delete pWire;    
 }
 
-void TestTronWire::hearMessages()
+void TestWire::hearMessages()
 {
     log4cxx::NDC::push("PSListener");   	
 

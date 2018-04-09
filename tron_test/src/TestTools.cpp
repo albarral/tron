@@ -5,54 +5,29 @@
 
 #include <vector>
 
-#include "TestTuly.h"
-#include "tuly/utils/MessageQueue.h"
+#include "TestTools.h"
 
 using namespace log4cxx;
 
-LoggerPtr TestTuly::logger(Logger::getLogger("tron"));
+LoggerPtr TestTools::logger(Logger::getLogger("tron"));
 
 // Constructor 
-TestTuly::TestTuly()
+TestTools::TestTools()
 {    
-    modName = "TestTuly";
+    modName = "TestTools";
  }
 
-void TestTuly::makeTest()
+void TestTools::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    //testMessageQueue();        
     //testFileReading();
     testFileReading2();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestTuly::testMessageQueue()
-{
-    LOG4CXX_INFO(logger, modName + ": testMessageQueue ...");
-
-    std::string msg;
-    tuly::MessageQueue oMessageQueue;
-        
-    msg = "message1";
-    oMessageQueue.add(msg);
-    msg = "message2";
-    oMessageQueue.add(msg);
-    
-    LOG4CXX_INFO(logger, "message queue has messages " + std::to_string(oMessageQueue.getSize()));
-    
-    while (oMessageQueue.isFilled())
-    {
-        msg = oMessageQueue.fetch();
-        
-        LOG4CXX_INFO(logger, "message fetched: " + msg);
-    }        
-
-}
-
-void TestTuly::testFileReading()
+void TestTools::testFileReading()
 {
     LOG4CXX_INFO(logger, modName + ": testFileReading ...");
     
@@ -95,7 +70,7 @@ void TestTuly::testFileReading()
         outfile2.close();    
 }
 
-void TestTuly::writeBunch(std::ofstream& outfile, int i)
+void TestTools::writeBunch(std::ofstream& outfile, int i)
 {
     std::string base = "hola";        
 
@@ -107,7 +82,7 @@ void TestTuly::writeBunch(std::ofstream& outfile, int i)
     outfile.flush();    
 }
 
-void TestTuly::readEverything(std::ifstream& infile)
+void TestTools::readEverything(std::ifstream& infile)
 {
     LOG4CXX_INFO(logger, "read everything - pos " << infile.tellg());    
     std::string line;
@@ -119,7 +94,7 @@ void TestTuly::readEverything(std::ifstream& infile)
     refreshWhenEOF(infile);
 }
 
-void TestTuly::refreshWhenEOF(std::ifstream& file)
+void TestTools::refreshWhenEOF(std::ifstream& file)
 {
     if (file.eof())
     {
@@ -128,14 +103,14 @@ void TestTuly::refreshWhenEOF(std::ifstream& file)
     }
 }
 
-void TestTuly::testFileReading2()
+void TestTools::testFileReading2()
 {
     LOG4CXX_INFO(logger, modName + ": testFileReading2 ...");
     
     std::string filename = "/home/albarral/coms/testfile.txt";
     
-    tuly::FileReader oFileReader;
-    tuly::FileWriter oFileWriter;
+    tron::FileReader oFileReader;
+    tron::FileWriter oFileWriter;
     
     oFileReader.open(filename);
     // first clean file
@@ -164,7 +139,7 @@ void TestTuly::testFileReading2()
     oFileWriter.close();
 }
 
-void TestTuly::writeLines(tuly::FileWriter& oFileWriter, int i)
+void TestTools::writeLines(tron::FileWriter& oFileWriter, int i)
 {
     std::string base = "hola";        
 
@@ -175,7 +150,7 @@ void TestTuly::writeLines(tuly::FileWriter& oFileWriter, int i)
     }
 }
 
-void TestTuly::readLines(tuly::FileReader& oFileReader)
+void TestTools::readLines(tron::FileReader& oFileReader)
 {
     LOG4CXX_INFO(logger, "read lines");    
     std::vector<std::string> listLines;

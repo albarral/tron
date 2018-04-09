@@ -1,5 +1,5 @@
-#ifndef __TRON_TESTTULY_H
-#define __TRON_TESTTULY_H
+#ifndef __TRON_TEST_TOOLS_H
+#define __TRON_TEST_TOOLS_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
@@ -10,25 +10,23 @@
 #include <string>
 #include <log4cxx/logger.h>
 
-#include "tuly/utils/FileReader.h"
-#include "tuly/utils/FileWriter.h"
+#include "tron/tools/FileReader.h"
+#include "tron/tools/FileWriter.h"
 
-// Class used to test tuly lib.
-class TestTuly
+// Class used to test tron_tools lib.
+class TestTools
 {
 private:
     static log4cxx::LoggerPtr logger;
     std::string modName;          // module name
 
 public:
-    TestTuly();
-    //~TestTuly();
+    TestTools();
+    //~TestTools();
 
     void makeTest();      
     
 private:
-    void testMessageQueue();                
-    
     // functions to test file handling directly with file streams
     void testFileReading();
     void writeBunch(std::ofstream& file, int i);
@@ -37,7 +35,7 @@ private:
 
     // test file handling with tuly reader and writer
     void testFileReading2();
-    void writeLines(tuly::FileWriter& oFileWriter, int i);
-    void readLines(tuly::FileReader& oFileReader);    
+    void writeLines(tron::FileWriter& oFileWriter, int i);
+    void readLines(tron::FileReader& oFileReader);    
 };
 #endif

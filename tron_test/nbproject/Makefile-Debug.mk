@@ -35,14 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/TestMaty.o \
-	${OBJECTDIR}/src/TestPlot.o \
-	${OBJECTDIR}/src/TestTalky2.o \
-	${OBJECTDIR}/src/TestTivy.o \
-	${OBJECTDIR}/src/TestTronWire.o \
-	${OBJECTDIR}/src/TestTuly.o \
-	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/test/talky2/JointChannelServer.o
+	${OBJECTDIR}/src/TestDisplay.o \
+	${OBJECTDIR}/src/TestMath.o \
+	${OBJECTDIR}/src/TestSignals.o \
+	${OBJECTDIR}/src/TestTools.o \
+	${OBJECTDIR}/src/TestUtil.o \
+	${OBJECTDIR}/src/TestWire.o \
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -59,79 +58,74 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,../maty/dist/Debug/GNU-Linux -L../maty/dist/Debug/GNU-Linux -ltron_maty -Wl,-rpath,../robot/dist/Debug/GNU-Linux -L../robot/dist/Debug/GNU-Linux -ltron_robot -Wl,-rpath,../talky2/dist/Debug/GNU-Linux -L../talky2/dist/Debug/GNU-Linux -ltron_talky2 -Wl,-rpath,../tivy/dist/Debug/GNU-Linux -L../tivy/dist/Debug/GNU-Linux -ltron_tivy -Wl,-rpath,../tuly/dist/Debug/GNU-Linux -L../tuly/dist/Debug/GNU-Linux -ltron_tuly -Wl,-rpath,../wire/dist/Debug/GNU-Linux -L../wire/dist/Debug/GNU-Linux -ltron_wire -Wl,-rpath,../wire2/dist/Debug/GNU-Linux -L../wire2/dist/Debug/GNU-Linux -ltron_wire2 -llog4cxx -lopencv_core -lopencv_highgui
+LDLIBSOPTIONS=-llog4cxx -lopencv_core -lopencv_highgui -Wl,-rpath,../tron_display/dist/Debug/GNU-Linux -L../tron_display/dist/Debug/GNU-Linux -ltron_display -Wl,-rpath,../tron_math/dist/Debug/GNU-Linux -L../tron_math/dist/Debug/GNU-Linux -ltron_math -Wl,-rpath,../tron_signals/dist/Debug/GNU-Linux -L../tron_signals/dist/Debug/GNU-Linux -ltron_signals -Wl,-rpath,../tron_tools/dist/Debug/GNU-Linux -L../tron_tools/dist/Debug/GNU-Linux -ltron_tools -Wl,-rpath,../tron_util/dist/Debug/GNU-Linux -L../tron_util/dist/Debug/GNU-Linux -ltron_util -Wl,-rpath,../tron_wire/dist/Debug/GNU-Linux -L../tron_wire/dist/Debug/GNU-Linux -ltron_wire -Wl,-rpath,../tron_wire2/dist/Debug/GNU-Linux -L../tron_wire2/dist/Debug/GNU-Linux -ltron_wire2
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../maty/dist/Debug/GNU-Linux/libtron_maty.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_display/dist/Debug/GNU-Linux/libtron_display.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../robot/dist/Debug/GNU-Linux/libtron_robot.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_math/dist/Debug/GNU-Linux/libtron_math.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../talky2/dist/Debug/GNU-Linux/libtron_talky2.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_signals/dist/Debug/GNU-Linux/libtron_signals.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tivy/dist/Debug/GNU-Linux/libtron_tivy.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_tools/dist/Debug/GNU-Linux/libtron_tools.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tuly/dist/Debug/GNU-Linux/libtron_tuly.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_util/dist/Debug/GNU-Linux/libtron_util.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../wire/dist/Debug/GNU-Linux/libtron_wire.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_wire/dist/Debug/GNU-Linux/libtron_wire.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../wire2/dist/Debug/GNU-Linux/libtron_wire2.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ../tron_wire2/dist/Debug/GNU-Linux/libtron_wire2.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/src/TestMaty.o: src/TestMaty.cpp 
+${OBJECTDIR}/src/TestDisplay.o: src/TestDisplay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMaty.o src/TestMaty.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestDisplay.o src/TestDisplay.cpp
 
-${OBJECTDIR}/src/TestPlot.o: src/TestPlot.cpp 
+${OBJECTDIR}/src/TestMath.o: src/TestMath.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestPlot.o src/TestPlot.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMath.o src/TestMath.cpp
 
-${OBJECTDIR}/src/TestTalky2.o: src/TestTalky2.cpp 
+${OBJECTDIR}/src/TestSignals.o: src/TestSignals.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky2.o src/TestTalky2.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestSignals.o src/TestSignals.cpp
 
-${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp 
+${OBJECTDIR}/src/TestTools.o: src/TestTools.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTools.o src/TestTools.cpp
 
-${OBJECTDIR}/src/TestTronWire.o: src/TestTronWire.cpp 
+${OBJECTDIR}/src/TestUtil.o: src/TestUtil.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTronWire.o src/TestTronWire.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestUtil.o src/TestUtil.cpp
 
-${OBJECTDIR}/src/TestTuly.o: src/TestTuly.cpp 
+${OBJECTDIR}/src/TestWire.o: src/TestWire.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTuly.o src/TestTuly.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestWire.o src/TestWire.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/test/talky2/JointChannelServer.o: src/test/talky2/JointChannelServer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/test/talky2
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../maty/src -I../robot/src -I../talky2/src -I../tivy/src -I../tuly/src -I../wire/src -I../wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/test/talky2/JointChannelServer.o src/test/talky2/JointChannelServer.cpp
+	$(COMPILE.cc) -g -Isrc -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
-	cd ../maty && ${MAKE}  -f Makefile CONF=Debug
-	cd ../robot && ${MAKE}  -f Makefile CONF=Debug
-	cd ../talky2 && ${MAKE}  -f Makefile CONF=Debug
-	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug
-	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug
-	cd ../wire && ${MAKE}  -f Makefile CONF=Debug
-	cd ../wire2 && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_display && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_math && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_signals && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_tools && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_util && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_wire && ${MAKE}  -f Makefile CONF=Debug
+	cd ../tron_wire2 && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -140,13 +134,13 @@ ${OBJECTDIR}/src/test/talky2/JointChannelServer.o: src/test/talky2/JointChannelS
 
 # Subprojects
 .clean-subprojects:
-	cd ../maty && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../robot && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../talky2 && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../tivy && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../tuly && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../wire && ${MAKE}  -f Makefile CONF=Debug clean
-	cd ../wire2 && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_display && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_math && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_signals && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_tools && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_util && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_wire && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../tron_wire2 && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

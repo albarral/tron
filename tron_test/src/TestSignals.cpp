@@ -5,81 +5,53 @@
 
 #include <unistd.h>
 
-#include "TestMaty.h"
-#include "maty/math/ArmMath.h"
-#include "maty/signals/Oscillator.h"
-#include "maty/signals/SenoidalOscillator.h"
-#include "maty/signals/VectorialOscillator.h"
-#include "maty/signals/DualOscillator.h"
-#include "tivy/display/Chart.h"
-#include "maty/math/Click.h"
+#include "TestSignals.h"
+#include "tron/signals/Oscillator.h"
+#include "tron/signals/SenoidalOscillator.h"
+#include "tron/signals/VectorialOscillator.h"
+#include "tron/signals/DualOscillator.h"
+#include "tron/display/Chart.h"
+#include "tron/util/Click.h"
 
 
 using namespace log4cxx;
 
-LoggerPtr TestMaty::logger(Logger::getLogger("tron"));
+LoggerPtr TestSignals::logger(Logger::getLogger("tron"));
 
 // Constructor 
-TestMaty::TestMaty()
+TestSignals::TestSignals()
 {    
-    modName = "TestMaty";
+    modName = "TestSignals";
  }
 
-void TestMaty::makeTest()
+void TestSignals::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
     LOG4CXX_INFO(logger, "\n");
-    //testArmMath();
-    //testClock();
-    //testTriangularSignal();
-    testOscillators();
+    //testOscillators();
+    testDualOscillator();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestMaty::testArmMath()
-{
-    maty::ArmMath oArmMath;
-    oArmMath.setLengths(20,80);
-    
-    float tilt, radius;
-    float angleVS, angleEL;
-
-    angleVS = 90; 
-    angleEL = -160;
-    
-    for (int i=0; i<4; i++)
-    {
-        tilt = oArmMath.computeTilt4JointAngles(angleVS, angleEL);
-        radius = oArmMath.computeRadius4ElbowAngle(angleEL);
-        LOG4CXX_INFO(logger, "angleVS: " << angleVS << ", angleEL: " << angleEL << ", radius= " << radius << ", tilt= " << tilt << "\n");
-        angleVS -= 30;
-    }
-
-//    radius = 40;
-//    float angle = oArmMath.calcElbowAngle(radius);
-//    LOG4CXX_INFO(logger, "radius: " << radius << ", angle = " << angle << "\n");
-}
-
-
-void TestMaty::testOscillators()
+void TestSignals::testOscillators()
 {
     float freq = 0.5;
     float span = 2.0;
 
     // oscillator 1: linear [-1, 1] 
-    maty::Oscillator oOsc;
+    tron::Oscillator oOsc;
     oOsc.setFrequency(freq);
     oOsc.setSpan(span);
     oOsc.setSymmetry(true);
     
     // oscillator 2: senoidal  [-1, 1]
-    maty::SenoidalOscillator oSenOsc;
+    tron::SenoidalOscillator oSenOsc;
     oSenOsc.setFrequency(freq);
 
     // oscillator 3: vectorial 
-    maty::VectorialOscillator oVecOsc;
+    tron::VectorialOscillator oVecOsc;
     oVecOsc.setFrequency(freq);
     oVecOsc.setAmplitude(10.0);
     oVecOsc.setAngle(45);
@@ -104,13 +76,13 @@ void TestMaty::testOscillators()
     }
 }
 
-void TestMaty::testDualOscillator()
+void TestSignals::testDualOscillator()
 {    
     // use dual oscillator to get oscillating speed
     float freq = 0.5;
     float angle = 180;
     float speed = 0.1;
-    maty::DualOscillator oDualOsc;
+    tron::DualOscillator oDualOsc;
     oDualOsc.setPrimaryFreq(freq);
     oDualOsc.setPrimaryAmp(speed);
     oDualOsc.setPrimaryAngle(angle);
@@ -120,8 +92,8 @@ void TestMaty::testDualOscillator()
     oDualOsc.setSecondaryAngle(angle+90.0);
     oDualOsc.setSecondaryPhase(90);
 
-    maty::Click oClick;
-    tivy::Chart oChart;
+    tron::Click oClick;
+    tron::Chart oChart;
     oChart.setRanges(100, 100);
     oChart.plotAxes();
     

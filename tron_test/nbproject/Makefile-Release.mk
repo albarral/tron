@@ -35,14 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/TestMaty.o \
-	${OBJECTDIR}/src/TestPlot.o \
-	${OBJECTDIR}/src/TestTalky2.o \
-	${OBJECTDIR}/src/TestTivy.o \
-	${OBJECTDIR}/src/TestTronWire.o \
-	${OBJECTDIR}/src/TestTuly.o \
-	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/test/talky2/JointChannelServer.o
+	${OBJECTDIR}/src/TestDisplay.o \
+	${OBJECTDIR}/src/TestMath.o \
+	${OBJECTDIR}/src/TestSignals.o \
+	${OBJECTDIR}/src/TestTools.o \
+	${OBJECTDIR}/src/TestUtil.o \
+	${OBJECTDIR}/src/TestWire.o \
+	${OBJECTDIR}/src/main.o
 
 
 # C Compiler Flags
@@ -69,45 +68,40 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/src/TestMaty.o: src/TestMaty.cpp 
+${OBJECTDIR}/src/TestDisplay.o: src/TestDisplay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMaty.o src/TestMaty.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestDisplay.o src/TestDisplay.cpp
 
-${OBJECTDIR}/src/TestPlot.o: src/TestPlot.cpp 
+${OBJECTDIR}/src/TestMath.o: src/TestMath.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestPlot.o src/TestPlot.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMath.o src/TestMath.cpp
 
-${OBJECTDIR}/src/TestTalky2.o: src/TestTalky2.cpp 
+${OBJECTDIR}/src/TestSignals.o: src/TestSignals.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTalky2.o src/TestTalky2.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestSignals.o src/TestSignals.cpp
 
-${OBJECTDIR}/src/TestTivy.o: src/TestTivy.cpp 
+${OBJECTDIR}/src/TestTools.o: src/TestTools.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTivy.o src/TestTivy.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTools.o src/TestTools.cpp
 
-${OBJECTDIR}/src/TestTronWire.o: src/TestTronWire.cpp 
+${OBJECTDIR}/src/TestUtil.o: src/TestUtil.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTronWire.o src/TestTronWire.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestUtil.o src/TestUtil.cpp
 
-${OBJECTDIR}/src/TestTuly.o: src/TestTuly.cpp 
+${OBJECTDIR}/src/TestWire.o: src/TestWire.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestTuly.o src/TestTuly.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestWire.o src/TestWire.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/test/talky2/JointChannelServer.o: src/test/talky2/JointChannelServer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/test/talky2
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/test/talky2/JointChannelServer.o src/test/talky2/JointChannelServer.cpp
 
 # Subprojects
 .build-subprojects:

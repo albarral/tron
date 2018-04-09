@@ -1,5 +1,5 @@
-#ifndef __TRON_TESTTIVY_H
-#define __TRON_TESTTIVY_H
+#ifndef __TRON_TEST_DISPLAY_H
+#define __TRON_TEST_DISPLAY_H
 
 /***************************************************************************
  *   Copyright (C) 2017 by Migtron Robotics   *
@@ -10,23 +10,19 @@
 #include <log4cxx/logger.h>
 
 // class used to conduct tests
-class TestTivy
+class TestDisplay
 {
  private:
      static log4cxx::LoggerPtr logger;
     std::string modName;          // module name
 
 public:
-    TestTivy();
-//    ~TestTivy();
+    TestDisplay();
+//    ~TestDisplay();
 
         void makeTest();      
 
 private:    
-    void testPlot();
-    void testHistoryPlot();
-    void testDiscPlot();
-    void testDualWindow();
     void testDrawnDisplay();
     void testChart();
     
