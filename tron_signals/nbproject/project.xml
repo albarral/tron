@@ -9,7 +9,6 @@
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
-                <make-dep-project>../tron_math</make-dep-project>
                 <make-dep-project>../tron_util</make-dep-project>
             </make-dep-projects>
             <sourceRootList>

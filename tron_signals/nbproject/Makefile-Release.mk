@@ -35,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/tron/signals/CyclicComponent.o \
 	${OBJECTDIR}/src/tron/signals/CyclicMath.o \
 	${OBJECTDIR}/src/tron/signals/DualOscillator.o \
 	${OBJECTDIR}/src/tron/signals/Oscillator.o \
 	${OBJECTDIR}/src/tron/signals/SenoidalOscillator.o \
 	${OBJECTDIR}/src/tron/signals/Signal2.o \
+	${OBJECTDIR}/src/tron/signals/Vector.o \
 	${OBJECTDIR}/src/tron/signals/VectorialOscillator.o
 
 
@@ -68,11 +68,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_signals.${CND_DLIB_EXT}: ${OB
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_signals.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/src/tron/signals/CyclicComponent.o: src/tron/signals/CyclicComponent.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/signals
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/signals/CyclicComponent.o src/tron/signals/CyclicComponent.cpp
-
 ${OBJECTDIR}/src/tron/signals/CyclicMath.o: src/tron/signals/CyclicMath.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/signals
 	${RM} "$@.d"
@@ -97,6 +92,11 @@ ${OBJECTDIR}/src/tron/signals/Signal2.o: src/tron/signals/Signal2.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/signals
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/signals/Signal2.o src/tron/signals/Signal2.cpp
+
+${OBJECTDIR}/src/tron/signals/Vector.o: src/tron/signals/Vector.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/signals
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/signals/Vector.o src/tron/signals/Vector.cpp
 
 ${OBJECTDIR}/src/tron/signals/VectorialOscillator.o: src/tron/signals/VectorialOscillator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/signals

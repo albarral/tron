@@ -9,7 +9,7 @@
 #include <string>
 
 #include "tron/signals/Oscillator.h"
-#include "tron/math/Vector.h"
+#include "tron/signals/Vector.h"
 
 namespace tron
 {

@@ -6,7 +6,7 @@
 #include <cmath>
 
 #include "tron/signals/SenoidalOscillator.h"
-#include "tron/math/MathDefines.h"
+#include "tron/signals/SignalDefines.h"
 
 namespace tron
 {

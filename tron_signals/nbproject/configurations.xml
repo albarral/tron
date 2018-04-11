@@ -13,8 +13,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="signals" displayName="signals" projectFiles="true">
-        <itemPath>src/tron/signals/CyclicComponent.cpp</itemPath>
-        <itemPath>src/tron/signals/CyclicComponent.h</itemPath>
         <itemPath>src/tron/signals/CyclicMath.cpp</itemPath>
         <itemPath>src/tron/signals/CyclicMath.h</itemPath>
         <itemPath>src/tron/signals/DualOscillator.cpp</itemPath>
@@ -25,6 +23,9 @@
         <itemPath>src/tron/signals/SenoidalOscillator.h</itemPath>
         <itemPath>src/tron/signals/Signal2.cpp</itemPath>
         <itemPath>src/tron/signals/Signal2.h</itemPath>
+        <itemPath>src/tron/signals/SignalDefines.h</itemPath>
+        <itemPath>src/tron/signals/Vector.cpp</itemPath>
+        <itemPath>src/tron/signals/Vector.h</itemPath>
         <itemPath>src/tron/signals/VectorialOscillator.cpp</itemPath>
         <itemPath>src/tron/signals/VectorialOscillator.h</itemPath>
       </logicalFolder>
@@ -58,7 +59,6 @@
           <incDir>
             <pElem>src</pElem>
             <pElem>../tron_util/src</pElem>
-            <pElem>../tron_math/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -75,28 +75,9 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_util.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../tron_math"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tron_math"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_math.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="src/tron/signals/CyclicComponent.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/tron/signals/CyclicComponent.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tron/signals/CyclicMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/signals/CyclicMath.h" ex="false" tool="3" flavor2="0">
@@ -125,6 +106,12 @@
       <item path="src/tron/signals/Signal2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/signals/Signal2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/signals/SignalDefines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/signals/Vector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/signals/Vector.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/signals/VectorialOscillator.cpp"
             ex="false"
@@ -157,13 +144,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="src/tron/signals/CyclicComponent.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="src/tron/signals/CyclicComponent.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tron/signals/CyclicMath.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/signals/CyclicMath.h" ex="false" tool="3" flavor2="0">
@@ -192,6 +172,12 @@
       <item path="src/tron/signals/Signal2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/signals/Signal2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/signals/SignalDefines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/signals/Vector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/signals/Vector.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/signals/VectorialOscillator.cpp"
             ex="false"
