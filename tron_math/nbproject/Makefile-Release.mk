@@ -39,14 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/math/ArmMath.o \
 	${OBJECTDIR}/src/tron/math/ArmPolar.o \
 	${OBJECTDIR}/src/tron/math/Coordinates.o \
-	${OBJECTDIR}/src/tron/math/Distance2.o \
-	${OBJECTDIR}/src/tron/math/Matrix.o \
+	${OBJECTDIR}/src/tron/math/CyclicComponent.o \
 	${OBJECTDIR}/src/tron/math/PIDControl.o \
-	${OBJECTDIR}/src/tron/math/Trigger.o \
-	${OBJECTDIR}/src/tron/math/Vector.o \
-	${OBJECTDIR}/src/tron/math/area.o \
-	${OBJECTDIR}/src/tron/math/average.o \
-	${OBJECTDIR}/src/tron/math/distance.o
+	${OBJECTDIR}/src/tron/math/Trigger.o
 
 
 # C Compiler Flags
@@ -93,15 +88,10 @@ ${OBJECTDIR}/src/tron/math/Coordinates.o: src/tron/math/Coordinates.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/Coordinates.o src/tron/math/Coordinates.cpp
 
-${OBJECTDIR}/src/tron/math/Distance2.o: src/tron/math/Distance2.cpp 
+${OBJECTDIR}/src/tron/math/CyclicComponent.o: src/tron/math/CyclicComponent.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/math
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/Distance2.o src/tron/math/Distance2.cpp
-
-${OBJECTDIR}/src/tron/math/Matrix.o: src/tron/math/Matrix.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/Matrix.o src/tron/math/Matrix.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/CyclicComponent.o src/tron/math/CyclicComponent.cpp
 
 ${OBJECTDIR}/src/tron/math/PIDControl.o: src/tron/math/PIDControl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/math
@@ -112,26 +102,6 @@ ${OBJECTDIR}/src/tron/math/Trigger.o: src/tron/math/Trigger.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/math
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/Trigger.o src/tron/math/Trigger.cpp
-
-${OBJECTDIR}/src/tron/math/Vector.o: src/tron/math/Vector.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/Vector.o src/tron/math/Vector.cpp
-
-${OBJECTDIR}/src/tron/math/area.o: src/tron/math/area.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/area.o src/tron/math/area.cpp
-
-${OBJECTDIR}/src/tron/math/average.o: src/tron/math/average.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/average.o src/tron/math/average.cpp
-
-${OBJECTDIR}/src/tron/math/distance.o: src/tron/math/distance.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/math
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/math/distance.o src/tron/math/distance.cpp
 
 # Subprojects
 .build-subprojects:

@@ -21,23 +21,13 @@
         <itemPath>src/tron/math/ArmPolar.h</itemPath>
         <itemPath>src/tron/math/Coordinates.cpp</itemPath>
         <itemPath>src/tron/math/Coordinates.h</itemPath>
-        <itemPath>src/tron/math/Distance2.cpp</itemPath>
-        <itemPath>src/tron/math/Distance2.h</itemPath>
+        <itemPath>src/tron/math/CyclicComponent.cpp</itemPath>
+        <itemPath>src/tron/math/CyclicComponent.h</itemPath>
         <itemPath>src/tron/math/MathDefines.h</itemPath>
-        <itemPath>src/tron/math/Matrix.cpp</itemPath>
-        <itemPath>src/tron/math/Matrix.h</itemPath>
         <itemPath>src/tron/math/PIDControl.cpp</itemPath>
         <itemPath>src/tron/math/PIDControl.h</itemPath>
         <itemPath>src/tron/math/Trigger.cpp</itemPath>
         <itemPath>src/tron/math/Trigger.h</itemPath>
-        <itemPath>src/tron/math/Vector.cpp</itemPath>
-        <itemPath>src/tron/math/Vector.h</itemPath>
-        <itemPath>src/tron/math/area.cpp</itemPath>
-        <itemPath>src/tron/math/area.h</itemPath>
-        <itemPath>src/tron/math/average.cpp</itemPath>
-        <itemPath>src/tron/math/average.h</itemPath>
-        <itemPath>src/tron/math/distance.cpp</itemPath>
-        <itemPath>src/tron/math/distance.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -87,15 +77,11 @@
       </item>
       <item path="src/tron/math/Coordinates.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/math/Distance2.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/tron/math/CyclicComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/tron/math/Distance2.h" ex="false" tool="3" flavor2="0">
+      <item path="src/tron/math/CyclicComponent.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/math/MathDefines.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/Matrix.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/Matrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -104,22 +90,6 @@
       <item path="src/tron/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/math/Trigger.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/Vector.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/Vector.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/area.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/area.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/average.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/average.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/distance.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/distance.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -158,15 +128,11 @@
       </item>
       <item path="src/tron/math/Coordinates.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/tron/math/Distance2.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/tron/math/CyclicComponent.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/tron/math/Distance2.h" ex="false" tool="3" flavor2="0">
+      <item path="src/tron/math/CyclicComponent.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/math/MathDefines.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/Matrix.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/Matrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/math/PIDControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -175,22 +141,6 @@
       <item path="src/tron/math/Trigger.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/math/Trigger.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/Vector.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/Vector.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/area.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/area.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/average.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/average.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/tron/math/distance.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/math/distance.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
