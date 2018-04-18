@@ -8,6 +8,7 @@
 #include <log4cxx/logger.h>
 #include <log4cxx/xml/domconfigurator.h>
 
+#include "TestControl.h"
 #include "TestDisplay.h"
 #include "TestMath.h"
 #include "TestSignals.h"
@@ -29,14 +30,17 @@ int main(int argc, char** argv)
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
     
+    TestControl oTestControl;
+    oTestControl.makeTest();
+
 //    TestDisplay oTestDisplay;
 //    oTestDisplay.makeTest();
 
 //    TestMath oTestMath;
 //    oTestMath.makeTest();
 
-    TestSignals oTestSignals;
-    oTestSignals.makeTest();
+//    TestSignals oTestSignals;
+//    oTestSignals.makeTest();
     
 //    TestUtil oTestUtil;
 //    oTestUtil.makeTest();

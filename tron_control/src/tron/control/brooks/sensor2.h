@@ -1,8 +1,8 @@
-#ifndef __TRON_CONTROL_SENSOR_H
-#define __TRON_CONTROL_SENSOR_H
+#ifndef __TRON_CONTROL_SENSOR2_H
+#define __TRON_CONTROL_SENSOR2_H
 
 /***************************************************************************
- *   Copyright (C) 2014 by Migtron Robotics   *
+ *   Copyright (C) 2018 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
@@ -10,22 +10,22 @@
 
 namespace tron 
 {
-// This class implements a Brooks sensor for transmission of boolean info.
+// This class implements a Brooks sensor for transmission of integer info.
 // Thread safety implemented.
-class Sensor 
+class Sensor2 
 {
     private:
         std::mutex mutex;
-        bool value; 
+        int value; 
 
     public:
-        Sensor();
-        //~Sensor();
+        Sensor2();
+        //~Sensor2();
                         
         // Sets the sensor info
-        void setValue(bool val);         
+        void setValue(int val);         
         // Gets the sensor info
-        bool getValue();
+        int getValue();
 };
 }    
 #endif

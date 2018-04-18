@@ -11,8 +11,8 @@
 
 namespace tron 
 {
-// This class implements a Brooks control command.
-// It works as the base Control class, but allows for an input parameter on the command request.
+// This class implements a Brooks control connector for transmission of generic commands.
+// It extends from base Control class.
 // Thread safety implemented.
 template <typename T>
 class ControlT : public Control

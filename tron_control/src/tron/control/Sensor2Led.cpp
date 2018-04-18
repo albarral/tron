@@ -3,7 +3,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/control/SensorLed.h"
+#include "tron/control/Sensor2Led.h"
 
 namespace tron
 {
@@ -19,7 +19,7 @@ SensorLed::SensorLed()
 //{
 //}
 
-void SensorLed::init(SensorT<int>& oSensor)
+void SensorLed::init(Sensor2& oSensor)
 {
     pSensor = &oSensor;
     bconnected = true;    
