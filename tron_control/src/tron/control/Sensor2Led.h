@@ -14,7 +14,7 @@ namespace tron
 // A device connected to a brooks sensor, that signals changes in the sensor value.
 // The led turns ON on value change, and turns OFF on stable value.
 // On init() the connection to the sensor is established. On check(), the sensor value is checked.
-class SensorLed
+class Sensor2Led
 {
 private:
     Sensor2* pSensor;    // connection to monitored sensor 
@@ -23,8 +23,8 @@ private:
     bool bON;       // led output (true when value changed since last check)
 
 public:
-    SensorLed();
-    //~SensorLed();
+    Sensor2Led();
+    //~Sensor2Led();
         
     // set connection to sensor
     void init(Sensor2& oSensor);

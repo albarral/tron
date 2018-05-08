@@ -55,6 +55,8 @@ public:
         void setFrequency(float cps);
         // gets the loop frequency 
         float getFrequency();
+        // gets the loop period (microsecs)
+        int getPeriod();
 
         // checks the module state
         int getState();

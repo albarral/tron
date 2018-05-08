@@ -54,8 +54,8 @@ void TestControl::testControls()
     else
         value3 = -1;
        
-    LOG4CXX_INFO(logger, modName + "num received = " << value2);                            
-    LOG4CXX_INFO(logger, modName + "speed received = " << value3);                            
+    LOG4CXX_INFO(logger, modName + ": num received = " << value2);                            
+    LOG4CXX_INFO(logger, modName + ": speed received = " << value3);                            
 }
 
 void TestControl::testSensors()
@@ -71,14 +71,15 @@ void TestControl::testSensors()
     int value2 = SO_NUM.getValue();        
     float value3 = SO_SPEED.getValue();        
        
-    LOG4CXX_INFO(logger, modName + "num received = " << value2);                            
-    LOG4CXX_INFO(logger, modName + "speed received = " << value3);                            
+    LOG4CXX_INFO(logger, modName + ": num received = " << value2);                            
+    LOG4CXX_INFO(logger, modName + ": speed received = " << value3);                            
 }
 
 void TestControl::testAdder()
 {
     LOG4CXX_INFO(logger, modName + ": testAdder ...");
     
+    float value = -1;
     tron::Control3 CO_SPEED1;
     tron::Control3 CO_SPEED2;
     tron::Control3 CO_SPEED3;    
@@ -92,11 +93,14 @@ void TestControl::testAdder()
     CO_SPEED2.request(20.2);
     CO_SPEED3.request(30.3);
     
-    float value; 
+
     if (CO_ADDER.checkRequested())
-        value = CO_ADDER.getValue();        
-    else
-        value = -1;
-       
-    LOG4CXX_INFO(logger, modName + "adder value = " << value);                            
+        value = CO_ADDER.getValue();               
+    LOG4CXX_INFO(logger, modName + ": adder value = " << value);                            
+    
+    CO_SPEED3.request(60.6);
+    if (CO_ADDER.checkRequested())
+        value = CO_ADDER.getValue();               
+    LOG4CXX_INFO(logger, modName + ": adder value = " << value);                            
+    
 }

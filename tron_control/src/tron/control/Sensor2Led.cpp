@@ -7,7 +7,7 @@
 
 namespace tron
 {
-SensorLed::SensorLed()
+Sensor2Led::Sensor2Led()
 {          
     pSensor = 0;
     bconnected = false;
@@ -19,13 +19,13 @@ SensorLed::SensorLed()
 //{
 //}
 
-void SensorLed::init(Sensor2& oSensor)
+void Sensor2Led::init(Sensor2& oSensor)
 {
     pSensor = &oSensor;
     bconnected = true;    
 }
 
-bool SensorLed::check()
+bool Sensor2Led::check()
 {	
     // safety check 
     if (bconnected)

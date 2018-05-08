@@ -76,6 +76,12 @@ float Module3::getFrequency()
     return frequency;        
 }
 
+int Module3::getPeriod()
+{
+    std::lock_guard<std::mutex> locker(mutex);
+    return period;        
+}
+
 void Module3::run ()
 {    
     bON = true; 
