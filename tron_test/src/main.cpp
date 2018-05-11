@@ -30,8 +30,8 @@ int main(int argc, char** argv)
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
     
-    TestControl oTestControl;
-    oTestControl.makeTest();
+//    TestControl oTestControl;
+//    oTestControl.makeTest();
 
 //    TestDisplay oTestDisplay;
 //    oTestDisplay.makeTest();
@@ -42,8 +42,8 @@ int main(int argc, char** argv)
 //    TestSignals oTestSignals;
 //    oTestSignals.makeTest();
     
-//    TestUtil oTestUtil;
-//    oTestUtil.makeTest();
+    TestUtil oTestUtil;
+    oTestUtil.makeTest();
 
     //    TestTool oTestTool;
 //    oTestTool.makeTest();

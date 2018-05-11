@@ -5,6 +5,9 @@
 
 #include "TestUtil.h"
 #include "tron/util/MessageQueue.h"
+#include "tron/util/groups/Element.h"
+#include "tron/util/groups/Group.h"
+#include "tron/util/groups/SuperGroup.h"
 
 using namespace log4cxx;
 
@@ -20,7 +23,8 @@ void TestUtil::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testMessageQueue();        
+    //testMessageQueue();        
+    testGroups();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -45,6 +49,31 @@ void TestUtil::testMessageQueue()
         
         LOG4CXX_INFO(logger, "message fetched: " + msg);
     }        
-
 }
+
+void TestUtil::testGroups()
+{
+    LOG4CXX_INFO(logger, modName + ": testGroups ...");
+
+    tron::SuperGroup oSuperGroup(10, "supergroup10");
+    tron::Group oGroup1(1, "group1");
+    tron::Group oGroup2(2, "group2");
+    tron::Element oElement1(1, "elem1", 4);
+    tron::Element oElement2(2, "elem2", 3);
+    tron::Element oElement3(3, "elem3", 5);
+        
+    oGroup1.addElement(oElement1);
+    oGroup1.addElement(oElement2);
+    oGroup1.addElement(oElement3);    
+
+    oGroup2.addElement(oElement1);
+    oGroup2.addElement(oElement2);
+    oGroup2.addElement(oElement3);    
+    
+    oSuperGroup.addGroup(oGroup1);
+    oSuperGroup.addGroup(oGroup2);
+    
+    LOG4CXX_INFO(logger, oSuperGroup.toString());        
+}
+
 

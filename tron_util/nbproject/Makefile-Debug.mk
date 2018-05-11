@@ -41,7 +41,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/util/IntegerQueue.o \
 	${OBJECTDIR}/src/tron/util/MessageQueue.o \
 	${OBJECTDIR}/src/tron/util/Pool.o \
-	${OBJECTDIR}/src/tron/util/StringUtil.o
+	${OBJECTDIR}/src/tron/util/StringUtil.o \
+	${OBJECTDIR}/src/tron/util/groups/Element.o \
+	${OBJECTDIR}/src/tron/util/groups/Group.o \
+	${OBJECTDIR}/src/tron/util/groups/SuperGroup.o
 
 
 # C Compiler Flags
@@ -102,6 +105,21 @@ ${OBJECTDIR}/src/tron/util/StringUtil.o: src/tron/util/StringUtil.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/StringUtil.o src/tron/util/StringUtil.cpp
+
+${OBJECTDIR}/src/tron/util/groups/Element.o: src/tron/util/groups/Element.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util/groups
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/groups/Element.o src/tron/util/groups/Element.cpp
+
+${OBJECTDIR}/src/tron/util/groups/Group.o: src/tron/util/groups/Group.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util/groups
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/groups/Group.o src/tron/util/groups/Group.cpp
+
+${OBJECTDIR}/src/tron/util/groups/SuperGroup.o: src/tron/util/groups/SuperGroup.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util/groups
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/groups/SuperGroup.o src/tron/util/groups/SuperGroup.cpp
 
 # Subprojects
 .build-subprojects:

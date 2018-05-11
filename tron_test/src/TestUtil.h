@@ -24,5 +24,6 @@ public:
     
 private:
     void testMessageQueue();                    
+    void testGroups();
 };
 #endif
