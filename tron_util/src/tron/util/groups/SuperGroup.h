@@ -22,10 +22,8 @@ protected:
 
 public:
     SuperGroup();
-    SuperGroup(int id);
     SuperGroup(int id, std::string name);
-    SuperGroup(int id, std::string name, int nature);
-    ~SuperGroup ();
+    ~SuperGroup();
     
     void clear();
     void addGroup(Group& oGroup);

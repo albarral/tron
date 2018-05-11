@@ -7,19 +7,12 @@
 
 namespace tron
 {
-SuperGroup::SuperGroup() : SuperGroup(-1, "", -1)
+SuperGroup::SuperGroup()
 {          
+    type = Element::eTYPE_SUPERGROUP;
 }
 
-SuperGroup::SuperGroup(int id) : SuperGroup(id, "", -1)
-{          
-}
-
-SuperGroup::SuperGroup(int id, std::string name) : SuperGroup(id, name, -1)
-{          
-}
-
-SuperGroup::SuperGroup(int id, std::string name, int nature) : Element(id, name, nature)
+SuperGroup::SuperGroup(int id, std::string name) : Element(id, name)
 {          
     type = Element::eTYPE_SUPERGROUP;
 }

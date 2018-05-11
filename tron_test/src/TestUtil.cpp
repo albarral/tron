@@ -58,9 +58,9 @@ void TestUtil::testGroups()
     tron::SuperGroup oSuperGroup(10, "supergroup10");
     tron::Group oGroup1(1, "group1");
     tron::Group oGroup2(2, "group2");
-    tron::Element oElement1(1, "elem1", 4);
-    tron::Element oElement2(2, "elem2", 3);
-    tron::Element oElement3(3, "elem3", 5);
+    tron::Element oElement1(1, "elem1");
+    tron::Element oElement2(2, "elem2");
+    tron::Element oElement3(3, "elem3");
         
     oGroup1.addElement(oElement1);
     oGroup1.addElement(oElement2);

@@ -7,25 +7,20 @@
 
 namespace tron
 {
-Element::Element() : Element(-1, "", -1)
+Element::Element()
 {          
+    this->id = -1;
+    this->name = "";
+    type = Element::eTYPE_ELEMENT;
+    group = -1;
 }
 
-Element::Element(int id) : Element(id, "", -1)
-{          
-}
-
-Element::Element(int id, std::string name) : Element(id, name, -1)
-{          
-}
-
-Element::Element(int id, std::string name, int nature)
+Element::Element(int id, std::string name)
 {          
     this->id = id;
     this->name = name;
     type = Element::eTYPE_ELEMENT;
     group = -1;
-    this->nature = nature;
 }
 
 //Element::~Element ()
@@ -34,8 +29,26 @@ Element::Element(int id, std::string name, int nature)
 
 std::string Element::toString()
 {
-    std::string text = "Element: id=" + std::to_string(id)  + ", name=" + name + ", group=" + std::to_string(group) + ", nature=" + std::to_string(nature);    
+    std::string text = getTypeName(type) + " id=" + std::to_string(id)  + ", name=" + name + ", group=" + std::to_string(group);    
     return text;    
+}
+
+std::string Element::getTypeName(int type)
+{
+    switch (type)
+    {
+        case eTYPE_ELEMENT:
+            return "element";
+            break;
+        case eTYPE_GROUP:
+            return "group";
+            break;
+        case eTYPE_SUPERGROUP:
+            return "supergroup";
+            break;
+        default: 
+            return "invalid";
+    }    
 }
 
 }

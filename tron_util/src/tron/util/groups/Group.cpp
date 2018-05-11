@@ -7,19 +7,12 @@
 
 namespace tron
 {
-Group::Group() : Group(-1, "", -1)
+Group::Group()
 {          
+    type = Element::eTYPE_GROUP;
 }
 
-Group::Group(int id) : Group(id, "", -1)
-{          
-}
-
-Group::Group(int id, std::string name) : Group(id, name, -1)
-{          
-}
-
-Group::Group(int id, std::string name, int nature) : Element(id, name, nature)
+Group::Group(int id, std::string name) : Element(id, name)
 {          
     type = Element::eTYPE_GROUP;
 }

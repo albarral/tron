@@ -21,13 +21,11 @@ protected:
 
 public:
     Group();
-    Group(int id);
     Group(int id, std::string name);
-    Group(int id, std::string name, int nature);
-    ~Group ();
+    ~Group();
     
     void clear();
-    void addElement(Element& oElement);
+    virtual void addElement(Element& oElement);
     std::vector<Element>& getElements() {return listElements;};
     int getNumElements() {return listElements.size();};    
 
