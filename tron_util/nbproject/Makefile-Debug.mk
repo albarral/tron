@@ -36,12 +36,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/util/Click.o \
+	${OBJECTDIR}/src/tron/util/Code.o \
+	${OBJECTDIR}/src/tron/util/CodeInterpreter.o \
 	${OBJECTDIR}/src/tron/util/CodeMap.o \
 	${OBJECTDIR}/src/tron/util/Environment.o \
 	${OBJECTDIR}/src/tron/util/IntegerQueue.o \
 	${OBJECTDIR}/src/tron/util/MessageQueue.o \
 	${OBJECTDIR}/src/tron/util/Pool.o \
 	${OBJECTDIR}/src/tron/util/StringUtil.o \
+	${OBJECTDIR}/src/tron/util/Try.o \
 	${OBJECTDIR}/src/tron/util/groups/Element.o \
 	${OBJECTDIR}/src/tron/util/groups/Group.o \
 	${OBJECTDIR}/src/tron/util/groups/SuperGroup.o
@@ -76,6 +79,16 @@ ${OBJECTDIR}/src/tron/util/Click.o: src/tron/util/Click.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/Click.o src/tron/util/Click.cpp
 
+${OBJECTDIR}/src/tron/util/Code.o: src/tron/util/Code.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/Code.o src/tron/util/Code.cpp
+
+${OBJECTDIR}/src/tron/util/CodeInterpreter.o: src/tron/util/CodeInterpreter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/CodeInterpreter.o src/tron/util/CodeInterpreter.cpp
+
 ${OBJECTDIR}/src/tron/util/CodeMap.o: src/tron/util/CodeMap.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/util
 	${RM} "$@.d"
@@ -105,6 +118,11 @@ ${OBJECTDIR}/src/tron/util/StringUtil.o: src/tron/util/StringUtil.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/StringUtil.o src/tron/util/StringUtil.cpp
+
+${OBJECTDIR}/src/tron/util/Try.o: src/tron/util/Try.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/Try.o src/tron/util/Try.cpp
 
 ${OBJECTDIR}/src/tron/util/groups/Element.o: src/tron/util/groups/Element.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/util/groups

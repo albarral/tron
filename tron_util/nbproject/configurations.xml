@@ -23,6 +23,10 @@
         </logicalFolder>
         <itemPath>src/tron/util/Click.cpp</itemPath>
         <itemPath>src/tron/util/Click.h</itemPath>
+        <itemPath>src/tron/util/Code.cpp</itemPath>
+        <itemPath>src/tron/util/Code.h</itemPath>
+        <itemPath>src/tron/util/CodeInterpreter.cpp</itemPath>
+        <itemPath>src/tron/util/CodeInterpreter.h</itemPath>
         <itemPath>src/tron/util/CodeMap.cpp</itemPath>
         <itemPath>src/tron/util/CodeMap.h</itemPath>
         <itemPath>src/tron/util/Environment.cpp</itemPath>
@@ -35,6 +39,8 @@
         <itemPath>src/tron/util/Pool.h</itemPath>
         <itemPath>src/tron/util/StringUtil.cpp</itemPath>
         <itemPath>src/tron/util/StringUtil.h</itemPath>
+        <itemPath>src/tron/util/Try.cpp</itemPath>
+        <itemPath>src/tron/util/Try.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -72,6 +78,14 @@
       </item>
       <item path="src/tron/util/Click.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/util/Code.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Code.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeInterpreter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeInterpreter.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/util/CodeMap.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/util/CodeMap.h" ex="false" tool="3" flavor2="0">
@@ -95,6 +109,10 @@
       <item path="src/tron/util/StringUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/util/StringUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/Try.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Try.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/util/groups/Element.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -136,6 +154,14 @@
       </item>
       <item path="src/tron/util/Click.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/util/Code.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Code.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeInterpreter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/CodeInterpreter.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/util/CodeMap.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/util/CodeMap.h" ex="false" tool="3" flavor2="0">
@@ -159,6 +185,10 @@
       <item path="src/tron/util/StringUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/util/StringUtil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/util/Try.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/util/Try.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/util/groups/Element.cpp" ex="false" tool="1" flavor2="0">
       </item>
