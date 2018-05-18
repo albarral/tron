@@ -27,6 +27,11 @@ void CodeMap::addCode(int code, std::string name)
     mapNames.emplace(name, code);    
 }
 
+int CodeMap::getSize()
+{
+    return mapCodes.size();
+}
+
 bool CodeMap::getName4Code(int code, std::string& name)
 {
     try 

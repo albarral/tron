@@ -14,25 +14,32 @@ CodeInterpreter::CodeInterpreter()
 
 CodeInterpreter::~CodeInterpreter()
 {
-    reset();
+    clearKnowledge();
 }
 
-void CodeInterpreter::reset()
+void CodeInterpreter::clearKnowledge()
 {
     oCodeMap.reset();    
     benabled = false;
 }
 
-void CodeInterpreter::setKnowledge(std::vector<Code> listCodes)
+void CodeInterpreter::addKnowledge(std::vector<Code> listCodes)
 {
-    // fills code map with the topic's code map elements
+    // add given codes to the knowledge map
     for (tron::Code& oCode : listCodes)
     {
         oCodeMap.addCode(oCode.getID(), oCode.getName());
     }
+    // set enabled when there's some knowledge
+    benabled = oCodeMap.getSize() > 0;
+}
 
-    if (listCodes.size() > 0)
-        benabled = true;
+void CodeInterpreter::addKnowledge(int codeId, std::string codeName)
+{
+    // add given code to the knowledge map
+    oCodeMap.addCode(codeId, codeName);
+    // set enabled as there's some knowledge
+    benabled = true;
 }
 
 int CodeInterpreter::interpretCode(std::string& word)

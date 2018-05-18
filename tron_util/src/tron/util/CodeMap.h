@@ -28,6 +28,8 @@ public:
     
     // add code to map
     void addCode(int code, std::string name);        
+    // return number of stored codes
+    int getSize(); 
     
     // find name for given code, returns false if unknown
     bool getName4Code(int code, std::string& name);

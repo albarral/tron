@@ -20,7 +20,7 @@ class CodeInterpreter
 {
 private:
     bool benabled;                                     /*! flag indicating the interpreter has a knowledge */    
-    tron::CodeMap oCodeMap;                    /*! knowledge */    
+    tron::CodeMap oCodeMap;                    /*! knowledge code map */    
     
 public:
     CodeInterpreter();              	
@@ -28,10 +28,12 @@ public:
 
     bool isEnabled() {return benabled;};
     
-    // set interpreter knowledge
-    void setKnowledge(std::vector<Code> listCodes);
     // clear interpreter knowledge
-    void reset();
+    void clearKnowledge();
+    // adds given codes to the interpreter knowledge
+    void addKnowledge(std::vector<Code> listCodes);
+    // adds given code to the interpreter knowledge
+    void addKnowledge(int codeId, std::string codeName);
     
     // search the code with the given name, return its id if found or -1 otherwise
     int interpretCode(std::string& word);
