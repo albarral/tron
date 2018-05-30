@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>person.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -35,8 +36,25 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <incFile>
+            <pElem>person-odb.hxx</pElem>
+          </incFile>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>person-odb.cxx</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="person.h" ex="false" tool="3" flavor2="0">
+        <customTool>
+          <customToolCommandline>odb -d mysql --generate-query --generate-schema person.h</customToolCommandline>
+          <customToolDescription>compiling person.h</customToolDescription>
+          <customToolOutputs>person-odb.hxx person-odb.ixx person-odb.cxx person.sql</customToolOutputs>
+        </customTool>
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -60,6 +78,8 @@
         </asmTool>
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="person.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -52,11 +52,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=person-odb.cxx
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/db_test
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/db_test: person-odb.cxx
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/db_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -65,7 +67,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/db_test: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -include person-odb.hxx -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+.NO_PARALLEL:person-odb.hxx person-odb.ixx person-odb.cxx person.sql
+person-odb.hxx person-odb.ixx person-odb.cxx person.sql: person.h 
+	@echo compiling person.h
+	odb -d mysql --generate-query --generate-schema person.h
 
 # Subprojects
 .build-subprojects:
@@ -74,6 +81,7 @@ ${OBJECTDIR}/main.o: main.cpp
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/db_test
+	${RM} person-odb.hxx person-odb.ixx person-odb.cxx person.sql
 
 # Subprojects
 .clean-subprojects:
