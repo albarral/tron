@@ -29,7 +29,7 @@ Element::Element(int id, std::string name)
 
 std::string Element::toString()
 {
-    std::string text = getTypeName(type) + " id=" + std::to_string(id)  + ", name=" + name + ", group=" + std::to_string(group);    
+    std::string text = "id=" + std::to_string(id)  + ", group=" + std::to_string(group) + ", name=" + name +  ", type=" +getTypeName(type);    
     return text;    
 }
 

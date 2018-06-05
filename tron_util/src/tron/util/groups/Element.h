@@ -22,10 +22,10 @@ public:
     };
     
 protected:
-    int id; 
-    std::string name;
-    int type;         // one of eTypes
+    int id;            // element id 
     int group;      // group to which element belongs
+    std::string name;   // element name
+    int type;         // element tyoe (one of eTypes)
 
 public:
     Element();
@@ -37,8 +37,8 @@ public:
     void setGroup(int value) {group = value;};
     
     int getID() {return id;}; 
-    std::string getName() {return name;}; 
     int getGroup() {return group;}; 
+    std::string getName() {return name;}; 
 
     bool isElement() {return (type == eTYPE_ELEMENT);};
     bool isGroup() {return (type == eTYPE_GROUP);};
