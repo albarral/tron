@@ -9,18 +9,16 @@
 
 namespace tron 
 {
-// asks something through the console & gets the answer    
-void Console::ask(std::string question)
+void Console::write(std::string question)
 {
     std::cout << question << std::endl;        
-    answer = "";
-    std::getline(std::cin, answer);   
 }
 
-// checks if there was a filled response (other than just return)
-bool Console::hasResponse()
+bool Console::checkInput()
 {
-    return (!answer.empty());
+    input = "";
+    std::getline(std::cin, input);   
+    return (!input.empty());
 }
     
 }

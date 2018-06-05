@@ -13,19 +13,19 @@ namespace tron
 class Console
 {
 private:
-    std::string question;   // text shown in the console
-    std::string answer;   // text captured from console    
+    std::string output;   // text shown in the console
+    std::string input;   // text captured from console    
 
 public:
-    Console ();
-    ~Console();
+//    Console();
+//    ~Console();
 
-    // asks something through the consode
-    void ask(std::string question);
-    // checks if there was a filled response (other than just return)
-    bool hasResponse();
-    // gets the answer captured through the console
-    std::string getAnswer() {return answer;}; 
+    // write something through the console
+    void write(std::string text);
+    // checks if there was an input (other than just return)
+    bool checkInput();
+    // gets the input captured through the console
+    std::string getInput() {return input;}; 
 };
 
 }		
