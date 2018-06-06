@@ -19,6 +19,10 @@
         <itemPath>src/tron/tools/FileReader.h</itemPath>
         <itemPath>src/tron/tools/FileWriter.cpp</itemPath>
         <itemPath>src/tron/tools/FileWriter.h</itemPath>
+        <itemPath>src/tron/tools/ZeroClient.cpp</itemPath>
+        <itemPath>src/tron/tools/ZeroClient.h</itemPath>
+        <itemPath>src/tron/tools/ZeroServer.cpp</itemPath>
+        <itemPath>src/tron/tools/ZeroServer.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -67,6 +71,14 @@
       </item>
       <item path="src/tron/tools/FileWriter.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/tools/ZeroClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroServer.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -99,6 +111,14 @@
       <item path="src/tron/tools/FileWriter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/tools/FileWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroServer.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

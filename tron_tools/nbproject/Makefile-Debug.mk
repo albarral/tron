@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/tools/Console.o \
 	${OBJECTDIR}/src/tron/tools/FileReader.o \
-	${OBJECTDIR}/src/tron/tools/FileWriter.o
+	${OBJECTDIR}/src/tron/tools/FileWriter.o \
+	${OBJECTDIR}/src/tron/tools/ZeroClient.o \
+	${OBJECTDIR}/src/tron/tools/ZeroServer.o
 
 
 # C Compiler Flags
@@ -78,6 +80,16 @@ ${OBJECTDIR}/src/tron/tools/FileWriter.o: src/tron/tools/FileWriter.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/tools
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/FileWriter.o src/tron/tools/FileWriter.cpp
+
+${OBJECTDIR}/src/tron/tools/ZeroClient.o: src/tron/tools/ZeroClient.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/tools
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/ZeroClient.o src/tron/tools/ZeroClient.cpp
+
+${OBJECTDIR}/src/tron/tools/ZeroServer.o: src/tron/tools/ZeroServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/tools
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/ZeroServer.o src/tron/tools/ZeroServer.cpp
 
 # Subprojects
 .build-subprojects:
