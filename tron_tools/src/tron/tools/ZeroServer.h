@@ -24,16 +24,16 @@ private:
     zmq::socket_t socketServer_;     //creates the socket
     Responses responses_;
     int port_, timeout_;
-    bool isCreated_;
+    bool isCreated_ = false;
     
     void setPort(int port){port_ = port;}
+    bool create();
     
 public:
     ZeroServer();
     ZeroServer(int port, int timeout);
     ~ZeroServer();
     
-    bool create();
     int getPort(){return port_;}
     bool isCreated(){return isCreated_;}
     std::vector<std::string> receive();

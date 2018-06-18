@@ -39,7 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/tools/FileReader.o \
 	${OBJECTDIR}/src/tron/tools/FileWriter.o \
 	${OBJECTDIR}/src/tron/tools/ZeroClient.o \
-	${OBJECTDIR}/src/tron/tools/ZeroServer.o
+	${OBJECTDIR}/src/tron/tools/ZeroPublisher.o \
+	${OBJECTDIR}/src/tron/tools/ZeroServer.o \
+	${OBJECTDIR}/src/tron/tools/ZeroSubscriber.o
 
 
 # C Compiler Flags
@@ -86,10 +88,20 @@ ${OBJECTDIR}/src/tron/tools/ZeroClient.o: src/tron/tools/ZeroClient.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/ZeroClient.o src/tron/tools/ZeroClient.cpp
 
+${OBJECTDIR}/src/tron/tools/ZeroPublisher.o: src/tron/tools/ZeroPublisher.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/tools
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/ZeroPublisher.o src/tron/tools/ZeroPublisher.cpp
+
 ${OBJECTDIR}/src/tron/tools/ZeroServer.o: src/tron/tools/ZeroServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/tools
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/ZeroServer.o src/tron/tools/ZeroServer.cpp
+
+${OBJECTDIR}/src/tron/tools/ZeroSubscriber.o: src/tron/tools/ZeroSubscriber.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/tools
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/tools/ZeroSubscriber.o src/tron/tools/ZeroSubscriber.cpp
 
 # Subprojects
 .build-subprojects:

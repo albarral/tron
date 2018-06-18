@@ -21,8 +21,12 @@
         <itemPath>src/tron/tools/FileWriter.h</itemPath>
         <itemPath>src/tron/tools/ZeroClient.cpp</itemPath>
         <itemPath>src/tron/tools/ZeroClient.h</itemPath>
+        <itemPath>src/tron/tools/ZeroPublisher.cpp</itemPath>
+        <itemPath>src/tron/tools/ZeroPublisher.h</itemPath>
         <itemPath>src/tron/tools/ZeroServer.cpp</itemPath>
         <itemPath>src/tron/tools/ZeroServer.h</itemPath>
+        <itemPath>src/tron/tools/ZeroSubscriber.cpp</itemPath>
+        <itemPath>src/tron/tools/ZeroSubscriber.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -75,9 +79,17 @@
       </item>
       <item path="src/tron/tools/ZeroClient.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/tools/ZeroPublisher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroPublisher.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/tools/ZeroServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/tools/ZeroServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroSubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -116,9 +128,17 @@
       </item>
       <item path="src/tron/tools/ZeroClient.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/tools/ZeroPublisher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroPublisher.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/tools/ZeroServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/tools/ZeroServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/tools/ZeroSubscriber.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
