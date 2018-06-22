@@ -8,35 +8,40 @@
 namespace tron 
 {
 
-    ZeroPublisher::ZeroPublisher():
+    ZeroPublisher::ZeroPublisher(int port, int timeout):
     contextPublisher_(1),
     socketPublisher_(contextPublisher_, ZMQ_PUB),
-    port_(0),
-    timeout_(0){
+    port_(port),
+    timeout_(timeout){
         
         socketPublisher_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
         socketPublisher_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
     }
 
-    ZeroPublisher::~ZeroPublisher() {
-        create();
+    ZeroPublisher::~ZeroPublisher()
+    {
+        socketPublisher_.close();
     }
     
-    bool ZeroPublisher::create(){
+    bool ZeroPublisher::start(){
         std::string addr = "tcp://*:" + std::to_string(port_);
         
         try{
             socketPublisher_.bind(addr.c_str());
 
-            socketPublisher_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
-            socketPublisher_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
-
-            isCreated_ = true;
+            isStarted_ = true;
         }catch(zmq::error_t& e) {
-            isCreated_ = false;
+            isStarted_ = false;
         }
         
-        return isCreated_;
+        return isStarted_;
+    }
+    
+    void ZeroPublisher::stop(){
+        
+        isStarted_ = false;
+        socketPublisher_.close();
+        
     }
    
    // info publishing method (writes data)

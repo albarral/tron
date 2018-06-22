@@ -16,25 +16,24 @@ namespace tron
 
 class ZeroSubscriber {
 public:
-    ZeroSubscriber();
+    
     ZeroSubscriber(int port, int timeout);
     virtual ~ZeroSubscriber();
+    
+    bool subscribe();
+    
+    bool isSubscribed(){return isSubscribed_;}
+
+    void disconnect();
+    
+    bool getMessages(std::vector<std::string>& listMessages);
     
 private:
     zmq::context_t contextSubscriber_; //creates the context 
     zmq::socket_t socketSubscriber_; //creates the socket
     int port_, timeout_;
-    bool isConnected_ = false;
+    bool isSubscribed_ = false;
     
-    bool connectTo();
-    
-    bool isConnected(){return isConnected_;}
-
-    int getPort() {return port_;}
-
-    bool disconnect();
-    
-    bool getMessages(std::vector<std::string>& listMessages);
 
 };
 }

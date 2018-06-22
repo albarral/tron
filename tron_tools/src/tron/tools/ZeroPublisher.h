@@ -15,12 +15,15 @@ namespace tron
 
 class ZeroPublisher {
 public:
-    ZeroPublisher();
+    
     ZeroPublisher(int port, int timeout);
     ~ZeroPublisher();
        
     int getPort(){return port_;}
-    bool isCreated(){return isCreated_;}
+    bool isCreated(){return isStarted_;}
+    
+    bool start();
+    void stop();
     
    // info publishing method (writes data)
     bool publish(std::string text);
@@ -30,11 +33,8 @@ private:
     zmq::context_t contextPublisher_; //creates the context 
     zmq::socket_t socketPublisher_; //creates the socket
     int port_, timeout_;
-    bool isCreated_ = false;
+    bool isStarted_ = false;
     
-    
-    void setPort(int port){port_ = port;}
-    bool create();
 
 };
 }

@@ -7,17 +7,6 @@
 
 namespace tron 
 {
-    ZeroServer::ZeroServer():
-        contextServer_(1),
-        socketServer_(contextServer_, ZMQ_REP),
-        port_(0),
-        timeout_(0)  
-    {
-        socketServer_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
-        socketServer_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
-        //socketClient.setsockopt(ZMQ_REQ_CORRELATE,1);
-        //socketClient.setsockopt(ZMQ_REQ_RELAXED,1);
-    }
     
     ZeroServer::ZeroServer(int port, int timeout):
         contextServer_(1),
@@ -25,29 +14,34 @@ namespace tron
         port_(port),
         timeout_(timeout)  
     {
-        create();
+        socketServer_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
+        socketServer_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
+        //socketClient.setsockopt(ZMQ_REQ_CORRELATE,1);
+        //socketClient.setsockopt(ZMQ_REQ_RELAXED,1);
     }
     
     ZeroServer::~ZeroServer() {
         socketServer_.close();
     }
     
-    bool ZeroServer::create(){
+    bool ZeroServer::start(){
         
         std::string addr = "tcp://*:" + std::to_string(port_);
         
         try{
             socketServer_.bind(addr.c_str());
 
-            socketServer_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
-            socketServer_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
-
-            isCreated_ = true;
+            isStarted_ = true;
         }catch(zmq::error_t& e) {
-            isCreated_ = false;
+            isStarted_ = false;
         }
         
-        return isCreated_;
+        return isStarted_;
+    }
+    
+    void ZeroServer::stop(){
+        isStarted_ = false;
+        socketServer_.close();
     }
     
     std::vector<std::string> ZeroServer::receive(){

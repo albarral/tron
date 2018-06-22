@@ -7,21 +7,17 @@
 namespace tron 
 {
 
-    ZeroClient::ZeroClient():
-        contextClient_(1),
-        socketClient_(contextClient_, ZMQ_REQ),
-        port_(0),
-        timeout_(0)
-    {
-        connectTo(port_);
-    }
     ZeroClient::ZeroClient(int port, int timeout):
         contextClient_(1),
         socketClient_(contextClient_, ZMQ_REQ),
         port_(port),
         timeout_(timeout)
     {
+        socketClient_.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
         
+        //socketClient_.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout_));
+        //socketClient_.setsockopt(ZMQ_REQ_CORRELATE,1);
+        //socketClient_.setsockopt(ZMQ_REQ_RELAXED,1);
     }
     
     ZeroClient::~ZeroClient(){
@@ -29,19 +25,13 @@ namespace tron
         socketClient_.close();
     }
 
-    bool ZeroClient::connectTo(int port){
+    bool ZeroClient::connect(){
         
-        setPort(port);
         std::string addr = "tcp://localhost:" + std::to_string(port_);
         
         try{
             socketClient_.connect(addr.c_str());
-            
-            socketClient_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
-            //socketClient_.setsockopt(ZMQ_SNDTIMEO, &timeout, sizeof(timeout_));
-            //socketClient_.setsockopt(ZMQ_REQ_CORRELATE,1);
-            //socketClient_.setsockopt(ZMQ_REQ_RELAXED,1);
-            
+                        
             isConnected_ = true;
         }catch(zmq::error_t& e) {
             
@@ -51,7 +41,7 @@ namespace tron
         return isConnected_;
     }
     
-    bool ZeroClient::disconnect(){
+    void ZeroClient::disconnect(){
         socketClient_.close();
         isConnected_ = false;
     }

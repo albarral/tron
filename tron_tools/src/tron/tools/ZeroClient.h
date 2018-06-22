@@ -20,21 +20,17 @@ class ZeroClient {
         zmq::context_t contextClient_;
         zmq::socket_t socketClient_;
         bool isConnected_ = false;
-                
-        void setPort(int port){port_ = port;}
-        
+                        
     public:
-        ZeroClient();
+        
         ZeroClient(int port, int timeout);
         ~ZeroClient();
 
         // open socket
-        bool connectTo(int port);
+        bool connect();
         bool isConnected(){return isConnected_;}
-        
-        int getPort() {return port_;}
-        
-        bool disconnect();
+                
+        void disconnect();
 
         // writes the given string into the file (delayed writing, done at file closing)
         std::string send(std::vector<std::string> messages);

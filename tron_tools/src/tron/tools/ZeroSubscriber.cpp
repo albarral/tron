@@ -9,40 +9,38 @@
 namespace tron 
 {
 
-    ZeroSubscriber::ZeroSubscriber():
-        contextSubscriber_(1),
-        socketSubscriber_(contextSubscriber_,ZMQ_SUB),
-        port_(0),
-        timeout_(0)
-    {
-        socketSubscriber_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
-        socketSubscriber_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
-    }
-
     ZeroSubscriber::ZeroSubscriber(int port, int timeout):
         contextSubscriber_(1),
         socketSubscriber_(contextSubscriber_,ZMQ_SUB),
         port_(port),
         timeout_(timeout) 
     {
-        connectTo();
+        socketSubscriber_.setsockopt(ZMQ_SNDTIMEO, &timeout_, sizeof(timeout_));
+        socketSubscriber_.setsockopt(ZMQ_RCVTIMEO, &timeout_, sizeof(timeout_));
     }
 
     ZeroSubscriber::~ZeroSubscriber() {
-
+        socketSubscriber_.close();
     }
     
-    bool ZeroSubscriber::connectTo(){
+    bool ZeroSubscriber::subscribe(){
         
         std::string addr = "tcp://localhost:" + std::to_string(port_);
         
         try{
             socketSubscriber_.connect(addr.c_str());
-            isConnected_ = true;
+            isSubscribed_ = true;
 
         }catch(zmq::error_t& e) {
-            isConnected_ = false;
+            isSubscribed_ = false;
         }      
+    }
+    
+    void ZeroSubscriber::disconnect(){
+        
+        isSubscribed_ = false;
+        socketSubscriber_.close();
+        
     }
     
     bool ZeroSubscriber::getMessages(std::vector<std::string>& listMessages){
