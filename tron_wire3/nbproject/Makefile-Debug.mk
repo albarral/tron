@@ -36,7 +36,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/wire3/ZeroClientChannel.o \
-	${OBJECTDIR}/src/tron/wire3/ZeroCommunicator.o
+	${OBJECTDIR}/src/tron/wire3/ZeroCommunicator.o \
+	${OBJECTDIR}/src/tron/wire3/ZeroPublisherChannel.o \
+	${OBJECTDIR}/src/tron/wire3/ZeroServerChannel.o \
+	${OBJECTDIR}/src/tron/wire3/ZeroSubscriberChannel.o \
+	${OBJECTDIR}/src/tron/wire3/ZeroWire.o
 
 
 # C Compiler Flags
@@ -76,6 +80,26 @@ ${OBJECTDIR}/src/tron/wire3/ZeroCommunicator.o: src/tron/wire3/ZeroCommunicator.
 	${MKDIR} -p ${OBJECTDIR}/src/tron/wire3
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../tron_wire/src -I../tron_tools/src -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire3/ZeroCommunicator.o src/tron/wire3/ZeroCommunicator.cpp
+
+${OBJECTDIR}/src/tron/wire3/ZeroPublisherChannel.o: src/tron/wire3/ZeroPublisherChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire3
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_wire/src -I../tron_tools/src -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire3/ZeroPublisherChannel.o src/tron/wire3/ZeroPublisherChannel.cpp
+
+${OBJECTDIR}/src/tron/wire3/ZeroServerChannel.o: src/tron/wire3/ZeroServerChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire3
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_wire/src -I../tron_tools/src -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire3/ZeroServerChannel.o src/tron/wire3/ZeroServerChannel.cpp
+
+${OBJECTDIR}/src/tron/wire3/ZeroSubscriberChannel.o: src/tron/wire3/ZeroSubscriberChannel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire3
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_wire/src -I../tron_tools/src -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire3/ZeroSubscriberChannel.o src/tron/wire3/ZeroSubscriberChannel.cpp
+
+${OBJECTDIR}/src/tron/wire3/ZeroWire.o: src/tron/wire3/ZeroWire.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/wire3
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_wire/src -I../tron_tools/src -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/wire3/ZeroWire.o src/tron/wire3/ZeroWire.cpp
 
 # Subprojects
 .build-subprojects:
