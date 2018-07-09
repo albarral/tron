@@ -1,24 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   ZeroWire.cpp
- * Author: oorra
- * 
- * Created on July 2, 2018, 4:27 PM
- */
-
 #include "ZeroWire.h"
+#include "ZeroClientChannel.h"
+#include "ZeroServerChannel.h"
+#include "ZeroPublisherChannel.h"
+#include "ZeroSubscriberChannel.h"
 
-ZeroWire::ZeroWire() {
-}
+/***************************************************************************
+ *   Copyright (C) 2018 by Migtron Robotics   *
+ *   oriolorra@migtron.com   *
+ ***************************************************************************/
 
-ZeroWire::ZeroWire(const ZeroWire& orig) {
-}
+namespace tron{
+    
+    ZeroWire::ZeroWire() {
+        
+    }
 
-ZeroWire::~ZeroWire() {
+    OutputChannel* ZeroWire::createClientChannel(int node, int channel){
+        return (new ZeroClientChannel(node, channel));
+    }
+
+    InputChannel* ZeroWire::createServerChannel(int node, int channel){
+        return (new ZeroServerChannel(node, channel));
+    }
+
+    //OutputChannel* ZeroWire::createPublishChannel(int node, int channel){
+    //    return (new ZeroPublisherChannel());
+    //}
+
+    //InputChannel* ZeroWire::createSubscriberChannel(int node, int channel){
+    //    return (new ZeroSubscriberChannel());
+    //}
 }
 

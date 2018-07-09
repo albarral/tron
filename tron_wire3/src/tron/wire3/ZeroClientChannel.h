@@ -10,15 +10,17 @@
 
 #include "tron/wire3/ZeroCommunicator.h"
 #include "tron/wire/channel/ClientChannel.h"
-
+#include "tron/tools/ZeroClient.h"
 
 namespace tron
 {
     class ZeroClientChannel : public ClientChannel, public ZeroCommunicator {
+        
         private:
-
+            ZeroClient* oZeroClient;
+            
         public:
-            ZeroClientChannel();
+            
             ZeroClientChannel(int node, int channel);
             ~ZeroClientChannel();
 

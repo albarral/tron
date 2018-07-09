@@ -22,9 +22,7 @@ namespace tron
             int getPort() {return port_;};
 
         protected:    
-            void setPort(int node, int channel);    
-            // force creation of coms file
-            bool createComsZero();
+            void setPort(int node, int channel);
     };
 }
 

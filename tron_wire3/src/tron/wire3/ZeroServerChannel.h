@@ -1,27 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   ZeroServerChannel.h
- * Author: oorra
- *
- * Created on July 2, 2018, 4:28 PM
- */
-
 #ifndef ZEROSERVERCHANNEL_H
 #define ZEROSERVERCHANNEL_H
 
-class ZeroServerChannel {
-public:
-    ZeroServerChannel();
-    ZeroServerChannel(const ZeroServerChannel& orig);
-    virtual ~ZeroServerChannel();
-private:
+/***************************************************************************
+ *   Copyright (C) 2018 by Migtron Robotics   *
+ *   oriolorra@migtron.com   *
+ ***************************************************************************/
+
+#include <string>
+
+#include "tron/wire3/ZeroCommunicator.h"
+#include "tron/wire/channel/ServerChannel.h"
+#include "tron/tools/ZeroServer.h"
+
+namespace tron {
+    
+class ZeroServerChannel  : public ServerChannel, public ZeroCommunicator {
+    
+    private:
+        ZeroServer* oZeroServer;
+        
+    public:
+        ZeroServerChannel(int node, int channel);
+        ~ZeroServerChannel();
+        virtual bool open();
+        virtual bool close();
+        virtual bool receivedMessages(std::vector<std::string>& listMessages);
 
 };
+}
+
 
 #endif /* ZEROSERVERCHANNEL_H */
 

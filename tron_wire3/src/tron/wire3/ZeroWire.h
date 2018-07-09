@@ -1,27 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   ZeroWire.h
- * Author: oorra
- *
- * Created on July 2, 2018, 4:27 PM
- */
-
 #ifndef ZEROWIRE_H
 #define ZEROWIRE_H
 
-class ZeroWire {
-public:
-    ZeroWire();
-    ZeroWire(const ZeroWire& orig);
-    virtual ~ZeroWire();
-private:
+/***************************************************************************
+ *   Copyright (C) 2018 by Migtron Robotics   *
+ *   oriolorra@migtron.com   *
+ ***************************************************************************/
 
-};
+#include "tron/wire/Wire.h"
+#include "tron/wire/channel/InputChannel.h"
+#include "tron/wire/channel/OutputChannel.h"
+
+namespace tron{
+    
+class ZeroWire :public Wire {
+     public:
+         ZeroWire();
+         ~ZeroWire();
+     private:
+         virtual OutputChannel* createClientChannel(int node, int channel);
+         virtual InputChannel* createServerChannel(int node, int channel);
+         
+         virtual OutputChannel* createPublishChannel(int node, int channel);
+         virtual InputChannel* createSubscriberChannel(int node, int channel);
+
+}; 
+}
+
 
 #endif /* ZEROWIRE_H */
 

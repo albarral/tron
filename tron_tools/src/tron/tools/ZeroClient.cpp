@@ -46,7 +46,7 @@ namespace tron
         isConnected_ = false;
     }
 
-    std::string ZeroClient::send(std::vector<std::string> messages){
+    bool ZeroClient::send(std::vector<std::string> messages){
         
          try{
              int count = 1;
@@ -62,14 +62,14 @@ namespace tron
                 count++;
 
              }
-             
+             return true;
             //  Get the reply.
-            zmq::message_t reply;
-            socketClient_.recv (&reply);
-            return std::string(static_cast<char*>(reply.data()), reply.size());
+            //zmq::message_t reply;
+            //socketClient_.recv (&reply);
+            //return std::string(static_cast<char*>(reply.data()), reply.size());
 
         }catch(zmq::error_t& e) {
-            return NULL;
+            return false;
         }   
     }
 

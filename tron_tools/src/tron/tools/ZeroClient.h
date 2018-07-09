@@ -33,7 +33,7 @@ class ZeroClient {
         void disconnect();
 
         // writes the given string into the file (delayed writing, done at file closing)
-        std::string send(std::vector<std::string> messages);
+        bool send(std::vector<std::string> messages);
 
 };
 }
