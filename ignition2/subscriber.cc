@@ -27,16 +27,28 @@ void cb(const ignition::msgs::StringMsg &_msg)
   std::cout << "Msg: " << _msg.data() << std::endl << std::endl;
 }
 
+void cb2(const ignition::msgs::StringMsg &_msg)
+{
+  std::cout << "Msg2: " << _msg.data() << std::endl << std::endl;
+}
+
 //////////////////////////////////////////////////
 int main(int argc, char **argv)
 {
   ignition::transport::Node node;
   std::string topic = "/foo";
+  std::string topic2 = "/foo2";
 
   // Subscribe to a topic by registering a callback.
   if (!node.Subscribe(topic, cb))
   {
     std::cerr << "Error subscribing to topic [" << topic << "]" << std::endl;
+    return -1;
+  }
+
+  if (!node.Subscribe(topic2, cb2))
+  {
+    std::cerr << "Error subscribing to topic [" << topic2 << "]" << std::endl;
     return -1;
   }
 
