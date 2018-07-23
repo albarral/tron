@@ -1,5 +1,5 @@
-#ifndef __TRON_COMS_CHANNELREADER_H
-#define __TRON_COMS_CHANNELREADER_H
+#ifndef __TRON_COMS_CHANNELWRITER_H
+#define __TRON_COMS_CHANNELWRITER_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
@@ -7,9 +7,7 @@
  ***************************************************************************/
 
 #include <string>
-#include <vector>
 
-#include <ignition/msgs.hh>
 #include <ignition/transport.hh>
 
 #include "tron/coms/ComsChannel.h"
@@ -18,22 +16,19 @@ namespace tron
 {
 // Channel reader class.
 // ignition transport based
-class ChannelReader : public ComsChannel
+class ChannelWriter : public ComsChannel
 {    
 private:
-    std::vector<std::string> listMessages;      // queue of received messages
+    ignition::transport::Node::Publisher oPublisher;
         
 public:
-    ChannelReader();
-    //~ChannelReader();
+    ChannelWriter();
+    //~ChannelWriter();
     
     // connect channel
     virtual bool connect(ignition::transport::Node& oNode);
-    // read received messages (and clear queue)
-    int getMessages(std::vector<std::string>& listMessages);
-    
-//private:
-    void cb(const ignition::msgs::StringMsg& imessage);
+    // send message
+    bool sendMessage(std::string message);
 };
 
 }

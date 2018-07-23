@@ -48,7 +48,7 @@ public:
     // set channel elements
     void setChannel(std::string node, std::string section, std::string channel, int type);
     // connect channel
-    virtual bool connect() = 0;
+    virtual bool connect(ignition::transport::Node& oNode) = 0;
     bool isConnected() {return bconnected;};
     
     int getType() {return type;};

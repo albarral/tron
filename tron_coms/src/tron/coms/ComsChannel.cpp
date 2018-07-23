@@ -11,13 +11,14 @@ namespace tron
 {
 LoggerPtr ComsChannel::logger(Logger::getLogger("tron.com"));
 
-const std::string ComsChannel::CONTROL_CHANNEL = "co";     
-const std::string ComsChannel::SENSOR_CHANNEL = "so";       
-const std::string ComsChannel::PARAM_CHANNEL = "par";         
+const std::string ComsChannel::CONTROL_CHANNEL = "CO";     
+const std::string ComsChannel::SENSOR_CHANNEL = "SO";       
+const std::string ComsChannel::PARAM_CHANNEL = "PAR";         
 
 ComsChannel::ComsChannel()
 {    
     type = ComsChannel::eCHANNEL_UNDEFINED;
+    topic = "";
     bconnected = false;
 }
 

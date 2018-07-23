@@ -15,6 +15,10 @@
       <logicalFolder name="coms" displayName="coms" projectFiles="true">
         <itemPath>src/tron/coms/ChannelReader.cpp</itemPath>
         <itemPath>src/tron/coms/ChannelReader.h</itemPath>
+        <itemPath>src/tron/coms/ChannelWriter.cpp</itemPath>
+        <itemPath>src/tron/coms/ChannelWriter.h</itemPath>
+        <itemPath>src/tron/coms/Communicator.cpp</itemPath>
+        <itemPath>src/tron/coms/Communicator.h</itemPath>
         <itemPath>src/tron/coms/ComsChannel.cpp</itemPath>
         <itemPath>src/tron/coms/ComsChannel.h</itemPath>
       </logicalFolder>
@@ -64,6 +68,14 @@
       </item>
       <item path="src/tron/coms/ChannelReader.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/coms/ChannelWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ChannelWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/coms/Communicator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/Communicator.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/coms/ComsChannel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/coms/ComsChannel.h" ex="false" tool="3" flavor2="0">
@@ -92,6 +104,14 @@
       <item path="src/tron/coms/ChannelReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/coms/ChannelReader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ChannelWriter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ChannelWriter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/coms/Communicator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/Communicator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/tron/coms/ComsChannel.cpp" ex="false" tool="1" flavor2="0">
       </item>

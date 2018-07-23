@@ -36,6 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/coms/ChannelReader.o \
+	${OBJECTDIR}/src/tron/coms/ChannelWriter.o \
+	${OBJECTDIR}/src/tron/coms/Communicator.o \
 	${OBJECTDIR}/src/tron/coms/ComsChannel.o
 
 
@@ -67,6 +69,16 @@ ${OBJECTDIR}/src/tron/coms/ChannelReader.o: src/tron/coms/ChannelReader.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/coms/ChannelReader.o src/tron/coms/ChannelReader.cpp
+
+${OBJECTDIR}/src/tron/coms/ChannelWriter.o: src/tron/coms/ChannelWriter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/coms/ChannelWriter.o src/tron/coms/ChannelWriter.cpp
+
+${OBJECTDIR}/src/tron/coms/Communicator.o: src/tron/coms/Communicator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/coms/Communicator.o src/tron/coms/Communicator.cpp
 
 ${OBJECTDIR}/src/tron/coms/ComsChannel.o: src/tron/coms/ComsChannel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
