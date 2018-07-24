@@ -25,15 +25,15 @@ private:
         
 public:
     ChannelReader();
-    //~ChannelReader();
+    ~ChannelReader();
     
     // connect channel
     virtual bool connect(ignition::transport::Node& oNode);
     // read received messages (and clear queue)
     int getMessages(std::vector<std::string>& listMessages);
     
-//private:
-    void cb(const ignition::msgs::StringMsg& imessage);
+private:
+    void processMessage(const ignition::msgs::StringMsg& imessage);
 };
 
 }

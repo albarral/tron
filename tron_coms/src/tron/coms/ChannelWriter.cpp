@@ -48,7 +48,6 @@ bool ChannelWriter::sendMessage(std::string message)
 {
     ignition::msgs::StringMsg imessage;
     imessage.set_data(message);
-
     
     if (oPublisher.Publish(imessage))
     {

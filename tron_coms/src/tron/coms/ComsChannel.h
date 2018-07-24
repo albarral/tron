@@ -8,6 +8,7 @@
 
 #include <string>
 #include <log4cxx/logger.h>
+#include <ignition/transport.hh>
 
 namespace tron
 {

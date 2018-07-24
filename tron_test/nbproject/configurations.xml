@@ -13,6 +13,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/TestComs.cpp</itemPath>
+        <itemPath>src/TestComs.h</itemPath>
         <itemPath>src/TestControl.cpp</itemPath>
         <itemPath>src/TestControl.h</itemPath>
         <itemPath>src/TestDisplay.cpp</itemPath>
@@ -66,6 +68,10 @@
             <pElem>../tron_util/src</pElem>
             <pElem>../tron_wire/src</pElem>
             <pElem>../tron_wire2/src</pElem>
+            <pElem>../tron_coms/src</pElem>
+            <pElem>/usr/include/ignition/transport3</pElem>
+            <pElem>/usr/include/ignition/msgs0</pElem>
+            <pElem>/usr/include/ignition/math2</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -170,9 +176,28 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire2.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tron_coms"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tron_coms"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_coms.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>ignition-transport3</linkerLibLibItem>
+            <linkerLibLibItem>ignition-msgs0</linkerLibLibItem>
+            <linkerLibLibItem>protobuf</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/TestComs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestComs.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestControl.h" ex="false" tool="3" flavor2="0">
@@ -224,6 +249,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/TestComs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestComs.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestControl.h" ex="false" tool="3" flavor2="0">

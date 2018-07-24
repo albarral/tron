@@ -3,6 +3,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <functional>
+
 #include "tron/coms/ChannelReader.h"
 
 using namespace log4cxx;
@@ -13,21 +15,19 @@ ChannelReader::ChannelReader()
 {    
 }
 
-//ChannelReader::~ChannelReader()
-//{    
-//}
-
-void ChannelReader::cb(const ignition::msgs::StringMsg& imessage)
-{
-    listMessages.push_back(imessage.data());
-    LOG4CXX_DEBUG(logger, "ChannelReader: message received " + imessage.data());
+ChannelReader::~ChannelReader()
+{    
+    listMessages.clear();
 }
 
 bool ChannelReader::connect(ignition::transport::Node& oNode)
 {
     // try subscribing to defined topic
     if (!topic.empty())
-        bconnected = oNode.Subscribe(topic, ChannelReader::cb);
+    {
+        std::function<void(const ignition::msgs::StringMsg& imessage)> cb = std::bind(&ChannelReader::processMessage, this, std::placeholders::_1);
+        bconnected = oNode.Subscribe(topic, cb);
+    }
     else
     {
         LOG4CXX_ERROR(logger, "ChannelReader: failed connection, no topic defined");    
@@ -46,11 +46,21 @@ bool ChannelReader::connect(ignition::transport::Node& oNode)
     
 int ChannelReader::getMessages(std::vector<std::string>& listMessages)
 {
+    // TO DO: needs mutex
+    
     // overwrite destination list
     listMessages = this->listMessages;
     // clear source list
     this->listMessages.clear();
     return listMessages.size();
 }    
+
+void ChannelReader::processMessage(const ignition::msgs::StringMsg& imessage)
+{
+    // TO DO: needs mutex
+
+    listMessages.push_back(imessage.data());
+    LOG4CXX_INFO(logger, "ChannelReader: message received " + imessage.data());
+}
 
 }
