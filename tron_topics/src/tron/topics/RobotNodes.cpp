@@ -15,35 +15,35 @@ const std::string RobotNodes::HEAD_NODE = "head";
 const std::string RobotNodes::WHEELS_NODE = "wheels";     
 const std::string RobotNodes::BODYROLE_NODE = "body";     
 
-RobotNodes::RobotNodes(int id, std::string name)
-{
-    this->ID = id;
-    this->name = name;
-}
-
 std::string RobotNodes::getName4Node(int node)
 {
-    std::string tname;
-    if (tron::CodeMap::getName4Code(node, tname))
-        return tname;
-    // return empty name if unknown node code
-    else
-        return ""; 
-}
-
-int RobotNodes::getCode4Node(std::string nodeName)
-{
-    int code;
-    if (tron::CodeMap::getCode4Name(nodeName, code))
-        return code;
-    // return -1 if unknown node name
-    else 
-        return -1;
+    switch (node)
+    {
+        case eNODE_ARM:
+            return ARM_NODE;
+        case eNODE_HAND:
+            return HAND_NODE;
+        case eNODE_VISION:
+            return VISION_NODE;
+        case eNODE_HEAD:
+            return HEAD_NODE;
+        case eNODE_WHEELS:
+            return WHEELS_NODE;
+        case eNODE_BODYROLE:
+            return BODYROLE_NODE;
+            
+        default: 
+            return "undefined node";
+    }
 }
 
 std::string RobotNodes::toString()
 {
-    return "RobotSystem: " + name + ", nodes:\n" + tron::CodeMap::toString();
+    std::string desc = "RobotNodes: \n"; 
+    for (int i=0; i<eNODE_DIM; i++)
+        desc += "node " + std::to_string(i) + ": " + getName4Node(i) + "\n";
+
+    return desc;
 }
 
 }

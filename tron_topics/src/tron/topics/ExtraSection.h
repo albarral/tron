@@ -1,36 +1,36 @@
-#ifndef __TRON2_ROBOT2_COMMON_EXTRATOPIC_H
-#define __TRON2_ROBOT2_COMMON_EXTRATOPIC_H
+#ifndef __TRON_TOPICS_EXTRASECTION_H
+#define __TRON_TOPICS_EXTRASECTION_H
 
 /***************************************************************************
  *   Copyright (C) 2018 by Migtron Robotics   *
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron2/robot/Topic.h"
+#include "tron/topics/NodeSection.h"
 
-namespace tron2
+namespace tron
 {
-// Concepts definition for the common extra topic
- class ExtraTopic : public Topic
+// Definition of channels for the extra section (common to all nodes)
+ class ExtraSection : public NodeSection
 {
  public:
-    /*! extra concepts  */
-    enum eConcepts
+    static const int eEXTRA_SECTION = 100;   /*! ID of extra section */  
+    static const std::string EXTRA_SECTION;   /*! name of extra section */
+
+    /*! extra channels  */
+    enum eChannels
     {
-         eEXTRA_STOP,                       /*! emergency stop */
-         eEXTRA_END,                       /*! end control process */
+         eEXTRA_STOP,                     /*! emergency stop channel */
+         eEXTRA_END,                       /*! end node channel */
          eEXTRA_DIM
     };
 
-    /*! extra concepts names */
+    /*! names of extra channels */
     const std::string EXTRA_STOP = "stop";                 /*! emergency stop */
     const std::string EXTRA_END = "end";                /*! end control process */
 
  public:    
-    ExtraTopic(); 
-    
- private: 
-    virtual void fillConcepts();      
+    ExtraSection(); 
     
 };
 }

@@ -7,8 +7,6 @@
 
 namespace tron
 {    
-const std::string Node::EXTRA_SECTION = "extra";    
-
 Node::Node(int id)
 {
     ID = id;

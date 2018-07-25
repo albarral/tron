@@ -6,7 +6,7 @@
 #include "tron/topics/NodeSection.h"
 
 namespace tron
-{    
+{        
 NodeSection::NodeSection(int id)
 {
     ID = id;

@@ -3,20 +3,15 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron2/robot/common/ExtraTopic.h"
-#include "tron2/robot/Node.h"
+#include "tron/topics/ExtraSection.h"
 
-namespace tron2
+namespace tron
 {
+const std::string ExtraSection::EXTRA_SECTION = "extra";    
 
-ExtraTopic::ExtraTopic() : Topic(Node::eEXTRA_TOPIC, Node::EXTRA_TOPIC)
+ExtraSection::ExtraSection() : NodeSection(ExtraSection::eEXTRA_SECTION)
 {
-    fillConcepts();    
-}
-
-void ExtraTopic::fillConcepts()
-{
-    addCode(eEXTRA_STOP, EXTRA_STOP);
-    addCode(eEXTRA_END, EXTRA_END);                         
+    oChannelsMap.addCode(eEXTRA_STOP, EXTRA_STOP);
+    oChannelsMap.addCode(eEXTRA_END, EXTRA_END);     
 }
 }

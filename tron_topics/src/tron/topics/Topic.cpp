@@ -7,9 +7,6 @@
 
 namespace tron
 {    
-const std::string Topic::CONTROL_TYPE = "CO";     
-const std::string Topic::SENSOR_TYPE = "SO";       
-
 Topic::Topic()
 {
     type = -1;

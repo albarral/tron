@@ -16,14 +16,10 @@ namespace tron
 // Base class for definition of node topics.
 // A Node is composed by sections, which are composed by channels. Each channel will have a specific topic for communication.
  class Node
-{    
- public:
-    static const int eEXTRA_SECTION = 100;   /*! ID of extra section */  
-    static const std::string EXTRA_SECTION;   /*! name of extra section */
-     
+{        
  protected:
      int ID;     
-     CodeMap oSectionsMap;
+     CodeMap oSectionsMap;  // node sections
      
  public:     
      Node(int id);

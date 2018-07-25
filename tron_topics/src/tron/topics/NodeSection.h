@@ -16,10 +16,10 @@ namespace tron
 // Class for definition of topics for a node section.
 // A NodeSection is composed by channels. Each channel will have a specific topic for communication.
  class NodeSection
-{    
- private:
+{          
+ protected:
      int ID;     
-     CodeMap oChannelsMap;
+     CodeMap oChannelsMap;  // section channels
      
  public:     
      NodeSection(int id);
@@ -30,7 +30,7 @@ namespace tron
     std::string getName4Channel(int channel);
      
     // return node section description
-    virtual std::string toString();    
+    std::string toString();    
 };
 }
 #endif

@@ -23,10 +23,9 @@ namespace tron
          eTYPE_DIM
     };
 
-    static const std::string CONTROL_TYPE;               /*! control topic */
-    static const std::string SENSOR_TYPE;                 /*! sensor topic */
-
  private:
+    std::string CONTROL_TYPE = "CO";    /*! control channel name */
+    std::string SENSOR_TYPE = "SO";      /*! sensor channel name */
     int node;       
     int section;    
     int channel;   
@@ -59,7 +58,8 @@ namespace tron
     bool isBuilt() {return built;};
     std::string getTopicName() {return topicName;};
 
-    static std::string getTypeName(int type);
+ private:
+    std::string getTypeName(int type);
 
     //  return topic description
 //    std::string toString();

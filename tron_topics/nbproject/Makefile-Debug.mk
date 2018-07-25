@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/tron/topics/ExtraSection.o \
 	${OBJECTDIR}/src/tron/topics/Node.o \
 	${OBJECTDIR}/src/tron/topics/NodeSection.o \
 	${OBJECTDIR}/src/tron/topics/RobotNodes.o \
@@ -66,6 +67,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT}: ../tr
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/tron/topics/ExtraSection.o: src/tron/topics/ExtraSection.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/topics
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_util/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/topics/ExtraSection.o src/tron/topics/ExtraSection.cpp
 
 ${OBJECTDIR}/src/tron/topics/Node.o: src/tron/topics/Node.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/topics

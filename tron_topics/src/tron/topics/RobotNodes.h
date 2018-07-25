@@ -8,12 +8,10 @@
 
 #include <string>
 
-#include "tron/util/CodeMap.h"
-
 namespace tron
 {
-// A RobotSystem is a code map of nodes.
- class RobotNodes : public tron::CodeMap
+// Definition of robot nodes (and their names)
+ class RobotNodes
 {    
  public:     
     /*! robot nodes */
@@ -35,26 +33,12 @@ namespace tron
     static const std::string WHEELS_NODE;    /*! wheels node name */
     static const std::string BODYROLE_NODE;    /*! body role node name */
 
- protected:
-     int ID;
-     std::string name;
-     
- public:     
-     RobotNodes(int id, std::string name);
-     
-     int getID() {return ID;}
-     std::string getName() {return name;}
-     
+ public:          
     // gets name for given node
-    std::string getName4Node(int node);
-    // gets code for given node name
-    int getCode4Node(std::string nodeName);
+    static std::string getName4Node(int node);
         
-    //  return system description
-    virtual std::string toString();
-
- protected:
-     virtual void fillNodes() = 0;
+    // get nodes description
+    static std::string toString();
 };
 }
 #endif
