@@ -69,6 +69,7 @@
             <pElem>../tron_wire/src</pElem>
             <pElem>../tron_wire2/src</pElem>
             <pElem>../tron_coms/src</pElem>
+            <pElem>../tron_topics/src</pElem>
             <pElem>/usr/include/ignition/transport3</pElem>
             <pElem>/usr/include/ignition/msgs0</pElem>
             <pElem>/usr/include/ignition/math2</pElem>
@@ -186,6 +187,18 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_coms.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tron_topics"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tron_topics"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibLibItem>ignition-transport3</linkerLibLibItem>

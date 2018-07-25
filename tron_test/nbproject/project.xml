@@ -18,6 +18,7 @@
                 <make-dep-project>../tron_display</make-dep-project>
                 <make-dep-project>../tron_tools</make-dep-project>
                 <make-dep-project>../tron_coms</make-dep-project>
+                <make-dep-project>../tron_topics</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>

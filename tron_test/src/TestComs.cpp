@@ -7,6 +7,7 @@
 
 #include "TestComs.h"
 #include "tron/coms/Communicator.h"
+#include "tron/topics/Topic.h"
 
 using namespace log4cxx;
 
@@ -24,11 +25,22 @@ void TestComs::makeTest()
 
     std::string message = "hola";
     
+    tron::Topic oTopic;
     tron::Communicator oCommunicator;
-    oCommunicator.setChannelReader("arm", "joints", "hs", tron::ComsChannel::eCHANNEL_CONTROL);
-    oCommunicator.setChannelWriter("arm", "joints", "hs", tron::ComsChannel::eCHANNEL_CONTROL);
     
-    oCommunicator.getChannelWriter()->sendMessage(message);
+    oTopic.set(1, 2, 3, tron::Topic::eTYPE_CONTROL);
+    // simulate topic building
+    oTopic.setNodeName("arm");
+    oTopic.setSectionName("joints");
+    oTopic.setChannelName("hs");
+    oTopic.build();
+    if (oTopic.isBuilt())
+    {
+        oCommunicator.setChannelReader(oTopic.getTopicName());
+        oCommunicator.setChannelWriter(oTopic.getTopicName());    
+
+        oCommunicator.getChannelWriter()->sendMessage(message);
+    }
     
     usleep(1000000);                  
         
