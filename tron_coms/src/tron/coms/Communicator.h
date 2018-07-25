@@ -26,8 +26,8 @@ public:
     Communicator();
     ~Communicator();
     
-    void setChannelReader(std::string node, std::string section, std::string channel, int type);
-    void setChannelWriter(std::string node, std::string section, std::string channel, int type);
+    void setChannelReader(std::string topic);
+    void setChannelWriter(std::string topic);
 
     ChannelReader* getChannelReader() {return pChannelReader;};
     ChannelWriter* getChannelWriter() {return pChannelWriter;};

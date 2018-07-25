@@ -24,17 +24,17 @@ Communicator::~Communicator()
         delete(pChannelWriter);    
 }
 
-void Communicator::setChannelReader(std::string node, std::string section, std::string channel, int type)
+void Communicator::setChannelReader(std::string topic)
 {
     pChannelReader = new ChannelReader();
-    pChannelReader->setChannel(node, section, channel, type);
+    pChannelReader->setTopic(topic);
     pChannelReader->connect(oNode);
 }
     
-void Communicator::setChannelWriter(std::string node, std::string section, std::string channel, int type)
+void Communicator::setChannelWriter(std::string topic)
 {
     pChannelWriter = new ChannelWriter();
-    pChannelWriter->setChannel(node, section, channel, type);
+    pChannelWriter->setTopic(topic);
     pChannelWriter->connect(oNode);
 }
 
