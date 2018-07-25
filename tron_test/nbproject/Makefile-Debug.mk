@@ -43,6 +43,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/TestTools.o \
 	${OBJECTDIR}/src/TestUtil.o \
 	${OBJECTDIR}/src/TestWire.o \
+	${OBJECTDIR}/src/arm/ArmNode.o \
+	${OBJECTDIR}/src/arm/AxesSection.o \
+	${OBJECTDIR}/src/arm/CyclerSection.o \
+	${OBJECTDIR}/src/arm/JointsSection.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -129,6 +133,26 @@ ${OBJECTDIR}/src/TestWire.o: src/TestWire.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -I../tron_control/src -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -I../tron_coms/src -I../tron_topics/src -I/usr/include/ignition/transport3 -I/usr/include/ignition/msgs0 -I/usr/include/ignition/math2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestWire.o src/TestWire.cpp
+
+${OBJECTDIR}/src/arm/ArmNode.o: src/arm/ArmNode.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_control/src -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -I../tron_coms/src -I../tron_topics/src -I/usr/include/ignition/transport3 -I/usr/include/ignition/msgs0 -I/usr/include/ignition/math2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/arm/ArmNode.o src/arm/ArmNode.cpp
+
+${OBJECTDIR}/src/arm/AxesSection.o: src/arm/AxesSection.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_control/src -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -I../tron_coms/src -I../tron_topics/src -I/usr/include/ignition/transport3 -I/usr/include/ignition/msgs0 -I/usr/include/ignition/math2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/arm/AxesSection.o src/arm/AxesSection.cpp
+
+${OBJECTDIR}/src/arm/CyclerSection.o: src/arm/CyclerSection.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_control/src -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -I../tron_coms/src -I../tron_topics/src -I/usr/include/ignition/transport3 -I/usr/include/ignition/msgs0 -I/usr/include/ignition/math2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/arm/CyclerSection.o src/arm/CyclerSection.cpp
+
+${OBJECTDIR}/src/arm/JointsSection.o: src/arm/JointsSection.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/arm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -I../tron_control/src -I../tron_display/src -I../tron_math/src -I../tron_signals/src -I../tron_tools/src -I../tron_util/src -I../tron_wire/src -I../tron_wire2/src -I../tron_coms/src -I../tron_topics/src -I/usr/include/ignition/transport3 -I/usr/include/ignition/msgs0 -I/usr/include/ignition/math2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/arm/JointsSection.o src/arm/JointsSection.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

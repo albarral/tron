@@ -7,7 +7,13 @@
 
 #include "TestComs.h"
 #include "tron/coms/Communicator.h"
+#include "tron/topics/RobotNodes.h"
 #include "tron/topics/Topic.h"
+#include "arm/ArmNode.h"
+#include "arm/JointsSection.h"
+#include "arm/AxesSection.h"
+#include "arm/CyclerSection.h"
+
 
 using namespace log4cxx;
 
@@ -25,15 +31,23 @@ void TestComs::makeTest()
 
     std::string message = "hola";
     
-    tron::Topic oTopic;
     tron::Communicator oCommunicator;
     
-    oTopic.set(1, 2, 3, tron::Topic::eTYPE_CONTROL);
-    // simulate topic building
-    oTopic.setNodeName("arm");
-    oTopic.setSectionName("joints");
-    oTopic.setChannelName("hs");
-    oTopic.build();
+    // define coms topic
+    tron::Topic oTopic;
+    amy::ArmNode oArmNode;
+//    oTopic = oArmNode.getTopic(
+//            tron::RobotNodes::eNODE_ARM, 
+//            amy::ArmNode::eSECTION_AXES, 
+//            amy::AxesSection::eAXES_PAN,
+//            tron::Topic::eTYPE_CONTROL);
+    oTopic = oArmNode.getTopic(
+            tron::RobotNodes::eNODE_ARM, 
+            amy::ArmNode::eSECTION_CYCLER2, 
+            amy::CyclerSection::eCYCLER_MAIN_AMP,
+            tron::Topic::eTYPE_CONTROL);
+    
+    // test communication (reader and writer)
     if (oTopic.isBuilt())
     {
         oCommunicator.setChannelReader(oTopic.getTopicName());
