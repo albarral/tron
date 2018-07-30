@@ -21,11 +21,12 @@ ComsReceiver::~ComsReceiver()
     
 void ComsReceiver::addChannel(std::string topic)
 {
+    // create channel reader and add it to list
     ChannelReader oChannelReader;
-    oChannelReader.setTopic(topic);
-    oChannelReader.connect(oNode);
-    
+    oChannelReader.setTopic(topic);    
     listChannelReaders.push_back(oChannelReader);
+    // (IMPORTANT) We must connect the real reader existing in the list (as the callback is bound to the object).
+    listChannelReaders.back().connect(oNode);
     LOG4CXX_INFO(logger, "ComsReceiver: added channel reader for topic " + topic);
 }
 

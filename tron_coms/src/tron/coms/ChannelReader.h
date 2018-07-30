@@ -30,10 +30,7 @@ public:
     // connect channel
     virtual bool connect(ignition::transport::Node& oNode);
     // read received messages (and clear queue)
-    int getMessages(std::vector<std::string>& listMessages);
-    
-    // for debug
-    std::vector<std::string> getMessages2() {return listMessages;};
+    int getMessages(std::vector<std::string>& listMessages);    
     
 private:
     void processMessage(const ignition::msgs::StringMsg& imessage);

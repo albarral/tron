@@ -11,7 +11,6 @@
 #include "tron/topics/RobotNodes.h"
 #include "tron/topics/Topic.h"
 
-
 using namespace log4cxx;
 
 LoggerPtr TestComs::logger(Logger::getLogger("tron.coms"));
@@ -41,7 +40,7 @@ void TestComs::makeTest()
     if (oTopic.isBuilt())
     {
         oComsReceiver.addChannel(oTopic.getTopicName());
-        oComsSender.addChannel(oTopic.getTopicName());    
+        oComsSender.addChannel(oTopic.getTopicName());  
 
         std::string message = "hola";
         oComsSender.getChannel(0)->sendMessage(message);
@@ -50,8 +49,7 @@ void TestComs::makeTest()
     usleep(1000000);                  
         
     std::vector<std::string> listMessages;
-    //oComsReceiver.getChannel(0)->getMessages(listMessages);
-    listMessages = oComsReceiver.getChannel(0)->getMessages2();
+    oComsReceiver.getChannel(0)->getMessages(listMessages);
     
     if (!listMessages.empty())
     {

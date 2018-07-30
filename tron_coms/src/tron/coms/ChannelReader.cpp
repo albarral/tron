@@ -60,7 +60,7 @@ void ChannelReader::processMessage(const ignition::msgs::StringMsg& imessage)
     // TO DO: needs mutex
 
     listMessages.push_back(imessage.data());
-    LOG4CXX_INFO(logger, "ChannelReader: message received " + imessage.data());
+    LOG4CXX_DEBUG(logger, "ChannelReader: message received " + imessage.data());
 }
 
 }
