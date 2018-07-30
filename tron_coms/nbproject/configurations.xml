@@ -21,6 +21,10 @@
         <itemPath>src/tron/coms/Communicator.h</itemPath>
         <itemPath>src/tron/coms/ComsChannel.cpp</itemPath>
         <itemPath>src/tron/coms/ComsChannel.h</itemPath>
+        <itemPath>src/tron/coms/ComsReceiver.cpp</itemPath>
+        <itemPath>src/tron/coms/ComsReceiver.h</itemPath>
+        <itemPath>src/tron/coms/ComsSender.cpp</itemPath>
+        <itemPath>src/tron/coms/ComsSender.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -80,6 +84,14 @@
       </item>
       <item path="src/tron/coms/ComsChannel.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/coms/ComsReceiver.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsReceiver.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsSender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsSender.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -116,6 +128,14 @@
       <item path="src/tron/coms/ComsChannel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/coms/ComsChannel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsReceiver.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsReceiver.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsSender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/coms/ComsSender.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

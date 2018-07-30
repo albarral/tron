@@ -7,7 +7,6 @@
  ***************************************************************************/
 
 #include <string>
-#include <functional>
 
 #include <log4cxx/logger.h>
 
@@ -25,8 +24,6 @@ public:
     void makeTest();      
     
 private:
-    void analyseMessage(std::string message, std::function<int(std::string)> cb);
-
     int checkSize(std::string message);       
 };
 #endif

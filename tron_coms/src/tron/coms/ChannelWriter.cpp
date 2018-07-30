@@ -35,7 +35,7 @@ bool ChannelWriter::connect(ignition::transport::Node& oNode)
     
     if (bconnected)
     {
-        LOG4CXX_INFO(logger, "ChannelWriter: connected to topic " + topic);
+        LOG4CXX_DEBUG(logger, "ChannelWriter: connected to topic " + topic);
     }
     else
     {
@@ -51,12 +51,12 @@ bool ChannelWriter::sendMessage(std::string message)
     
     if (oPublisher.Publish(imessage))
     {
-        LOG4CXX_INFO(logger, "ChannelWriter: sent message " + message);
+        LOG4CXX_DEBUG(logger, "ChannelWriter: sent message " + message);
         return true;        
     }
     else
     {
-        LOG4CXX_INFO(logger, "ChannelWriter: failed message sending");
+        LOG4CXX_WARN(logger, "ChannelWriter: failed message sending");
         return false;        
     }
 }    

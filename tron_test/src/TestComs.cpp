@@ -6,13 +6,10 @@
 #include <unistd.h>
 
 #include "TestComs.h"
-#include "tron/coms/Communicator.h"
+#include "tron/coms/ComsReceiver.h"
+#include "tron/coms/ComsSender.h"
 #include "tron/topics/RobotNodes.h"
 #include "tron/topics/Topic.h"
-#include "arm/ArmNode.h"
-#include "arm/JointsSection.h"
-#include "arm/AxesSection.h"
-#include "arm/CyclerSection.h"
 
 
 using namespace log4cxx;
@@ -28,56 +25,41 @@ TestComs::TestComs()
 void TestComs::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
-
-    std::string message = "hola";
     
-    tron::Communicator oCommunicator;
+    tron::ComsReceiver oComsReceiver;
+    tron::ComsSender oComsSender;
     
     // define coms topic
     tron::Topic oTopic;
-    amy::ArmNode oArmNode;
-//    oTopic = oArmNode.getTopic(
-//            tron::RobotNodes::eNODE_ARM, 
-//            amy::ArmNode::eSECTION_AXES, 
-//            amy::AxesSection::eAXES_PAN,
-//            tron::Topic::eTYPE_CONTROL);
-    oTopic = oArmNode.getTopic(
-            tron::RobotNodes::eNODE_ARM, 
-            amy::ArmNode::eSECTION_CYCLER2, 
-            amy::CyclerSection::eCYCLER_MAIN_AMP,
-            tron::Topic::eTYPE_CONTROL);
     
+    oTopic.set(1, 2, 3, tron::Topic::eTYPE_CONTROL);
+    oTopic.setNodeName("arm");
+    oTopic.setSectionName("joints");
+    oTopic.setChannelName("hs");
+    oTopic.build();
     // test communication (reader and writer)
     if (oTopic.isBuilt())
     {
-        oCommunicator.setChannelReader(oTopic.getTopicName());
-        oCommunicator.setChannelWriter(oTopic.getTopicName());    
+        oComsReceiver.addChannel(oTopic.getTopicName());
+        oComsSender.addChannel(oTopic.getTopicName());    
 
-        oCommunicator.getChannelWriter()->sendMessage(message);
+        std::string message = "hola";
+        oComsSender.getChannel(0)->sendMessage(message);
     }
     
     usleep(1000000);                  
         
+    std::vector<std::string> listMessages;
+    //oComsReceiver.getChannel(0)->getMessages(listMessages);
+    listMessages = oComsReceiver.getChannel(0)->getMessages2();
+    
+    if (!listMessages.empty())
+    {
+        LOG4CXX_INFO(logger, "testComs: received message = " + listMessages.at(0));            
+    }
+    
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
-
-//void TestComs::makeTest()
-//{
-//    LOG4CXX_INFO(logger, modName + ": test start \n");
-//
-//    std::string message = "hola";
-//    
-//    std::function<int(std::string)> func = std::bind(&TestComs::checkSize, this, std::placeholders::_1);
-//    analyseMessage(message, func);
-//        
-//    LOG4CXX_INFO(logger, modName + ": test end \n");
-//};
-
-void TestComs::analyseMessage(std::string message, std::function<int(std::string)> cb)
-{
-    int size = cb(message);
-    LOG4CXX_INFO(logger, "size of " + message + " is " + std::to_string(size));
-}
 
 int TestComs::checkSize(std::string message)
 {

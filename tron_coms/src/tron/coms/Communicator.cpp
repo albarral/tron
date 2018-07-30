@@ -9,33 +9,13 @@ using namespace log4cxx;
 
 namespace tron
 {
+LoggerPtr Communicator::logger(Logger::getLogger("tron.coms"));
+
 Communicator::Communicator()
 {    
-    pChannelReader = 0;
-    pChannelWriter = 0;
 }
 
-Communicator::~Communicator()
-{
-    if (pChannelReader != 0)
-        delete(pChannelReader);
-
-    if (pChannelWriter != 0)
-        delete(pChannelWriter);    
-}
-
-void Communicator::setChannelReader(std::string topic)
-{
-    pChannelReader = new ChannelReader();
-    pChannelReader->setTopic(topic);
-    pChannelReader->connect(oNode);
-}
-    
-void Communicator::setChannelWriter(std::string topic)
-{
-    pChannelWriter = new ChannelWriter();
-    pChannelWriter->setTopic(topic);
-    pChannelWriter->connect(oNode);
-}
-
+//Communicator::~Communicator()
+//{
+//}
 }

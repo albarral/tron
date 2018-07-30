@@ -38,7 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/coms/ChannelReader.o \
 	${OBJECTDIR}/src/tron/coms/ChannelWriter.o \
 	${OBJECTDIR}/src/tron/coms/Communicator.o \
-	${OBJECTDIR}/src/tron/coms/ComsChannel.o
+	${OBJECTDIR}/src/tron/coms/ComsChannel.o \
+	${OBJECTDIR}/src/tron/coms/ComsReceiver.o \
+	${OBJECTDIR}/src/tron/coms/ComsSender.o
 
 
 # C Compiler Flags
@@ -84,6 +86,16 @@ ${OBJECTDIR}/src/tron/coms/ComsChannel.o: src/tron/coms/ComsChannel.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/coms/ComsChannel.o src/tron/coms/ComsChannel.cpp
+
+${OBJECTDIR}/src/tron/coms/ComsReceiver.o: src/tron/coms/ComsReceiver.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/coms/ComsReceiver.o src/tron/coms/ComsReceiver.cpp
+
+${OBJECTDIR}/src/tron/coms/ComsSender.o: src/tron/coms/ComsSender.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/coms
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/coms/ComsSender.o src/tron/coms/ComsSender.cpp
 
 # Subprojects
 .build-subprojects:

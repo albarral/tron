@@ -13,16 +13,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <logicalFolder name="arm" displayName="arm" projectFiles="true">
-          <itemPath>src/arm/ArmNode.cpp</itemPath>
-          <itemPath>src/arm/ArmNode.h</itemPath>
-          <itemPath>src/arm/AxesSection.cpp</itemPath>
-          <itemPath>src/arm/AxesSection.h</itemPath>
-          <itemPath>src/arm/CyclerSection.cpp</itemPath>
-          <itemPath>src/arm/CyclerSection.h</itemPath>
-          <itemPath>src/arm/JointsSection.cpp</itemPath>
-          <itemPath>src/arm/JointsSection.h</itemPath>
-        </logicalFolder>
         <itemPath>src/TestComs.cpp</itemPath>
         <itemPath>src/TestComs.h</itemPath>
         <itemPath>src/TestControl.cpp</itemPath>
@@ -249,22 +239,6 @@
       </item>
       <item path="src/TestWire.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/arm/ArmNode.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/ArmNode.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/AxesSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/AxesSection.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/CyclerSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/CyclerSection.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/JointsSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/JointsSection.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -319,22 +293,6 @@
       <item path="src/TestWire.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestWire.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/ArmNode.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/ArmNode.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/AxesSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/AxesSection.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/CyclerSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/CyclerSection.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/arm/JointsSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/arm/JointsSection.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -6,31 +6,37 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <string>
+#include <log4cxx/logger.h>
 #include <ignition/transport.hh>
-
-#include "tron/coms/ChannelReader.h"
-#include "tron/coms/ChannelWriter.h"
 
 namespace tron
 {
-// Communicator class holding channel readers and writers
-// Based in ignition transport lib.
+// Base communicator class based in ignition transport lib.
 class Communicator
 {    
-private:
-    ignition::transport::Node oNode;    
-    ChannelReader* pChannelReader;
-    ChannelWriter* pChannelWriter;
+ public:     
+    /*! communicator types */
+    enum eTypes
+    {
+        eTYPE_SENDER,                  /*! communication sender */
+        eTYPE_RECEIVER,                /*! communication receiver */
+    };
+
+protected:
+    static log4cxx::LoggerPtr logger;
+    ignition::transport::Node oNode;   
+    int type;           // communicator type (sender or receiver)
         
 public:
     Communicator();
-    ~Communicator();
+    //~Communicator();
     
-    void setChannelReader(std::string topic);
-    void setChannelWriter(std::string topic);
-
-    ChannelReader* getChannelReader() {return pChannelReader;};
-    ChannelWriter* getChannelWriter() {return pChannelWriter;};
+    int getType() {return type;};
+    
+    virtual void addChannel(std::string topic) = 0;
+    
+    virtual std::string toString() = 0;
 };
 
 }

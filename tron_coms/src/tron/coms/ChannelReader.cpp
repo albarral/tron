@@ -35,7 +35,7 @@ bool ChannelReader::connect(ignition::transport::Node& oNode)
     
     if (bconnected)
     {
-        LOG4CXX_INFO(logger, "ChannelReader: connected to topic " + topic);
+        LOG4CXX_DEBUG(logger, "ChannelReader: connected to topic " + topic);
     }
     else
     {

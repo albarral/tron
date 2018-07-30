@@ -29,9 +29,9 @@ namespace tron
     // gets name for given section
     std::string getName4Section(int section);
      
-    // get topic for specified node/section/channel/type combination
-    virtual Topic getTopic(int node, int section, int channel, int type) = 0;
-          
+    // build given topic (build topic name from its node/section/channel/type codes)
+    virtual bool buildTopic(tron::Topic & oTopic) = 0;
+
     // return node description
     virtual std::string toString();    
 };

@@ -32,6 +32,9 @@ public:
     // read received messages (and clear queue)
     int getMessages(std::vector<std::string>& listMessages);
     
+    // for debug
+    std::vector<std::string> getMessages2() {return listMessages;};
+    
 private:
     void processMessage(const ignition::msgs::StringMsg& imessage);
 };

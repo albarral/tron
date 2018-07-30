@@ -9,7 +9,7 @@ using namespace log4cxx;
 
 namespace tron
 {
-LoggerPtr ComsChannel::logger(Logger::getLogger("tron.com"));
+LoggerPtr ComsChannel::logger(Logger::getLogger("tron.coms"));
 
 ComsChannel::ComsChannel()
 {    
