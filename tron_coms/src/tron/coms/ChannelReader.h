@@ -6,6 +6,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+//#include <mutex>
 #include <string>
 #include <vector>
 
@@ -16,11 +17,12 @@
 
 namespace tron
 {
-// Channel reader class.
+// Channel reader class (thread safe).
 // ignition transport based
 class ChannelReader : public ComsChannel
 {    
 private:
+    //std::mutex mutex;    
     std::vector<std::string> listMessages;      // queue of received messages
         
 public:
@@ -29,10 +31,11 @@ public:
     
     // connect channel
     virtual bool connect(ignition::transport::Node& oNode);
-    // read received messages (and clear queue)
+    // read received messages and clear queue  (thread safe - TO DO)
     int getMessages(std::vector<std::string>& listMessages);    
     
 private:
+    // callback for ignition subscriber  (thread safe - TO DO)
     void processMessage(const ignition::msgs::StringMsg& imessage);
 };
 

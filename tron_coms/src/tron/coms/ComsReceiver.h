@@ -26,6 +26,9 @@ public:
        
     // add channel reader for given topic
     virtual void addChannel(std::string topic) override;
+    
+    // connect all channel readers to their topics
+    void connect();
         
     // get specified channel reader
     ChannelReader* getChannel(int i);

@@ -46,7 +46,7 @@ bool ChannelReader::connect(ignition::transport::Node& oNode)
     
 int ChannelReader::getMessages(std::vector<std::string>& listMessages)
 {
-    // TO DO: needs mutex
+    //std::lock_guard<std::mutex> locker(mutex);
     
     // overwrite destination list
     listMessages = this->listMessages;
@@ -57,7 +57,7 @@ int ChannelReader::getMessages(std::vector<std::string>& listMessages)
 
 void ChannelReader::processMessage(const ignition::msgs::StringMsg& imessage)
 {
-    // TO DO: needs mutex
+    //std::lock_guard<std::mutex> locker(mutex);
 
     listMessages.push_back(imessage.data());
     LOG4CXX_DEBUG(logger, "ChannelReader: message received " + imessage.data());
