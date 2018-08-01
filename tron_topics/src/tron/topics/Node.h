@@ -28,6 +28,8 @@ namespace tron
 
     // gets name for given section
     std::string getName4Section(int section);
+    // gets code for given section name (returns -1 if unknown)
+    int getSection4Name(std::string name);
      
     // build given topic (build topic name from its node/section/channel/type codes)
     virtual bool buildTopic(tron::Topic & oTopic) = 0;

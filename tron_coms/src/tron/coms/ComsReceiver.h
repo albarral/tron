@@ -13,11 +13,12 @@
 
 namespace tron
 {
-// ComsReceiver base class for communication receivers (servers & listeners).
-// Uses multiple channel readers.
+// Class for multi channel communications reception (communication servers & listeners).
+// Uses ignition based channel readers.
+// Needs to be connected once the channels are defined.
 class ComsReceiver : public Communicator
 {    
-protected:
+private:
     std::vector<ChannelReader> listChannelReaders;
         
 public:

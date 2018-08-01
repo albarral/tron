@@ -13,11 +13,11 @@
 
 namespace tron
 {
-// ComsSender base class for communication senders (clients & broadcasters).
-// Uses multiple channel writers.
+// Class for multi channel communications sending (communication clients & broadcasters).
+// Uses ignition based channel writers.
 class ComsSender : public Communicator
 {    
-protected:
+private:
     std::vector<ChannelWriter> listChannelWriters;  // list of channel writers
         
 public:

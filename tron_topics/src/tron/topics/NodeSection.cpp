@@ -22,6 +22,16 @@ std::string NodeSection::getName4Channel(int channel)
         return ""; 
 }
 
+int NodeSection::getChannel4Name(std::string name)
+{
+    int code;
+    if (oChannelsMap.getCode4Name(name, code))
+        return code;
+    // return invalid code if unknown name
+    else 
+        return -1;
+}
+
 std::string NodeSection::toString()
 {
     return "NodeSection: " + std::to_string(ID) + ", channels:\n" + oChannelsMap.toString();

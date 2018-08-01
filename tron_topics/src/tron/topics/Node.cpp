@@ -22,6 +22,16 @@ std::string Node::getName4Section(int section)
         return ""; 
 }
 
+int Node::getSection4Name(std::string name)
+{
+    int code;
+    if (oSectionsMap.getCode4Name(name, code))
+        return code;
+    // return invalid code if unknown name
+    else 
+        return -1;
+}
+
 std::string Node::toString()
 {
     return "Node: " + std::to_string(ID) + ", sections:\n" + oSectionsMap.toString();

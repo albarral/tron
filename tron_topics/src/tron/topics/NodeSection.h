@@ -28,6 +28,8 @@ namespace tron
 
     // gets name for given section channel
     std::string getName4Channel(int channel);
+    // gets code for given channel name (returns -1 if unknown)
+    int getChannel4Name(std::string name);
      
     // return node section description
     std::string toString();    
