@@ -141,11 +141,11 @@ bool DadyCommander::sendMessage()
     {
         ComsSender oComsSender;
         oComsSender.addChannel(topic);
-        // time needed for publisher to prepare
-        usleep(100000);            
+        // time needed for publisher to prepare (200ms)
+        usleep(200000);            
         bok = oComsSender.getChannel(0)->sendMessage(value);
-        // time needed for publisher to stay alive
-        usleep(1000000);            
+        // time needed for publisher to stay alive (500ms))
+        usleep(500000);            
         return bok;        
     }
     else
