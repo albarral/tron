@@ -26,7 +26,7 @@ int main(int argc, char** argv)
     
     // create commander 
     tron::DadyCommander oDadyCommander;
-    
+
     // expected entry: dady node section channel value
     // if command has wrong number of params, show usage
     if (argc != oDadyCommander.getCommandSize() + 1)
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
         if (i != argc-1)
             userCommand += tron::DadyCommander::COMMAND_SEPARATOR;      
     }
-    
+            
     // check command validity (if it can be interpreted)
     bool bsent = false;
     if (oDadyCommander.checkValidCommand(userCommand))

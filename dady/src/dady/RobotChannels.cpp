@@ -8,147 +8,134 @@
 #include "tron/topics/Topic.h"
 #include "amy/interface2/ArmNode.h"
 
+using namespace log4cxx;
+
 namespace tron
 {    
+LoggerPtr RobotChannels::logger(Logger::getLogger("dady"));
+
 //RobotChannels::RobotChannels()
 //{
 //}
 
 int RobotChannels::getCode4NodeSection(int node, std::string sectionName)
 {
-    switch (node)
+    // get specified node
+    Node* pNode = getNode(node);
+    // if found
+    if (pNode != nullptr)
     {
-        case RobotNodes::eNODE_ARM: 
-        {
-            amy::ArmNode2 oArmNode;
-            return oArmNode.getSection4Name(sectionName);
-        }
-            break;
-            
-        case RobotNodes::eNODE_BODYROLE: 
-            // TO DO
-            return -1;
-            break;
-        
-        case RobotNodes::eNODE_VISION: 
-            // TO DO
-            return -1;
-        break;
-        
-        // unknown nodes
-        default: 
-            return -1;
-    }    
-}
-
-NodeSection* RobotChannels::getNodeSection(int node, int section)
-{
-    switch (node)
-    {
-        case RobotNodes::eNODE_ARM: 
-        {
-            amy::ArmNode2 oArmNode;
-            return oArmNode.getSection(section);
-        }
-            break;
-            
-        case RobotNodes::eNODE_BODYROLE: 
-            // TO DO
-            return nullptr;
-            break;
-        
-        case RobotNodes::eNODE_VISION: 
-            // TO DO
-            return nullptr;
-        break;
-        
-        // unknown nodes
-        default: 
-            return nullptr;
-    }    
-}
-
-int RobotChannels::getCode4NodeSectionChannel(int node, int section, std::string channelName)
-{        
-    // get specific node section
-    NodeSection* pNodeSection = getNodeSection(node, section);
-    if (pNodeSection != nullptr)
-        return pNodeSection->getChannel4Name(channelName); 
-    // if section not found, return invalid channel
+        // get section code
+        int sectionCode = pNode->getSection4Name(sectionName);
+        delete(pNode);
+        return sectionCode;
+    }
+    // return invalid section if node unknown
     else
         return -1;
 }
 
+
+int RobotChannels::getCode4NodeSectionChannel(int node, int section, std::string channelName)
+{        
+    // get specified node
+    Node* pNode = getNode(node);
+    // if found
+    if (pNode != nullptr)
+    {
+        // get specific section
+        NodeSection* pNodeSection = pNode->getSection(section);
+        // get channel code, return invalid channel if section unknown
+        int channelCode = (pNodeSection != nullptr) ? pNodeSection->getChannel4Name(channelName) : -1; 
+        delete(pNode);
+        return channelCode;
+    }
+    // return invalid channel if node unknown
+    else
+        return -1;    
+}
+
 std::string RobotChannels::showAvailableSections4Node(int node)
 {
-    switch (node)
+    // get specified node
+    Node* pNode = getNode(node);
+    // if found
+    if (pNode != nullptr)
     {
-        case RobotNodes::eNODE_ARM: 
-        {
-            amy::ArmNode2 oArmNode;
-            return oArmNode.toString();
-        }            
-        break;
-            
-        case RobotNodes::eNODE_BODYROLE: 
-            // TO DO
-            return "";
-            break;
-        
-        case RobotNodes::eNODE_VISION: 
-            // TO DO
-            return "";
-        break;
-        
-        // unknown nodes
-        default: 
-            return "unknown node";
-    }        
+        // get node description
+        std::string desc = pNode->toString();
+        delete(pNode);
+        return desc;
+    }
+    // return empty if node unknown
+    else
+        return "";  
 }
 
 std::string RobotChannels::showAvailableChannels4NodeSection(int node, int section)
 {
-    // get specific node section
-    NodeSection* pNodeSection = getNodeSection(node, section);
-    // if found, return its description
-    if (pNodeSection != nullptr)
-        return pNodeSection->toString();
-    // unknown section
+    // get specified node
+    Node* pNode = getNode(node);
+    // if found
+    if (pNode != nullptr)
+    {
+        // get specific section
+        NodeSection* pNodeSection = pNode->getSection(section);
+        // get its description, return unknown if l if section unknown
+        std::string desc = (pNodeSection != nullptr) ? pNodeSection->toString() : "unknown section"; 
+        delete(pNode);
+        return desc;
+    }
+    // return empty if node unknown
     else
-        return "unknown section";
+        return "";  
 }
 
 std::string RobotChannels::getTopic4NodeSectionChannel(int node, int section, int channel)
 {
+    // get specified node
+    Node* pNode = getNode(node);
+    // if found
+    if (pNode != nullptr)
+    {
+        // create proper topic
+        Topic oTopic;
+        oTopic.set(node, section, channel, Topic::eTYPE_CONTROL);
+        std::string topicName = "";
+        // try building control topic for specified node-section-channel
+        if (pNode->buildTopicName(oTopic))
+            topicName = oTopic.getTopicName();        
+        delete(pNode);
+        return topicName;
+    }
+    // return empty if node unknown
+    else
+        return "";  
+}
+
+Node* RobotChannels::getNode(int node)
+{
     switch (node)
     {
         case RobotNodes::eNODE_ARM: 
-        {
-            amy::ArmNode2 oArmNode;   
-            Topic oTopic;
-            oTopic.set(node, section, channel, Topic::eTYPE_CONTROL);
-            // try building control topic for specified node-section-channel
-            if (oArmNode.buildTopic(oTopic))
-                return oTopic.getTopicName();
-            // if invalid combination return empty
-            else
-                return "";
-        }            
-        break;
+            return new amy::ArmNode2();
+            break;
             
         case RobotNodes::eNODE_BODYROLE: 
-            // TO DO
-            return "";
+            LOG4CXX_WARN(logger, "RobotChannels: missing body node " << node);                
+            return nullptr;
             break;
         
         case RobotNodes::eNODE_VISION: 
-            // TO DO
-            return "";
+            LOG4CXX_WARN(logger, "RobotChannels: missing vision node " << node);                
+            return nullptr;
         break;
         
         // unknown nodes
         default: 
-            return "";
-    }            
+            LOG4CXX_WARN(logger, "RobotChannels: unknown node " << node);                
+            return nullptr;
+    }    
 }
+
 }
