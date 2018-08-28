@@ -23,7 +23,7 @@ void Topic::set(int node, int section, int channel, int type)
         this->type = type;
 }
 
-void Topic::build()
+void Topic::buildName()
 {
     if (type != -1)
     {

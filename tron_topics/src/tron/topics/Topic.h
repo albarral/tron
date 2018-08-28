@@ -54,7 +54,7 @@ namespace tron
     void setChannelName(std::string value) {channelName = value;};
     
     // build topic name
-    void build();
+    void buildName();
     bool isBuilt() {return built;};
     std::string getTopicName() {return topicName;};
 

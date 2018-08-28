@@ -14,7 +14,6 @@ namespace tron
  class ExtraSection : public NodeSection
 {
  public:
-    static const int eEXTRA_SECTION = 100;   /*! ID of extra section */  
     static const std::string EXTRA_SECTION;   /*! name of extra section */
 
     /*! extra channels  */
@@ -30,7 +29,7 @@ namespace tron
     const std::string EXTRA_END = "end";                /*! end control process */
 
  public:    
-    ExtraSection(); 
+    ExtraSection(int sectionCode); 
     
 };
 }

@@ -3,13 +3,13 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include "tron/topics/ExtraSection.h"
+#include "tron/topics/channels/ExtraSection.h"
 
 namespace tron
 {
 const std::string ExtraSection::EXTRA_SECTION = "extra";    
 
-ExtraSection::ExtraSection() : NodeSection(ExtraSection::eEXTRA_SECTION)
+ExtraSection::ExtraSection(int sectionCode) : NodeSection(sectionCode)
 {
     oChannelsMap.addCode(eEXTRA_STOP, EXTRA_STOP);
     oChannelsMap.addCode(eEXTRA_END, EXTRA_END);     

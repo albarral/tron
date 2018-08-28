@@ -13,8 +13,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="topics" displayName="topics" projectFiles="true">
-        <itemPath>src/tron/topics/ExtraSection.cpp</itemPath>
-        <itemPath>src/tron/topics/ExtraSection.h</itemPath>
+        <logicalFolder name="f1" displayName="channels" projectFiles="true">
+          <itemPath>src/tron/topics/channels/ExtraSection.cpp</itemPath>
+          <itemPath>src/tron/topics/channels/ExtraSection.h</itemPath>
+        </logicalFolder>
         <itemPath>src/tron/topics/Node.cpp</itemPath>
         <itemPath>src/tron/topics/Node.h</itemPath>
         <itemPath>src/tron/topics/NodeSection.cpp</itemPath>
@@ -73,10 +75,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="src/tron/topics/ExtraSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/topics/ExtraSection.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tron/topics/Node.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/topics/Node.h" ex="false" tool="3" flavor2="0">
@@ -92,6 +90,16 @@
       <item path="src/tron/topics/Topic.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/topics/Topic.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/topics/channels/ExtraSection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/topics/channels/ExtraSection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -114,10 +122,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="src/tron/topics/ExtraSection.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/tron/topics/ExtraSection.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/tron/topics/Node.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/topics/Node.h" ex="false" tool="3" flavor2="0">
@@ -133,6 +137,16 @@
       <item path="src/tron/topics/Topic.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/topics/Topic.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/topics/channels/ExtraSection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/topics/channels/ExtraSection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
   </confs>

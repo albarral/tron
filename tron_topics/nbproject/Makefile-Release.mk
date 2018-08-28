@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/tron/topics/ExtraSection.o \
 	${OBJECTDIR}/src/tron/topics/Node.o \
 	${OBJECTDIR}/src/tron/topics/NodeSection.o \
 	${OBJECTDIR}/src/tron/topics/RobotNodes.o \
-	${OBJECTDIR}/src/tron/topics/Topic.o
+	${OBJECTDIR}/src/tron/topics/Topic.o \
+	${OBJECTDIR}/src/tron/topics/channels/ExtraSection.o
 
 
 # C Compiler Flags
@@ -66,11 +66,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT}: ${OBJ
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/src/tron/topics/ExtraSection.o: src/tron/topics/ExtraSection.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/tron/topics
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/topics/ExtraSection.o src/tron/topics/ExtraSection.cpp
-
 ${OBJECTDIR}/src/tron/topics/Node.o: src/tron/topics/Node.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/topics
 	${RM} "$@.d"
@@ -90,6 +85,11 @@ ${OBJECTDIR}/src/tron/topics/Topic.o: src/tron/topics/Topic.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/topics
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/topics/Topic.o src/tron/topics/Topic.cpp
+
+${OBJECTDIR}/src/tron/topics/channels/ExtraSection.o: src/tron/topics/channels/ExtraSection.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/topics/channels
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/topics/channels/ExtraSection.o src/tron/topics/channels/ExtraSection.cpp
 
 # Subprojects
 .build-subprojects:
