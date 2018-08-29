@@ -34,9 +34,9 @@ public:
     bool tune4Node(Node& oNode, int section);
 
     // get received stop command
-    bool getStop(float& value);
+    bool getStop();
     // get received end command 
-    bool getEnd(float& value);
+    bool getEnd();
 };
 
 }

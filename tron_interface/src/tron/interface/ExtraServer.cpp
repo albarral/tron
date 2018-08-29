@@ -63,28 +63,26 @@ bool ExtraServer::tune4Node(Node& oNode, int section)
     return btuned;
 }
 
-bool ExtraServer::getStop(float& value)
+bool ExtraServer::getStop()
 {    
-    std::vector<std::string> listMessages; 
-    // if messages received, get last
-    if (pStopChannel->getMessages(listMessages) != 0)
+    // if stop command received, get it
+    if (pStopChannel->hasNew())
     {
-        value = std::stof(listMessages.back());
-        LOG4CXX_DEBUG(logger, "ExtraServer: get stop > " << std::to_string(value));
+        pStopChannel->clear();
+        LOG4CXX_DEBUG(logger, "ExtraServer: stop received >");
         return true;
     }
     else
         return false;
 }
 
-bool ExtraServer::getEnd(float& value)
+bool ExtraServer::getEnd()
 {    
-    std::vector<std::string> listMessages; 
-    // if messages received, get last
-    if (pEndChannel->getMessages(listMessages))
+    // if end command received, get it
+    if (pEndChannel->hasNew())
     {
-        value = std::stof(listMessages.back());
-        LOG4CXX_DEBUG(logger, "ExtraServer: get end > " << std::to_string(value));
+        pEndChannel->clear();
+        LOG4CXX_DEBUG(logger, "ExtraServer: end received >");
         return true;
     }
     else
