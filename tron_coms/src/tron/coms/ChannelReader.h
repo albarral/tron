@@ -8,7 +8,6 @@
 
 //#include <mutex>
 #include <string>
-#include <vector>
 
 #include <ignition/msgs.hh>
 #include <ignition/transport.hh>
@@ -23,16 +22,21 @@ class ChannelReader : public ComsChannel
 {    
 private:
     //std::mutex mutex;    
-    std::vector<std::string> listMessages;      // queue of received messages
+    std::string message;      // last received message
+    bool bnew;                     // new message flag (raised on message arrival, lowered on message reading)
         
 public:
     ChannelReader();
     ~ChannelReader();
     
     // connect channel
-    virtual bool connect(ignition::transport::Node& oNode);
-    // read received messages and clear queue  (thread safe - TO DO)
-    int getMessages(std::vector<std::string>& listMessages);    
+    virtual bool connect(ignition::transport::Node& oNode);    
+    // check new message flag
+    bool hasNew() {return bnew;};    
+    // clear new message flag
+    void clear() {bnew = false;};
+    // read received message (clears new message flag)
+    std::string getMessage();    
     
 private:
     // callback for ignition subscriber  (thread safe - TO DO)

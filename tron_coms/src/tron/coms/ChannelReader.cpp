@@ -13,11 +13,12 @@ namespace tron
 {
 ChannelReader::ChannelReader()
 {    
+    bnew = false;
 }
 
 ChannelReader::~ChannelReader()
 {    
-    listMessages.clear();
+//    listMessages.clear();
 }
 
 bool ChannelReader::connect(ignition::transport::Node& oNode)
@@ -44,23 +45,32 @@ bool ChannelReader::connect(ignition::transport::Node& oNode)
     return bconnected;
 }
     
-int ChannelReader::getMessages(std::vector<std::string>& listMessages)
+//int ChannelReader::getMessages(std::vector<std::string>& listMessages)
+//{
+//    //std::lock_guard<std::mutex> locker(mutex);
+//    
+//    // overwrite destination list
+//    listMessages = this->listMessages;
+//    // clear source list
+//    this->listMessages.clear();
+//    return listMessages.size();
+//}    
+
+std::string ChannelReader::getMessage()
 {
     //std::lock_guard<std::mutex> locker(mutex);
-    
-    // overwrite destination list
-    listMessages = this->listMessages;
-    // clear source list
-    this->listMessages.clear();
-    return listMessages.size();
+    bnew = false;
+    return message;
 }    
 
 void ChannelReader::processMessage(const ignition::msgs::StringMsg& imessage)
 {
     //std::lock_guard<std::mutex> locker(mutex);
 
-    listMessages.push_back(imessage.data());
-    LOG4CXX_DEBUG(logger, "ChannelReader: message received " + imessage.data());
+    //listMessages.push_back(imessage.data());
+    message = imessage.data();
+    bnew = true;
+    LOG4CXX_DEBUG(logger, "ChannelReader < msg " + message);
 }
 
 }
