@@ -27,8 +27,6 @@
         <itemPath>src/TestTools.h</itemPath>
         <itemPath>src/TestUtil.cpp</itemPath>
         <itemPath>src/TestUtil.h</itemPath>
-        <itemPath>src/TestWire.cpp</itemPath>
-        <itemPath>src/TestWire.h</itemPath>
         <itemPath>src/main.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -60,16 +58,14 @@
           <standard>8</standard>
           <incDir>
             <pElem>src</pElem>
+            <pElem>../tron_coms/src</pElem>
             <pElem>../tron_control/src</pElem>
             <pElem>../tron_display/src</pElem>
             <pElem>../tron_math/src</pElem>
             <pElem>../tron_signals/src</pElem>
             <pElem>../tron_tools/src</pElem>
-            <pElem>../tron_util/src</pElem>
-            <pElem>../tron_wire/src</pElem>
-            <pElem>../tron_wire2/src</pElem>
-            <pElem>../tron_coms/src</pElem>
             <pElem>../tron_topics/src</pElem>
+            <pElem>../tron_util/src</pElem>
             <pElem>/usr/include/ignition/transport3</pElem>
             <pElem>/usr/include/ignition/msgs0</pElem>
             <pElem>/usr/include/ignition/math2</pElem>
@@ -81,6 +77,18 @@
             <linkerLibLibItem>log4cxx</linkerLibLibItem>
             <linkerLibLibItem>opencv_core</linkerLibLibItem>
             <linkerLibLibItem>opencv_highgui</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tron_coms"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tron_coms"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_coms.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../tron_control"
                             CT="2"
@@ -142,54 +150,6 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../tron_util"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tron_util"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_util.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../tron_wire"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tron_wire"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../tron_wire2"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tron_wire2"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_wire2.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../tron_coms"
-                            CT="2"
-                            CN="Debug"
-                            AC="true"
-                            BL="true"
-                            WD="../tron_coms"
-                            BC="${MAKE}  -f Makefile CONF=Debug"
-                            CC="${MAKE}  -f Makefile CONF=Debug clean"
-                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_coms.${CND_DLIB_EXT}">
-              </makeArtifact>
-            </linkerLibProjectItem>
-            <linkerLibProjectItem>
               <makeArtifact PL="../tron_topics"
                             CT="2"
                             CN="Debug"
@@ -199,6 +159,18 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_topics.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tron_util"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tron_util"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_util.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibLibItem>ignition-transport3</linkerLibLibItem>
@@ -234,10 +206,6 @@
       <item path="src/TestUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestUtil.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/TestWire.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/TestWire.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -289,10 +257,6 @@
       <item path="src/TestUtil.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestUtil.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/TestWire.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/TestWire.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>

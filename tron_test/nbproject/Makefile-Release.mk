@@ -42,7 +42,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/TestSignals.o \
 	${OBJECTDIR}/src/TestTools.o \
 	${OBJECTDIR}/src/TestUtil.o \
-	${OBJECTDIR}/src/TestWire.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -104,11 +103,6 @@ ${OBJECTDIR}/src/TestUtil.o: src/TestUtil.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestUtil.o src/TestUtil.cpp
-
-${OBJECTDIR}/src/TestWire.o: src/TestWire.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestWire.o src/TestWire.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

@@ -8,6 +8,7 @@
 #include "TestComs.h"
 #include "tron/coms/ComsReceiver.h"
 #include "tron/coms/ComsSender.h"
+#include "tron/coms/ChannelReader.h"
 #include "tron/topics/RobotNodes.h"
 #include "tron/topics/Topic.h"
 
@@ -35,25 +36,27 @@ void TestComs::makeTest()
     oTopic.setNodeName("arm");
     oTopic.setSectionName("joints");
     oTopic.setChannelName("hs");
-    oTopic.build();
-    // test communication (reader and writer)
+    oTopic.buildName();
+    // set communication reader and writer
     if (oTopic.isBuilt())
     {
         oComsReceiver.addChannel(oTopic.getTopicName());
         oComsSender.addChannel(oTopic.getTopicName());  
 
-        std::string message = "hola";
-        oComsSender.getChannel(0)->sendMessage(message);
+        oComsReceiver.connect();
     }
+    else
+        return;
+
+    oComsSender.getChannel(0)->sendMessage("hola");
     
     usleep(1000000);                  
         
-    std::vector<std::string> listMessages;
-    oComsReceiver.getChannel(0)->getMessages(listMessages);
-    
-    if (!listMessages.empty())
+    tron::ChannelReader* pChannelReader = oComsReceiver.getChannel(0);
+        
+    if (pChannelReader->hasNew())
     {
-        LOG4CXX_INFO(logger, "testComs: received message = " + listMessages.at(0));            
+        LOG4CXX_INFO(logger, "testComs: received message = " + pChannelReader->getMessage());            
     }
     
     LOG4CXX_INFO(logger, modName + ": test end \n");

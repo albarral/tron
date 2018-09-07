@@ -15,7 +15,6 @@
 #include "TestSignals.h"
 #include "TestUtil.h"
 #include "TestTools.h"
-#include "TestWire.h"
 
 // obtains user's home path
 std::string getHomePath();
@@ -52,9 +51,6 @@ int main(int argc, char** argv)
     //    TestTool oTestTool;
 //    oTestTool.makeTest();
     
-//    TestWire oTestWire;
-//    oTestWire.makeTest();
-
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     
