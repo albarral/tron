@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/control/Sensor2Led.o \
+	${OBJECTDIR}/src/tron/control/brooks/ControlS.o \
 	${OBJECTDIR}/src/tron/control/brooks/control.o \
 	${OBJECTDIR}/src/tron/control/brooks/control1.o \
 	${OBJECTDIR}/src/tron/control/brooks/control2.o \
@@ -78,6 +79,11 @@ ${OBJECTDIR}/src/tron/control/Sensor2Led.o: src/tron/control/Sensor2Led.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/control
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/control/Sensor2Led.o src/tron/control/Sensor2Led.cpp
+
+${OBJECTDIR}/src/tron/control/brooks/ControlS.o: src/tron/control/brooks/ControlS.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/control/brooks
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/control/brooks/ControlS.o src/tron/control/brooks/ControlS.cpp
 
 ${OBJECTDIR}/src/tron/control/brooks/control.o: src/tron/control/brooks/control.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/control/brooks
