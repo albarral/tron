@@ -118,13 +118,10 @@ bool DadyCommander::checkValidCommand(std::string entry)
     if (listTokens.size() > eCOMMAND_VALUE)
     {
         value = listTokens.at(eCOMMAND_VALUE);  
-        int ival;
-        float fval;
-        // check its validity (a numeric form)
-        if (StringUtil::convert2Integer(value, ival) || StringUtil::convert2Float(value, fval))
+        if (!value.empty())
             bwellProcessed = true;
         else
-            LOG4CXX_WARN(logger, "DadyCommander: invalid value (not a number) " + value);            
+            LOG4CXX_WARN(logger, "DadyCommander: invalid value " + value);            
     }
     else
         LOG4CXX_WARN(logger, "DadyCommander: missing value");            

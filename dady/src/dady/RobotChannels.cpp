@@ -7,6 +7,7 @@
 #include "tron/topics/RobotNodes.h"
 #include "tron/topics/Topic.h"
 #include "amy/interface2/ArmNode.h"
+#include "roly/interface2/BodyNode.h"
 
 using namespace log4cxx;
 
@@ -21,7 +22,7 @@ LoggerPtr RobotChannels::logger(Logger::getLogger("dady"));
 int RobotChannels::getCode4NodeSection(int node, std::string sectionName)
 {
     // get specified node
-    Node* pNode = getNode(node);
+    Node* pNode = createRobotNode(node);
     // if found
     if (pNode != nullptr)
     {
@@ -39,7 +40,7 @@ int RobotChannels::getCode4NodeSection(int node, std::string sectionName)
 int RobotChannels::getCode4NodeSectionChannel(int node, int section, std::string channelName)
 {        
     // get specified node
-    Node* pNode = getNode(node);
+    Node* pNode = createRobotNode(node);
     // if found
     if (pNode != nullptr)
     {
@@ -58,7 +59,7 @@ int RobotChannels::getCode4NodeSectionChannel(int node, int section, std::string
 std::string RobotChannels::showAvailableSections4Node(int node)
 {
     // get specified node
-    Node* pNode = getNode(node);
+    Node* pNode = createRobotNode(node);
     // if found
     if (pNode != nullptr)
     {
@@ -75,7 +76,7 @@ std::string RobotChannels::showAvailableSections4Node(int node)
 std::string RobotChannels::showAvailableChannels4NodeSection(int node, int section)
 {
     // get specified node
-    Node* pNode = getNode(node);
+    Node* pNode = createRobotNode(node);
     // if found
     if (pNode != nullptr)
     {
@@ -94,7 +95,7 @@ std::string RobotChannels::showAvailableChannels4NodeSection(int node, int secti
 std::string RobotChannels::getTopic4NodeSectionChannel(int node, int section, int channel)
 {
     // get specified node
-    Node* pNode = getNode(node);
+    Node* pNode = createRobotNode(node);
     // if found
     if (pNode != nullptr)
     {
@@ -113,7 +114,7 @@ std::string RobotChannels::getTopic4NodeSectionChannel(int node, int section, in
         return "";  
 }
 
-Node* RobotChannels::getNode(int node)
+Node* RobotChannels::createRobotNode(int node)
 {
     switch (node)
     {
@@ -122,8 +123,7 @@ Node* RobotChannels::getNode(int node)
             break;
             
         case RobotNodes::eNODE_BODYROLE: 
-            LOG4CXX_WARN(logger, "RobotChannels: missing body node " << node);                
-            return nullptr;
+            return new roly::BodyNode2();
             break;
         
         case RobotNodes::eNODE_VISION: 

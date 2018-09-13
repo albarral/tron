@@ -36,8 +36,9 @@ namespace tron
     // get topic name (of control type) for specified node-section-channel
     static std::string getTopic4NodeSectionChannel(int node, int section, int channel);     
 
+ private:
     // get pointer to specified node
-    static Node* getNode(int node);
+    static Node* createRobotNode(int node);
 };
 }
 #endif
