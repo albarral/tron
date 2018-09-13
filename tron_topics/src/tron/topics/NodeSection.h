@@ -31,6 +31,8 @@ namespace tron
     // gets code for given channel name (returns -1 if unknown)
     int getChannel4Name(std::string name);
      
+    void addChannel(int code, std::string name);
+    
     // return node section description
     std::string toString();    
 };

@@ -32,6 +32,11 @@ int NodeSection::getChannel4Name(std::string name)
         return -1;
 }
 
+void NodeSection::addChannel(int code, std::string name)
+{
+    oChannelsMap.addCode(code, name);
+}
+
 std::string NodeSection::toString()
 {
     return "NodeSection: " + std::to_string(ID) + ", channels:\n" + oChannelsMap.toString();
