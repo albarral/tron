@@ -9,12 +9,12 @@ namespace tron
 {
 ControlMagnitude::ControlMagnitude()
 {
+    // normal default mode
+    setNormal();
     // default values
     setValues (1.0, 5.0, 25.0);    
     //default changes
     setChanges(1.0, 2.0);  
-    // normal default mode
-    setMode(ControlMagnitude::eMAG_NORMAL);
 }
 
 void ControlMagnitude::setValues(float lowValue, float normalValue, float highValue)
@@ -22,6 +22,20 @@ void ControlMagnitude::setValues(float lowValue, float normalValue, float highVa
     low = lowValue;
     normal = normalValue;  
     high = highValue;
+    
+    // also update value depending on the mode (skip it if manual mode)
+    switch (mode)
+    {
+        case ControlMagnitude::eMAG_LOW:
+            value = low;
+            break;
+        case ControlMagnitude::eMAG_NORMAL:
+            value = normal;
+            break;
+        case ControlMagnitude::eMAG_HIGH:
+            value = high;
+            break;
+    }
 }
 
 void ControlMagnitude::setChanges(float additiveChange, float proportionalChange)
@@ -34,31 +48,22 @@ void ControlMagnitude::setChanges(float additiveChange, float proportionalChange
         xchange = proportionalChange;
 }
 
-bool ControlMagnitude::setMode(int val)
+void ControlMagnitude::setLow()
 {
-    switch (val)
-    {
-        case ControlMagnitude::eMAG_LOW:
-            value = low;
-            mode = val;
-            break;
-            
-        case ControlMagnitude::eMAG_NORMAL:
-            value = normal;
-            mode = val;
-            break;
+    value = low;
+    mode = ControlMagnitude::eMAG_LOW;
+}
 
-        case ControlMagnitude::eMAG_HIGH:
-            value = high;
-            mode = val;
-            break;
-            
-        default:
-            // if invalid mode, return false
-            return false;
-    }
-    
-    return true;
+void ControlMagnitude::setNormal()
+{
+    value = normal;
+    mode = ControlMagnitude::eMAG_NORMAL;
+}
+
+void ControlMagnitude::setHigh()
+{
+    value = high;
+    mode = ControlMagnitude::eMAG_HIGH;
 }
 
 void ControlMagnitude::increase()

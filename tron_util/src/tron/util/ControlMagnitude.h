@@ -44,9 +44,12 @@ public:
     int getMode() {return mode;};    
     float getValue() {return value;};
     
-    // changes the magnitude mode (low, normal or high) causing the magnitude value to change accordingly
-    // returns false if invalid mode requested
-    bool setMode(int val);
+    // change magnitude to low value
+    void setLow();
+    // change magnitude to normal value
+    void setNormal();
+    // change magnitude to high value
+    void setHigh();
 
     // additive increase of the value (a prefixed amount)
     void increase();
