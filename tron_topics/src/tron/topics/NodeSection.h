@@ -25,6 +25,7 @@ namespace tron
      NodeSection(int id);
      
      int getID() {return ID;}
+     int getNumChannels() {return oChannelsMap.getSize();};
 
     // gets name for given section channel
     std::string getName4Channel(int channel);

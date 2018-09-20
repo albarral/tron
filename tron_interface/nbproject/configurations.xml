@@ -17,6 +17,16 @@
         <itemPath>src/tron/interface/ExtraClient.h</itemPath>
         <itemPath>src/tron/interface/ExtraServer.cpp</itemPath>
         <itemPath>src/tron/interface/ExtraServer.h</itemPath>
+        <itemPath>src/tron/interface/SectionClient.cpp</itemPath>
+        <itemPath>src/tron/interface/SectionClient.h</itemPath>
+        <itemPath>src/tron/interface/SectionCommunicator.cpp</itemPath>
+        <itemPath>src/tron/interface/SectionCommunicator.h</itemPath>
+        <itemPath>src/tron/interface/SectionInformer.cpp</itemPath>
+        <itemPath>src/tron/interface/SectionInformer.h</itemPath>
+        <itemPath>src/tron/interface/SectionListener.cpp</itemPath>
+        <itemPath>src/tron/interface/SectionListener.h</itemPath>
+        <itemPath>src/tron/interface/SectionServer.cpp</itemPath>
+        <itemPath>src/tron/interface/SectionServer.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -104,6 +114,50 @@
       </item>
       <item path="src/tron/interface/ExtraServer.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/interface/SectionClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionCommunicator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionCommunicator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionInformer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionInformer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionListener.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionListener.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionServer.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -132,6 +186,50 @@
       <item path="src/tron/interface/ExtraServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/interface/ExtraServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionCommunicator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionCommunicator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionInformer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionInformer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionListener.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionListener.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/tron/interface/SectionServer.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
