@@ -8,6 +8,8 @@
 
 #include <string>
 
+#include "tron/topics/Node.h"
+
 namespace tron
 {
 // A topic is the name associated to an IPC communications channel.
@@ -29,12 +31,9 @@ namespace tron
     int node;       
     int section;    
     int channel;   
-    int type;                       // topic type (one of eTypes)
-    std::string nodeName;       
-    std::string sectionName;    
-    std::string channelName;  
+    int type;                 // topic type (one of eTypes)
+    std::string name;   // topic name (automatically built)
     bool built;
-    std::string topicName;              // topic name (automatically built)
      
  public:     
     Topic();     
@@ -45,24 +44,14 @@ namespace tron
     int getSection() {return section;};
     int getChannel() {return channel;};
     int getType() {return type;};
-    
-    std::string getNodeName() {return nodeName;};
-    std::string getSectionName() {return sectionName;};
-    std::string getChannelName() {return channelName;};
-    void setNodeName(std::string value) {nodeName = value;};
-    void setSectionName(std::string value) {sectionName = value;};
-    void setChannelName(std::string value) {channelName = value;};
-    
-    // build topic name
-    void buildName();
+    std::string getTopicName() {return name;};
     bool isBuilt() {return built;};
-    std::string getTopicName() {return topicName;};
+        
+    // build topic name for given node
+    std::string build4Node(Node& oNode);
 
  private:
     std::string getTypeName(int type);
-
-    //  return topic description
-//    std::string toString();
 };
 }
 #endif

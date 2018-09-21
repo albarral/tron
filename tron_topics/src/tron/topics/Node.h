@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "tron/topics/NodeSection.h"
-#include "tron/topics/Topic.h"
 #include "tron/util/CodeMap.h"
 
 namespace tron
@@ -20,7 +19,8 @@ namespace tron
  class Node
 {        
  protected:
-     int ID;     
+     int ID;                    
+     std::string name;
      CodeMap oSectionsMap;  // node sections names map
      std::vector<NodeSection> listNodeSections; // list of node sections
      
@@ -29,6 +29,7 @@ namespace tron
      ~Node();
      
      int getID() {return ID;}
+     std::string getName() {return name;};
 
     // gets name for given section
     std::string getName4Section(int section);
@@ -37,9 +38,6 @@ namespace tron
      
     // get node section with given code
     NodeSection* getSection(int sectionCode);
-
-    // build given topic (build topic name from its node/section/channel/type codes)
-    bool buildTopicName(tron::Topic & oTopic);
 
     // return node description
     virtual std::string toString();    

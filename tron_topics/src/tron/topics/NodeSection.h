@@ -8,7 +8,6 @@
 
 #include <string>
 
-#include "tron/topics/Topic.h"
 #include "tron/util/CodeMap.h"
 
 namespace tron

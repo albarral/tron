@@ -13,6 +13,9 @@ namespace tron
 Node::Node(int id)
 {
     ID = id;
+    // set proper node name        
+    tron::RobotNodes oRobotNodes;
+    name = oRobotNodes.getName4Node(ID);
 }
 
 Node::~Node()
@@ -50,28 +53,6 @@ NodeSection* Node::getSection(int sectionCode)
     catch (const std::out_of_range& oor) 
     {
         return nullptr;
-    }	    
-}
-
-bool Node::buildTopicName(tron::Topic & oTopic)
-{
-    tron::RobotNodes oRobotNodes;
-    // get node name
-    oTopic.setNodeName(oRobotNodes.getName4Node(oTopic.getNode()));
-    // get section name
-    oTopic.setSectionName(getName4Section(oTopic.getSection()));    
-    // get channel name
-    try 
-    {
-        NodeSection& oNodeSection = listNodeSections.at(oTopic.getSection());
-        oTopic.setChannelName(oNodeSection.getName4Channel(oTopic.getChannel())); 
-        oTopic.buildName();                
-        return oTopic.isBuilt();
-    }
-    //  return false if section not found
-    catch (const std::out_of_range& oor) 
-    {
-        return false;
     }	    
 }
 

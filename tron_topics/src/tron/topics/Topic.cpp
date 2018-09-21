@@ -10,7 +10,7 @@ namespace tron
 Topic::Topic()
 {
     type = -1;
-    topicName = "";
+    name = "";
     built = false;
 }
 
@@ -23,13 +23,31 @@ void Topic::set(int node, int section, int channel, int type)
         this->type = type;
 }
 
-void Topic::buildName()
+std::string Topic::build4Node(Node& oNode)
 {
-    if (type != -1)
+    std::string nodeName = oNode.getName();       
+    std::string sectionName = oNode.getName4Section(section);  
+    std::string typeName = getTypeName(type); 
+    std::string channelName = "";  
+    // get channel name from proper node section
+    NodeSection* pNodeSection = oNode.getSection(section);
+    if (pNodeSection != nullptr)
+        channelName = pNodeSection->getName4Channel(channel);        
+      
+    // if all elements ok, build name
+    if (!nodeName.empty() && !sectionName.empty() && !channelName.empty() && !typeName.empty())
     {
-        topicName = nodeName + "/" + sectionName + "/" + Topic::getTypeName(type) + "/" + channelName;
+        name = nodeName + "/" + sectionName + "/" + typeName + "/" + channelName;
         built = true;
     }
+    // otherwise leave empty    
+    else
+    {
+        name = "";
+        built = false;
+    }
+    
+    return name;
 }
 
 std::string Topic::getTypeName(int type)
@@ -43,7 +61,7 @@ std::string Topic::getTypeName(int type)
             return Topic::SENSOR_TYPE;
 
         default: 
-            return "undefined";
+            return "";
     }
 }
 
