@@ -102,10 +102,8 @@ std::string RobotChannels::getTopic4NodeSectionChannel(int node, int section, in
         // create proper topic
         Topic oTopic;
         oTopic.set(node, section, channel, Topic::eTYPE_CONTROL);
-        std::string topicName = "";
         // try building control topic for specified node-section-channel
-        if (pNode->buildTopicName(oTopic))
-            topicName = oTopic.getTopicName();        
+        std::string topicName = oTopic.build4Node(*pNode);
         delete(pNode);
         return topicName;
     }
