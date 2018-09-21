@@ -8,20 +8,17 @@
 
 #include <log4cxx/logger.h>
 
-#include "tron/coms/ComsSender.h"
+#include "tron/interface/SectionClient.h"
 #include "tron/coms/ChannelWriter.h"
 #include "tron/topics/Node.h"
 
 namespace tron
 {
 // Extra section client for control of robot nodes.
-// Uses ComsSender (from tron_coms lib)  for communications
-class ExtraClient
+class ExtraClient  : public tron::SectionClient
 {            
 private:
-    static log4cxx::LoggerPtr logger;
-    bool btuned;            // client tuned to a node
-    tron::ComsSender oComsSender;   // communications object
+    static log4cxx::LoggerPtr logger2;
     tron::ChannelWriter* pStopChannel;    // channel writer for stop requests
     tron::ChannelWriter* pEndChannel;    // channel writer for end requests
 
@@ -29,9 +26,8 @@ public:
     ExtraClient();
     //~ExtraClient();
 
-    bool isTuned() {return btuned;};
-    // tune client to given node & section
-    bool tune4Node(Node& oNode, int section);
+    // init communicator for given node & section
+    bool init(Node& oNode, int section);
 
     // ask node to stop (emergency stop)
     bool stopNode();

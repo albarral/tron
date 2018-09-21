@@ -33,7 +33,7 @@ public:
     
 protected:    
     // tune communicator to given node & section
-    bool tune4Node(int node, int section, Node& oNode);
+    bool tune4Node(Node& oNode, int section);
     // add channel for specified topic
     virtual void addChannel(std::string topic) = 0;
     // get all channels connected

@@ -26,26 +26,28 @@ SectionCommunicator::SectionCommunicator(int topicType)
 //{    
 //}
 
-bool SectionCommunicator::tune4Node(int node, int section, Node& oNode)
+bool SectionCommunicator::tune4Node(Node& oNode, int section)
 {
     // set topics 
-    this->node = node;
+    node = oNode.getID();
     this->section = section;
     
     Topic oTopic;
+    // get specific node section
     NodeSection* pNodeSection = oNode.getSection(section);
     if (pNodeSection != nullptr)
     {
+        // for each channel in the section
         int numChannels = pNodeSection->getNumChannels();
-        // for each channel in section
         for (int channel=0; channel<numChannels; channel++)
         {
-            // set its topic 
+            // set topic for that channel
             oTopic.set(node, section, channel, topicType);
-            // and add a channel reader for it
-            if (oNode.buildTopicName(oTopic))
+            std::string topicName = oTopic.build4Node(oNode);
+            // and add a reader for it
+            if (!topicName.empty())
             {
-                addChannel(oTopic.getTopicName());      
+                addChannel(topicName);      
                 btuned = true;
             }
             // break if wrong topic

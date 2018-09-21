@@ -8,20 +8,17 @@
 
 #include <log4cxx/logger.h>
 
-#include "tron/coms/ComsReceiver.h"
+#include "tron/interface/SectionServer.h"
 #include "tron/coms/ChannelReader.h"
 #include "tron/topics/Node.h"
 
 namespace tron
 {
 // Extra section server for control of robot nodes.
-// Uses ComsReceiver (from tron_coms lib) for communications    
-class ExtraServer
+class ExtraServer : public SectionServer
 {            
 private:
-    static log4cxx::LoggerPtr logger;
-    bool btuned;            // server tuned to a node
-    tron::ComsReceiver oComsReceiver;  // communications object     
+    static log4cxx::LoggerPtr logger2;
     tron::ChannelReader* pStopChannel;    // channel reader for stop commands
     tron::ChannelReader* pEndChannel;    // channel reader for end commands
 
@@ -29,9 +26,8 @@ public:
     ExtraServer();
     //~ExtraServer();
 
-    bool isTuned() {return btuned;};
-    // tune server to given node & section
-    bool tune4Node(Node& oNode, int section);
+    // init communicator for given node & section
+    bool init(Node& oNode, int section);
 
     // get received stop command
     bool getStop();
