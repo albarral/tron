@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/util/Code.o \
 	${OBJECTDIR}/src/tron/util/CodeInterpreter.o \
 	${OBJECTDIR}/src/tron/util/CodeMap.o \
+	${OBJECTDIR}/src/tron/util/ControlMagnitude.o \
 	${OBJECTDIR}/src/tron/util/Environment.o \
 	${OBJECTDIR}/src/tron/util/IntegerQueue.o \
 	${OBJECTDIR}/src/tron/util/MessageQueue.o \
@@ -93,6 +94,11 @@ ${OBJECTDIR}/src/tron/util/CodeMap.o: src/tron/util/CodeMap.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/util
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/CodeMap.o src/tron/util/CodeMap.cpp
+
+${OBJECTDIR}/src/tron/util/ControlMagnitude.o: src/tron/util/ControlMagnitude.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/util
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/util/ControlMagnitude.o src/tron/util/ControlMagnitude.cpp
 
 ${OBJECTDIR}/src/tron/util/Environment.o: src/tron/util/Environment.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/util

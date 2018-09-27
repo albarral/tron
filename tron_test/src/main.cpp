@@ -9,12 +9,12 @@
 #include <log4cxx/xml/domconfigurator.h>
 
 #include "TestControl.h"
+#include "TestComs.h"
 #include "TestDisplay.h"
 #include "TestMath.h"
 #include "TestSignals.h"
 #include "TestUtil.h"
 #include "TestTools.h"
-#include "TestWire.h"
 
 // obtains user's home path
 std::string getHomePath();
@@ -33,7 +33,10 @@ int main(int argc, char** argv)
 //    TestControl oTestControl;
 //    oTestControl.makeTest();
 
-//    TestDisplay oTestDisplay;
+    TestComs oTestComs;
+    oTestComs.makeTest();
+
+    //    TestDisplay oTestDisplay;
 //    oTestDisplay.makeTest();
 
 //    TestMath oTestMath;
@@ -42,15 +45,12 @@ int main(int argc, char** argv)
 //    TestSignals oTestSignals;
 //    oTestSignals.makeTest();
     
-    TestUtil oTestUtil;
-    oTestUtil.makeTest();
+//    TestUtil oTestUtil;
+//    oTestUtil.makeTest();
 
     //    TestTool oTestTool;
 //    oTestTool.makeTest();
     
-//    TestWire oTestWire;
-//    oTestWire.makeTest();
-
     
     LOG4CXX_INFO(logger, "tron test FINISHED\n");
     

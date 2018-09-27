@@ -97,7 +97,7 @@ void TestUtil::testCodeInterpreter()
     listCodes.push_back(oCode3);
     
     tron::CodeInterpreter oCodeInterpreter;
-    oCodeInterpreter.setKnowledge(listCodes);
+    oCodeInterpreter.addKnowledge(listCodes);
     
     LOG4CXX_INFO(logger, oCodeInterpreter.describeKnowledge());   
     
