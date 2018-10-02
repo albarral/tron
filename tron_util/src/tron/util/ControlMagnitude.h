@@ -36,20 +36,29 @@ private:
 public:  
     ControlMagnitude();
     
-    // sets the low, normal and high values
-    void setValues(float lowValue, float normalValue, float highValue);        
+     // set low value
+    void setLow(float value);
+    // set normal value
+    void setNormal(float value);
+    // set high value
+    void setHigh(float value);
+   // sets the low, normal and high values
+    void setValues(float low, float normal, float high);        
     // sets the additive and proportional changes
     void setChanges(float additiveChange, float proportionalChange);
 
     int getMode() {return mode;};    
     float getValue() {return value;};
+    float getLow() {return low;};
+    float getNormal() {return normal;};
+    float getHigh() {return high;};
     
     // change magnitude to low value
-    void setLow();
+    void set2Low();
     // change magnitude to normal value
-    void setNormal();
+    void set2Normal();
     // change magnitude to high value
-    void setHigh();
+    void set2High();
 
     // additive increase of the value (a prefixed amount)
     void increase();
@@ -59,6 +68,10 @@ public:
     void increaseX();
     // proportional decrease of the value (a prefixed amount)
     void decreaseX();
+    
+private: 
+    // set specified mode (changing magnitude to proper value)
+    void setMode(int mode);
 };
 }
 #endif

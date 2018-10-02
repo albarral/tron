@@ -36,6 +36,8 @@ public:
     // find code with given name, returns false if unknown
     bool getCode4Name(std::string name, int& code);
     
+    std::map<int, std::string>& getMapCodes() {return mapCodes;};
+    
     //  return description of code map
     virtual std::string toString();
 };

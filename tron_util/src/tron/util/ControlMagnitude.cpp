@@ -10,32 +10,41 @@ namespace tron
 ControlMagnitude::ControlMagnitude()
 {
     // normal default mode
-    setNormal();
+    set2Normal();
     // default values
-    setValues (1.0, 5.0, 25.0);    
+    setValues(1.0, 5.0, 25.0);    
     //default changes
     setChanges(1.0, 2.0);  
 }
 
-void ControlMagnitude::setValues(float lowValue, float normalValue, float highValue)
+void ControlMagnitude::setLow(float value) 
 {
-    low = lowValue;
-    normal = normalValue;  
-    high = highValue;
-    
-    // also update value depending on the mode (skip it if manual mode)
-    switch (mode)
-    {
-        case ControlMagnitude::eMAG_LOW:
-            value = low;
-            break;
-        case ControlMagnitude::eMAG_NORMAL:
-            value = normal;
-            break;
-        case ControlMagnitude::eMAG_HIGH:
-            value = high;
-            break;
-    }
+    low = value;
+    // update magnitude value after preset changed
+    setMode(mode);
+}
+
+void ControlMagnitude::setNormal(float value) 
+{
+    normal = value;
+    // update magnitude value after preset changed
+    setMode(mode);
+}
+
+void ControlMagnitude::setHigh(float value) 
+{
+    high = value;
+    // update magnitude value after preset changed
+    setMode(mode);
+}
+
+void ControlMagnitude::setValues(float low, float normal, float high)
+{
+    this->low = low;
+    this->normal = normal;  
+    this->high = high;
+    // update magnitude value after presets changed
+    setMode(mode);
 }
 
 void ControlMagnitude::setChanges(float additiveChange, float proportionalChange)
@@ -48,22 +57,41 @@ void ControlMagnitude::setChanges(float additiveChange, float proportionalChange
         xchange = proportionalChange;
 }
 
-void ControlMagnitude::setLow()
+void ControlMagnitude::setMode(int mode)
 {
-    value = low;
-    mode = ControlMagnitude::eMAG_LOW;
+    // check if low, normal or high mode
+    if (mode >= 0 && mode < ControlMagnitude::eMAG_MANUAL)
+    {
+        this->mode = mode;
+        // also update value depending on the mode (skip it if manual mode)
+        switch (mode)
+        {
+            case ControlMagnitude::eMAG_LOW:
+                value = low;
+                break;
+            case ControlMagnitude::eMAG_NORMAL:
+                value = normal;
+                break;
+            case ControlMagnitude::eMAG_HIGH:
+                value = high;
+                break;
+        }        
+    }
 }
 
-void ControlMagnitude::setNormal()
+void ControlMagnitude::set2Low()
 {
-    value = normal;
-    mode = ControlMagnitude::eMAG_NORMAL;
+    setMode(ControlMagnitude::eMAG_LOW);
 }
 
-void ControlMagnitude::setHigh()
+void ControlMagnitude::set2Normal()
 {
-    value = high;
-    mode = ControlMagnitude::eMAG_HIGH;
+    setMode(ControlMagnitude::eMAG_NORMAL);
+}
+
+void ControlMagnitude::set2High()
+{
+    setMode(ControlMagnitude::eMAG_HIGH);
 }
 
 void ControlMagnitude::increase()
