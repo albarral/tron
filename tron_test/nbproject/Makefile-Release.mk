@@ -35,10 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/TestBehaviour.o \
 	${OBJECTDIR}/src/TestComs.o \
 	${OBJECTDIR}/src/TestControl.o \
 	${OBJECTDIR}/src/TestDisplay.o \
 	${OBJECTDIR}/src/TestMath.o \
+	${OBJECTDIR}/src/TestNode.o \
 	${OBJECTDIR}/src/TestSignals.o \
 	${OBJECTDIR}/src/TestTools.o \
 	${OBJECTDIR}/src/TestUtil.o \
@@ -69,6 +71,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/src/TestBehaviour.o: src/TestBehaviour.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestBehaviour.o src/TestBehaviour.cpp
+
 ${OBJECTDIR}/src/TestComs.o: src/TestComs.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
@@ -88,6 +95,11 @@ ${OBJECTDIR}/src/TestMath.o: src/TestMath.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestMath.o src/TestMath.cpp
+
+${OBJECTDIR}/src/TestNode.o: src/TestNode.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestNode.o src/TestNode.cpp
 
 ${OBJECTDIR}/src/TestSignals.o: src/TestSignals.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

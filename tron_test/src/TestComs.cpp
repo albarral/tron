@@ -11,6 +11,7 @@
 #include "tron/coms/ChannelReader.h"
 #include "tron/topics/RobotNodes.h"
 #include "tron/topics/Topic.h"
+#include "TestNode.h"
 
 using namespace log4cxx;
 
@@ -31,12 +32,11 @@ void TestComs::makeTest()
     
     // define coms topic
     tron::Topic oTopic;
+    TestNode oTestNode;
     
-    oTopic.set(1, 2, 3, tron::Topic::eTYPE_CONTROL);
-    oTopic.setNodeName("arm");
-    oTopic.setSectionName("joints");
-    oTopic.setChannelName("hs");
-    oTopic.buildName();
+    oTopic.set(tron::RobotNodes::eNODE_ARM, TestNode::eSECTION_JOINTS, TestNode::eJOINTS_VS, tron::Topic::eTYPE_CONTROL);
+    oTopic.build4Node(oTestNode);
+    
     // set communication reader and writer
     if (oTopic.isBuilt())
     {

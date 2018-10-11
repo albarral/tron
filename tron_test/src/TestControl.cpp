@@ -3,6 +3,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <unistd.h>
+
 #include "TestControl.h"
 
 #include "tron/control/brooks/control2.h"
@@ -10,6 +12,8 @@
 #include "tron/control/brooks/sensor2.h"
 #include "tron/control/brooks/sensor3.h"
 #include "tron/control/operators/ControlAdder3.h"
+#include "tron/control/Module4.h"
+#include "TestBehaviour.h"
 
 using namespace log4cxx;
 
@@ -25,9 +29,10 @@ void TestControl::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testControls();
-    testSensors();
-    testAdder();
+//    testControls();
+//    testSensors();
+//    testAdder();
+    testModule4();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -103,4 +108,22 @@ void TestControl::testAdder()
         value = CO_ADDER.getValue();               
     LOG4CXX_INFO(logger, modName + ": adder value = " << value);                            
     
+}
+
+void TestControl::testModule4()
+{
+    LOG4CXX_INFO(logger, modName + ": testModule4 ...");
+    
+    TestBehaviour oTestBehaviour;
+    
+    tron::Module4 oModule;
+    oModule.setBehaviour(oTestBehaviour);
+    oModule.setFrequency(5.0);
+    
+    oModule.on();
+    
+    usleep(7*1000000);
+    
+    oModule.off();
+    oModule.wait();    
 }

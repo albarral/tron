@@ -26,5 +26,6 @@ private:
     void testControls();
     void testSensors();
     void testAdder();
+    void testModule4();
 };
 #endif
