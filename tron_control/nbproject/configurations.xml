@@ -39,6 +39,10 @@
           <itemPath>src/tron/control/operators/ControlAdder3.cpp</itemPath>
           <itemPath>src/tron/control/operators/ControlAdder3.h</itemPath>
         </logicalFolder>
+        <itemPath>src/tron/control/Behaviour.cpp</itemPath>
+        <itemPath>src/tron/control/Behaviour.h</itemPath>
+        <itemPath>src/tron/control/Module4.cpp</itemPath>
+        <itemPath>src/tron/control/Module4.h</itemPath>
         <itemPath>src/tron/control/Sensor2Led.cpp</itemPath>
         <itemPath>src/tron/control/Sensor2Led.h</itemPath>
         <itemPath>src/tron/control/module.cpp</itemPath>
@@ -80,6 +84,14 @@
           </incDir>
         </ccTool>
       </compileType>
+      <item path="src/tron/control/Behaviour.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/control/Behaviour.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/control/Module4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/control/Module4.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/control/Sensor2Led.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/control/Sensor2Led.h" ex="false" tool="3" flavor2="0">
@@ -194,6 +206,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/tron/control/Behaviour.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/control/Behaviour.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/control/Module4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/control/Module4.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/control/Sensor2Led.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/control/Sensor2Led.h" ex="false" tool="3" flavor2="0">

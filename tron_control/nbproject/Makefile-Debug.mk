@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/tron/control/Behaviour.o \
+	${OBJECTDIR}/src/tron/control/Module4.o \
 	${OBJECTDIR}/src/tron/control/Sensor2Led.o \
 	${OBJECTDIR}/src/tron/control/brooks/ControlS.o \
 	${OBJECTDIR}/src/tron/control/brooks/control.o \
@@ -74,6 +76,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_control.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_control.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/tron/control/Behaviour.o: src/tron/control/Behaviour.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/control
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/control/Behaviour.o src/tron/control/Behaviour.cpp
+
+${OBJECTDIR}/src/tron/control/Module4.o: src/tron/control/Module4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/control
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/control/Module4.o src/tron/control/Module4.cpp
 
 ${OBJECTDIR}/src/tron/control/Sensor2Led.o: src/tron/control/Sensor2Led.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/control
