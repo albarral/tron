@@ -17,6 +17,7 @@ class Behaviour
 {
 protected:
         std::string name;   // behaviour name
+private:        
         int state;             // module's present state
         int prevState;       // module's previous state
         bool binhibited;        // inhibited flag (when true no work is done by the methods)
@@ -50,19 +51,17 @@ public:
         void addStateName(std::string name);
 
         // TO IMPLEMENT BY REAL BEHAVIOURS ...        
-        // things to do when the behavior begins 
+        // things to do when the behavior starts
         virtual void start() = 0;
         // behavior sense phase
         virtual void sense() = 0;            
-        // behavior think phase
-        virtual void think() = 0;            
         // behavior actuate phase
         virtual void actuate() = 0;            
         // things to do when the behavior ends
         virtual void end() = 0;                       
 
-        // done after each loop iteration
-        void postLoop();
+        // done before each loop iteration
+        void preLoop();
 };
 }    
 #endif

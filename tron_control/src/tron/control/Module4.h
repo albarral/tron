@@ -32,6 +32,7 @@ private:
 
 public:
         Module4();
+        Module4(Behaviour& oBehaviour);
         //~Module4();
                         
         // gets the loop frequency 
@@ -42,6 +43,8 @@ public:
         bool isOn();
         // checks if off was requested
         bool isOffRequested();     
+        // get assigned behaviour
+        Behaviour* getBehaviour() {return pBehaviour;};
 
         // set the desired loop frequency (Hz)
         void setFrequency(float cps);

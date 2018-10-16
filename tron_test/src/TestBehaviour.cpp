@@ -47,9 +47,8 @@ void TestBehaviour::sense()
         setState(eSTATE_MULTIPLY);        
 }
 
-void TestBehaviour::think()
-{    
-
+void TestBehaviour::actuate()
+{
     if (isStateChanged())
         showState();
         
@@ -74,11 +73,7 @@ void TestBehaviour::think()
         if (isStateChanged())
             showState();
     }
-}
 
-
-void TestBehaviour::actuate()
-{
     LOG4CXX_INFO(logger, name << " num = " << number);          
 }
 

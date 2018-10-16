@@ -116,8 +116,8 @@ void TestControl::testModule4()
     
     TestBehaviour oTestBehaviour;
     
-    tron::Module4 oModule;
-    oModule.setBehaviour(oTestBehaviour);
+    tron::Module4 oModule(oTestBehaviour);
+    //oModule.setBehaviour(oTestBehaviour);
     oModule.setFrequency(5.0);
     
     oModule.on();

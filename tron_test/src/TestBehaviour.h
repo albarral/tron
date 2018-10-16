@@ -35,11 +35,10 @@ public:
         //~TestBehaviour();
                                
 private:       
+        // things to do when the behavior starts
         virtual void start() override;
         // behavior sense phase
         virtual void sense() override;            
-        // behavior think phase
-        virtual void think() override;            
         // behavior actuate phase
         virtual void actuate() override;            
         // things to do when the behavior ends

@@ -10,12 +10,17 @@
 namespace tron
 {
 // Constructor
-Module4::Module4 ()
+Module4::Module4()
 {    
     setFrequency(1.0);  // default frequency
     bON = false;
     boffRequested = false;
     pBehaviour = 0;    
+}
+
+Module4::Module4(Behaviour& oBehaviour) : Module4()
+{    
+    pBehaviour = &oBehaviour;
 }
 
 float Module4::getFrequency()
@@ -94,10 +99,11 @@ void Module4::run ()
     pBehaviour->start();
     while (!isOffRequested())
     {
+        pBehaviour->preLoop();
         pBehaviour->sense();
-        pBehaviour->think();
-        pBehaviour->actuate();
-        pBehaviour->postLoop();
+        // actuate if not inhibited
+        if (!pBehaviour->isInhibited())
+            pBehaviour->actuate();
         
         usleep(period);
     }

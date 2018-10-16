@@ -39,7 +39,7 @@ void Behaviour::addStateName(std::string name)
     listStateNames.push_back(name);
 }
 
-void Behaviour::postLoop()
+void Behaviour::preLoop()
 {
     // store previous state
     prevState = state;
