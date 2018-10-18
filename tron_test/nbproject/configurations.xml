@@ -19,6 +19,8 @@
         <itemPath>src/TestComs.h</itemPath>
         <itemPath>src/TestControl.cpp</itemPath>
         <itemPath>src/TestControl.h</itemPath>
+        <itemPath>src/TestDiagram.cpp</itemPath>
+        <itemPath>src/TestDiagram.h</itemPath>
         <itemPath>src/TestDisplay.cpp</itemPath>
         <itemPath>src/TestDisplay.h</itemPath>
         <itemPath>src/TestMath.cpp</itemPath>
@@ -64,6 +66,7 @@
             <pElem>src</pElem>
             <pElem>../tron_coms/src</pElem>
             <pElem>../tron_control/src</pElem>
+            <pElem>../tron_diagram/src</pElem>
             <pElem>../tron_display/src</pElem>
             <pElem>../tron_math/src</pElem>
             <pElem>../tron_signals/src</pElem>
@@ -103,6 +106,18 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_control.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tron_diagram"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tron_diagram"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_diagram.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
@@ -195,6 +210,10 @@
       </item>
       <item path="src/TestControl.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestDiagram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestDiagram.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestDisplay.h" ex="false" tool="3" flavor2="0">
@@ -253,6 +272,10 @@
       <item path="src/TestControl.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestControl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestDiagram.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestDiagram.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestDisplay.cpp" ex="false" tool="1" flavor2="0">
       </item>

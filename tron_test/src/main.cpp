@@ -10,6 +10,7 @@
 
 #include "TestControl.h"
 #include "TestComs.h"
+#include "TestDiagram.h"
 #include "TestDisplay.h"
 #include "TestMath.h"
 #include "TestSignals.h"
@@ -30,12 +31,15 @@ int main(int argc, char** argv)
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
     
-    TestControl oTestControl;
-    oTestControl.makeTest();
+//    TestControl oTestControl;
+//    oTestControl.makeTest();
 
 //    TestComs oTestComs;
 //    oTestComs.makeTest();
 
+    TestDiagram oTestDiagram;
+    oTestDiagram.makeTest();
+    
     //    TestDisplay oTestDisplay;
 //    oTestDisplay.makeTest();
 

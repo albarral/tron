@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/TestBehaviour.o \
 	${OBJECTDIR}/src/TestComs.o \
 	${OBJECTDIR}/src/TestControl.o \
+	${OBJECTDIR}/src/TestDiagram.o \
 	${OBJECTDIR}/src/TestDisplay.o \
 	${OBJECTDIR}/src/TestMath.o \
 	${OBJECTDIR}/src/TestNode.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/src/TestControl.o: src/TestControl.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestControl.o src/TestControl.cpp
+
+${OBJECTDIR}/src/TestDiagram.o: src/TestDiagram.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestDiagram.o src/TestDiagram.cpp
 
 ${OBJECTDIR}/src/TestDisplay.o: src/TestDisplay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
