@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/TestAI.o \
 	${OBJECTDIR}/src/TestBehaviour.o \
 	${OBJECTDIR}/src/TestComs.o \
 	${OBJECTDIR}/src/TestControl.o \
@@ -71,6 +72,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tron_test ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/src/TestAI.o: src/TestAI.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestAI.o src/TestAI.cpp
 
 ${OBJECTDIR}/src/TestBehaviour.o: src/TestBehaviour.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
