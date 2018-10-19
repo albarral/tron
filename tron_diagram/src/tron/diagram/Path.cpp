@@ -21,8 +21,8 @@ Path::~Path()
 
 bool Path::addTransition(Transition& oTransition)
 {
-    // if transition starts at path end
-    if (oTransition.getTransitionPk().getStateID() == endState)
+    // if transition starts at path end (or the path is empty)
+    if (oTransition.getTransitionPk().getStateID() == endState || listTransitions.empty())
     {
         // append transition
         listTransitions.push_back(oTransition);
@@ -45,7 +45,7 @@ bool Path::isConnected(Path& oPath2)
 
 bool Path::add(Path& oPath2)
 {
-    // allow only if given path is connected to this
+    // only add it if it starts on this path end 
     if (isConnected(oPath2))
     {
         // append transitions
@@ -56,7 +56,7 @@ bool Path::add(Path& oPath2)
         endState = oPath2.getEnd();
         return true;        
     }
-    // otherwise it can't be joined
+    // otherwise it can't be added
     else
         return false;    
 }
