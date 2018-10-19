@@ -12,26 +12,26 @@
 
 namespace tron 
 {
-// Class used to represent a diagram transition between two states (with state1 origin & state2 destination).
-// It includes a cost measure.
+// Class used to represent a diagram transition between two states (origin and end).
+// It features a cost measure of traversing the transition.
 class Transition
 {
 protected:
     TransitionPk transitionPk;      // transition identifier 
-    std::string name;
-    int state2ID;                         // ID of destination state  
+    std::string name;               // transition name
+    int endStateID;                   // end state ID
     float cost;                         // cost of the transition
   
 public:
     Transition();
-    Transition(TransitionPk& transitionPk, std::string name, int state2ID, float cost = 0.0);
+    Transition(TransitionPk& transitionPk, std::string name, int endState, float cost = 0.0);
         
     TransitionPk& getTransitionPk() {return transitionPk;};        
-    int getState2ID() {return state2ID;};    
+    int getEndStateID() {return endStateID;};    
     float getCost() {return cost;};
 
     void setTransitionPk(TransitionPk& transitionPk) {this->transitionPk = transitionPk;};
-    void setState2ID(int value) {state2ID = value;};
+    void setState2ID(int value) {endStateID = value;};
     void setCost(float value) {cost = value;};        
 
     void clear();

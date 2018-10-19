@@ -3,8 +3,6 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <stdexcept>
-
 #include "tron/diagram/State.h"
 
 namespace tron 
@@ -22,48 +20,50 @@ State::State(StatePk& statePk, std::string name)
 
 State::~State()
 {
-    mapTransitions.clear();    
+    listTransitions.clear();    
 }
 
 Transition* State::getTransition(int transID)
 {
-    try 
-    {
-        return &(mapTransitions.at(transID));
-    }
-    // if transition not found
-    catch (const std::out_of_range& oor) 
-    {                
+    // safety check
+    if (transID < listTransitions.size())
+        return &(listTransitions.at(transID));
+    else
         return nullptr;
-    }                    
 }
 
-void State::addTransition(int state2ID, int transID, std::string transName, float cost)
-{
+void State::addTransition(int endState, std::string transName, float cost)
+{    
     // create transition object
+    // transition ID is automatically set
+    int transID = listTransitions.size();     
     TransitionPk oTransitionPk(statePk, transID);
-    Transition oTransition(oTransitionPk, transName, state2ID, cost);
-    // and add it to map
-    addFullTransition(oTransition);    
+    Transition oTransition(oTransitionPk, transName, endState, cost);
+    // and add it to list
+    listTransitions.push_back(oTransition);    
 }
 
 void State::addFullTransition(Transition& oTransition)
 {
-    mapTransitions.emplace(oTransition.getTransitionPk().getTransitionID(), oTransition);
+    // transition ID is automatically set
+    int transID = listTransitions.size();     
+    oTransition.getTransitionPk().setTransitionID(transID);
+    // and add it to list
+    listTransitions.push_back(oTransition);    
 }
 
 void State::clear()
 {
     name = "";
-    mapTransitions.clear();        
+    listTransitions.clear();        
 }
 
 std::string State::toString()
 {
     std::string text = "State: [" + statePk.toString() + "], name = " + name + "\n";
-    for (auto& x : mapTransitions)
+    for (Transition& oTransition : listTransitions)
     {
-        text += x.second.toString() + "\n";
+        text += oTransition.toString() + "\n";
     }        
         
     return text;

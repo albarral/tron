@@ -38,7 +38,7 @@ public:
     // add state to diagram
     void addState(int stateID, std::string stateName);
     // add transition (from state1 to state2) to diagram
-    bool addTransition(int state1ID, int state2ID, int transID, std::string transName, float cost=0.0);
+    bool addTransition(int originState, int endState, std::string transName, float cost=0.0);
 
     // add full state (with transitions included) to diagram
     void addFullState(State& oState);    

@@ -10,27 +10,27 @@ namespace tron
 Transition::Transition() 
 {
     name = "";
-    state2ID = 0;
+    endStateID = 0;
     cost = 0.0;
 }
 
-Transition::Transition(TransitionPk& transitionPk, std::string name, int state2ID, float cost)
+Transition::Transition(TransitionPk& transitionPk, std::string name, int endState, float cost)
 {
     setTransitionPk(transitionPk);
     this->name = name;
-    this->state2ID = state2ID;
+    endStateID = endState;
     this->cost = cost;
 }
 
 void Transition::clear()
 {
     name = "";
-    state2ID = 0;
+    endStateID = 0;
     cost = 0.0;
 }
 
 std::string Transition::toString()
 {
-    return ("Transition: [" + transitionPk.toString() + "], name = " + name + ", state2 = " + std::to_string(state2ID) + ", cost = " + std::to_string(cost));
+    return ("Transition: [" + transitionPk.toString() + "], name = " + name + ", end state = " + std::to_string(endStateID) + ", cost = " + std::to_string(cost));
 }
 }

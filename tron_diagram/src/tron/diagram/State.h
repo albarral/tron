@@ -6,8 +6,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
-#include <map>
 #include <string>
+#include <vector>
 
 #include "tron/diagram/StatePk.h"
 #include "tron/diagram/Transition.h"
@@ -20,7 +20,7 @@ class State
 protected:
     StatePk statePk;
     std::string name;
-    std::map<int, Transition> mapTransitions;      /*! transitions map (mapped by transitionID) */    
+    std::vector<Transition> listTransitions;      /*! transitions list */    
     
 public:
     State();
@@ -29,15 +29,18 @@ public:
 
     StatePk& getStatePk() {return statePk;};
     std::string getName() {return name;};
-    std::map<int, Transition>& getTransitionsMap() {return mapTransitions;};
+    std::vector<Transition>& getTransitionsList() {return listTransitions;};
+
+    int getNumTransitions() {return listTransitions.size();};
+    bool hasTransitions() {return !listTransitions.empty();};
 
     void setStatePk(StatePk& statePk) {this->statePk = statePk;};
     void setName(std::string value) {name = value;};
         
     // get specified transition
     Transition* getTransition(int transID);     
-    // add transition (to state2) to state
-    void addTransition(int state2ID, int transID, std::string transName, float cost=0.0);
+    // add transition to given end state 
+    void addTransition(int endState, std::string transName, float cost=0.0);
     // add full transition (with state pointers included) to diagram    
     void addFullTransition(Transition& oTransition);      
 

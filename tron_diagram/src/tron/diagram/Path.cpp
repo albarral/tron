@@ -9,53 +9,99 @@ namespace tron
 {
 Path::Path() 
 {
-    state1 = state2 = 0;
+    originState = endState = 0;
     overallCost = 0.0;
 }
 
-Path::Path(int state1, int state2)
-{
-    this->state1 = state1;
-    this->state2 = state2;
-    overallCost = 0.0;
-}
 
 Path::~Path()
 {
     listTransitions.clear();    
 }
 
-void Path::setState1(int value)
+bool Path::addTransition(Transition& oTransition)
 {
-    state1 = value;
-    // clear path when new origin set
-    clear();
+    // if transition starts at path end
+    if (oTransition.getTransitionPk().getStateID() == endState)
+    {
+        // append transition
+        listTransitions.push_back(oTransition);
+        // update cost
+        overallCost += oTransition.getCost();
+        // and update path end
+        endState = oTransition.getEndStateID();
+        return true;        
+    }
+    // otherwise it can't be added
+    else
+        return false;
 }
 
-void Path::setState2(int value)
+bool Path::isConnected(Path& oPath2)
 {
-    state2 = value;    
-    // clear path when new destination set
-    clear();
+    // connected if it starts where this one ends
+    return (oPath2.getOrigin() == endState);    
 }
 
-void Path::addTransition(Transition& oTransition)
+bool Path::add(Path& oPath2)
 {
-    // transition ID is assigned automatically
-    oTransition.getTransitionPk().setTransitionID(listTransitions.size());
-    listTransitions.push_back(oTransition);
-    overallCost += oTransition.getCost();
+    // allow only if given path is connected to this
+    if (isConnected(oPath2))
+    {
+        // append transitions
+        listTransitions.insert(listTransitions.end(), oPath2.getTransitionsList().begin(), oPath2.getTransitionsList().end());
+        // update cost
+        overallCost += oPath2.getOverallCost();
+        // and update path end
+        endState = oPath2.getEnd();
+        return true;        
+    }
+    // otherwise it can't be joined
+    else
+        return false;    
 }
 
 void Path::clear()
 {
+    listTransitions.clear();      
+    originState = endState = 0;
     overallCost = 0.0;        
-    listTransitions.clear();        
+}
+
+bool operator== (Path &p1, Path &p2)
+{
+    // if same origins, ends, cost and length
+    if (p1.originState == p2.originState && 
+            p1.endState == p2.endState && 
+            p1.overallCost == p2.overallCost && 
+            p1.listTransitions.size() == p2.listTransitions.size())
+    {        
+        // compare individual transitions
+        std::vector<Transition>::iterator it1 = p1.listTransitions.begin();
+        std::vector<Transition>::iterator it2 = p2.listTransitions.begin();
+        std::vector<Transition>::iterator end1 = p1.listTransitions.end();
+        bool bequal = true;        
+        while (bequal && it1 != end1)
+        {
+            bequal = (it1->getTransitionPk() == it2->getTransitionPk());
+            it1++;
+            it2++;            
+        }
+        return bequal;
+    }
+    // otherwise, they are different
+    else
+        return false; 
+}
+ 
+bool operator!= (Path &p1, Path &p2)
+{
+    return !(p1 == p2);
 }
 
 std::string Path::toString()
 {
-    std::string text = "Path: state1 = " + std::to_string(state1) + ", state2 = " + std::to_string(state2) + " , overallCost = " + std::to_string(overallCost) + "\n";
+    std::string text = "Path: origin = " + std::to_string(originState) + ", end = " + std::to_string(endState) + " , overallCost = " + std::to_string(overallCost) + "\n";
     for (Transition& oTransition : listTransitions)
     {
         text += oTransition.toString() + "\n";

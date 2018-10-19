@@ -49,14 +49,14 @@ void Diagram::addState(int stateID, std::string stateName)
     addFullState(oState);    
 }
 
-bool Diagram::addTransition(int state1ID, int state2ID, int transID, std::string transName, float cost)
+bool Diagram::addTransition(int originState, int endState, std::string transName, float cost)
 {    
     // check that states exist
-    State* pState1 = getState(state1ID);
-    State* pState2 = getState(state2ID);
+    State* pOrigin = getState(originState);
+    State* pEnd = getState(endState);
     // if yes, add transition to origin state
-    if (pState1 != nullptr && pState2 != nullptr)
-        pState1->addTransition(state2ID, transID, transName, cost);        
+    if (pOrigin != nullptr && pEnd != nullptr)
+        pOrigin->addTransition(endState, transName, cost);        
     // some state doesn't exist, skip
     else
         return false; 

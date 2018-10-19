@@ -9,7 +9,7 @@
 #include <string>
 #include <log4cxx/logger.h>
 
-// Class used to test tron_control lib.
+// Class used to test tron_diagram lib.
 class TestDiagram
 {
 private:
@@ -24,5 +24,6 @@ public:
     
 private:
     void testDiagramCreation();
+    void testDiagramComparison();
 };
 #endif

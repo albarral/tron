@@ -6,6 +6,7 @@
 #include "TestDiagram.h"
 
 #include "tron/diagram/Diagram.h"
+#include "tron/diagram/TransitionPk.h"
 
 using namespace log4cxx;
 
@@ -21,7 +22,8 @@ void TestDiagram::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    testDiagramCreation();
+    //testDiagramCreation();
+    testDiagramComparison();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -37,11 +39,28 @@ void TestDiagram::testDiagramCreation()
     oDiagram.addState(3, "s3");
     oDiagram.addState(4, "s4");
     
-    oDiagram.addTransition(1, 2, 1, "s1_s2");
-    oDiagram.addTransition(1, 3, 1, "s1_s3");
-    oDiagram.addTransition(3, 2, 1, "s3_s2");
-    oDiagram.addTransition(2, 4, 1, "s2_s4");
-    oDiagram.addTransition(3, 4, 1, "s3_s4");
+    oDiagram.addTransition(1, 2, "s1_s2");
+    oDiagram.addTransition(1, 3, "s1_s3");
+    oDiagram.addTransition(3, 2, "s3_s2");
+    oDiagram.addTransition(2, 4, "s2_s4");
+    oDiagram.addTransition(3, 4, "s3_s4");
     
     LOG4CXX_INFO(logger, oDiagram.toString());
+}
+
+void TestDiagram::testDiagramComparison()
+{
+    LOG4CXX_INFO(logger, modName + ": testDiagramComparison ...");
+    
+    tron::TransitionPk oTransitionPk(4, 3, 2);
+    tron::TransitionPk oTransitionPk2(4, 3, 3);
+    
+    if (oTransitionPk == oTransitionPk2)
+    {
+        LOG4CXX_INFO(logger, modName + ": equal transition pks ...");        
+    }
+    else
+    {
+        LOG4CXX_INFO(logger, modName + ": different transition pks ...");        
+    }
 }

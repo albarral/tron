@@ -13,8 +13,8 @@ namespace tron
 class StatePk
 {
 private:
-    int diagramID;
-    int stateID;
+    int diagramID;  // diagram identifier
+    int stateID;      // state identifier  (inside diagram)
     
 public:
     StatePk();
@@ -25,6 +25,9 @@ public:
 
     int getStateID() {return stateID;};
     void setStateID(int value) {stateID = value;};
+    
+    friend bool operator== (const StatePk& pk1, const StatePk& pk2);
+    friend bool operator!= (const StatePk& pk1, const StatePk& pk2);    
     
     std::string toString();
 };

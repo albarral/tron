@@ -14,33 +14,49 @@
 namespace tron 
 {
 // Class used to represent a path in a states diagram. 
-// A path is the sequence of transitions needed to go from an origin state to a destination state.
+// A path is a sequence of connected transitions that go from an origin state to an end state.
 class Path
 {
 protected:
-    int state1;     // origin state
-    int state2;     // destination state
     std::vector<Transition> listTransitions;    // transitions sequence
-    float overallCost;       // total cost of traversing all the path transitions
+    int originState;     // origin state (automatically set)
+    int endState;       // end state (automatically set)
+    float overallCost;    // cost of traversing the whole path (automatically computed)
     
 public:
     Path();
-    Path(int state1, int state2);
     ~Path();
 
-    int getState1() {return state1;};
-    int getState2() {return state1;};
-    std::vector<Transition>& getListTransitions() {return listTransitions;};
+    std::vector<Transition>& getTransitionsList() {return listTransitions;};
+    int getOrigin() {return originState;};
+    int getEnd() {return endState;};
     float getOverallCost() {return overallCost;};
 
-    void setState1(int value);
-    void setState2(int value);    
-    void setOverallCost(float value) {overallCost = value;};
-    void addTransition(Transition& oTransition);      
+    int getLength() {return listTransitions.size();};
+    bool isEmpty() {return listTransitions.empty();};
+
+    // add transition to path (only allowed if transition starts at present path end)
+    bool addTransition(Transition& oTransition);      
     
+    // check if given path is connected to this (it starts where this one ends)
+    bool isConnected(Path& oPath2); 
+    // add given path to this one (only if it's connected)
+    bool add(Path& oPath2);
+    
+    // clear whole path (transitions and cost)
     void clear();
 
+    friend bool operator== (Path& p1, Path& p2);
+    friend bool operator!= (Path& p1, Path& p2);        
+    
     std::string toString();   
+
+private:    
+    void setOrigin(int value) {originState = value;};
+    void setEnd(int value) {endState = value;};    
+
+    
+   
 };
 }
 
