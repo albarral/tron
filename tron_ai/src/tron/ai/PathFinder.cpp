@@ -28,21 +28,19 @@ Path PathFinder::findAleatoryPath(Diagram& oDiagram, int state1, int length)
         while (steps < length && pState->hasTransitions())
         {
             // select random transition 
-            Transition& oTransition = *(pState->getTransition(0));
+            int random = rand() % pState->getNumTransitions();                
+            Transition& oTransition = *(pState->getTransition(random));
             // add it to path
             oPath.addTransition(oTransition);           
             // and walk to next state (the one pointed by the selected transition)
             pState = oDiagram.getState(oTransition.getEndStateID());            
             steps++;
-            LOG4CXX_INFO(logger, "PathFinder: findAleatoryPath(): new transition added " << oTransition.toString());
         }        
-        LOG4CXX_INFO(logger, "PathFinder: findAleatoryPath(): path found from state " << state1);
+        LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): path found from state " << state1);
     }
     else                
         LOG4CXX_WARN(logger, "PathFinder: findAleatoryPath() failed, origin state not in diagram! " << state1);
     
-
-    LOG4CXX_INFO(logger, oPath.toString());
     
     return oPath;
 }

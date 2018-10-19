@@ -6,6 +6,7 @@
 #include "TestDiagram.h"
 
 #include "tron/diagram/Diagram.h"
+#include "tron/diagram/Path.h"
 #include "tron/diagram/TransitionPk.h"
 
 using namespace log4cxx;
@@ -22,17 +23,18 @@ void TestDiagram::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    //testDiagramCreation();
-    testDiagramComparison();
+    //testComparisons();
+    testPathCreation();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
 
-void TestDiagram::testDiagramCreation()
+void TestDiagram::createDiagram()
 {
-    LOG4CXX_INFO(logger, modName + ": testDiagramCreation ...");
+    LOG4CXX_INFO(logger, modName + ": createDiagram ...");
     
-    tron::Diagram oDiagram(4, "Diagram4");
+    oDiagram.setID(4);
+    oDiagram.setName("Diagram4");
     
     oDiagram.addState(1, "s1");
     oDiagram.addState(2, "s2");
@@ -48,9 +50,9 @@ void TestDiagram::testDiagramCreation()
     LOG4CXX_INFO(logger, oDiagram.toString());
 }
 
-void TestDiagram::testDiagramComparison()
+void TestDiagram::testComparisons()
 {
-    LOG4CXX_INFO(logger, modName + ": testDiagramComparison ...");
+    LOG4CXX_INFO(logger, modName + ": testComparisons ...");
     
     tron::TransitionPk oTransitionPk(4, 3, 2);
     tron::TransitionPk oTransitionPk2(4, 3, 3);
@@ -62,5 +64,31 @@ void TestDiagram::testDiagramComparison()
     else
     {
         LOG4CXX_INFO(logger, modName + ": different transition pks ...");        
+    }
+}
+
+void TestDiagram::testPathCreation()
+{
+    LOG4CXX_INFO(logger, modName + ": testPathCreation ...");
+    
+    // diagram creation
+    createDiagram();
+
+    tron::Path oPath; 
+        
+    // get first transition from state 1 and add it to path
+    tron::State* pState = oDiagram.getState(1);
+    tron::Transition& oTransition1 = *(pState->getTransition(0));    
+    oPath.addTransition(oTransition1);           
+
+    // get first transition from state 2 and add it to path
+    pState = oDiagram.getState(2);
+    tron::Transition& oTransition2 = *(pState->getTransition(0));    
+    oPath.addTransition(oTransition2);           
+    
+    // show path
+    if (!oPath.isEmpty())
+    {
+        LOG4CXX_INFO(logger, oPath.toString());
     }
 }

@@ -9,12 +9,15 @@
 #include <string>
 #include <log4cxx/logger.h>
 
+#include "tron/diagram/Diagram.h"
+
 // Class used to test tron_diagram lib.
 class TestDiagram
 {
 private:
     static log4cxx::LoggerPtr logger;
     std::string modName;          // module name
+    tron::Diagram oDiagram; 
 
 public:
     TestDiagram();
@@ -23,7 +26,8 @@ public:
     void makeTest();      
     
 private:
-    void testDiagramCreation();
-    void testDiagramComparison();
+    void createDiagram();
+    void testComparisons();
+    void testPathCreation();
 };
 #endif

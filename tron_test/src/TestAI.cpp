@@ -25,9 +25,7 @@ void TestAI::makeTest()
 {
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
-    createDiagram();
-    testPathCreation();
-    //testPathFinder();
+    testPathFinder();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -53,37 +51,23 @@ void TestAI::createDiagram()
     LOG4CXX_INFO(logger, oDiagram.toString());
 }
 
-void TestAI::testPathCreation()
-{
-    LOG4CXX_INFO(logger, modName + ": testPathCreation ...");
-    
-    tron::Path oPath; 
-        
-    tron::State* pState = oDiagram.getState(1);
-    tron::Transition oTransition1 = *(pState->getTransition(0));    
-    // add it to path
-    oPath.addTransition(oTransition1);           
-
-    pState = oDiagram.getState(2);
-    tron::Transition oTransition2 = *(pState->getTransition(0));    
-    // add it to path
-    oPath.addTransition(oTransition2);           
-    
-    if (!oPath.isEmpty())
-    {
-        LOG4CXX_INFO(logger, oPath.toString());
-    }
-}
 
 void TestAI::testPathFinder()
 {
     LOG4CXX_INFO(logger, modName + ": testPathFinder ...");
-    
-    tron::Path oPath = tron::PathFinder::findAleatoryPath(oDiagram, 1, 3);
-    
-    if (!oPath.isEmpty())
+
+    // diagram creation
+    createDiagram();
+    tron::Path oPath;
+    // find paths from state 1
+    for (int i=0; i<5; i++)
     {
-        LOG4CXX_INFO(logger, modName + ": path found!");  
-        LOG4CXX_INFO(logger, oPath.toString());
+        oPath = tron::PathFinder::findAleatoryPath(oDiagram, 1, 3);
+
+        if (!oPath.isEmpty())
+        {
+            LOG4CXX_INFO(logger, modName + ": path found!");  
+            LOG4CXX_INFO(logger, oPath.toString());
+        }
     }
 }
