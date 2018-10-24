@@ -40,7 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/tron/diagram/State.o \
 	${OBJECTDIR}/src/tron/diagram/StatePk.o \
 	${OBJECTDIR}/src/tron/diagram/Transition.o \
-	${OBJECTDIR}/src/tron/diagram/TransitionPk.o
+	${OBJECTDIR}/src/tron/diagram/TransitionPk.o \
+	${OBJECTDIR}/src/tron/diagram/Walker.o
 
 
 # C Compiler Flags
@@ -96,6 +97,11 @@ ${OBJECTDIR}/src/tron/diagram/TransitionPk.o: src/tron/diagram/TransitionPk.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/diagram
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/diagram/TransitionPk.o src/tron/diagram/TransitionPk.cpp
+
+${OBJECTDIR}/src/tron/diagram/Walker.o: src/tron/diagram/Walker.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/diagram
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/diagram/Walker.o src/tron/diagram/Walker.cpp
 
 # Subprojects
 .build-subprojects:

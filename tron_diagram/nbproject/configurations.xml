@@ -25,6 +25,8 @@
         <itemPath>src/tron/diagram/Transition.h</itemPath>
         <itemPath>src/tron/diagram/TransitionPk.cpp</itemPath>
         <itemPath>src/tron/diagram/TransitionPk.h</itemPath>
+        <itemPath>src/tron/diagram/Walker.cpp</itemPath>
+        <itemPath>src/tron/diagram/Walker.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -85,6 +87,10 @@
       </item>
       <item path="src/tron/diagram/TransitionPk.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/tron/diagram/Walker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/diagram/Walker.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -129,6 +135,10 @@
       <item path="src/tron/diagram/TransitionPk.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/diagram/TransitionPk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tron/diagram/Walker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/diagram/Walker.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
