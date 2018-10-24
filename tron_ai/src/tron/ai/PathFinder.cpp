@@ -6,6 +6,7 @@
 #include "tron/ai/PathFinder.h"
 #include "tron/diagram/State.h"
 #include "tron/diagram/Transition.h"
+#include "tron/diagram/Walker.h"
 
 using namespace log4cxx;
 
@@ -15,34 +16,32 @@ LoggerPtr PathFinder::logger(Logger::getLogger("tron.ai"));
     
 Path PathFinder::findAleatoryPath(Diagram& oDiagram, int state1, int length)
 {
-    // create empty path
-    Path oPath;
-            
-    // get origin state
-    State* pState = oDiagram.getState(state1);
-    if (pState != nullptr)
+    // create diagram walker
+    Walker oWalker;
+    oWalker.setDiagram(oDiagram);
+    // set start position       
+    if (oWalker.setPosition(state1))
     {
         int steps = 0;
-        // walk through diagram states following random transitions (for a number of steps)
+        bool bwalking;        
+        // walk through diagram states following random transitions
         // do it for a number of steps (specified) or till a "dead end" state reached
-        while (steps < length && pState->hasTransitions())
+        do
         {
             // select random transition 
-            int random = rand() % pState->getNumTransitions();                
-            Transition& oTransition = *(pState->getTransition(random));
-            // add it to path
-            oPath.addTransition(oTransition);           
-            // and walk to next state (the one pointed by the selected transition)
-            pState = oDiagram.getState(oTransition.getEndStateID());            
-            steps++;
-        }        
-        LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): path found from state " << state1);
+            int transition = rand() % oWalker.getState()->getNumTransitions();                
+            // and walk through it 
+            bwalking = oWalker.walk(transition);
+            steps++;                         
+        }
+        while (steps < length && bwalking);
+
+        LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): path found from state " << state1);        
     }
-    else                
-        LOG4CXX_WARN(logger, "PathFinder: findAleatoryPath() failed, origin state not in diagram! " << state1);
+    else
+        LOG4CXX_WARN(logger, "PathFinder: findAleatoryPath() failed, origin state not in diagram! " << state1);    
     
-    
-    return oPath;
+    return oWalker.getPath();
 }
 
 //Path PathFinder::findShortestPath(Diagram& oDiagram, int state1, int state2)
