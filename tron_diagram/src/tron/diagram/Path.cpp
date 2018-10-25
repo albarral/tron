@@ -24,6 +24,9 @@ bool Path::addTransition(Transition& oTransition)
     // if transition starts at path end (or the path is empty)
     if (oTransition.getTransitionPk().getStateID() == endState || listTransitions.empty())
     {
+        // set origin if first transition
+        if (listTransitions.empty())
+            originState = oTransition.getTransitionPk().getStateID();
         // append transition
         listTransitions.push_back(oTransition);
         // update cost

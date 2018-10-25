@@ -20,7 +20,7 @@ Explorer::Explorer()
 
 Explorer::~Explorer()
 {
-    listPendingTransitions.clear();
+    listIgnoredTransitions.clear();
 }
 
 bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
@@ -52,8 +52,9 @@ bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
 bool Explorer::go()
 {
     // safety check
-    if (Walker::isGrounded())
+    if (status != eSTATUS_ARRIVED && Walker::isGrounded())
     {
+        bool bwalked = false;
         int numTransitions = pState->getNumTransitions();
         switch (numTransitions)
         {
@@ -64,27 +65,27 @@ bool Explorer::go()
     
             case 1:
                 // if single transition, walk it
-                walkAndCheck(0);
+                bwalked = walkAndCheck(0);
                 break;
                 
             default:
-                // if multiple transitions, walk first 
-                walkAndCheck(0);                                
-                // and add rest of them to pending list
-                bool bskip = true;
+                // if multiple transitions, select one to be walked 
+                int selected = 0; // first as default
+                // and ignore the rest (add them to the ignored list)
                 for (Transition& oTransition : pState->getTransitionsList())
                 {
-                    // skip first transition (the walked one)
-                    if (!bskip)
-                        listPendingTransitions.push_back(oTransition.getTransitionPk());
-                    else
-                        bskip = false;
+                    // skip the selected one
+                    if (oTransition.getTransitionPk().getTransitionID() != selected)
+                        listIgnoredTransitions.push_back(oTransition.getTransitionPk());
                 }
+                
+                // walk the selected transition
+                bwalked = walkAndCheck(selected);                                
                 break;
         }
         
-        // return true if any transition was traversed
-        return (status != eSTATUS_BLOCKED);
+        // return true if a transition walked
+        return bwalked;
     }
     else
     {
@@ -93,7 +94,7 @@ bool Explorer::go()
     }            
 }
 
-void Explorer::walkAndCheck(int transition)
+bool Explorer::walkAndCheck(int transition)
 {
     // walk given transition
     if (Walker::walk(transition))
@@ -104,15 +105,20 @@ void Explorer::walkAndCheck(int transition)
         // otherwise, stay active
         else
             status = eSTATUS_ACTIVE;
+        
+        return true;
     }
     // if walk failed -> blocked
     else
+    {
         status = eSTATUS_BLOCKED;
+        return false;
+    }
 }
 
-void Explorer::clearPendingTransitions()
+void Explorer::clearIgnoredTransitions()
 {
-    listPendingTransitions.clear();
+    listIgnoredTransitions.clear();
 }
 
 }

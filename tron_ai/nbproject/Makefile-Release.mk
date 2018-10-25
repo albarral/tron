@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/tron/ai/Exploration.o \
 	${OBJECTDIR}/src/tron/ai/Explorer.o \
 	${OBJECTDIR}/src/tron/ai/PathFinder.o
 
@@ -62,6 +63,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_ai.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_ai.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/tron/ai/Exploration.o: src/tron/ai/Exploration.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/ai
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/ai/Exploration.o src/tron/ai/Exploration.cpp
 
 ${OBJECTDIR}/src/tron/ai/Explorer.o: src/tron/ai/Explorer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/tron/ai

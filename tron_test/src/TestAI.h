@@ -28,5 +28,6 @@ public:
 private:
     void createDiagram();
     void testPathFinder();
+    void testExplorer();
 };
 #endif

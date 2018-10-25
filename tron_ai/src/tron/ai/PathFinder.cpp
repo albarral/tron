@@ -29,14 +29,14 @@ Path PathFinder::findAleatoryPath(Diagram& oDiagram, int state1, int length)
         do
         {
             // select random transition 
-            int transition = rand() % oWalker.getState()->getNumTransitions();                
+            float random = (float)std::rand() / RAND_MAX;             
+            int transition = oWalker.getState()->getNumTransitions() * random;
+            LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): state " << oWalker.getState()->getStatePk().getStateID() << ", trans " << transition);        
             // and walk through it 
             bwalking = oWalker.walk(transition);
             steps++;                         
         }
         while (steps < length && bwalking);
-
-        LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): path found from state " << state1);        
     }
     else
         LOG4CXX_WARN(logger, "PathFinder: findAleatoryPath() failed, origin state not in diagram! " << state1);    

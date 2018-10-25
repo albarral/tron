@@ -19,8 +19,7 @@ namespace tron
 // Exploration strategy depending on state transitions: 
 // 0 transitions: explorer blocked
 // 1 transition: explorer walks it
-// +1 transitions: explorer walks one transition & adds the other ones to a list of pending transitions
-// A father supervisor object creates new explorers to explore the pending transitions.    
+// +1 transitions: explorer walks one transition & ignores the rest (adding them to an ignored transitions list)
 class Explorer : public Walker
 {
 public:
@@ -31,32 +30,35 @@ public:
         eSTATUS_BLOCKED              // explorer reached dead-end state
     };
     
-private:
+private:    
         static log4cxx::LoggerPtr logger;
         int status;                 // explorer status (one of eStatus values)        
         int start;                  // start state
         int target;                // target state
-        std::vector<TransitionPk> listPendingTransitions;      // list of pending transitions
+        std::vector<TransitionPk> listIgnoredTransitions;      // list of ignored transitions
         
 public:
     Explorer();
     ~Explorer();
     
-    // get list of pending transitions
-    std::vector<TransitionPk>& getPendingTransitions() {return listPendingTransitions;};     
+    int getSatus() {return status;};
+    std::vector<TransitionPk>& getIgnoredTransitions() {return listIgnoredTransitions;};     
     
     // initializes explorer data
-    bool init(Diagram& oDiagram, int startState, int targetState);
-    
-    // makes the explorer advance to a new diagram state (returns false if blocked)
+    bool init(Diagram& oDiagram, int startState, int targetState);    
+    // makes the explorer walk to a new state (returns true if it walked)
     bool go();
     
-    // clear the list of pending transitions
-    void clearPendingTransitions();         
+    // clear the list of ignored transitions
+    void clearIgnoredTransitions();         
+    
+    bool isActive() {return status == eSTATUS_ACTIVE;};
+    bool isArrived() {return status == eSTATUS_ARRIVED;};
+    bool isBlocked() {return status == eSTATUS_BLOCKED;};    
     
 private:
-    // walk through given transition and check if target reached
-    void walkAndCheck(int transition);
+    // walk through given transition and check if target reached (returns true if walked)
+    bool walkAndCheck(int transition);
 };
 }
 #endif

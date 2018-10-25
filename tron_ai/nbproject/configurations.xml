@@ -13,6 +13,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="ai" displayName="ai" projectFiles="true">
+        <itemPath>src/tron/ai/Exploration.cpp</itemPath>
+        <itemPath>src/tron/ai/Exploration.h</itemPath>
         <itemPath>src/tron/ai/Explorer.cpp</itemPath>
         <itemPath>src/tron/ai/Explorer.h</itemPath>
         <itemPath>src/tron/ai/PathFinder.cpp</itemPath>
@@ -69,6 +71,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/tron/ai/Exploration.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/ai/Exploration.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/ai/Explorer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/ai/Explorer.h" ex="false" tool="3" flavor2="0">
@@ -98,6 +104,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/tron/ai/Exploration.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tron/ai/Exploration.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/tron/ai/Explorer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/tron/ai/Explorer.h" ex="false" tool="3" flavor2="0">
