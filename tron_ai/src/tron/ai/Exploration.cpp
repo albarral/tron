@@ -55,40 +55,48 @@ bool Exploration::run()
     numBlocked = 0;
     numArrived = 0;
     
-    while (!bfinished)
-        go();
-    
-    return (numArrived > 0);
-}
-
-bool Exploration::go()
-{
-    int numWalks = 0;
-    // make all active explorers walk
-    for (Explorer& oExplorer : listExplorers)
+    int numActive = listExplorers.size();
+    while (numActive > 0)
     {
-        if (oExplorer.isActive())
+        numActive = 0;
+        // make all active explorers walk
+        for (Explorer& oExplorer : listExplorers)
         {
-            // if walked, ok
-            if (oExplorer.go())
-                numWalks++;   
-            // otherwise, check reason & update counters
-            else
+            if (oExplorer.isActive())
             {
-                if (oExplorer.isBlocked())
-                {
-                    numBlocked++;
-                    createNewExplorers(oExplorer);
-                }
-                else if (oExplorer.isArrived())
-                    numArrived++;                
+                numActive++;
+                pushExplorer(oExplorer);
             }
         }
     }
     
-    // if nobody could walk, exploration is finished
-    if (numWalks == 0)
-        bfinished = true;        
+    return (numArrived > 0);
+}
+
+bool Exploration::pushExplorer(Explorer& oExplorer)
+{
+    // if explorer can advance
+    if (oExplorer.advance())
+    {
+        // if explorer has ignored transitions
+        if (oExplorer.hasIgnoredTransitions())
+        {
+            // create new explorers to explore them            
+            createNewExplorers(oExplorer);
+            // and clear them as they're not ignored anymore
+            oExplorer.clearIgnoredTransitions();            
+        }
+    }
+    // otherwise
+    else
+    {
+        // check explorer blocked
+        if (oExplorer.isBlocked())
+            numBlocked++;
+        // check explorer arrived
+        else if (oExplorer.isArrived())
+            numArrived++;                
+    }
 }
 
 void Exploration::createNewExplorers(Explorer& oExplorer)

@@ -29,5 +29,7 @@ private:
     void createDiagram();
     void testComparisons();
     void testPathCreation();
+    void testWalker();
+
 };
 #endif

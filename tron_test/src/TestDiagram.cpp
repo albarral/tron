@@ -5,9 +5,11 @@
 
 #include "TestDiagram.h"
 
-#include "tron/diagram/Diagram.h"
+#include "tron/diagram/State.h"
 #include "tron/diagram/Path.h"
+#include "tron/diagram/Transition.h"
 #include "tron/diagram/TransitionPk.h"
+#include "tron/diagram/Walker.h"
 
 using namespace log4cxx;
 
@@ -24,7 +26,8 @@ void TestDiagram::makeTest()
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
     //testComparisons();
-    testPathCreation();
+    //testPathCreation();
+    testWalker();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -41,11 +44,11 @@ void TestDiagram::createDiagram()
     oDiagram.addState(3, "s3");
     oDiagram.addState(4, "s4");
     
-    oDiagram.addTransition(1, 2, "s1_s2");
-    oDiagram.addTransition(1, 3, "s1_s3");
-    oDiagram.addTransition(3, 2, "s3_s2");
-    oDiagram.addTransition(2, 4, "s2_s4");
-    oDiagram.addTransition(3, 4, "s3_s4");
+    oDiagram.addTransition(1, 2, "s1_s2", 1.0);
+    oDiagram.addTransition(1, 3, "s1_s3", 1.0);
+    oDiagram.addTransition(3, 2, "s3_s2", 1.0);
+    oDiagram.addTransition(2, 4, "s2_s4", 1.0);
+    oDiagram.addTransition(3, 4, "s3_s4", 1.0);
     
     LOG4CXX_INFO(logger, oDiagram.toString());
 }
@@ -76,19 +79,71 @@ void TestDiagram::testPathCreation()
 
     tron::Path oPath; 
         
-    // get first transition from state 1 and add it to path
+    // get initial state
     tron::State* pState = oDiagram.getState(1);
-    tron::Transition& oTransition1 = *(pState->getTransition(0));    
-    oPath.addTransition(oTransition1);           
-
-    // get first transition from state 2 and add it to path
-    pState = oDiagram.getState(2);
-    tron::Transition& oTransition2 = *(pState->getTransition(0));    
-    oPath.addTransition(oTransition2);           
+    // safety check
+    if (pState == nullptr)
+        return;
+    
+    // walk diagram 
+    while (oPath.getLength() < 3 && pState->getNumTransitions() > 0)
+    {
+        // get first available transition
+        tron::Transition& oTransition = *(pState->getTransition(0));            
+        // walk to next state 
+        pState = oDiagram.getState(oTransition.getEndStateID());
+        // if valid update the path
+        if (pState != nullptr)
+            oPath.addTransition(oTransition);                   
+        // otherwise, skip
+        else
+        {
+            LOG4CXX_WARN(logger, modName + " wrong state reached! " << oTransition.toString());                
+            break;
+        }
+    }
     
     // show path
-    if (!oPath.isEmpty())
+    LOG4CXX_INFO(logger, oPath.toString());
+    
+    LOG4CXX_INFO(logger, modName + " path reduced ...");                
+    // reduce path
+    oPath.popTransition();
+    // show path
+    LOG4CXX_INFO(logger, oPath.toString());
+}
+
+void TestDiagram::testWalker()
+{
+    LOG4CXX_INFO(logger, modName + ": testWalker ...");
+
+    // diagram creation
+    createDiagram();
+    
+    tron::Walker oWalker;
+    oWalker.setDiagram(oDiagram);
+    
+    // enter walker in a diagram state
+    int startState = 1;
+    if (!oWalker.enter(startState))
     {
-        LOG4CXX_INFO(logger, oPath.toString());
+        LOG4CXX_WARN(logger, modName + " could not ground Walker to diagram, enter state = " << startState);                
+        return;
     }
+    
+    // make walker walk until blocked
+    bool bwalking = true;
+    while (bwalking && oWalker.getNumTransitions2Walk() > 0)
+    {
+        // take always first transition
+        bwalking = oWalker.walk(0);        
+    }
+    
+    // show walked path
+    LOG4CXX_INFO(logger, oWalker.getPath().toString());
+    
+    LOG4CXX_INFO(logger, modName + " walk back one step ...");                    
+    oWalker.walkBack();    
+    // show walked path
+    LOG4CXX_INFO(logger, oWalker.getPath().toString());    
 }

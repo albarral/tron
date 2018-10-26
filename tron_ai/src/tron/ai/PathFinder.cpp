@@ -5,7 +5,6 @@
 
 #include "tron/ai/PathFinder.h"
 #include "tron/diagram/State.h"
-#include "tron/diagram/Transition.h"
 #include "tron/diagram/Walker.h"
 
 using namespace log4cxx;
@@ -20,7 +19,7 @@ Path PathFinder::findAleatoryPath(Diagram& oDiagram, int state1, int length)
     Walker oWalker;
     oWalker.setDiagram(oDiagram);
     // set start position       
-    if (oWalker.setPosition(state1))
+    if (oWalker.enter(state1))
     {
         int steps = 0;
         bool bwalking;        
@@ -30,7 +29,7 @@ Path PathFinder::findAleatoryPath(Diagram& oDiagram, int state1, int length)
         {
             // select random transition 
             float random = (float)std::rand() / RAND_MAX;             
-            int transition = oWalker.getState()->getNumTransitions() * random;
+            int transition = oWalker.getNumTransitions2Walk() * random;
             LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): state " << oWalker.getState()->getStatePk().getStateID() << ", trans " << transition);        
             // and walk through it 
             bwalking = oWalker.walk(transition);

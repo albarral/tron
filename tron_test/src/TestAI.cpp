@@ -62,7 +62,7 @@ void TestAI::testPathFinder()
     createDiagram();
     tron::Path oPath;
     // find paths from state 1
-    for (int i=0; i<5; i++)
+    for (int i=0; i<10; i++)
     {
         oPath = tron::PathFinder::findAleatoryPath(oDiagram, 1, 3);
 
@@ -89,7 +89,7 @@ void TestAI::testExplorer()
         return;
     
     while (oExplorer.isActive())
-        oExplorer.go();
+        oExplorer.advance();
     
     switch (oExplorer.getSatus())
     {

@@ -15,11 +15,11 @@
 
 namespace tron
 {
-// Utility class used for exploring paths in state diagrams.
-// Exploration strategy depending on state transitions: 
+// Utility class for exploring paths in state diagrams.
+// The exploration strategy depends on the number of transitions in the present state: 
 // 0 transitions: explorer blocked
 // 1 transition: explorer walks it
-// +1 transitions: explorer walks one transition & ignores the rest (adding them to an ignored transitions list)
+// +1 transitions: explorer walks one & ignores the rest (adds them to the ignored list)
 class Explorer : public Walker
 {
 public:
@@ -42,13 +42,16 @@ public:
     ~Explorer();
     
     int getSatus() {return status;};
+    int getStart() {return start;};
+    int getTarget() {return target;};
     std::vector<TransitionPk>& getIgnoredTransitions() {return listIgnoredTransitions;};     
     
     // initializes explorer data
     bool init(Diagram& oDiagram, int startState, int targetState);    
-    // makes the explorer walk to a new state (returns true if it walked)
-    bool go();
-    
+    // makes explorer walk through given transition (returns true if it walked)
+    bool advance(int transitionID=0);
+    // check if there are ignored transitions
+    bool hasIgnoredTransitions() {return listIgnoredTransitions.size();};
     // clear the list of ignored transitions
     void clearIgnoredTransitions();         
     
@@ -58,7 +61,7 @@ public:
     
 private:
     // walk through given transition and check if target reached (returns true if walked)
-    bool walkAndCheck(int transition);
+    bool walkAndCheck(int transitionID);
 };
 }
 #endif

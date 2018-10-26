@@ -41,8 +41,8 @@ public:
     Path getShortestPath();         
     
 private:
-    // make all explorers walk to a new state
-    bool go();
+    // make given explorer advance
+    bool pushExplorer(Explorer& oExplorer);
     // create new explorers to explore the transitions ignored by the given explorer
     void createNewExplorers(Explorer& oExplorer);
 };

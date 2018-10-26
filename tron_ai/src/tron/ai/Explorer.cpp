@@ -28,7 +28,7 @@ bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
     // set diagram
     Walker::setDiagram(oDiagram);
     // set start position       
-    if (Walker::setPosition(startState))
+    if (Walker::enter(startState))
         start = startState;
     else
     {
@@ -49,7 +49,7 @@ bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
     return true;
 }
 
-bool Explorer::go()
+bool Explorer::advance(int transitionID)
 {
     // safety check
     if (status != eSTATUS_ARRIVED && Walker::isGrounded())
@@ -65,42 +65,40 @@ bool Explorer::go()
     
             case 1:
                 // if single transition, walk it
-                bwalked = walkAndCheck(0);
+                bwalked = walkAndCheck(transitionID);
                 break;
                 
             default:
-                // if multiple transitions, select one to be walked 
-                int selected = 0; // first as default
-                // and ignore the rest (add them to the ignored list)
+                // if multiple transitions, ignore the not walked ones (add them to ignored list)
                 for (Transition& oTransition : pState->getTransitionsList())
                 {
-                    // skip the selected one
-                    if (oTransition.getTransitionPk().getTransitionID() != selected)
+                    // skip the walked one
+                    if (oTransition.getTransitionPk().getTransitionID() != transitionID)
                         listIgnoredTransitions.push_back(oTransition.getTransitionPk());
                 }
                 
                 // walk the selected transition
-                bwalked = walkAndCheck(selected);                                
+                bwalked = walkAndCheck(transitionID);                                
                 break;
         }
         
-        // return true if a transition walked
+        // return true if walked
         return bwalked;
     }
     else
     {
-        LOG4CXX_WARN(logger, "Explorer: go failed, explorer not grounded! ");
+        LOG4CXX_WARN(logger, "Explorer: go failed, not grounded! ");
         return false;
     }            
 }
 
-bool Explorer::walkAndCheck(int transition)
+bool Explorer::walkAndCheck(int transitionID)
 {
     // walk given transition
-    if (Walker::walk(transition))
+    if (Walker::walk(transitionID))
     {
         // if target reached, arrived
-        if (pState->getStatePk().getStateID() == target)
+        if (oPath.getEnd() == target)
             status = eSTATUS_ARRIVED;
         // otherwise, stay active
         else
