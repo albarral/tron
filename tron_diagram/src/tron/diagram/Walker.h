@@ -9,34 +9,42 @@
 #include "tron/diagram/Diagram.h"
 #include "tron/diagram/Path.h"
 #include "tron/diagram/State.h"
+#include "tron/diagram/Transition.h"
 
 namespace tron
 {
-// Utility class used for walking (traversing) diagrams.
+// Utility class used for walking diagrams (entering states and traversing transitions).
 class Walker
 {
 protected:
+    bool bgrounded;         // indicates that walker is in a valid diagram state
     Diagram* pDiagram;  // diagram to walk
-    State* pState;           // present state (informed when walker is positioned in a valid diagram state)
+    State* pState;           // present state
     Path oPath;               // walked path
         
 public:
     Walker();
     //~Walker();
 
+    // check if walker is grounded 
+    bool isGrounded() {bgrounded;};
     // get present state
     State* getState() {return pState;};
     // get explored path
     Path& getPath() {return oPath;};
-    // check if walker is in a valid position
-    bool isGrounded() {return pState != nullptr;};
 
     // set exploration diagram
     void setDiagram(Diagram& oDiagram);
-    // set position in diagram (returns false if state is not in diagram)
-    bool setPosition(int state);    
-    // traverse the given transition (returns false if transition not exists in present state)
-    bool walk(int transition);
+    // position walker in given state (returns false if invalid state)
+    bool enter(int stateID);    
+    // traverse given transition (returns false if invalid transition)
+    bool walk(int transitionID);
+    // walk back the last traversed transition reducing the path accordingly (returns false if could not do it)
+    bool walkBack();
+    // get the number of transitions the walker sees at present state
+    int getNumTransitions2Walk();
+    // get the ID of present state
+    int getPresentPosition();
 };
 }
 #endif

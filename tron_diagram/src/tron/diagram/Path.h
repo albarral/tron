@@ -27,7 +27,7 @@ public:
     Path();
     ~Path();
 
-    std::vector<Transition>& getTransitionsList() {return listTransitions;};
+    std::vector<Transition>& getTransitions() {return listTransitions;};
     int getOrigin() {return originState;};
     int getEnd() {return endState;};
     float getOverallCost() {return overallCost;};
@@ -35,8 +35,10 @@ public:
     int getLength() {return listTransitions.size();};
     bool isEmpty() {return listTransitions.empty();};
 
-    // add transition to path (only allowed if transition starts at present path end)
+    // add transition to path (only allowed if transition connected to path end)
     bool addTransition(Transition& oTransition);      
+    // pop last transition from path (affects endState and cost)
+    bool popTransition();
     
     // check if given path is connected to this (it starts where this one ends)
     bool isConnected(Path& oPath2); 

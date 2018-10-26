@@ -9,7 +9,7 @@ namespace tron
 {
 Path::Path() 
 {
-    originState = endState = 0;
+    originState = endState = -1;
     overallCost = 0.0;
 }
 
@@ -40,6 +40,30 @@ bool Path::addTransition(Transition& oTransition)
         return false;
 }
 
+bool Path::popTransition()
+{
+    // if path not empty
+    if (!listTransitions.empty())
+    {
+        // get last transition
+        Transition& oTransition = listTransitions.back();
+        // remove its cost
+        overallCost -= oTransition.getCost();
+        // set path end to its departure state
+        endState = oTransition.getTransitionPk().getStateID();
+        // and remove it from path
+        listTransitions.pop_back();
+        
+        // if path totally deleted
+        if (listTransitions.empty())        
+            originState = endState = -1;
+        return true;        
+    }
+    // otherwise it can't be popped
+    else
+        return false;
+}
+
 bool Path::isConnected(Path& oPath2)
 {
     // connected if it starts where this one ends
@@ -52,7 +76,7 @@ bool Path::add(Path& oPath2)
     if (isConnected(oPath2))
     {
         // append transitions
-        listTransitions.insert(listTransitions.end(), oPath2.getTransitionsList().begin(), oPath2.getTransitionsList().end());
+        listTransitions.insert(listTransitions.end(), oPath2.getTransitions().begin(), oPath2.getTransitions().end());
         // update cost
         overallCost += oPath2.getOverallCost();
         // and update path end

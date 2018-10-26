@@ -77,7 +77,7 @@ std::string Diagram::toString()
     std::string text = "Diagram: ID = " + std::to_string(ID) + ", name = " + name + "\n";
     for (auto& x : mapStates)
     {
-        text += x.second.toString() + "\n";
+        text += x.second.toString();
     }                
     return text;
 }
