@@ -29,7 +29,7 @@ Path PathFinder::findAleatoryPath(Diagram& oDiagram, int state1, int length)
         {
             // select random transition 
             float random = (float)std::rand() / RAND_MAX;             
-            int transition = oWalker.getNumTransitions2Walk() * random;
+            int transition = oWalker.getNumTransitionsAhead() * random;
             LOG4CXX_DEBUG(logger, "PathFinder: findAleatoryPath(): state " << oWalker.getState()->getStatePk().getStateID() << ", trans " << transition);        
             // and walk through it 
             bwalking = oWalker.walk(transition);

@@ -4,8 +4,8 @@
  ***************************************************************************/
 
 #include "tron/ai/Exploration.h"
-#include "tron/diagram/Transition.h"
-#include "tron/diagram/TransitionPk.h"
+#include "tron/ai/Explorer.h"
+//#include "tron/diagram/Transition.h"
 
 using namespace log4cxx;
 
@@ -13,94 +13,97 @@ namespace tron
 {
 LoggerPtr Exploration::logger(Logger::getLogger("tron.ai"));
     
-Exploration::Exploration() 
-{
-    start = target = -1;
-    bfinished = false;
-}
 
-Exploration::~Exploration()
+std::vector<Path> Exploration::explore(Diagram& oDiagram, int startState, int targetState)
 {
-    listExplorers.clear();
-}
-
-bool Exploration::init(Diagram& oDiagram, int startState, int targetState)
-{
-    // create initial explorer 
-    listExplorers.clear();
+    LOG4CXX_INFO(logger, "Exploration.explore(): start = " << startState << ", target = " << targetState);        
+    std::vector<Path> listPaths;
+                
+    // create squad with initial explorer 
+    Squad oSquad;    
     Explorer oExplorer;
-    // if initialized ok
-    if (oExplorer.init(oDiagram, start, target))
-    {
-        // set start & target positions
-        start = startState;
-        target = targetState;
-        // and add it to squad
-        listExplorers.push_back(oExplorer);
-
-        LOG4CXX_INFO(logger, "Exploration: initialized with start state = " << start << " and target = " << target);        
-        LOG4CXX_INFO(logger, "Exploration: init ok");                
-        return true;
-    }
+    // if explorer initialized add it to squad
+    if (oExplorer.init(oDiagram, startState, targetState))
+        oSquad.addExplorer(oExplorer);
     else
     {
-        LOG4CXX_WARN(logger, "Exploration: init failed!");                
-        return false;
+        LOG4CXX_WARN(logger, "Exploration: failed!");                
+        return listPaths;
     }
+    
+    // make the squad advance over the diagram
+    bool bexplore = true;
+    while (bexplore)
+    {
+        bexplore = advanceSquad(oDiagram, oSquad, targetState);
+    }
+    
+    // if explorers arrived to target, get their paths    
+    if (oSquad.getNumArrived() > 0)
+    {
+        for (Explorer& oExplorer : oSquad.getListExplorers())
+        {
+            if (oExplorer.isArrived())
+                listPaths.push_back(oExplorer.getPath());
+        }
+    }
+
+    return listPaths;
 }
 
-bool Exploration::run()
-{
-    bfinished = false;
-    numBlocked = 0;
-    numArrived = 0;
-    
-    int numActive = listExplorers.size();
-    while (numActive > 0)
+bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState)
+{    
+    std::list<Explorer>::iterator itExplorer = oSquad.getListExplorers().begin();
+      
+    int numWalks = 0;
+    while (itExplorer != oSquad.getListExplorers().end())
     {
-        numActive = 0;
-        // make all active explorers walk
-        for (Explorer& oExplorer : listExplorers)
+        if (itExplorer->isActive())
         {
-            if (oExplorer.isActive())
+            if (itExplorer->advance())
             {
-                numActive++;
-                pushExplorer(oExplorer);
+                numWalks++;
+                
+                // if explorer left transitions ignored
+                if (itExplorer->hasIgnoredTransitions())
+                { 
+                    // get path copy without last transition
+                    Path oPath2 = itExplorer->getPath();
+                    oPath2.popLast();
+                
+                    // create new explorers to explore them            
+                    createNewExplorers(oDiagram, oSquad, targetState, oPath2, itExplorer->getIgnoredTransitions());
+                    
+                    // and clear them (as they're not ignored anymore)
+                    itExplorer->clearIgnoredTransitions();            
+                }
             }
+                            
+            itExplorer++;                
+        }
+        //  remove blocked explorers from squad
+        else if (itExplorer->isBlocked())
+        {
+            oSquad.removeExplorer(itExplorer);
         }
     }
     
-    return (numArrived > 0);
+    return (numWalks > 0);
 }
 
-bool Exploration::pushExplorer(Explorer& oExplorer)
+
+void Exploration::createNewExplorers(Diagram& oDiagram, Squad& oSquad, int targetState, Path& oPath, std::vector<TransitionPk>& listTransitions)
 {
-    // if explorer can advance
-    if (oExplorer.advance())
+    for (TransitionPk& transitionPk : listTransitions)
     {
-        // if explorer has ignored transitions
-        if (oExplorer.hasIgnoredTransitions())
+        Explorer oExplorer;
+        // if initialized ok
+        if (oExplorer.init(oDiagram, oPath.getOrigin(), targetState))
         {
-            // create new explorers to explore them            
-            createNewExplorers(oExplorer);
-            // and clear them as they're not ignored anymore
-            oExplorer.clearIgnoredTransitions();            
-        }
-    }
-    // otherwise
-    else
-    {
-        // check explorer blocked
-        if (oExplorer.isBlocked())
-            numBlocked++;
-        // check explorer arrived
-        else if (oExplorer.isArrived())
-            numArrived++;                
-    }
+            oExplorer.setNewPath(oPath);
+            oSquad.addExplorer(oExplorer);
+        }        
+    }        
 }
 
-void Exploration::createNewExplorers(Explorer& oExplorer)
-{
-    // TO DO ...
-}
 }

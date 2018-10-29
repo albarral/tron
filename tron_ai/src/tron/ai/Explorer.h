@@ -33,7 +33,6 @@ public:
 private:    
         static log4cxx::LoggerPtr logger;
         int status;                 // explorer status (one of eStatus values)        
-        int start;                  // start state
         int target;                // target state
         std::vector<TransitionPk> listIgnoredTransitions;      // list of ignored transitions
         
@@ -42,7 +41,6 @@ public:
     ~Explorer();
     
     int getSatus() {return status;};
-    int getStart() {return start;};
     int getTarget() {return target;};
     std::vector<TransitionPk>& getIgnoredTransitions() {return listIgnoredTransitions;};     
     
@@ -51,7 +49,7 @@ public:
     // makes explorer walk through given transition (returns true if it walked)
     bool advance(int transitionID=0);
     // check if there are ignored transitions
-    bool hasIgnoredTransitions() {return listIgnoredTransitions.size();};
+    bool hasIgnoredTransitions() {return !listIgnoredTransitions.empty();};
     // clear the list of ignored transitions
     void clearIgnoredTransitions();         
     

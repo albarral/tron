@@ -37,7 +37,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/ai/Exploration.o \
 	${OBJECTDIR}/src/tron/ai/Explorer.o \
-	${OBJECTDIR}/src/tron/ai/PathFinder.o
+	${OBJECTDIR}/src/tron/ai/PathFinder.o \
+	${OBJECTDIR}/src/tron/ai/Squad.o
 
 
 # C Compiler Flags
@@ -78,6 +79,11 @@ ${OBJECTDIR}/src/tron/ai/PathFinder.o: src/tron/ai/PathFinder.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/ai
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/ai/PathFinder.o src/tron/ai/PathFinder.cpp
+
+${OBJECTDIR}/src/tron/ai/Squad.o: src/tron/ai/Squad.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/ai
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/ai/Squad.o src/tron/ai/Squad.cpp
 
 # Subprojects
 .build-subprojects:

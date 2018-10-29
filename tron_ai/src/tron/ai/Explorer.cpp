@@ -15,7 +15,7 @@ LoggerPtr Explorer::logger(Logger::getLogger("tron.ai"));
 Explorer::Explorer() 
 {
     status = -1;
-    start = target = -1;
+    target = -1;
 }
 
 Explorer::~Explorer()
@@ -25,34 +25,40 @@ Explorer::~Explorer()
 
 bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
 {
-    // set diagram
-    Walker::setDiagram(oDiagram);
-    // set start position       
-    if (Walker::enter(startState))
-        start = startState;
-    else
-    {
-        LOG4CXX_WARN(logger, "Explorer: init failed! Start state not found in diagram: " << startState);        
-        return false;
-    }
-        
-     if (oDiagram.getState(targetState) != nullptr)
+    // check target validity 
+    if (oDiagram.getState(targetState) != nullptr)        
         target = targetState;
     else
     {
         LOG4CXX_WARN(logger, "Explorer: init failed! Target state not found in diagram: " << targetState);        
         return false;
     }
+    
+    // check origin validity 
+    if (oDiagram.getState(startState) != nullptr)        
+    {
+        // set diagram
+        Walker::setDiagram(oDiagram);
+        // and enter start position       
+        bool bok = Walker::enter(startState);        
 
-    // if all was valid, explorer is active
-    status = eSTATUS_ACTIVE;
-    return true;
+        // if all was valid, explorer is active
+        if (bok)
+            status = eSTATUS_ACTIVE;
+
+        return bok;
+    }
+    else
+    {
+        LOG4CXX_WARN(logger, "Explorer: init failed! Start state not found in diagram: " << startState);        
+        return false;
+    }
 }
 
 bool Explorer::advance(int transitionID)
 {
-    // safety check
-    if (status != eSTATUS_ARRIVED && Walker::isGrounded())
+    // try advancing if not yet arrived (retry if blocked for if new transitions appeared)
+    if (Walker::isGrounded() && status != eSTATUS_ARRIVED)
     {
         bool bwalked = false;
         int numTransitions = pState->getNumTransitions();
@@ -69,10 +75,10 @@ bool Explorer::advance(int transitionID)
                 break;
                 
             default:
-                // if multiple transitions, ignore the not walked ones (add them to ignored list)
+                // if multiple transitions, store the ignored ones 
                 for (Transition& oTransition : pState->getTransitionsList())
                 {
-                    // skip the walked one
+                    // store all except the selected one
                     if (oTransition.getTransitionPk().getTransitionID() != transitionID)
                         listIgnoredTransitions.push_back(oTransition.getTransitionPk());
                 }
