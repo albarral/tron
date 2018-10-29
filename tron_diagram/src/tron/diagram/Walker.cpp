@@ -29,91 +29,62 @@ void Walker::setDiagram(Diagram& oDiagram)
 
 bool Walker::enter(int stateID)
 {
-    // safety check
-    if (pDiagram != nullptr)
+    bool bok = false;
+    // if state set correctly, reset path
+    if (pDiagram != nullptr && setState(stateID))
     {
-        // if state valid
-        if (pDiagram->getState(stateID) != nullptr)
-        {
-            // ground walker at this state
-            pState = pDiagram->getState(stateID);
-            bgrounded = true;
-            // and reset path
-            oPath.clear();
-            
-            return true;        
-        }
-        // invalid state
-        else
-            return false;
+        oPath.clear();            
+        bok = true;
     }
-    else
-        return false;
+    
+    return bok;
 }
 
 bool Walker::walk(int transitionID)
 {
+    bool bok = false;
     // check if grounded
     if (bgrounded)
     {
-        // get transition
+        // get specified transition
         Transition* pTransition = pState->getTransition(transitionID);
-        // if exists
+        // if valid 
         if (pTransition != nullptr)
         {
-            // check state pointed by transition
-            State* pNextState = pDiagram->getState(pTransition->getEndStateID());                    
-            // if state exists
-            if (pNextState != nullptr)
+            // set state pointed by transition
+            if (setState(pTransition->getEndStateID()))
             {
-                // walk to it and add transition to path
-                pState = pNextState;
+                // add transition to path
                 oPath.addTransition(*pTransition);           
-                return true;
+                bok = true;
             }
-            // state not exists, invalid transition (points to nowhere)
-            else
-                return false;
         }
-        // transition not exists
-        else
-            return false;              
     }
-    // walker not grounded
-    else
-        return false;   
+
+    return bok;
 }
 
-bool Walker::walkBack()
+bool Walker::setNewPath(Path& oPath2)
 {
-    // check if grounded
-    if (bgrounded)
+    bool bok = false;
+    // we assume that new path is valid if its origin & end states are valid
+
+    // if new path origin is valid
+    if (enter(oPath2.getOrigin()))
     {
-        // reduce path popping last transition
-        if (oPath.popTransition())
+        // set state indicated by new path end
+        if (setState(oPath2.getEnd()))
         {
-            // get back to previous state (the pointed by new path end)
-            pState = pDiagram->getState(oPath.getEnd());                    
-            // if state exists (should exist, as we walked it in the past)
-            if (pState != nullptr)
-                return true;
-            // otherwise, invalid walk back (jumped to nowhere)
-            else
-            {
-                bgrounded = false;
-                return false;            
-            }
+            // copy path 
+            oPath = oPath2;
+            bok = true;
         }
-        // couldn't reduce path
-        else
-            return false;            
     }
-    // walker not grounded
-    else
-        return false;   
+    
+    return bok;
 }
 
-int Walker::getNumTransitions2Walk()
+int Walker::getNumTransitionsAhead()
 {
     // check if grounded
     if (bgrounded)
@@ -123,13 +94,20 @@ int Walker::getNumTransitions2Walk()
         return 0;
 }
 
-int Walker::getPresentPosition()
+bool Walker::setState(int stateID)
 {
-    // check if grounded
-    if (bgrounded)
-        return oPath.getEnd();        
-    // not grounded
+    // check new state existence
+    State* pNewState = pDiagram->getState(stateID);                    
+    // if exists, set it
+    if (pNewState != nullptr)
+    {        
+        pState = pNewState;
+        bgrounded = true;
+        return true;
+    }
+    // otherwise, not
     else
-        return -1;
+        return false;
 }
+
 }

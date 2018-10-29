@@ -38,17 +38,19 @@ public:
     // add transition to path (only allowed if transition connected to path end)
     bool addTransition(Transition& oTransition);      
     // pop last transition from path (affects endState and cost)
-    bool popTransition();
+    bool popLast();
     
     // check if given path is connected to this (it starts where this one ends)
     bool isConnected(Path& oPath2); 
     // add given path to this one (only if it's connected)
     bool add(Path& oPath2);
     
-    // clear whole path (transitions and cost)
+    // clear path (remove all transitions)
     void clear();
 
+    // compare operator (return true if paths equal)
     friend bool operator== (Path& p1, Path& p2);
+    // differ operator (return true if paths different)
     friend bool operator!= (Path& p1, Path& p2);        
     
     std::string toString();   

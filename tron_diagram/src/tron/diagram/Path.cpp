@@ -40,7 +40,7 @@ bool Path::addTransition(Transition& oTransition)
         return false;
 }
 
-bool Path::popTransition()
+bool Path::popLast()
 {
     // if path not empty
     if (!listTransitions.empty())

@@ -35,16 +35,20 @@ public:
 
     // set exploration diagram
     void setDiagram(Diagram& oDiagram);
-    // position walker in given state (returns false if invalid state)
+
+    // set walker to given state, clearing the path (return false if failed)
     bool enter(int stateID);    
-    // traverse given transition (returns false if invalid transition)
+    // traverse given transition (return false if failed)
     bool walk(int transitionID);
-    // walk back the last traversed transition reducing the path accordingly (returns false if could not do it)
-    bool walkBack();
-    // get the number of transitions the walker sees at present state
-    int getNumTransitions2Walk();
-    // get the ID of present state
-    int getPresentPosition();
+    // get the number of transitions seen from present state
+    int getNumTransitionsAhead();
+    
+    // set a new walked path also updating the present state (return false if failed)
+    bool setNewPath(Path& oPath2);
+    
+private:
+    // set present state to given state id (return false if state is not in diagram)
+    bool setState(int stateID);
 };
 }
 #endif

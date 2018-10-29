@@ -108,7 +108,7 @@ void TestDiagram::testPathCreation()
     
     LOG4CXX_INFO(logger, modName + " path reduced ...");                
     // reduce path
-    oPath.popTransition();
+    oPath.popLast();
     // show path
     LOG4CXX_INFO(logger, oPath.toString());
 }
@@ -133,7 +133,7 @@ void TestDiagram::testWalker()
     
     // make walker walk until blocked
     bool bwalking = true;
-    while (bwalking && oWalker.getNumTransitions2Walk() > 0)
+    while (bwalking && oWalker.getNumTransitionsAhead() > 0)
     {
         // take always first transition
         bwalking = oWalker.walk(0);        
@@ -142,8 +142,13 @@ void TestDiagram::testWalker()
     // show walked path
     LOG4CXX_INFO(logger, oWalker.getPath().toString());
     
-    LOG4CXX_INFO(logger, modName + " walk back one step ...");                    
-    oWalker.walkBack();    
+    // now walk back
+    LOG4CXX_INFO(logger, modName + " walk back one step ...");              
+    // get copy of walked path and remove last transition
+    tron::Path oPath = oWalker.getPath(); 
+    oPath.popLast();
+    // then set reduced path
+    oWalker.setNewPath(oPath);
     // show walked path
     LOG4CXX_INFO(logger, oWalker.getPath().toString());    
 }
