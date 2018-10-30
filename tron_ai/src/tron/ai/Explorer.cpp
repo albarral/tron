@@ -57,68 +57,63 @@ bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
 
 bool Explorer::advance(int transitionID)
 {
-    // try advancing if not yet arrived (retry if blocked for if new transitions appeared)
-    if (Walker::isGrounded() && status != eSTATUS_ARRIVED)
-    {
-        bool bwalked = false;
-        int numTransitions = pState->getNumTransitions();
-        switch (numTransitions)
-        {
-            case 0:
-                // if no transitions, blocked
-                status = eSTATUS_BLOCKED;
-                break;
-    
-            case 1:
-                // if single transition, walk it
-                bwalked = walkAndCheck(transitionID);
-                break;
-                
-            default:
-                // if multiple transitions, store the ignored ones 
-                for (Transition& oTransition : pState->getTransitionsList())
-                {
-                    // store all except the selected one
-                    if (oTransition.getTransitionPk().getTransitionID() != transitionID)
-                        listIgnoredTransitions.push_back(oTransition.getTransitionPk());
-                }
-                
-                // walk the selected transition
-                bwalked = walkAndCheck(transitionID);                                
-                break;
-        }
-        
-        // return true if walked
-        return bwalked;
-    }
-    else
-    {
-        LOG4CXX_WARN(logger, "Explorer: go failed, not grounded! ");
-        return false;
-    }            
+    // walk the selected transition
+    bool bwalked = walk(transitionID);
+    updateStatus(bwalked);        
+
+    return bwalked;
 }
 
-bool Explorer::walkAndCheck(int transitionID)
+bool Explorer::advance()
 {
-    // walk given transition
-    if (Walker::walk(transitionID))
+    // try advancing if not yet arrived (retry if blocked for if new transitions appeared)
+    bool bwalked = false;
+    int numTransitions = pState->getNumTransitions();
+    switch (numTransitions)
     {
-        // if target reached, arrived
-        if (oPath.getEnd() == target)
-            status = eSTATUS_ARRIVED;
-        // otherwise, stay active
-        else
-            status = eSTATUS_ACTIVE;
-        
-        return true;
+        case 0:
+            // if no transitions, blocked
+            status = eSTATUS_BLOCKED;
+            break;
+
+        case 1:
+            // if single transition, walk it
+            bwalked = walk(0);
+            updateStatus(bwalked);
+            break;
+
+        default:
+            // if multiple transitions, select one to walk and store the ignored ones 
+            int selected = 0;   // select first available transition            
+            for (Transition& oTransition : pState->getTransitionsList())
+            {
+                // store all except the selected one
+                if (oTransition.getTransitionPk().getTransitionID() != selected)
+                    listIgnoredTransitions.push_back(oTransition.getTransitionPk());
+            }
+
+            // walk the selected transition
+            bwalked = walk(selected);
+            updateStatus(bwalked);
+            break;
     }
-    // if walk failed -> blocked
-    else
-    {
-        status = eSTATUS_BLOCKED;
-        return false;
-    }
+
+    return bwalked;
 }
+
+
+void Explorer::updateStatus(bool bwalked)
+{
+    // if walked
+    if (bwalked)
+        // if target reached -> arrived
+        // otherwise -> active
+        status = (oPath.getEnd() == target ? eSTATUS_ARRIVED : eSTATUS_ACTIVE);
+    // otherwise -> blocked
+    else
+        status = eSTATUS_BLOCKED;
+}
+
 
 void Explorer::clearIgnoredTransitions()
 {

@@ -12,6 +12,7 @@
 #include "tron/ai/Squad.h"
 #include "tron/diagram/Diagram.h"
 #include "tron/diagram/Path.h"
+#include "tron/diagram/TransitionPk.h"
 
 namespace tron
 {
@@ -23,8 +24,8 @@ private:
         static log4cxx::LoggerPtr logger;
         
 public:
-    Exploration();
-    ~Exploration();
+//    Exploration();
+//    ~Exploration();
     
     // initializes exploration data
     static std::vector<Path> explore(Diagram& oDiagram, int startState, int targetState);    
@@ -33,11 +34,8 @@ private:
     // makes the squad walk to new states (return true if it some explorer walked)
     static bool advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState);
     
-    // create new explorers for given path to explore the specified transitions
-    static void createNewExplorers(Diagram& oDiagram, Squad& oSquad, int targetState, Path& oPath, std::vector<TransitionPk>& listIgnoredTransitions);
-
-    // create new explorer with the given path and push it through the specified transition
-//    bool launchExplorer(Path& oPath, TransitionPk& oTransitionPk);
+    // create new explorers to explore the specified transitions starting from the given path and with the specified target
+    static void deployNewExplorers(Diagram& oDiagram, Squad& oSquad, Path& oPath, std::vector<TransitionPk>& listTransitions, int startState, int targetState);
 };
 }
 #endif

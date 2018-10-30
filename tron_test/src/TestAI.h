@@ -29,5 +29,6 @@ private:
     void createDiagram();
     void testPathFinder();
     void testExplorer();
+    void testExploration();
 };
 #endif

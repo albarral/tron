@@ -3,8 +3,11 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <vector>
+
 #include "TestAI.h"
 
+#include "tron/ai/Exploration.h"
 #include "tron/ai/Explorer.h"
 #include "tron/ai/PathFinder.h"
 #include "tron/diagram/Path.h"
@@ -25,7 +28,8 @@ void TestAI::makeTest()
     LOG4CXX_INFO(logger, modName + ": test start \n");
 
     //testPathFinder();
-    testExplorer();
+    //testExplorer();
+    testExploration();
         
     LOG4CXX_INFO(logger, modName + ": test end \n");
 };
@@ -111,4 +115,26 @@ void TestAI::testExplorer()
     {
         LOG4CXX_INFO(logger, oTransitionPk.toString());
     }
+}
+
+
+void TestAI::testExploration()
+{
+    LOG4CXX_INFO(logger, modName + ": testExploration ...");
+
+    // diagram creation
+    createDiagram();
+    
+    int start = 1;
+    int target = 5;
+    std::vector<tron::Path> listPaths = tron::Exploration::explore(oDiagram, start, target);
+
+    if (!listPaths.empty())
+    {
+        for (tron::Path& oPath : listPaths)
+        {
+            LOG4CXX_INFO(logger, oPath.toString());
+        }
+    }
+
 }

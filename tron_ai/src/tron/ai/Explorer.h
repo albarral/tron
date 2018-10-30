@@ -44,10 +44,12 @@ public:
     int getTarget() {return target;};
     std::vector<TransitionPk>& getIgnoredTransitions() {return listIgnoredTransitions;};     
     
-    // initializes explorer data
+    // initialize explorer data
     bool init(Diagram& oDiagram, int startState, int targetState);    
-    // makes explorer walk through given transition (returns true if it walked)
-    bool advance(int transitionID=0);
+    // make explorer walk through given transition (returns true if it walked)
+    bool advance(int transitionID);
+    // make explorer walk through any available transition (returns true if it walked)
+    bool advance();
     // check if there are ignored transitions
     bool hasIgnoredTransitions() {return !listIgnoredTransitions.empty();};
     // clear the list of ignored transitions
@@ -58,8 +60,8 @@ public:
     bool isBlocked() {return status == eSTATUS_BLOCKED;};    
     
 private:
-    // walk through given transition and check if target reached (returns true if walked)
-    bool walkAndCheck(int transitionID);
+    // update status depending on walk result and if target reached 
+    void updateStatus(bool bwalked);
 };
 }
 #endif
