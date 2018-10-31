@@ -16,6 +16,7 @@ Explorer::Explorer()
 {
     status = -1;
     target = -1;
+    boriented = false;
 }
 
 Explorer::~Explorer()
@@ -44,7 +45,10 @@ bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
 
         // if all was valid, explorer is active
         if (bok)
+        {
             status = eSTATUS_ACTIVE;
+            boriented = false;            
+        }
 
         return bok;
     }
@@ -55,63 +59,73 @@ bool Explorer::init(Diagram& oDiagram, int startState, int targetState)
     }
 }
 
-bool Explorer::advance(int transitionID)
+void Explorer::orient(int transitionID)
 {
-    // walk the selected transition
-    bool bwalked = walk(transitionID);
-    updateStatus(bwalked);        
-
-    return bwalked;
+    // set oriented mode and next transition to walk
+    boriented = true;
+    this->transitionID = transitionID;
 }
 
 bool Explorer::advance()
 {
-    // try advancing if not yet arrived (retry if blocked for if new transitions appeared)
-    bool bwalked = false;
     int numTransitions = pState->getNumTransitions();
-    switch (numTransitions)
+
+    // if no transitions -> blocked
+    if (numTransitions == 0)
     {
-        case 0:
-            // if no transitions, blocked
-            status = eSTATUS_BLOCKED;
-            break;
-
-        case 1:
-            // if single transition, walk it
-            bwalked = walk(0);
-            updateStatus(bwalked);
-            break;
-
-        default:
-            // if multiple transitions, select one to walk and store the ignored ones 
-            int selected = 0;   // select first available transition            
-            for (Transition& oTransition : pState->getTransitionsList())
-            {
-                // store all except the selected one
-                if (oTransition.getTransitionPk().getTransitionID() != selected)
-                    listIgnoredTransitions.push_back(oTransition.getTransitionPk());
-            }
-
-            // walk the selected transition
-            bwalked = walk(selected);
-            updateStatus(bwalked);
-            break;
+        status = eSTATUS_BLOCKED;
+        return false;
     }
-
-    return bwalked;
+    // otherwise, try advancing 
+    else
+    {
+        bool bwalked = false;                
+        // if oriented mode, walk the specified transition
+        if (boriented)
+        {
+            bwalked = walk(transitionID);
+            updateStatus(bwalked);
+            // and set free mode again
+            boriented = false;
+        }
+        // if free mode 
+        else
+        {
+            // if single transition, walk it
+            if (numTransitions == 1)
+            {
+                bwalked = walk(0);
+                updateStatus(bwalked);
+            }
+            // if multiple transitions, select one to walk and store the ignored ones
+            else
+            {    
+                // select first transition (by now)
+                int selected = 0;  
+                State* pPrevState = pState;
+                // walk it
+                bwalked = walk(selected);
+                updateStatus(bwalked);                        
+                // store ignored transitions
+                for (Transition& oTransition : pPrevState->getTransitionsList())
+                {
+                    // skip the selected one
+                    if (oTransition.getTransitionPk().getTransitionID() != selected)
+                        listIgnoredTransitions.push_back(oTransition.getTransitionPk());
+                }
+            }
+        }
+        return bwalked;        
+    }
 }
-
 
 void Explorer::updateStatus(bool bwalked)
 {
-    // if walked
+    // if walked and ...
+    // target reached -> arrived
+    // otherwise -> active
     if (bwalked)
-        // if target reached -> arrived
-        // otherwise -> active
         status = (oPath.getEnd() == target ? eSTATUS_ARRIVED : eSTATUS_ACTIVE);
-    // otherwise -> blocked
-    else
-        status = eSTATUS_BLOCKED;
 }
 
 

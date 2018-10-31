@@ -18,8 +18,8 @@ class Transition
 {
 protected:
     TransitionPk transitionPk;      // transition identifier 
-    std::string name;               // transition name
     int endStateID;                   // end state ID
+    std::string name;               // transition name
     float cost;                         // cost of the transition
   
 public:
@@ -28,6 +28,7 @@ public:
         
     TransitionPk& getTransitionPk() {return transitionPk;};        
     int getEndStateID() {return endStateID;};    
+    std::string getName() {return name;};
     float getCost() {return cost;};
 
     void setTransitionPk(TransitionPk& transitionPk) {this->transitionPk = transitionPk;};

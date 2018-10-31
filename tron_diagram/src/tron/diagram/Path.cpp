@@ -137,4 +137,15 @@ std::string Path::toString()
     return text;
 }
 
+std::string Path::shortDesc()
+{
+    std::string text = "-";
+    for (Transition& oTransition : listTransitions)
+    {
+        text += oTransition.getName() + ",";
+    }        
+        
+    return text;
+}
+
 }

@@ -54,6 +54,8 @@ public:
     friend bool operator!= (Path& p1, Path& p2);        
     
     std::string toString();   
+    // get short description of the path
+    std::string shortDesc();
 
 private:    
     void setOrigin(int value) {originState = value;};

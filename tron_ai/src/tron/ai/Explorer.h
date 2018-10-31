@@ -16,10 +16,15 @@
 namespace tron
 {
 // Utility class for exploring paths in state diagrams.
-// The exploration strategy depends on the number of transitions in the present state: 
-// 0 transitions: explorer blocked
-// 1 transition: explorer walks it
-// +1 transitions: explorer walks one & ignores the rest (adds them to the ignored list)
+// Two exploration modes available: free and oriented.    
+// Free mode - the explorer walks any of the available transitions: 
+// if 0 transitions: explorer is blocked
+// if 1 transition: it walks this one
+// if +1 transitions: it walks a selected one & ignores the rest adding them an ignored list
+// Oriented mode - the explorer walks the specified transition:
+// if 0 transitions: explorer is blocked
+// if +0 transitions: it walks the specified one if it exists
+// single usage: after an oriented walk, the exploration is set back to free mode automatically.
 class Explorer : public Walker
 {
 public:
@@ -34,6 +39,8 @@ private:
         static log4cxx::LoggerPtr logger;
         int status;                 // explorer status (one of eStatus values)        
         int target;                // target state
+        bool boriented;         // oriented mode (on true, the advance takes a specified transition)
+        int transitionID;         // specified transition for oriented mode exploration
         std::vector<TransitionPk> listIgnoredTransitions;      // list of ignored transitions
         
 public:
@@ -42,13 +49,14 @@ public:
     
     int getSatus() {return status;};
     int getTarget() {return target;};
+    int getOrientedTransition() {return transitionID;};
     std::vector<TransitionPk>& getIgnoredTransitions() {return listIgnoredTransitions;};     
     
     // initialize explorer data
     bool init(Diagram& oDiagram, int startState, int targetState);    
-    // make explorer walk through given transition (returns true if it walked)
-    bool advance(int transitionID);
-    // make explorer walk through any available transition (returns true if it walked)
+    // orient explorer to given transition
+    void orient(int transitionID);
+    // make explorer walk either in free or oriented mode (returns true if it walked)
     bool advance();
     // check if there are ignored transitions
     bool hasIgnoredTransitions() {return !listIgnoredTransitions.empty();};

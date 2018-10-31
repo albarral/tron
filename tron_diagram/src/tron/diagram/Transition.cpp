@@ -31,6 +31,6 @@ void Transition::clear()
 
 std::string Transition::toString()
 {
-    return ("Transition: [" + transitionPk.toString() + "], name = " + name + ", end state = " + std::to_string(endStateID) + ", cost = " + std::to_string(cost));
+    return ("Transition: [" + transitionPk.toString() + "], end state = " + std::to_string(endStateID) + ", name = " + name + ", cost = " + std::to_string(cost));
 }
 }

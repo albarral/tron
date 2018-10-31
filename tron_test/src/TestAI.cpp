@@ -39,7 +39,7 @@ void TestAI::createDiagram()
     LOG4CXX_INFO(logger, modName + ": createDiagram ...");
     
     oDiagram.setID(4);
-    oDiagram.setName("Diagram4");
+    oDiagram.setName("Diagram5");
     
     oDiagram.addState(1, "s1");
     oDiagram.addState(2, "s2");
@@ -47,12 +47,12 @@ void TestAI::createDiagram()
     oDiagram.addState(4, "s4");
     oDiagram.addState(5, "s5");
     
-    oDiagram.addTransition(1, 2, "s1_s2");
-    oDiagram.addTransition(1, 3, "s1_s3");
-    oDiagram.addTransition(2, 4, "s2_s4");
-    oDiagram.addTransition(2, 5, "s2_s5");
-    oDiagram.addTransition(3, 2, "s3_s2");
-    oDiagram.addTransition(3, 4, "s3_s4");
+    oDiagram.addTransition(1, 2, "s1_s2", 1.0);
+    oDiagram.addTransition(1, 3, "s1_s3", 1.0);
+    oDiagram.addTransition(2, 4, "s2_s4", 1.0);
+    oDiagram.addTransition(2, 5, "s2_s5", 1.0);
+    oDiagram.addTransition(3, 2, "s3_s2", 1.0);
+    oDiagram.addTransition(3, 4, "s3_s4", 1.0);
     
     LOG4CXX_INFO(logger, oDiagram.toString());
 }

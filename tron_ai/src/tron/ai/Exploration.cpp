@@ -74,6 +74,7 @@ bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState
             // make it advance
             if (itExplorer->advance())
             {
+                LOG4CXX_DEBUG(logger, "Exploration: advanced " + itExplorer->getPath().shortDesc());        
                 numWalks++;
                 
                 // if explorer left transitions ignored
@@ -90,7 +91,15 @@ bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState
                     // and clear them 
                     itExplorer->clearIgnoredTransitions();            
                 }
-            }                        
+            }                       
+            else
+            {
+                LOG4CXX_DEBUG(logger, "Exploration: failed advance " + itExplorer->getPath().shortDesc());                        
+            }
+        }
+        else
+        {
+            LOG4CXX_DEBUG(logger, "Exploration: inactive explorer " + itExplorer->getPath().shortDesc());                        
         }
 
         itExplorer++;                
@@ -107,9 +116,7 @@ bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState
 
 
 void Exploration::deployNewExplorers(Diagram& oDiagram, Squad& oSquad, Path& oPath, std::vector<TransitionPk>& listTransitions, int startState, int targetState)
-{
-    LOG4CXX_INFO(logger, "Exploration.deployNewExplorers(): deploying " << listTransitions.size() << " explorers");        
-    
+{    
     // for each transition in the list
     for (TransitionPk& transitionPk : listTransitions)
     {
@@ -122,9 +129,11 @@ void Exploration::deployNewExplorers(Diagram& oDiagram, Squad& oSquad, Path& oPa
             if (!oPath.isEmpty())
                 oExplorer.setNewPath(oPath);
             // make him walk
-            oExplorer.advance(transitionPk.getTransitionID());
+            oExplorer.orient(transitionPk.getTransitionID());
             // and add to squad
             oSquad.addExplorer(oExplorer);
+            
+            LOG4CXX_DEBUG(logger, "Exploration: new explorer " << oExplorer.getPath().shortDesc() << ", oriented to " << oExplorer.getOrientedTransition());                  
         }        
     }        
 }
