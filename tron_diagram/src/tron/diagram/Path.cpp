@@ -56,7 +56,8 @@ bool Path::popLast()
         
         // if path totally deleted
         if (listTransitions.empty())        
-            originState = endState = -1;
+            endState = -1;
+
         return true;        
     }
     // otherwise it can't be popped

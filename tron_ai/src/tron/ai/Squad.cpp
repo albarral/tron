@@ -9,6 +9,7 @@ namespace tron
 {
 Squad::Squad() 
 {
+    counterID = 0;
     numBlocked = numArrived = 0;
 }
 
@@ -19,6 +20,8 @@ Squad::~Squad()
 
 void Squad::addExplorer(Explorer& oExplorer)
 {
+    // set explorer ID (automatically increased)
+    oExplorer.setID(++counterID);
     listExplorers.push_back(oExplorer);    
 }
 

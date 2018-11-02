@@ -32,9 +32,10 @@ std::vector<Path> Exploration::explore(Diagram& oDiagram, int startState, int ta
     
     // make the squad advance iteratively
     bool bexplore = true;
+    int iteration = 0;
     while (bexplore)
     {
-        bexplore = advanceSquad(oDiagram, oSquad, targetState);
+        bexplore = advanceSquad(oDiagram, oSquad, targetState, ++iteration);
     }
     
     oSquad.checkNumbers();
@@ -58,9 +59,11 @@ std::vector<Path> Exploration::explore(Diagram& oDiagram, int startState, int ta
     return listPaths;
 }
 
-bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState)
+bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState, int iteration)
 {          
     int numWalks = 0;
+
+    LOG4CXX_INFO(logger, "Exploration: iteration ... " << iteration);        
 
     std::list<Explorer>::iterator itExplorer = oSquad.getListExplorers().begin();
     std::list<Explorer>::iterator itEnd = oSquad.getListExplorers().end();
@@ -74,32 +77,26 @@ bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState
             // make it advance
             if (itExplorer->advance())
             {
-                LOG4CXX_DEBUG(logger, "Exploration: advanced " + itExplorer->getPath().shortDesc());        
+                LOG4CXX_DEBUG(logger, "Exploration: " + itExplorer->shortDesc() + " ok");        
                 numWalks++;
                 
                 // if explorer left transitions ignored
                 if (itExplorer->hasIgnoredTransitions())
                 { 
-                    int startState = itExplorer->getPath().getOrigin();
-                    // get path without last transition
-                    Path oFromPath = itExplorer->getPath();
-                    oFromPath.popLast();
-                                    
                     // create new explorers to explore the ignored transitions
-                    deployNewExplorers(oDiagram, oSquad, oFromPath, itExplorer->getIgnoredTransitions(), startState, targetState);
-                    
+                    deployNewExplorers(oDiagram, oSquad, targetState, itExplorer->getPath(), itExplorer->getIgnoredTransitions());                    
                     // and clear them 
                     itExplorer->clearIgnoredTransitions();            
                 }
             }                       
             else
             {
-                LOG4CXX_DEBUG(logger, "Exploration: failed advance " + itExplorer->getPath().shortDesc());                        
+                LOG4CXX_DEBUG(logger, "Exploration: " + itExplorer->shortDesc() + " failed, " + Explorer::statusDesc(itExplorer->getSatus()));        
             }
         }
         else
         {
-            LOG4CXX_DEBUG(logger, "Exploration: inactive explorer " + itExplorer->getPath().shortDesc());                        
+            LOG4CXX_DEBUG(logger, "Exploration: " + itExplorer->shortDesc() + " " + Explorer::statusDesc(itExplorer->getSatus()));        
         }
 
         itExplorer++;                
@@ -107,33 +104,36 @@ bool Exploration::advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState
 //        else if (itExplorer->isBlocked())
 //            oSquad.removeExplorer(itExplorer);
     }
-    
-    LOG4CXX_INFO(logger, "Exploration.advanceSquad(): num walks = " << numWalks);        
-    
+        
     // return number of advances
     return (numWalks > 0);
 }
 
 
-void Exploration::deployNewExplorers(Diagram& oDiagram, Squad& oSquad, Path& oPath, std::vector<TransitionPk>& listTransitions, int startState, int targetState)
+void Exploration::deployNewExplorers(Diagram& oDiagram, Squad& oSquad, int targetState, Path& oPath, std::vector<TransitionPk>& listTransitions)
 {    
-    // for each transition in the list
+    int startState = oPath.getOrigin();
+    // the new explorers will be placed at the same common path (a step previous to the specified path), but oriented to different transitions
+    Path oCommonPath = oPath;
+    oCommonPath.popLast();
+    
+    // for each ignored transition
     for (TransitionPk& transitionPk : listTransitions)
     {
-        // create a new explorer and make him walk the transition
+        // create new explorer 
         Explorer oExplorer;
-        // initialize explorer 
+        // initialize it
         if (oExplorer.init(oDiagram, startState, targetState))
         {
-            // set path (if not empty)
-            if (!oPath.isEmpty())
-                oExplorer.setNewPath(oPath);
-            // make him walk
+            // set its path (if not empty)
+            if (!oCommonPath.isEmpty())
+                oExplorer.setNewPath(oCommonPath);
+            // and orient it towards the ignored transition
             oExplorer.orient(transitionPk.getTransitionID());
-            // and add to squad
+            // finally add it to squad
             oSquad.addExplorer(oExplorer);
             
-            LOG4CXX_DEBUG(logger, "Exploration: new explorer " << oExplorer.getPath().shortDesc() << ", oriented to " << oExplorer.getOrientedTransition());                  
+            LOG4CXX_DEBUG(logger, "Exploration: new deploy -> " << oExplorer.shortDesc());                  
         }        
     }        
 }

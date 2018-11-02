@@ -6,6 +6,7 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <string>
 #include <vector>
 #include <log4cxx/logger.h>
 
@@ -37,6 +38,7 @@ public:
     
 private:    
         static log4cxx::LoggerPtr logger;
+        int ID;                         // explorer ID
         int status;                 // explorer status (one of eStatus values)        
         int target;                // target state
         bool boriented;         // oriented mode (on true, the advance takes a specified transition)
@@ -47,11 +49,13 @@ public:
     Explorer();
     ~Explorer();
     
+    int getID() {return ID;};
     int getSatus() {return status;};
     int getTarget() {return target;};
     int getOrientedTransition() {return transitionID;};
     std::vector<TransitionPk>& getIgnoredTransitions() {return listIgnoredTransitions;};     
     
+    void setID(int id) {ID = id;};
     // initialize explorer data
     bool init(Diagram& oDiagram, int startState, int targetState);    
     // orient explorer to given transition
@@ -67,6 +71,11 @@ public:
     bool isArrived() {return status == eSTATUS_ARRIVED;};
     bool isBlocked() {return status == eSTATUS_BLOCKED;};    
     
+    // get short description of the explorer
+    std::string shortDesc();
+    // get status description
+    static std::string statusDesc(int status);
+
 private:
     // update status depending on walk result and if target reached 
     void updateStatus(bool bwalked);

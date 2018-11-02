@@ -14,6 +14,7 @@ LoggerPtr Explorer::logger(Logger::getLogger("tron.ai"));
     
 Explorer::Explorer() 
 {
+    ID = 0;
     status = -1;
     target = -1;
     boriented = false;
@@ -134,4 +135,32 @@ void Explorer::clearIgnoredTransitions()
     listIgnoredTransitions.clear();
 }
 
+std::string Explorer::shortDesc()
+{
+    std::string text = "explorer " + std::to_string(ID);
+    if (bgrounded)    
+    {
+        // show state name
+        text += " [" + pState->getName() + "]";
+        // show orientation (if oriented)
+        if (boriented)
+            text += std::to_string(transitionID);
+    }        
+    return text;
+}
+
+std::string Explorer::statusDesc(int status)
+{
+    switch (status)
+    {
+        case eSTATUS_ACTIVE: 
+            return "active";
+        case eSTATUS_ARRIVED:
+            return "arrived";
+        case eSTATUS_BLOCKED:
+            return "blocked"; 
+        default: 
+            return "undefined status";
+    }
+}
 }

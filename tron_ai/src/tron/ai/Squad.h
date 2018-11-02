@@ -15,7 +15,8 @@ namespace tron
 // Dynamic squad of explorers, used for diagrams exploration.
 class Squad
 {
-private:    
+private:  
+        int counterID;  // counter for explorers identification
         std::list<Explorer> listExplorers;      // list of explorers
         int numBlocked;         // number of explorers blocked
         int numArrived;         // number of explorers that reached the target

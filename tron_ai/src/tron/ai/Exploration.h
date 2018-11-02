@@ -32,10 +32,10 @@ public:
         
 private:
     // makes the squad walk to new states (return true if it some explorer walked)
-    static bool advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState);
+    static bool advanceSquad(Diagram& oDiagram, Squad& oSquad, int targetState, int iteration);
     
     // create new explorers to explore the specified transitions starting from the given path and with the specified target
-    static void deployNewExplorers(Diagram& oDiagram, Squad& oSquad, Path& oPath, std::vector<TransitionPk>& listTransitions, int startState, int targetState);
+    static void deployNewExplorers(Diagram& oDiagram, Squad& oSquad, int targetState, Path& oPath, std::vector<TransitionPk>& listTransitions);
 };
 }
 #endif
