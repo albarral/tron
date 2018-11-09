@@ -15,6 +15,7 @@
 #include "TestDisplay.h"
 #include "TestMath.h"
 #include "TestSignals.h"
+#include "TestSpace.h"
 #include "TestUtil.h"
 #include "TestTools.h"
 
@@ -32,8 +33,8 @@ int main(int argc, char** argv)
         
     LOG4CXX_INFO(logger, "\n\nSTART tron test\n");
     
-    TestAI oTestAI;
-    oTestAI.makeTest();
+//    TestAI oTestAI;
+//    oTestAI.makeTest();
 
 //    TestControl oTestControl;
 //    oTestControl.makeTest();
@@ -53,6 +54,9 @@ int main(int argc, char** argv)
 //    TestSignals oTestSignals;
 //    oTestSignals.makeTest();
     
+    TestSpace oTestSpace;
+    oTestSpace.makeTest();
+
 //    TestUtil oTestUtil;
 //    oTestUtil.makeTest();
 

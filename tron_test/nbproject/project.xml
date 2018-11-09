@@ -12,6 +12,7 @@
                 <make-dep-project>../tron_math</make-dep-project>
                 <make-dep-project>../tron_util</make-dep-project>
                 <make-dep-project>../tron_control</make-dep-project>
+                <make-dep-project>../tron_space</make-dep-project>
                 <make-dep-project>../tron_ai</make-dep-project>
                 <make-dep-project>../tron_signals</make-dep-project>
                 <make-dep-project>../tron_diagram</make-dep-project>

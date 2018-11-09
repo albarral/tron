@@ -41,7 +41,7 @@ bool Space::clearElement(int element)
         return false;    
 }
 
-bool Space::checkElementExists(int element)
+bool Space::findElement(int element)
 {
     // search element in list
     auto it = std::find(listElements.begin(), listElements.end(), element);
@@ -108,7 +108,7 @@ std::string Space::getStateName(int state)
 
 std::string Space::toString()
 {
-    std::string text = "Space " + std::to_string(ID) + ":\n" ;
+    std::string text = "Space " + std::to_string(ID) + ":\t" ;
     for (int element : listElements)
         text += std::to_string(element) + ", ";        
     

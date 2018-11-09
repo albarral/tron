@@ -31,6 +31,8 @@
         <itemPath>src/TestNode.h</itemPath>
         <itemPath>src/TestSignals.cpp</itemPath>
         <itemPath>src/TestSignals.h</itemPath>
+        <itemPath>src/TestSpace.cpp</itemPath>
+        <itemPath>src/TestSpace.h</itemPath>
         <itemPath>src/TestTools.cpp</itemPath>
         <itemPath>src/TestTools.h</itemPath>
         <itemPath>src/TestUtil.cpp</itemPath>
@@ -73,6 +75,7 @@
             <pElem>../tron_display/src</pElem>
             <pElem>../tron_math/src</pElem>
             <pElem>../tron_signals/src</pElem>
+            <pElem>../tron_space/src</pElem>
             <pElem>../tron_tools/src</pElem>
             <pElem>../tron_topics/src</pElem>
             <pElem>../tron_util/src</pElem>
@@ -172,6 +175,18 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
+              <makeArtifact PL="../tron_space"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tron_space"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtron_space.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
               <makeArtifact PL="../tron_tools"
                             CT="2"
                             CN="Debug"
@@ -249,6 +264,10 @@
       </item>
       <item path="src/TestSignals.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/TestSpace.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestSpace.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/TestTools.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestTools.h" ex="false" tool="3" flavor2="0">
@@ -315,6 +334,10 @@
       <item path="src/TestSignals.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TestSignals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TestSpace.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TestSpace.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/TestTools.cpp" ex="false" tool="1" flavor2="0">
       </item>

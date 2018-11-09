@@ -44,6 +44,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/TestMath.o \
 	${OBJECTDIR}/src/TestNode.o \
 	${OBJECTDIR}/src/TestSignals.o \
+	${OBJECTDIR}/src/TestSpace.o \
 	${OBJECTDIR}/src/TestTools.o \
 	${OBJECTDIR}/src/TestUtil.o \
 	${OBJECTDIR}/src/main.o
@@ -117,6 +118,11 @@ ${OBJECTDIR}/src/TestSignals.o: src/TestSignals.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestSignals.o src/TestSignals.cpp
+
+${OBJECTDIR}/src/TestSpace.o: src/TestSpace.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/TestSpace.o src/TestSpace.cpp
 
 ${OBJECTDIR}/src/TestTools.o: src/TestTools.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

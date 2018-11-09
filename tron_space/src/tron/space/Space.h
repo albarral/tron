@@ -42,8 +42,8 @@ public:
     void addElement(int element);
     // remove given element from space
     bool clearElement(int element);
-    // checks if given element is in space
-    bool checkElementExists(int element);
+    // check if given element exists in this space
+    bool findElement(int element);
     
     // clear space (all elements)
     void clear();

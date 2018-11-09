@@ -20,7 +20,7 @@ public:
  enum eState
 {
     eBOARD_EMPTY,                   // no spaces filled
-    eBOARD_SOME_FILLED,         // some spaces filled
+    eBOARD_FILLED,                   // some spaces filled
     eBOARD_ALL_FILLED             // all spaces filled
 };
 
@@ -48,6 +48,11 @@ public:
     // clear board (eliminate all spaces)
     void clear();
 
+    // compare operator (return true if boards are equal)
+    friend bool operator== (Board& b1, Board& b2);
+    
+    // get name of given state
+    static std::string getStateName(int state);    
     std::string toString();            
 };
 
