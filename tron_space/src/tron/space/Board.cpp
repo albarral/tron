@@ -12,19 +12,13 @@ namespace tron
 Board::Board()
 {              
     state = Board::eBOARD_EMPTY;
+    numEmpty = 0;
+    numFilled = 0;    
 }
 
 Board::~Board ()
 {
     clear();
-}
-
-void Board::addSpace(Space& oSpace)
-{
-    // automatic space ID assignment
-    int pos = listSpaces.size();
-    oSpace.setID(pos);
-    listSpaces.push_back(oSpace);
 }
 
 Space* Board::getSpace(int pos)
@@ -39,7 +33,63 @@ Space* Board::getSpace(int pos)
     }	
 }
 
-void Board::checkState()
+void Board::setSpaces(std::vector<Space>& listSpaces2)
+{
+    listSpaces = listSpaces2;
+    // compute counters & update board state
+    computeCounters();
+    updateState();    
+}
+
+void Board::addSpace(Space& oSpace)
+{
+    // automatic space ID assignment
+    int pos = listSpaces.size();
+    oSpace.setID(pos);
+    listSpaces.push_back(oSpace);
+
+    // update counters & board state
+    if (oSpace.isEmpty())
+        numEmpty++;
+    else
+        numFilled++;
+    updateState();    
+}
+
+void Board::updateSpace(int pos, Space& oSpace)
+{
+    try
+    {	        
+        bool bwasEmpty = oSpace.isEmpty();
+        // copy space contents
+        listSpaces.at(pos).setElements(oSpace.getElements());        
+        
+        // update counters if space state changed
+        // empty -> filled
+        if (bwasEmpty && !oSpace.isEmpty())
+        {
+            numEmpty--;
+            numFilled++;
+            // update board state
+            updateState();    
+        }
+        // filled -> empty 
+        else if (!bwasEmpty && oSpace.isEmpty())
+        {
+            numEmpty++;
+            numFilled--;
+            // update board state
+            updateState();    
+        }
+    }
+    // if pos out of range
+    catch (const std::out_of_range& oor) 
+    {
+        return;
+    }	    
+}
+
+void Board::updateState()
 {
     // special case: no spaces in board
     if (listSpaces.empty())
@@ -47,24 +97,7 @@ void Board::checkState()
         state = Board::eBOARD_EMPTY;                       
         return;
     }        
-    
-    int numEmpty = 0;
-    int numFilled = 0;
-    // check spaces one by one
-    for (Space& oSpace : listSpaces)
-    {
-        switch (oSpace.getState())
-        {
-            case Board::eBOARD_EMPTY: 
-                numEmpty++;
-                break;
-            case Board::eBOARD_FILLED:
-            case Board::eBOARD_ALL_FILLED:
-                numFilled++;
-                break;
-        }
-    }
-    
+
     // some spaces empty
     if (numEmpty > 0)
     {
@@ -80,17 +113,65 @@ void Board::checkState()
         state = Board::eBOARD_ALL_FILLED;
 }
 
-void Board::clean()
+void Board::computeCounters()
+{
+    numEmpty = 0;
+    numFilled = 0;
+    // check spaces one by one
+    for (Space& oSpace : listSpaces)
+    {
+        if (oSpace.isEmpty())
+            numEmpty++;
+        else
+            numFilled++;
+    }
+}
+
+void Board::clearContents()
 {
     for (Space& oSpace : listSpaces)
         oSpace.clear();   
+
+    // set counters & board state
+    numEmpty = listSpaces.size();
+    numFilled = 0;        
     state = Board::eBOARD_EMPTY;
 }
 
 void Board::clear()
 {
-    listSpaces.clear();    
+    listSpaces.clear(); 
+    // set counters & board state
+    numEmpty = 0;
+    numFilled = 0;        
     state = Board::eBOARD_EMPTY;
+}
+
+bool Board::compareStructure(Board& oBoard2)
+{
+    // emulate structure comparison (to be really implemented when real structure assigned to boards)
+    return (listSpaces.size() == oBoard2.listSpaces.size());    
+}
+
+bool Board::compareContents(Board& oBoard2, std::vector<int>& listDifSpaces)
+{
+    // reset list of differences
+    listDifSpaces.clear();
+    // compare individual spaces
+    std::vector<Space>::iterator it = listSpaces.begin();
+    std::vector<Space>::iterator end = listSpaces.end();
+    std::vector<Space>::iterator it2 = oBoard2.listSpaces.begin();
+    while (it != end)
+    {
+        // if spaces differ, add to list
+        if (!(*it == *it2))
+            listDifSpaces.push_back(it->getID());
+        it++;
+        it2++;            
+    }
+    
+    // return true if no differences
+    return listSpaces.empty();
 }
 
 bool operator== (Board& b1, Board& b2)
@@ -114,6 +195,11 @@ bool operator== (Board& b1, Board& b2)
     // otherwise, they are different
     else
         return false; 
+}
+
+bool operator!= (Board &b1, Board &b2)
+{
+    return !(b1 == b2);
 }
 
 std::string Board::getStateName(int state)

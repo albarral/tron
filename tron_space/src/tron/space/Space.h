@@ -12,20 +12,10 @@
 namespace tron
 {
 // Class representing a board space, which can be filled with elements.    
-// It's state is automatically updated (empty, filled or multi-filled).
 class Space
 {
-public:   
- enum eState
-{
-    eSPACE_EMPTY,               // no elements present
-    eSPACE_FILLED,              // one element present
-    eSPACE_MULTI_FILLED     // various elements present
-};
-
 protected:
     int ID; 
-    int state;
     std::list<int> listElements;    // elements present in the board space
 
 public:
@@ -33,11 +23,13 @@ public:
     ~Space();
 
     int getID() {return ID;};
-    int getState() {return state;};
     std::list<int>& getElements() {return listElements;};
-    int getNumElements() {return listElements.size();};    
+    int getNumElements() {return listElements.size();};   
+    bool isEmpty() {return listElements.empty();};
     
     void setID(int id) {ID = id;};
+    // set space elements
+    void setElements(std::list<int>& listElements2);
     // add given element to space
     void addElement(int element);
     // remove given element from space
@@ -54,10 +46,6 @@ public:
     // get name of given state
     static std::string getStateName(int state);    
     std::string toString();
-    
-private:
-    // updates space state (depending on elements count)
-    void updateState();
 };
 
 }  

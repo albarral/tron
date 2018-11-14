@@ -12,7 +12,6 @@ namespace tron
 Space::Space(int id)
 {          
     ID = id;
-    state = Space::eSPACE_EMPTY;
 }
 
 Space::~Space ()
@@ -20,10 +19,14 @@ Space::~Space ()
     clear();
 }
 
+void Space::setElements(std::list<int>& listElements2)
+{
+    listElements = listElements2;
+}
+
 void Space::addElement(int element)
 {
     listElements.push_back(element);
-    updateState();
 }
 
 bool Space::clearElement(int element)
@@ -34,7 +37,6 @@ bool Space::clearElement(int element)
     if (it != listElements.end())
     {
         listElements.erase(it);
-        updateState();
         return true;
     }
     else
@@ -51,27 +53,16 @@ bool Space::findElement(int element)
 void Space::clear()
 {
     listElements.clear();    
-    state = Space::eSPACE_EMPTY;
-}
-
-void Space::updateState()
-{
-    // no elements
-    if (listElements.empty())
-        state = Space::eSPACE_EMPTY;
-    // one element
-    else if (listElements.size() == 1)
-        state = Space::eSPACE_FILLED;
-    // various elements
-    else
-        state = Space::eSPACE_MULTI_FILLED;            
 }
 
 bool operator== (Space &s1, Space &s2)
 {
-    // if same state and num elements
-    if (s1.state == s2.state &&             
-       s1.listElements.size() == s2.listElements.size())
+    // fast check: both spaces empty
+    if (s1.isEmpty() && s2.isEmpty())
+        return true;
+        
+    // otherwise, if same number of elements
+    if (s1.listElements.size() == s2.listElements.size())
     {        
         // compare individual elements
         std::list<int>::iterator it1 = s1.listElements.begin();
@@ -89,21 +80,6 @@ bool operator== (Space &s1, Space &s2)
     // otherwise, they are different
     else
         return false; 
-}
-
-std::string Space::getStateName(int state)
-{
-    switch (state)
-    {
-        case Space::eSPACE_EMPTY: 
-            return "empty";
-        case Space::eSPACE_FILLED:
-            return "filled";
-        case Space::eSPACE_MULTI_FILLED:
-            return "multifilled";
-        default:
-            return "undefined";        
-    }
 }
 
 std::string Space::toString()
