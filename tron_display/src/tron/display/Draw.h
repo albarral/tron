@@ -6,6 +6,8 @@
  *   albarral@migtron.com   *
  ***************************************************************************/
 
+#include <string>
+
 #include "opencv2/core/core.hpp"
 
 namespace tron
@@ -14,6 +16,7 @@ namespace tron
 class Draw
 {        
 public:
+//  predefined colors    
     enum eColor{
         eRED, 
         eGREEN,
@@ -22,6 +25,18 @@ public:
         eWHITE,
         eBLACK,
         eCOLORS
+    };
+// predefined cardinal points    
+    enum ePoints{
+        ePOINT_NORTH, 
+        ePOINT_SOUTH, 
+        ePOINT_EAST, 
+        ePOINT_WEST, 
+        ePOINT_NORTH_EAST, 
+        ePOINT_NORTH_WEST, 
+        ePOINT_SOUTH_EAST, 
+        ePOINT_SOUTH_WEST, 
+        ePOINT_CENTER
     };
 
 protected:
@@ -57,28 +72,29 @@ public:
 
     // Draws a point in the image with the specified color and radius (default green and 3 pixels)
     void drawPoint(cv::Point& point, int radius = 3);
-
     // Draws a line in the image from point 1 to point 2    
     void drawLine(cv::Point& point1, cv::Point& point2);
-
     // Draws an ellipse in the image
     void drawEllipse(cv::Point& center, int width, int height, int orientation);
-
     // Draws a window in the image
     void drawRectangle(cv::Rect& window);
 
     // Draws an horizontal line in the image
     void drawHLine(int row);
-
     // Draws a vertical line in the image
     void drawVLine(int col);
 
     // Draws a number in the image at the specified point. 
     void drawNumber(int num, cv::Point& point);
+    // Draws a float number in the image at the specified point. 
     void drawFloatNumber(float num, cv::Point& point);
+    // Draws a text in the image at the specified point. 
+    void drawText(std::string text, cv::Point& point);
     
     // sets a predefined value for the color
     void setDefaultColor(int value);    
+    
+    cv::Point getCardinalPoint(int cardinal);   
 };
 }
     

@@ -4,7 +4,6 @@
  ***************************************************************************/
 
 #include <iostream>
-#include <string>
 
 #include "tron/display/Draw.h"
 
@@ -175,6 +174,16 @@ void Draw::drawFloatNumber(float num, cv::Point& point)
     cv::putText(image, text, point, cv::FONT_HERSHEY_SIMPLEX, fontSize, color, 2);
 }
 
+void Draw::drawText(std::string text, cv::Point& point)
+{
+    if (!bsized)
+    {
+        std::cout << "Draw error: image still not created" << std::endl;
+        return;
+    }
+    cv::putText(image, text, point, cv::FONT_HERSHEY_SIMPLEX, fontSize, color, 2);
+}
+
 void Draw::setDefaultColor(int value)
 {
     // sets BGR color
@@ -201,4 +210,34 @@ void Draw::setDefaultColor(int value)
     }
 }
 
+cv::Point Draw::getCardinalPoint(int cardinal)
+{
+    int w = image.cols; 
+    int h = image.rows;
+    // image y axis faces down
+    switch (cardinal)
+    {
+        case ePOINT_NORTH: 
+            return cv::Point(w/2, 0);
+        case ePOINT_SOUTH:  
+            return cv::Point(w/2, h-1);
+        case ePOINT_EAST: 
+            return cv::Point(w-1, h/2);
+        case ePOINT_WEST:
+            return cv::Point(0, h/2);
+        case ePOINT_NORTH_EAST: 
+            return cv::Point(w-1, 0);
+        case ePOINT_NORTH_WEST:
+            return cv::Point(0, 0);
+        case ePOINT_SOUTH_EAST: 
+            return cv::Point(w-1, h-1);
+        case ePOINT_SOUTH_WEST: 
+            return cv::Point(0, h-1);
+        case ePOINT_CENTER: 
+            return cv::Point(w/2, h/2);        
+        // invalid cardinal point    
+        default: 
+            return cv::Point(-1, -1);
+    }
+}
 }
