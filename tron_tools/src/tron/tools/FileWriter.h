@@ -34,6 +34,9 @@ public:
     void writeFlush(std::string);
     // move writer pointer to file's beginning
     void goTop();
+    
+    // clean file contents
+    void cleanFile();    
 };
 
 }		

@@ -69,4 +69,14 @@ void FileWriter::goTop()
     // point writer to file beginning    
     outfile.seekp(0, std::fstream::beg);
 }
+
+void FileWriter::cleanFile()
+{
+    // open and close file with truncate option
+    std::ofstream outfile2;
+    outfile2.open(filename, std::fstream::out | std::fstream::trunc);
+    if (outfile2.is_open())
+        outfile2.close();               
+}
+
 }
