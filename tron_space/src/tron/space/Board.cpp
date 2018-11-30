@@ -147,33 +147,6 @@ void Board::clear()
     state = Board::eBOARD_EMPTY;
 }
 
-bool Board::compareStructure(Board& oBoard2)
-{
-    // emulate structure comparison (to be really implemented when real structure assigned to boards)
-    return (listSpaces.size() == oBoard2.listSpaces.size());    
-}
-
-bool Board::compareContents(Board& oBoard2, std::vector<int>& listDifSpaces)
-{
-    // reset list of differences
-    listDifSpaces.clear();
-    // compare individual spaces
-    std::vector<Space>::iterator it = listSpaces.begin();
-    std::vector<Space>::iterator end = listSpaces.end();
-    std::vector<Space>::iterator it2 = oBoard2.listSpaces.begin();
-    while (it != end)
-    {
-        // if spaces differ, add to list
-        if (!(*it == *it2))
-            listDifSpaces.push_back(it->getID());
-        it++;
-        it2++;            
-    }
-    
-    // return true if no differences
-    return listSpaces.empty();
-}
-
 bool operator== (Board& b1, Board& b2)
 {
     // if same num spaces

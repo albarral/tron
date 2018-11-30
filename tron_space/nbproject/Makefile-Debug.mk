@@ -36,7 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/tron/space/Board.o \
-	${OBJECTDIR}/src/tron/space/Space.o
+	${OBJECTDIR}/src/tron/space/Space.o \
+	${OBJECTDIR}/src/tron/space/SpaceCompare.o
 
 
 # C Compiler Flags
@@ -72,6 +73,11 @@ ${OBJECTDIR}/src/tron/space/Space.o: src/tron/space/Space.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/tron/space
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/space/Space.o src/tron/space/Space.cpp
+
+${OBJECTDIR}/src/tron/space/SpaceCompare.o: src/tron/space/SpaceCompare.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/tron/space
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/tron/space/SpaceCompare.o src/tron/space/SpaceCompare.cpp
 
 # Subprojects
 .build-subprojects:

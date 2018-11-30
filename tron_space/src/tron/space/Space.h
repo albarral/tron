@@ -46,6 +46,8 @@ public:
     // get name of given state
     static std::string getStateName(int state);    
     std::string toString();
+    
+    friend class SpaceCompare;    
 };
 
 }  

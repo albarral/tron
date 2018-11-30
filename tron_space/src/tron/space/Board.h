@@ -52,11 +52,6 @@ public:
     // clear board structure (deleting all spaces)
     void clear();
 
-    // compare board structure with given board (return true if structures are equal)
-    bool compareStructure(Board& oBoard2);
-    // compare board contents with given board (return true if contents are equal, informing list of differing spaces otherwise)
-    bool compareContents(Board& oBoard2, std::vector<int>& listDifSpaces);
-
     // compare operator (return true if boards are equal)
     friend bool operator== (Board& b1, Board& b2);
     // difference operator (return true if boards are different)    
@@ -66,6 +61,8 @@ public:
     static std::string getStateName(int state);    
     std::string toString();            
 
+    friend class SpaceCompare;
+    
 private:
     // updates board state (depending on counters)
     void updateState();
